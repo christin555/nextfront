@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Home.module.scss';
+import s from './home.module.scss';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
