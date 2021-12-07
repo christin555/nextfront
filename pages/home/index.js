@@ -1,4 +1,3 @@
-import MainLayout from '../../components/MainLayout';
 import Header from './Header';
 import Blocks from './Blocks';
 
