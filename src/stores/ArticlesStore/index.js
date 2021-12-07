@@ -45,6 +45,10 @@ class ArticlesStore {
   }
 
   getArticle = async() => {
+    if (!this.alias){
+      return
+    }
+
     try {
       const alias = this.alias;
       const article =  await api.post('article/get', {alias});
@@ -52,7 +56,6 @@ class ArticlesStore {
       this.setArticle(article);
     } catch(err) {
       console.log(err);
-      //alert({type: 'error', title: 'Ошибка при получении фильтра'});
     }
   }
 
@@ -63,9 +66,9 @@ class ArticlesStore {
 
       this.setArticles(articles);
       this.setStatus(statusEnum.SUCCESS);
-    } catch(_) {
+    } catch(e) {
       this.setStatus(statusEnum.ERROR);
-      alert({type: 'error', title: 'Ошибка при получении фильтра'});
+      alert({type: 'error', title: 'Ошибка при получении статей'});
     }
   }
 }

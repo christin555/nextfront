@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `${process.env.REACT_APP_API_HOST}`;
+const API_URL = `https://api.master-pola.com/api/`;
 const baseQuery = axios.create({
   baseURL: API_URL,
   responseType: 'json',
