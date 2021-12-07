@@ -1,0 +1,340 @@
+@import '../../../styles/variables.module';
+
+.homeBlocks {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-top: 40px;
+  }
+}
+.image{
+  position: relative
+}
+.catalogBlock {
+  display: flex;
+  flex-direction: column;
+  @include paddingStandard;
+  justify-content: space-between;
+
+  .catalogItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+
+    .mainBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+
+      .buttonContainer {
+        display: flex;
+        align-content: flex-start;
+        height: 60px;
+
+        .but {
+          font-size: 16px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+.mediaContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .iconBlock {
+    display: flex;
+    align-items: center;
+    z-index: 2;
+
+    .icon {
+      display: flex;
+      height: 36px;
+      width: 36px;
+      border-radius: 100%;
+      font-size: 20px;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+
+  .mediaBlock {
+    display: flex;
+    z-index: 1;
+    flex: auto;
+    margin: 0 20px;
+    height: 40vw;
+  }
+
+  .activeImg {
+    display: flex !important;
+  }
+
+  .imgBlock {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      border-radius: inherit;
+    }
+  }
+}
+
+
+.catalog {
+  margin: 40px 50px;
+  display: flex;
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 300px));
+    grid-column-gap: 20px;
+    grid-row-gap: 15px;
+    width: 100%;
+    height: min-content;
+    justify-content: center;
+  }
+
+  .button {
+    display: flex;
+    margin-top: 20px;
+    border-color: white;
+    color: #f9f9fd;
+  }
+}
+
+.aboutContainer {
+  @include paddingStandard;
+  line-height: 24px;
+
+  .divider {
+    display: block;
+    height: 2px;
+    width: 50px;
+    background: $red;
+    margin-bottom: 20px;
+  }
+
+  .aboutBock {
+    display: grid;
+    grid-template-columns: minmax(300px, 500px) minmax(300px, 1fr);
+    grid-column-gap: 60px;
+    margin-top: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .textAbout {
+      padding: 20px 0;
+      font-weight: 400;
+    }
+
+
+    .iconsblock {
+      padding: 40px 0 0 40px;
+      display: flex;
+
+      h3 {
+        font-weight: 500;
+        height: 50px;
+        margin: 20px 0;
+        font-size: 22px;
+      }
+
+
+      & > * {
+        max-width: 300px;
+      }
+      & > * +* {
+        max-width: 300px;
+        margin-left: 60px;
+      }
+    }
+
+    .iconAbout {
+      font-size: 40px;
+    }
+  }
+}
+
+.iconChar {
+  font-size: 60px !important;
+  color: $gray-100;
+  margin-bottom: 20px;
+}
+
+.charsBlock {
+  padding: 0 10vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  & > * {
+    display: flex;
+  }
+
+  & > * + * {
+    margin-left: 50px;
+  }
+
+  .border {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 3;
+
+    .borderIcon {
+      font-size: 100px;
+    }
+  }
+
+  .icontext {
+    display: flex;
+    padding: 10px;
+    z-index: 4;
+    font-size: 16px;
+    margin: 20px 0 0 20px;
+    background: white;
+    font-weight: 400;
+
+    & > * {
+      margin-left: 20px;
+    }
+  }
+}
+
+.blog {
+  background: $white-20;
+  padding: 14px 0;
+  @include paddingStandard;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-column-gap: 40px;
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    justify-content: space-between;
+
+    .buttonArt {
+      margin-top: 20px;
+      place-self: flex-end;
+    }
+  }
+
+  .blockArticles {
+    grid-column: 2/4;
+    display: grid;
+    grid-template-columns:   repeat(3, minmax(100px, 350px));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    .article {
+      display: flex;
+      flex-direction: column;
+
+      .titleArticle {
+        min-height: 40px;
+        margin-top: 10px;
+      }
+
+      & > *:first-child {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .homeBlocks > * + * {
+    margin-top: 20px;
+  }
+
+  .aboutContainer {
+    .aboutBock {
+      display: flex;
+      flex-direction: column;
+
+      .iconsblock {
+
+        padding: 20px;
+
+        h3 {
+          height: 70px;
+        }
+      }
+    }
+  }
+
+  .blog {
+    display: flex;
+    flex-direction: column;
+
+    .blockArticles {
+      grid-template-rows: minmax(300px, 400px);
+      grid-template-columns: auto;
+    }
+    .desc > .buttonArt {
+        margin:  0 0 20px 0;
+      }
+  }
+  .catalogBlock {
+    flex-direction: column;
+  }
+
+  .charsBlock {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin: 0;
+      width: 100%;
+    }
+
+    .border {
+      width: 70px;
+      height: 70px;
+
+      .borderIcon {
+        font-size: 70px;
+      }
+    }
+
+    .icontext {
+      padding: 4px;
+      margin: 10px 0 0 10px;
+      font-size: 20px;
+    }
+  }
+
+  .iconChar {
+    font-size: 50px;
+    margin-top: 8px;
+  }
+
+  .catalogContainer {
+    align-items: center;
+    margin-top: 20px;
+
+    .mainBlock > .buttonContainer{
+      align-content: flex-start;
+    }
+  }
+}

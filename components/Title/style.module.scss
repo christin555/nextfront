@@ -1,0 +1,10 @@
+.title {
+  &:after {
+    content: "";
+    display: block;
+    margin-top: 8px;
+    height: 2px;
+    width: 40px;
+    background: #c41414;
+  }
+}

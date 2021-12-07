@@ -1,0 +1,23 @@
+@import '../../styles/variables.module';
+
+
+.carouselHeight {
+  height: 500px;
+}
+
+.itemCarousel{
+  height: 500px;
+
+  img{
+    margin: 0 auto;
+    height: 500px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    //width: 100%;
+    display: block;
+  }
+}
+.prevIcon{
+  background: $gray-200;
+  color: white;
+}

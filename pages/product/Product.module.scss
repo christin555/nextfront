@@ -1,0 +1,273 @@
+@import '../../styles/variables.module';
+
+
+.hierarchy {
+  @include paddingStandard;
+}
+
+
+.door {
+  background: url(../../public/wall.jpg) no-repeat top;
+  -webkit-background-size: cover;
+  background-size: cover;
+  padding: 0 !important;
+}
+
+.content {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    @include paddingStandard;
+
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: minmax(300px, 0.8fr) minmax(400px, 1fr);
+  }
+
+  .slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel {
+    .axis-vertical {
+      margin: 0 !important;
+    }
+
+    ul {
+      padding-inline-start: 0
+    }
+
+    img {
+      max-height: 500px;
+      //width: initial !important;
+    }
+  }
+
+  .product {
+    background: #ffffffd1;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+
+    @include paddingStandard;
+    padding-left: 20px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .additional {
+      margin: 20px 0;
+      font-size: 18px;
+      display: flex;
+      flex-wrap: wrap;
+
+      & > * {
+        background: #f3f3f5;
+        margin-top: 5px;
+        margin-right: 10px;
+      }
+    }
+
+    .price {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 300px;
+
+      .value {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 400;
+
+        .icon {
+          margin-right: 8px;
+          color: $gray-500;
+        }
+      }
+
+      .unit {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: #7f7f7f;
+      }
+    }
+
+    .brand {
+      font-weight: 300;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    .name {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 400;
+      font-size: 24px;
+      margin: 20px 0 20px;
+      align-items: center;
+    }
+
+    .collection {
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 14px;
+      color: $gray-200;
+    }
+
+    .desc {
+      text-align: justify;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  }
+}
+
+.titleCharacteristic {
+  margin-top: 20px;
+  @include paddingStandard;
+  background: $gray-100-10;
+  font-weight: 400;
+  font-size: 16px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: $red;
+}
+
+.characteristic {
+  @include paddingStandard;
+
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+}
+
+.chars {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 50px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 5px -5px;
+
+  &::after {
+    content: "";
+    margin-top: -5px;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dotted #a5a9af;
+    z-index: 0;
+  }
+
+  & > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: white;
+
+    span {
+      padding: 0 5px;
+      z-index: 1;
+      background: white;
+    }
+  }
+}
+
+.iconChip {
+  font-size: 20px !important;
+  color: $black;
+}
+
+.materials {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 16px;
+
+  .items {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin-top: 10px;
+    line-height: 18px;
+
+    & > * {
+      font-size: 14px;
+
+      .materialImg {
+        margin-bottom: 8px;
+        width: inherit;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+    }
+  }
+}
+
+.thumbs img {
+  width: auto !important;
+  height: 75px;
+}
+
+.call {
+  border-color: black;
+  border-radius: 0;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+
+  .content > .card {
+    display: flex;
+    flex-direction: column;
+
+    .product {
+      margin-left: 0;
+      padding: 10px 0;
+      @include paddingStandard;
+
+      .name {
+        flex-direction: column;
+        align-items: flex-start;
+
+        & > * {
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+
+  .materials > .items {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .characteristic {
+    grid-template-columns: 1fr;
+  }
+
+  .call{
+    width: 100%;
+  }
+}

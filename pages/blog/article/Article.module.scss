@@ -1,0 +1,86 @@
+@import '../../../styles/variables.module';
+
+.content {
+  @include paddingStandard;
+  display: flex;
+  flex-direction: row;
+}
+
+.article{
+  display: flex;
+  flex-direction: column;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns:  minmax(250px, 1fr);
+  margin-right: 150px;
+  grid-row-gap: 20px;
+}
+
+.date {
+  color: $gray-200;
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.85pt;
+  display: flex;
+  align-items: center;
+}
+
+.categoryLabel{
+  font-weight: 400;
+  letter-spacing: 0.85pt;
+  margin-right: 10px;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  background: $red ;
+  padding: 2px 4px;
+}
+
+.media{
+  height: 400px;
+}
+.articleContent{
+  span {
+    margin: 6px 0;
+    display: block;
+  }
+}
+
+.header {
+  background: rgb(246, 246, 246);
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  @include paddingStandard;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.line {
+  margin-top: 8px;
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: #c41414;
+}
+
+@media only screen and (max-width: 480px) {
+  .header, .content {
+    padding: 0 10px;
+
+    .article {
+      .imgBlock {
+        grid-column-start: unset;
+      }
+    }
+  }
+
+  .iframe {
+    width: 100%;
+    height: auto;
+  }
+}

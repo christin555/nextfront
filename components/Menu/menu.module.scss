@@ -1,0 +1,262 @@
+@import '../../styles/variables.module';
+
+.textField{
+  background: red;
+  font-size: 20px;
+
+  .MuiInputBase-input{
+    padding: 11px;
+  }
+}
+.isHome {
+  background: none;
+  box-shadow: none !important;
+
+& > *, a, a:visited {
+    color: $white !important;
+
+&:hover {
+   color: $white-10;
+ }
+}
+
+input[class*="MuiInputBase-input"],
+input[class*="MuiInputBase-input"]::placeholder {
+  color: $white-10;
+}
+}
+
+.isScrolled {
+  box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56) !important;
+
+.headerBackground {
+  opacity: 1 !important;
+}
+
+& > *, a, a:visited {
+    color: $gray-500 !important;
+
+&:hover {
+   color: $gray-300 !important;
+ }
+}
+
+input[class*="MuiInputBase-input"],
+input[class*="MuiInputBase-input"]::placeholder {
+  color: $gray-400;
+}
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+
+.headerBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: white;
+  transition: opacity .3s;
+  opacity: 0;
+}
+
+&:not(.isHome) .headerBackground {
+   opacity: 1;
+ }
+
+&:not(.isScrolled), .isHome .name {
+   padding-top: 10px;
+   font-size: 38px !important;
+ }
+
+&.isScrolled, &:not(.isHome) .name {
+                 font-size: 32px !important;
+               }
+
+&:not(.isHome) input[class*="MuiInputBase-input"],
+&:not(.isHome) input[class*="MuiInputBase-input"]::placeholder {
+   color: $gray-400;
+ }
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  @include paddingStandard;
+
+.logoBlock {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+.logo {
+  margin: 5px 0;
+  width: 45px;
+  height: 45px;
+  transition: transform .2s, -webkit-transform .2s;
+
+img {
+  width: inherit;
+  height: inherit;
+}
+
+&:hover {
+   transform: scale(1.2);
+ }
+}
+}
+
+.name {
+  font-family: oswald;
+  letter-spacing: 1.5px !important;
+  font-weight: 500;
+  margin-left: 15px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+
+.search {
+  cursor: pointer;
+  border: 1px solid #959595;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1px 10px;
+  width: 25vw;
+  margin-right: 20px;
+  height: 30px;
+  align-items: center;
+}
+
+.phone {
+  padding: 2px 0;
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 300;
+  text-decoration: none;
+  color: inherit;
+}
+
+.place {
+  margin-left: 10px;
+  font-size: 20px;
+  color: inherit;
+}
+}
+}
+}
+
+.menuContainer {
+  padding: 85px 0 20px 0;
+
+  @include paddingStandard;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  line-height: 24px;
+  font-weight: 300;
+  height: 40px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+
+.isActive {
+  color: #c41414;
+}
+
+.important {
+// border-bottom: 1px solid $gray-20;
+
+&:hover {
+ // border-bottom: 2px solid $white;
+ }
+}
+
+& > * {
+    padding: 5px 0;
+    height: 25px;
+    margin-right: 40px;
+    color: $gray-500;
+
+&:hover {
+   color: $gray-300;
+   cursor: pointer;
+ }
+}
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  transition: unset;
+  color: inherit;
+
+.iconContact {
+  font-size: 20px;
+  margin-left: 10px;
+  color: inherit;
+}
+
+svg {
+  transition: unset;
+}
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    height: 50px;
+
+  .name {
+    font-size: 28px;
+  }
+
+
+  .left {
+    display: none !important;
+  }
+
+  .headerContent {
+    height: 50px;
+
+  .logoBlock {
+    width: auto;
+
+  .logo {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+
+  img {
+    width: inherit;
+    height: inherit;
+  }
+}
+}
+}
+}
+
+.menuContainer {
+  display: none;
+}
+}
+

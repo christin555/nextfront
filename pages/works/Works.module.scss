@@ -1,0 +1,91 @@
+@import '../../styles/variables.module';
+
+.content {
+  @include paddingStandard;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+
+  &::after {
+    content: "";
+    display: block;
+    margin-top: 8px;
+    height: 2px;
+    width: 40px;
+    background: #c41414;
+  }
+}
+
+.preview {
+  font-family: museo-sans, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .text {
+    max-width: 50vw;
+    text-align: justify;
+  }
+}
+
+
+.divider {
+  margin: 10px 0;
+}
+
+.carousel {
+  max-width: 500px;
+
+  .axis-vertical {
+    margin: 0 !important;
+  }
+
+  ul {
+    padding-inline-start: 0
+  }
+
+  img {
+    max-height: 500px;
+  }
+}
+
+.header {
+  background: rgb(246, 246, 246);
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 20px 80px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.line {
+  margin-top: 8px;
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: #c41414;
+}
+
+@media only screen and (max-width: 480px) {
+  .header, .content {
+    padding: 0 10px;
+  }
+
+  .preview {
+    .text {
+      max-width: unset;
+
+      .title {
+        margin-top: 10px;
+      }
+    }
+  }
+}

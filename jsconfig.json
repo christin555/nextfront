@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "alias": {
+      "api": "src/api/index",
+      "shared/*": "src/api/shared/*"
+    }
+  }
+}

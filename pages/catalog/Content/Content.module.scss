@@ -1,0 +1,114 @@
+@import '../../../styles/variables.module';
+
+.container {
+  width: 100%;
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .count {
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    .limitButton {
+      font-size: 14px;
+      background: $gray-100-10;
+      padding: 8px;
+    }
+
+    .limitActive {
+      font-weight: bold;
+    }
+
+    .limit {
+      display: flex;
+
+      & > * + * {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    width: inherit;
+  }
+
+  .cardsContainer {
+    width: inherit;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-row-gap: 15px;
+    grid-column-gap: 20px;
+    justify-content: space-between;
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+
+  & > * {
+    margin: 0 10px 10px 0 !important;
+    max-width: 350px !important;
+  }
+}
+
+.pagnt {
+  margin-top: 40px;
+}
+
+.buttomMargin {
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 480px) {
+  .content {
+    margin: 10px 0;
+    flex-direction: column;
+
+    & > * {
+      margin-right: 0;
+    }
+
+    .cards {
+      font-size: 12px;
+      grid-column-gap: 10px;
+      width: unset;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    }
+
+    .header {
+      margin: 10px 0;
+
+      .count {
+        font-size: 14px;
+      }
+    }
+  }
+  .pagnt {
+    padding: 0;
+
+    & > * {
+      justify-content: space-around;
+    }
+
+  }
+}

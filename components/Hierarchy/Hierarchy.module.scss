@@ -1,0 +1,21 @@
+@import '../../styles/variables.module';
+
+.level {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  color: $gray-400;
+  cursor: pointer;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+
+  .icon {
+    font-size: 10px;
+    margin: 0 5px;
+  }
+
+  .last {
+    color: $gray-500;
+  }
+}

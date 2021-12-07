@@ -1,0 +1,83 @@
+@import '../../../styles/variables.module';
+
+.filter {
+  width: 20vw;
+  margin-right: 50px;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .clear {
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: $gray-100;
+    cursor: pointer;
+  }
+
+  .heading {
+    font-weight: 300 !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    text-transform: uppercase;
+
+    .active {
+      width: 6px;
+      height: 6px;
+      background: #c13535;
+      border-radius: 100%;
+      display: block;
+      margin: 0 10px;
+    }
+  }
+
+  .details {
+    padding: 5px 16px 0 16px;
+    display: flex;
+    flex-direction: column;
+
+    .checkboxControl {
+      font-size: 16px;
+    }
+  }
+}
+
+.accordionItem {
+  border: 0;
+  box-shadow: none;
+
+  &:before {
+    display: none !important;
+  }
+}
+
+.summary {
+  padding: 0px;
+  border-bottom: 1px solid $gray-20;
+
+  & > * {
+    min-height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .filter {
+    flex-direction: column;
+    width: unset;
+
+    .title {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  }
+}

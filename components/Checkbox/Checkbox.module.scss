@@ -1,0 +1,40 @@
+@import '../style';
+
+.titleCheckbox {
+  display: flex;
+  flex-direction: column;
+  line-height: 14px;
+  margin-top: 2px;
+}
+
+.priceService {
+  line-height: 12px;
+  font-size: 12px;
+  color: $gray-100;
+}
+
+.helpIcon {
+  font-size: 16px
+}
+
+.textFieldBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+}
+
+.textField {
+  width: 60px;
+  margin: 0 5px;
+
+  & > * {
+    font-size: 12px;
+    padding: 0 2px;
+  }
+}
+
+.dopField {
+  font-size: 12px;
+  color: $gray-100;
+}

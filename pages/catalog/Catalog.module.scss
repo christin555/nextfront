@@ -1,0 +1,41 @@
+@import '../../styles/variables.module';
+
+.header {
+  background: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  padding: 10px 0;
+
+  @include paddingStandard;
+}
+
+.line {
+  margin-top: 8px;
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: #c41414;
+}
+
+.content {
+  margin-top: 20px;
+
+  @include paddingStandard;
+  display: flex;
+  flex-direction: row;
+
+  & > * + * {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .content {
+    padding: 0 10px;
+    flex-direction: column;
+  }
+  .header {
+    padding: 10px;
+  }
+}

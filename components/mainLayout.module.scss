@@ -1,0 +1,16 @@
+.wrapper {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.isNotHome {
+  margin-top: 140px;
+}

@@ -1,0 +1,288 @@
+@import '../../styles/variables.module';
+
+.footer {
+  color: $gray-10;
+  background: $gray-500;
+  text-align: center;
+  bottom: 0;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 70px 0;
+  @include paddingStandard;
+  letter-spacing: 0.5px;
+
+  .content {
+    flex-direction: row;
+    display: flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.footerAbout {
+  margin: 60px 0;
+  @include paddingStandard;
+  background: $gray-20;
+  display: grid;
+  grid-template-columns:  minmax(200px, 25vw) auto;
+  grid-column-gap: 40px;
+
+
+  .imgBlock {
+    display: flex;
+    position: relative;
+  }
+
+  .text {
+    padding: 20px 0;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 90%;
+  }
+}
+
+.links {
+  display: flex;
+  text-align: left;
+
+  & > * + * {
+    margin-left: 80px;
+  }
+
+  & > * {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-transform: uppercase;
+
+
+    .categoryName {
+      color: $red;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    & > * {
+      color: $gray-10;
+      margin-bottom: 10px;
+      line-height: 24px;
+
+      &:hover {
+        cursor: pointer;
+        color: $gray-100-40;
+      }
+    }
+  }
+}
+
+
+.contactsContainer {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0C4487 0%, #D23314 100%);
+  padding: 5px;
+  min-width: 400px;
+
+  .contacts {
+    padding: 20px;
+    background: $gray-500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phone {
+    margin-bottom: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $white-10;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.5px !important;
+  }
+
+  p {
+    margin: 0;
+    color: $gray-30;
+    font-size: 14px;
+    max-width: 250px;
+  }
+
+  span {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+
+  }
+}
+
+
+.button {
+  color: $white-10 !important;
+  border-color: $white-10 !important;
+  margin: 20px 0 20px !important;
+
+  &:hover {
+    background: $gray-400 !important;
+  }
+}
+
+.messangers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: min-content;
+
+  & > * + * {
+    margin-left: 20px;
+  }
+
+  .icon {
+    font-size: 22px;
+    color: $white-10;
+
+    &:hover {
+      color: $gray-100-40;
+    }
+  }
+
+  .messenger {
+    cursor: pointer;
+  }
+}
+
+.copy {
+  font-size: 12px;
+  color: $gray-40;
+  line-height: 20px;
+  align-items: flex-end;
+  text-align: left;
+  letter-spacing: 0.5pt;
+}
+
+.logoBlock {
+  display: flex;
+  height: 40px;
+  margin-right: 20px;
+  letter-spacing: 1.5px;
+
+  .logo {
+    position: relative;
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+  }
+
+  .nameLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: oswald;
+    line-height: 1;
+    font-weight: 200;
+
+    .name {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    & > * {
+      text-align: left;
+    }
+  }
+}
+
+.policy {
+  margin: 70px 0;
+  text-transform: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: $white-10;
+}
+
+@media only screen and (max-width: 780px) {
+  .footerAbout {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .logoBlock {
+    margin-right: 0;
+  }
+
+  .policy {
+    margin: 20px 0;
+  }
+  .links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    text-align: center;
+
+    & > * {
+      margin: 0;
+      align-items: center;
+    }
+  }
+
+  .copy {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .contactsContainer {
+    min-width: initial;
+    width: inherit;
+  }
+
+  .footerAbout {
+    margin-top: 20px;
+  }
+
+  .footer {
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    .content {
+      flex-direction: column;
+      align-items: center;
+
+      & > * {
+        margin-bottom: 40px;
+      }
+
+      .menu {
+        flex-flow: wrap;
+        justify-content: center;
+      }
+
+      .info {
+        height: min-content;
+
+        .address {
+          margin: 20px 0;
+          font-size: 12px;
+
+          .iconContact {
+            font-size: 14px;
+          }
+        }
+
+        & > * + * {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}

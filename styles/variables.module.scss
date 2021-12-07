@@ -1,0 +1,58 @@
+@mixin paddingStandard {
+
+  @media (min-width: 480px){
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (min-width: 1300px) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  @media (min-width: 1700px){
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
+  @media (max-width: 480px){
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+@mixin paddingStandard320 {
+  padding: 0 10px;
+}
+
+$white: #ffffff;
+$black: #131212;
+
+$white-20: #F7F7F7;
+$white-10: rgba(255, 255, 255, 0.9);
+$gray-10: #ffffff;
+
+$gray-20: #f8f8f8;
+$gray-30: #dcdbdb;
+$gray-40: #ababab;
+$gray-100: #9299a7;
+
+$gray-100-10: rgba(146, 153, 167, 0.1);
+$gray-100-40: #838c91;
+$gray-300: #575963;
+$gray-200: #67676F;
+$gray-400: #34373d;
+$gray-500: #222222;
+
+$main-blue: #1976d2;
+$main-blue-40: rgba(25, 118, 210, 0.4);
+
+$main-green: rgba(27, 194, 3, 0.96);
+$green-100: rgba(109, 170, 143, 0.96);
+
+$red: #D93310;
+
+:export {
+  red: $red
+}

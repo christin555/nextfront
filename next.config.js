@@ -1,3 +1,5 @@
 module.exports = {
-  reactStrictMode: true,
+    images: {
+        domains: ['https://master-pola.com', 'master-pola.com']
+    },
 }
