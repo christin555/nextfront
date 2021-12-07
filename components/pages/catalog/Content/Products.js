@@ -1,13 +1,11 @@
 import React from 'react';
 import s from './Content.module.scss';
-import Cards from '../../../components/Cards';
+import Cards from '../../../Cards';
 import {inject, observer} from 'mobx-react';
 import Chips from './Chips';
 import Pagination from '@mui/material/Pagination';
 import {IconButton} from '@mui/material';
 import classNames from 'classnames';
-import Button from "../../../components/Button";
-import PaginationItem from '@mui/material/PaginationItem';
 
 const plural = require('plural-ru');
 

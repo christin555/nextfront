@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import FilterView from './FilterView';
 import {inject, observer} from 'mobx-react';
-import {get} from 'mobx';
 import filterFabric from './filterFabric';
 
 @inject(({RouterStore, RootStore: {ActiveFilterStore}}) => {

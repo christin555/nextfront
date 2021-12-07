@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Content.module.scss';
 import {inject, observer} from 'mobx-react';
 import CloseIcon from '@mui/icons-material/Close';
-import Chip from '../../../components/Chip';
+import Chip from '../../../Chip';
 import {observable, toJS} from "mobx";
 
 @inject(({RootStore: {ActiveFilterStore}}) => {

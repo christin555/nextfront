@@ -3,7 +3,6 @@ import {Accordion, AccordionDetails, AccordionSummary} from '@mui/material';
 import s from '../Filter.module.scss';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PropTypes from 'prop-types';
-import FormCheckbox from "./FormCheckbox";
 
 const SimpleAccordion = (props) => {
   const {id, name, children, active} = props;

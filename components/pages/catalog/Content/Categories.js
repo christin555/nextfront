@@ -1,6 +1,6 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
-import CatalogCard from '../../../components/CatalogCard';
+import CatalogCard from '../../../CatalogCard';
 import s from './Content.module.scss';
 
 @inject(({RootStore: {CatalogStore}}) => {

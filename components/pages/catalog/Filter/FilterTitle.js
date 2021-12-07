@@ -3,7 +3,6 @@ import s from './Filter.module.scss';
 import {inject, observer} from 'mobx-react';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '../../../Button';
-import Fields from "./Laminate/fields";
 
 @inject(({FilterStore}) => {
   return {

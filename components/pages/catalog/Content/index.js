@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Content.module.scss';
 import {inject} from 'mobx-react';
-import Hierarchy from '../../../components/Hierarchy';
-import {status as statusEnum} from '../../../src/enums';
-import {InWork, NoResults} from '../../../components/InformBlocks';
+import Hierarchy from '../../../Hierarchy';
+import {status as statusEnum} from '../../../../src/enums';
+import {InWork, NoResults} from '../../../InformBlocks';
 import classNames from 'classnames';
 import Categories from './Categories';
 import Products from './Products';
