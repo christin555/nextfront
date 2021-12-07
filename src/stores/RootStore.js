@@ -22,7 +22,6 @@ class RootStore {
     }
 
     @action setValue = ({target: {value}}) => {
-        console.log('setValue', value)
         this.searchValue = value;
     }
 

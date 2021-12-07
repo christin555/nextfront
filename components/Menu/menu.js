@@ -48,7 +48,6 @@ export default function Menu() {
         }
     }
 
-    console.log('isScrolled', isScrolled)
     return (
         <header className={styles.container}>
             <div className={cn(styles.header, {[styles.isScrolled]: isScrolled, [styles.isHome]: isHome})}>

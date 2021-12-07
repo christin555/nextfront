@@ -1,4 +1,4 @@
-import {observable, action, makeObservable, computed, autorun} from 'mobx';
+import {observable, action, makeObservable, computed, when, autorun} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
@@ -24,7 +24,7 @@ class ArticlesStore {
 
     this.RouterStore = RootStore.RouterStore;
     this.articles = ArticlesStore.articles;
-     this.article = ArticlesStore.article;
+    this.article = ArticlesStore.article;
 
    }
 
@@ -41,19 +41,18 @@ class ArticlesStore {
   }
 
   @computed get alias() {
-    return this.RouterStore.query.id || null;
+    return this.RouterStore.router.query.id || null;
   }
 
   getArticle = async() => {
     try {
-      const article =  await api.get(`articles/get/${this.alias}`);
-
-      console.log(article);
+      const alias = this.alias;
+      const article =  await api.post('article/get', {alias});
 
       this.setArticle(article);
     } catch(err) {
       console.log(err);
-      alert({type: 'error', title: 'Ошибка при получении фильтра'});
+      //alert({type: 'error', title: 'Ошибка при получении фильтра'});
     }
   }
 

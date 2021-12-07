@@ -114,8 +114,6 @@ class Fields extends Component {
   isChecked = (key, value) => {
     const {checked} = this.props;
 
-    console.log(key, value, checked,  checked[`${key}-${value}`],  checked[`${key}-${Number(value)}`]);
-
     return !!checked[`${key}-${value}`] ;
   };
 

@@ -1,4 +1,4 @@
-import {observable, when, action, computed, makeObservable} from 'mobx';
+import {observable, when, action, computed, makeObservable, autorun} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
@@ -15,22 +15,17 @@ class ProductStore {
 
     constructor(RootStore) {
         this.hydrate(RootStore);
-        console.log('init')
 
         makeObservable(this);
 
-        if(!this.values && !isServer) {
-           when(() => this.alias,
-               ()=>{
-                   this.getProduct();
-                   this.getHierarchy();
-               })
+        if(!isServer) {
+            this.getHierarchyDisposer = autorun(this.getHierarchy);
+            this.getCatalogDisposer = autorun(this.getProduct);
         }
     }
 
     async hydrate(RootStore) {
         const {ProductStore = {}} = RootStore.initialData.stores || {};
-        console.log('RootStore', RootStore);
 
         this.RouterStore = RootStore.RouterStore;
         this.hierarchy = ProductStore.hierarchy;
@@ -55,6 +50,9 @@ class ProductStore {
     }
 
     getHierarchy = async () => {
+        if (!this.alias){
+            return
+        }
         try {
             const body = {product: this.alias};
             const {hierarchy} = await api.post('catalog/getHierarchy', body);
@@ -66,8 +64,10 @@ class ProductStore {
     }
 
     getProduct = async () => {
+        if (!this.alias){
+            return
+        }
         try {
-            console.log('getProduct', this.alias);
             const {values, fields} = await api.get(`products/get/${this.alias}`);
 
             this.setValues(values);

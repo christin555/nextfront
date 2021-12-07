@@ -39,7 +39,7 @@ class ArticlesView extends React.Component {
                     id: alias
                 },
             },
-            `/blog/article/${alias}`,
+            undefined,
             {shallow: true}
         );
     }

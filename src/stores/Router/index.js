@@ -13,9 +13,7 @@ class RouterStore {
 
     constructor({router} = {}) {
         makeObservable(this);
-        console.log(router, 'router')
         this.router = router;
-
     }
 
     @computed get pathname() {
@@ -29,7 +27,6 @@ class RouterStore {
     @action push = async(params) => {
        await Router.router.push(params);
 
-       console.log('jgznm')
        this.router = {...Router.router}
     }
 

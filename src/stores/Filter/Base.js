@@ -56,8 +56,6 @@ export class BaseFilterStore {
     }
 
     @action initChecked() {
-        console.log(this.values);
-
         const _chips = []
         const _checked = {};
         Object.entries(this.currentParams).forEach(([key, value]) => {
