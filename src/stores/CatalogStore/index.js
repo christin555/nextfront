@@ -93,9 +93,6 @@ class CatalogStore {
     };
 
     getHierarchy = async () => {
-        if (!this.category){
-            return
-        }
         try {
             const body = {category: this.category};
             const {hierarchy, isLastLevel} = await api.post('catalog/getHierarchy', body);
@@ -108,10 +105,6 @@ class CatalogStore {
     };
 
     getCountProducts = async () => {
-        if (!this.category){
-            return
-        }
-
         const {category, filter} = this;
 
         try {
@@ -125,10 +118,6 @@ class CatalogStore {
     };
 
     getCatalog = async () => {
-        if (!this.category){
-            return
-        }
-
         const {category, filter} = this;
         const {offset, limit} = this.PageStore;
 
