@@ -1,11 +1,8 @@
 import React from 'react';
 import s from './Catalog.module.scss';
 import {inject, observer} from 'mobx-react';
-import MainLayout from '../../components/MainLayout';
-import {status as statusEnum} from '../../src/enums';
 import Title from '../../components/Title';
 import Content from './Content'
-import {toJS} from "mobx";
 import Head from "next/head";
 
 

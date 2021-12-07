@@ -1,6 +1,4 @@
 import CatalogView from './CatalogView'
-import {CatalogStore} from "../../src/stores/CatalogStore";
-import {inject, Provider} from 'mobx-react';
 
 const index = () => <CatalogView />
 
