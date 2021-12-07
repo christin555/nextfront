@@ -1,11 +1,8 @@
-import {useEffect, useState} from 'react';
 import s from './Blocks.module.scss';
 import doors from '../../../public/doors.jpg';
 import CatalogCard from '../../../components/CatalogCard';
 import Button from '../../../components/Button';
-import Link from 'next/link'
 import NextLink from "next/link";
-import CardsView from "../../../components/Popular";
 
 //заменить на получение с бк
 const items = [
