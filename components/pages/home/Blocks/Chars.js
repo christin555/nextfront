@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Blocks.module.scss';
-import Russia from '../../../components/Icons/Russia';
-import Present from '../../../components/Icons/Present';
-import House from '../../../components/Icons/House';
-import Square from '../../../components/Icons/Square';
+import Russia from '../../../Icons/Russia';
+import Present from '../../../Icons/Present';
+import House from '../../../Icons/House';
+import Square from '../../../Icons/Square';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 
 const blocks = [

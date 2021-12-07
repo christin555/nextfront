@@ -1,4 +1,4 @@
-import ArticleView from './ArticleView'
+import ArticleView from '../../../components/pages/blog/article/ArticleView'
 
 const index = () =>  <ArticleView />
 

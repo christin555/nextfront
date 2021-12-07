@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import {Box} from '@mui/material';
 import Cards from "../Cards";
 import NextLink from 'next/link';
-import Button from '../../../components/Button';
+import Button from '../../../Button';
 import dayjs from 'dayjs';
 require('dayjs/locale/ru');
 

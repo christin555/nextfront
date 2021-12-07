@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {CardActionArea, CardActions} from '@mui/material';
-import Button from '../../components/Button';
+import Button from '../../Button';
 import NextLink from 'next/link';
 import {inject, observer} from "mobx-react";
 import dayjs from 'dayjs';

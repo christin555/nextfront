@@ -1,7 +1,7 @@
 import s from './Blocks.module.scss';
-import doors from '../../../public/doors.jpg';
-import CatalogCard from '../../../components/CatalogCard';
-import Button from '../../../components/Button';
+import doors from '../../../../public/doors.jpg';
+import CatalogCard from '../../../CatalogCard';
+import Button from '../../../Button';
 import NextLink from "next/link";
 
 //заменить на получение с бк

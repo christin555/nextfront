@@ -1,4 +1,4 @@
-@import '../../styles/variables.module';
+@import '../../../styles/variables.module';
 
 
 .hierarchy {
@@ -7,7 +7,7 @@
 
 
 .door {
-  background: url(../../public/wall.jpg) no-repeat top;
+  background: url(../../../public/wall.jpg) no-repeat top;
   -webkit-background-size: cover;
   background-size: cover;
   padding: 0 !important;

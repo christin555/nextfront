@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Blocks.module.scss';
 import YouTube from 'react-youtube';
-import Title from '../../../components/Title';
-import Button from '../../../components/Button';
+import Title from '../../../Title';
+import Button from '../../../Button';
 import Link from "next/link";
 import NextLink from "next/link";
 

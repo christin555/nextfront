@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Catalog.module.scss';
 import {inject, observer} from 'mobx-react';
-import Title from '../../components/Title';
+import Title from '../../Title';
 import Content from './Content'
 import Head from "next/head";
 

@@ -1,17 +1,17 @@
 import React from 'react';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Chip from '@mui/material/Chip';
-import Icons from '../../components/Icons';
+import Icons from '../../Icons';
 import {inject, observer} from 'mobx-react';
-import Hierarchy from '../../components/Hierarchy';
-import Nophoto from '../../public/nophoto.png';
-import Carousel from '../../components/Carousel';
+import Hierarchy from '../../Hierarchy';
+import Nophoto from '../../../public/nophoto.png';
+import Carousel from '../../Carousel';
 import {Divider} from '@mui/material';
 import classNames from 'classnames';
 import s from './Product.module.scss';
-import Callme from '../../components/Callme';
+import Callme from '../../Callme';
 import {toJS} from 'mobx';
-import formatPrice from '../../src/utils/formatPrice';
+import formatPrice from '../../../src/utils/formatPrice';
 import Head from "next/head";
 
 @inject(({RootStore: {ProductStore}}) => {

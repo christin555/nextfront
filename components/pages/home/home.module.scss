@@ -1,8 +1,8 @@
-@import '../../styles/variables.module';
+@import '../../../styles/variables.module';
 
 .wrapper {
   height: 70vh;
-  background: url(../../public/wapper.jpg) no-repeat left bottom fixed;
+  background: url(../../../public/wapper.jpg) no-repeat left bottom fixed;
   -webkit-background-size: cover;
   background-size: cover;
   min-height: 300px;

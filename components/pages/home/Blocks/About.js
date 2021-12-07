@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Blocks.module.scss';
-import Warranty from '../../../components/Icons/Warranty';
-import Reliable from '../../../components/Icons/Reliable';
+import Warranty from '../../../Icons/Warranty';
+import Reliable from '../../../Icons/Reliable';
 import Image from 'next/image'
 
 const About = () => (

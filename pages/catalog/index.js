@@ -1,4 +1,4 @@
-import CatalogView from './CatalogView'
+import CatalogView from '../../components/pages/catalog/CatalogView'
 
 const index = () => <CatalogView />
 

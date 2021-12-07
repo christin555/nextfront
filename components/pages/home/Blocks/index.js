@@ -4,7 +4,7 @@ import Chars from './Chars';
 import Catalog from './Catalog';
 import About from './About';
 import Blog from './Blog';
-import Popular from '../../../components/Popular';
+import Popular from '../../../Popular';
 
 const Blocks = () => (
   <div className={s.homeBlocks}>

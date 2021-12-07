@@ -1,6 +1,6 @@
 import React from 'react';
 import {inject, Provider} from 'mobx-react';
-import {DoorsStore} from '../../../../src/stores/Filter/DoorsStore';
+import {DoorsStore} from '../../../../../src/stores/Filter/DoorsStore';
 import Fields from './fields';
 import FilterView from "../FilterView";
 

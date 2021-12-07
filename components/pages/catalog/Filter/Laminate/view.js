@@ -2,7 +2,7 @@ import React from 'react';
 import {inject, Provider} from 'mobx-react';
 import Fields from './fields';
 import FilterView from '../FilterView';
-import {LaminateStore} from "../../../../src/stores/Filter/LaminateStore";
+import {LaminateStore} from "../../../../../src/stores/Filter/LaminateStore";
 
 @inject('RootStore')
 class LaminateFilterView extends React.Component {

@@ -1,4 +1,4 @@
-import ProductView from './ProductView'
+import ProductView from '../../components/pages/product/ProductView'
 
 const index = () =>  <ProductView />
 
