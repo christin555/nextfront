@@ -33,6 +33,28 @@ class ArticlesView extends React.Component {
             <React.Fragment>
                 <Head>
                     <title>   Наш блог | Мастер Пола</title>
+                    <script type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify(
+                                    {
+                                        "@context": "http://schema.org",
+                                        "@type": "BreadcrumbList",
+                                        "itemListElement":
+                                            [
+                                                {
+                                                    "@type": "ListItem",
+                                                    "position": 1,
+                                                    "item":
+                                                        {
+                                                            "@id": "https://master-pola.com/blog",
+                                                            "name": "Блог"
+                                                        }
+                                                }
+                                            ]
+                                    }
+                                )
+                            }}
+                    ></script>
                 </Head>
                 <div className={s.header}>
                     {'НАШ БЛОГ'}

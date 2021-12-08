@@ -18,7 +18,8 @@ import Head from "next/head";
   return {
     values: toJS(ProductStore.values || {}),
     fields: ProductStore.fields || [],
-    hierarchy: ProductStore.hierarchy || []
+    hierarchy: ProductStore.hierarchy || [],
+    alias: ProductStore.alias
   };
 }) @observer
 class Product extends React.Component {
@@ -124,8 +125,47 @@ class Product extends React.Component {
       <>
         <Head>
           <title>    {values.name} | Мастер Пола</title>
-          <meta name='description' content={`Тюмень, коллекция ${values.collection} - ${values.name}. ${hierarchy.map(({name}) => name).join(',')}`} />
-
+          <meta name='description' content={`Тюмень купить ${values.category} ${values.brand} коллекция ${values.collectionName} ${values.name}. ${hierarchy.map(({name}) => name).join(', ')}`} />
+          <script type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(
+                        {
+                          "@context": "http://schema.org",
+                          "@type": "BreadcrumbList",
+                          "itemListElement":
+                              [
+                                {
+                                  "@type": "ListItem",
+                                  "position": 1,
+                                  "item":
+                                      {
+                                        "@id": "https://master-pola.com/catalog",
+                                        "name": "Каталог"
+                                      }
+                                },
+                                {
+                                  "@type": "ListItem",
+                                  "position": 2,
+                                  "item":
+                                      {
+                                        "@id": `https://master-pola.com/catalog/${hierarchy[hierarchy.length -1]?.alias}`,
+                                        "name": hierarchy[hierarchy.length -1]?.name
+                                      }
+                                },
+                                  {
+                                      "@type": "ListItem",
+                                      "position": 2,
+                                      "item":
+                                          {
+                                              "@id": `https://master-pola.com/product/${this.props.alias}`,
+                                              "name": `${values.brand} ${values.name}`
+                                          }
+                                  }
+                              ]
+                        }
+                    )
+                  }}
+          ></script>
         </Head>
         <Hierarchy hierarchy={hierarchy} className={s.hierarchy} />
         <div className={s.content}>
@@ -139,7 +179,7 @@ class Product extends React.Component {
               <title className={s.name}>
                 {values.name}
                 <span className={s.collection}>
-                  Коллекция {values.collection}
+                  Коллекция {values.collectionName}
                 </span>
               </title>
               <Divider />

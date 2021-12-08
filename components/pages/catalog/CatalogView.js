@@ -10,37 +10,69 @@ import Head from "next/head";
     return {
         hierarchy: CatalogStore.hierarchy,
         status: CatalogStore.status,
-        fastfilter: CatalogStore.fastfilter
+        fastfilter: CatalogStore.fastfilter,
+        alias: CatalogStore.category
     };
 }) @observer
 class Catalog extends React.Component {
-  get headerTitle() {
-    const {hierarchy, fastfilter} = this.props;
+    get headerTitle() {
+        const {hierarchy, fastfilter} = this.props;
 
-    if (!hierarchy?.length && fastfilter) {
-      return `Поиск`;
+        if (!hierarchy?.length && fastfilter) {
+            return `Поиск`;
+        }
+
+        return hierarchy?.length && hierarchy[hierarchy.length - 1].name || 'Каталог';
     }
 
-    return hierarchy?.length && hierarchy[hierarchy.length - 1].name || 'Каталог';
-  }
+    render() {
+        const {status} = this.props
 
-  render() {
-    const {status} = this.props
-
-    return (
-      <>
-          <Head>
-              <title>   {this.headerTitle} | Мастер Пола</title>
-          </Head>
-        <div className={s.header}>
-          <Title title={this.headerTitle} />
-        </div>
-        <div className={s.content}>
-          <Content />
-        </div>
-      </>
-    );
-  }
+        return (
+            <>
+                <Head>
+                    <title>   {this.headerTitle} | Мастер Пола</title>
+                    <script type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify(
+                                    {
+                                        "@context": "http://schema.org",
+                                        "@type": "BreadcrumbList",
+                                        "itemListElement":
+                                            [
+                                                {
+                                                    "@type": "ListItem",
+                                                    "position": 1,
+                                                    "item":
+                                                        {
+                                                            "@id": "https://master-pola.com/catalog",
+                                                            "name": "Каталог"
+                                                        }
+                                                },
+                                                {
+                                                    "@type": "ListItem",
+                                                    "position": 2,
+                                                    "item":
+                                                        {
+                                                            "@id": `https://master-pola.com/catalog/${this.props.alias}`,
+                                                            "name": this.headerTitle
+                                                        }
+                                                }
+                                            ]
+                                    }
+                                )
+                            }}
+                    ></script>
+                </Head>
+                <div className={s.header}>
+                    <Title title={this.headerTitle}/>
+                </div>
+                <div className={s.content}>
+                    <Content/>
+                </div>
+            </>
+        );
+    }
 }
 
 export default Catalog;
