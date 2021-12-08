@@ -10,8 +10,9 @@ import Button from '../../Button';
 import NextLink from 'next/link';
 import {inject, observer} from "mobx-react";
 import dayjs from 'dayjs';
-
 require('dayjs/locale/ru');
+
+dayjs.locale('ru')
 
 @inject(`RouterStore`)
 @observer
@@ -70,7 +71,7 @@ class ArticlesView extends React.Component {
                                 className={s.articleContent}
                                 component={'description'
                                 }>
-                                {(content || '').substr(0, 150)}
+                                {(content || '').replace(/\\n/g, '').substr(0, 150)}
                             </Typography>
                             <span className={s.date}>
                             {createdAt && dayjs(createdAt).format('D MMMM')}

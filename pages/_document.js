@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
                     />
                     <meta
                         name="description"
-                        content="Напольные покрытия и двери. Тюмень"
+                        content="Напольные покрытия и двери | Тюмень"
                     />
                     {/*   <!-- Yandex.Metrika counter --> */}
                     <script type="text/javascript" dangerouslySetInnerHTML={{
