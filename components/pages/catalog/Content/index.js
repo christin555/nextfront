@@ -25,7 +25,7 @@ class Content extends React.Component {
       return <NoResults label={fastfilter} />;
     }
 
-    return null;
+    return <div/>;
   }
 
   render() {

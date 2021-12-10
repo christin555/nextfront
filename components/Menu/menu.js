@@ -1,14 +1,11 @@
 import styles from './menu.module.scss';
 import cn from 'classnames';
-import TextField from '../TextField';
-import SearchIcon from '@mui/icons-material/Search';
 import PlaceIcon from '@mui/icons-material/Place';
-import {Input, InputBase, Tooltip} from '@mui/material';
+import {Tooltip} from '@mui/material';
 import BurgerMenu from './Burger';
 import {useEffect, useState} from 'react';
 import Router, {useRouter} from 'next/router';
 import Image from 'next/image'
-import NextLink from 'next/link';
 import InputSearch from "./InputSearch";
 
 const menu = [

@@ -30,16 +30,12 @@ export class BaseFilterStore {
 
     @action setCurrentParams = (_params) => {
         const params = {..._params};
-
         delete params.limit;
         delete params.page;
 
         this.currentParams = params;
     }
 
-    @computed get selectedFilter() {
-        return  this.currentParams;
-    }
 
     @computed get isActive() {
         return Object.values(this.checked).filter(Boolean).length;

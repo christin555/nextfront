@@ -1,7 +1,8 @@
-import Menu from './Menu/menu'
+import Menu from './Menu'
 import styles from './mainLayout.module.scss';
 import cn from 'classnames';
 import Footer from './Footer'
+import {inject, observer} from "mobx-react";
 
 export default function mainLayout({router, children}) {
     const isNotHome = router.pathname !== '/';

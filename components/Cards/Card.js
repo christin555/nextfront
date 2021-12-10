@@ -57,9 +57,7 @@ class CardView extends React.Component {
                 query: {
                     id: alias
                 },
-            },
-            undefined,
-            {shallow: true}
+            }
         );
     }
 

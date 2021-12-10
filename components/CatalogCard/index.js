@@ -3,6 +3,7 @@ import s from './Card.module.scss';
 import Button from '../Button';
 import NextLink from 'next/link';
 import {inject, observer} from "mobx-react";
+import Router from 'next/router'
 
 @inject(`RouterStore`)
 @observer

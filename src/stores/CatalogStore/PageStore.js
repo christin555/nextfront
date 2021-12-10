@@ -3,6 +3,7 @@ import Router from "next/router";
 
 export class PageStore {
     RouterStore;
+    CatalogStore
     @observable limit;
     @observable page;
 
@@ -18,10 +19,10 @@ export class PageStore {
         return (this.page - 1) * this.limit;
     }
 
-    @action setPage = (page) => {
+    @action setPage = async(page) => {
         this.page = page;
 
-        this.RouterStore.push({
+        await Router.router.push({
             query: {
                 ...this.RouterStore.query,
                 page
@@ -29,10 +30,10 @@ export class PageStore {
         }, undefined, {shallow: true});
     };
 
-    @action setLimit = (limit) => {
+    @action setLimit = async(limit) => {
         this.limit = limit;
 
-        this.RouterStore.push({
+        await Router.router.push({
             query: {
                 ...this.RouterStore.query,
                 page: 1,

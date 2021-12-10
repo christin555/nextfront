@@ -1,4 +1,4 @@
-import {makeObservable, observable, action, computed} from 'mobx';
+import {makeObservable, observable, action, computed, toJS, reaction} from 'mobx';
 import {DoorsStore} from './Filter/DoorsStore';
 import {LaminateStore} from './Filter/LaminateStore';
 import {CatalogStore} from "./CatalogStore";
@@ -7,34 +7,36 @@ import {status as statusEnum} from "../enums";
 import {PageStore} from "./CatalogStore/PageStore";
 import {ProductStore} from "./ProductStore";
 import {ArticlesStore} from "./ArticlesStore";
+import Router from "next/router";
 
 const isServer = typeof window === 'undefined';
 
 class RootStore {
-    @observable searchValue;
     @observable stores = {};
     initialData;
     RouterStore;
+   // @observable ActiveFilterStore = {};
 
     constructor({initialData = {}, RouterStore}) {
         this.RouterStore = RouterStore;
         this.initialData = initialData;
+       // this.searchValue = RouterStore.query.fastfilter || '';
+
+        // reaction(
+        //     ()=>this.RouterStore.query.category,
+        //     this.setActiveFilterStore
+        // )
     }
 
-    @action setValue = ({target: {value}}) => {
-        this.searchValue = value;
-    }
-
-    search = () => {
-        this.RouterStore.push({
-                pathname: '/catalog',
-                query: {
-                    fastfilter: this.searchValue.trim()
-                }
-            },
-            undefined,
-            {shallow: true}
-        );
+    setActiveFilterStore = () => {
+        switch (this.RouterStore.query.category) {
+            case DoorsStore.category:
+                this.ActiveFilterStore = this.DoorsStore;
+            case LaminateStore.category:
+                this.ActiveFilterStore =  this.LaminateStore;
+            default:
+                this.ActiveFilterStore = {};
+        }
     }
 
     get ActiveFilterStore() {

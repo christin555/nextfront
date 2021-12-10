@@ -44,16 +44,12 @@ class CatalogStore {
         this.count = CatalogStore.count;
     }
 
-    @computed get filter() {
-        return  {...this.ActiveFilterStore.currentParams || {}, fastfilter: this.fastfilter};
-    }
-
     @computed get category() {
-        return this.RouterStore.query.category;
+        return this.RouterStore.query.category || null;
     }
 
     @computed get fastfilter() {
-        return this.RouterStore.query.fastfilter;
+        return this.RouterStore.fastfilter || null;
     }
 
     @computed get router() {
@@ -105,10 +101,10 @@ class CatalogStore {
     };
 
     getCountProducts = async () => {
-        const {category, filter} = this;
+        const {category, filter, fastfilter} = this;
 
         try {
-            const body = {searchParams: {category, filter}};
+            const body = {searchParams: {category,  filter: {...filter, fastfilter},}};
             const count = await api.post('catalog/countProducts ', body);
 
             this.setCount(count);
@@ -117,8 +113,12 @@ class CatalogStore {
         }
     };
 
+    @computed get filter() {
+        return this.ActiveFilterStore.currentParams || {};
+    }
+
     getCatalog = async () => {
-        const {category, filter} = this;
+        const {category, filter, fastfilter} = this;
         const {offset, limit} = this.PageStore;
 
         this.setStatus(statusEnum.LOADING);
@@ -127,14 +127,14 @@ class CatalogStore {
             const body = {
                 searchParams: {
                     category,
-                    filter
+                    filter: {...filter, fastfilter},
                 },
                 limit,
                 offset
             };
-            if (isObjectEqual(toJS(this.body), body)) {
-                return
-            }
+            // if (isObjectEqual(toJS(this.body), body)) {
+            //     return
+            // }
             this.setBody(body)
 
             const {categories, products} = await api.post('catalog/getCatalog', body);

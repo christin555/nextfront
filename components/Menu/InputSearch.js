@@ -4,20 +4,19 @@ import {inject, observer} from 'mobx-react';
 import styles from "./menu.module.scss";
 import {InputBase} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import {toJS} from "mobx";
 
-@inject(({RootStore}) => {
+@inject(({RouterStore}) => {
     return {
-        searchValue: RootStore.searchValue,
-        search: RootStore.search,
-        setValue: RootStore.setValue
+        searchValue: RouterStore.searchValue,
+        search: RouterStore.search,
+        setValue: RouterStore.setValue
     };
 })
 @observer
 class InputSearch extends Component {
-
     render() {
         const {search, setValue, searchValue} = this.props;
-
         return (
             <div className={styles.search}>
                 <InputBase
