@@ -8,92 +8,98 @@ import MenuIcon from '@mui/icons-material/Menu';
 import TextField from '../TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import InputSearch from "./InputSearch";
+import s from "../Footer/Footer.module.scss";
 
 export default function Burger({pathname, menu, toPage, search, setParams, setSearch}) {
-  const [state, setState] = useState({isOpen: false});
+    const [state, setState] = useState({isOpen: false});
 
-  useEffect(() => { setState(state) }, [])
+    useEffect(() => {
+        setState(state)
+    }, [])
 
-  const setOpen = (isOpen) => {
-    alert()
-    setState({isOpen});
-  };
+    const setOpen = (isOpen) => {
+        setState({isOpen});
+    };
 
-  const toPageWithClose = (link) => {
-    setOpen(false);
-    toPage(link);
-  };
+    const toPageWithClose = (link) => {
+        setOpen(false);
+        toPage(link);
+    };
 
-  return (
-      <>
-    <div className={styles.burgerContainer}>
-      <IconButton
-          size={'small'}
-          className={styles.burgerIcon}
-          onClick={() => {setOpen(true)}}>
-        <MenuIcon  className={styles.burgerIcon} />
-      </IconButton>
-      <Drawer
-          anchor={'right'}
-              open={state.isOpen}
-              onClose={
-                () => setOpen(false)
-              }
-      >
-        <div className={styles.menu}>
-          <div>
-            <div className={styles.header}>
-              <div> Меню</div>
-              <CloseIcon onClick={() => setOpen(false)} />
-            </div>
-            <Divider className={styles.divider} />
-            <div className={styles.search}>
-              <TextField
-                placeholder={'Поиск'}
-                value={search}
-                onChange={setSearch}
-              />
-              <SearchIcon onClick={setParams} />
-            </div>
-            {
-              menu.map(({name, important, link}, index) => (
-                <div
-                  key={`${link}${index}`}
-                  className={cn({
-                    [styles.important]: important,
-                    [styles.isActive]: link === pathname
-                  })}
-                  onClick={() => toPageWithClose(link)}
+    return (
+        <>
+            <div className={styles.burgerContainer}>
+                <IconButton
+                    size={'small'}
+                    className={styles.burgerIcon}
+                    onClick={() => {
+                        setOpen(true)
+                    }}>
+                    <MenuIcon className={styles.burgerIcon}/>
+                </IconButton>
+                <Drawer
+                    anchor={'right'}
+                    open={state.isOpen}
+                    onClose={
+                        () => setOpen(false)
+                    }
                 >
-                  {name}
-                </div>
-              ))
-            }
-          </div>
-          <div className={styles.footer}>
-            <div className={styles.infoText}>
-              <AccessTimeIcon className={styles.icon} />
-              ежедневно с 10:00 до 19:00
-            </div>
-            <div className={styles.infoText}>
-              <PhoneIcon className={styles.icon} />
-                +7 (982) 988-15-22
-            </div>
-            <a
-              target={'_blank'}
-              rel='noopener noreferrer'
-              className={styles.infoText}
-              href={'https://2gistyles.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
-            >
-              <PlaceIcon className={styles.icon} />
-                Тюмень, ул. Федюнинского д. 62 к. 1
-            </a>
-          </div>
+                    <div className={styles.menu}>
+                        <div>
+                            <div className={styles.header}>
+                                <div> Меню</div>
+                                <CloseIcon onClick={() => setOpen(false)}/>
+                            </div>
+                            <div className={styles.search}>
+                                <InputSearch onClick={() => {
+                                    setOpen(false)
+                                }}/>
+                            </div>
+                            {
+                                menu.map(({name, important, link}, index) => (
+                                    <div
+                                        key={`${link}${index}`}
+                                        className={cn({
+                                            [styles.important]: important,
+                                            [styles.isActive]: link === pathname
+                                        })}
+                                        onClick={() => toPageWithClose(link)}
+                                    >
+                                        {name}
+                                    </div>
+                                ))
+                            }
+                        </div>
+                        <div className={styles.footer}>
+                            <Divider className={styles.divider}/>
+                            <a
+                                target={'_blank'}
+                                rel='noopener noreferrer'
+                                href='tel:89829881522'
+                                itemProp='telephone'
+                                className={styles.phone}
+                            >
+                                +7 3452 38-15-22
+                            </a>
+                            <a
+                                target={'_blank'}
+                                rel='noopener noreferrer'
+                                className={styles.infoText}
+                                href={'https://2gistyles.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
+                            >
+                                Тюмень, ул. Федюнинского 62 к1, 1 этаж
+                                (ЖК Ново-Патрушево)
+                            </a>
+                            <div className={styles.infoText}>
+                                ежедневно с 10:00 до 19:00
+                            </div>
+                        </div>
 
-        </div>
-      </Drawer >
-    </div>
-      </>
-  );
+                    </div>
+                </Drawer>
+            </div>
+        </>
+    );
 };

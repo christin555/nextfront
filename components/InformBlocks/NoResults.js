@@ -4,7 +4,7 @@ import NoResultsIcon from '../Icons/NoResults';
 
 const NoResults = ({label}) => (
   <div className={s.containerNoResults}>
-    <h2> К сожалению, по вашему запросу {label && `«${label}»`} ничего не найдено </h2>
+    <h2 className={s.textNoResults}> К сожалению, по вашему запросу {label && `«${label}»`} ничего не найдено </h2>
     <NoResultsIcon className={s.noResultsIcon} />
   </div>
 );

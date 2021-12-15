@@ -1,8 +1,10 @@
+@import '../../styles/variables.module';
+
 .menu {
   display: flex;
   flex-direction: column;
   line-height: 24px;
-  width: 80vw;
+  width: 90vw;
   height: 100%;
   justify-content: space-between;
 
@@ -37,34 +39,34 @@
 
 .divider {
   padding: 0;
-  margin: 5px 0;
+  margin: 10px 0 !important;
   box-shadow: 0 5px 20px rgba(191, 191, 191, 0.56);
 }
 
 .footer {
   color: #3b3939;
+  margin: 20px 0;
 
   & > * {
     display: flex;
     align-items: center;
   }
 
-  .icon {
-    font-size: 20px;
-    margin-right: 10px;
+  .phone {
+    font-size: 24px;
+    color: $main-blue !important;
+    font-weight: 400;
   }
 
   .infoText {
     display: flex;
     align-items: center;
     text-decoration: none;
-    line-height: 1;
+    line-height: 1.4;
     font-size: 16px;
 
-    &:visited {
-      // TODO: почему некоторые цвета берутся не из стилей?
-      // да хз
-      color: #3b3939;
+    &:visited, a {
+      color: inherit;
     }
   }
 }
@@ -76,14 +78,17 @@
 .search {
   border: 0.5px solid #d0cfcf;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   margin: 20px 10px;
-  height: 20px;
-  align-items: center;
+  height: 35px;
+  width: -webkit-fill-available;
 
   & > * {
+    display: flex;
+    align-items: center;
     font-size: 18px;
+    width: -webkit-fill-available;
   }
 
   input {

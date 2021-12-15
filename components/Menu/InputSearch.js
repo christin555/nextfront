@@ -16,7 +16,7 @@ import {toJS} from "mobx";
 @observer
 class InputSearch extends Component {
     render() {
-        const {search, setValue, searchValue} = this.props;
+        const {search, setValue, searchValue, onClick} = this.props;
         return (
             <div className={styles.search}>
                 <InputBase
@@ -27,7 +27,10 @@ class InputSearch extends Component {
                     //onKeyPress={search}
                     value={searchValue}
                 />
-                <SearchIcon onClick={search}/>
+                <SearchIcon onClick={() => {
+                    onClick();
+                    search()
+                }}/>
             </div>
         );
     }
