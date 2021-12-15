@@ -5,21 +5,16 @@ import Router from "next/router";
 export class SportStore extends BaseFilterStore {
     @observable disabled = {};
     fieldsLabel = {
-        'color': 'Оттенок',
-        'size': 'Размер',
-        'brandId': 'Бренд',
+        'colorFamily': 'Оттенок',
+        'totalThickness': 'Размер',
         'collectionId': 'Коллекция',
         'bestseller': 'Хит продаж',
-        'price': 'Цена',
-        texture: 'Дизайн'
+        'price': 'Цена'
     };
 
     tableFields = {
-        color: 'color',
-        resistanceClasses: 'resistanceClass',
-        thickness: 'thickness',
-        width: 'width',
-        brandId: 'brands',
+        colorFamily: 'colorFamily',
+        totalThickness: 'totalThickness',
         collectionId: 'collections',
         bestseller: 'bestseller',
     }
