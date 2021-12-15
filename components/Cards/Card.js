@@ -11,8 +11,7 @@ import Link from 'next/link';
 import formatPrice from '../../src/utils/formatPrice';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import classNames from 'classnames';
-import Router from "next/router";
-import Image from 'next/image';
+import Labels from './labels';
 
 const plural = require('plural-ru');
 
@@ -89,7 +88,7 @@ class CardView extends React.Component {
                 <a className={classNames(s.aComonent)}>
                     <Card className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
                         <CardActionArea className={s.area}>
-                            {withPopularLabel && isPopular && <div className={s.isPopular}> ПОПУЛЯРНОЕ </div>}
+                            <Labels isPopular={isPopular} withPopularLabel={withPopularLabel}/>
                             <CardMedia
                                 className={s.media}
                             >

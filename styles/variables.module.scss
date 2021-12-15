@@ -6,8 +6,8 @@
   }
 
   @media (min-width: 1300px) {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   @media (min-width: 1700px){
@@ -42,7 +42,7 @@ $gray-100-10: rgba(146, 153, 167, 0.1);
 $gray-100-40: #838c91;
 $gray-300: #575963;
 $gray-200: #67676F;
-$gray-400: #34373d;
+$gray-400: #6b6c71;
 $gray-500: #222222;
 
 $main-blue: #1976d2;
@@ -50,7 +50,7 @@ $main-blue-40: rgba(25, 118, 210, 0.4);
 
 $main-green: rgba(27, 194, 3, 0.96);
 $green-100: rgba(109, 170, 143, 0.96);
-
+$secondary: #e31235;
 $red: #D93310;
 
 :export {

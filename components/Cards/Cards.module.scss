@@ -1,6 +1,6 @@
 @import '../../styles/variables.module';
 
-.aComonent{
+.aComonent {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,36 +62,59 @@
   }
 }
 
-.isPopular{
-  width: 220px;
-  font-size: 12px;
-  background: $red;
+.labels {
+  z-index: 20;
+  left: -4px;
+  top: 4px;
   position: absolute;
-  text-align: center;
-  line-height: 30px;
-  letter-spacing: 1px;
-  color: #f0f0f0;
-  overflow: hidden;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .3);
-  top:30px;
-  right: -70px;
-  left: auto;
-  transform: rotate(45deg);
+  display: block;
+
+  & > * + * {
+    margin-top: 10px;
+  }
 }
-.colors{
+
+@mixin label {
+  display: flex;
+  padding: 0 8px;
+  height: 20px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: uppercase;
+  background-color: $secondary;
+  letter-spacing: 1.2px;
+}
+
+.isPopular {
+  @include label;
+}
+
+.isNew {
+  @include label;
+  background-color: #27cb0c;
+
+  &:after {
+    border-left: 6px solid #27cb0c;
+    border-top: 10px solid #27cb0c;
+  }
+}
+
+.colors {
   margin-top: 10px;
   font-size: 14px;
   color: $gray-200;
 }
 
-.categoryName{
+.categoryName {
   margin-bottom: 10px;
   color: black;
 }
 
-.bestPrice{
+.bestPrice {
   color: $main-green;
-  font-size:20px !important;
+  font-size: 20px !important;
 }
 
 .actions {
@@ -106,7 +129,7 @@
 
 .content {
   flex-grow: 1;
-  padding: 14px ;
+  padding: 14px;
   justify-content: space-between;
   place-self: flex-start;
   display: flex;

@@ -5,7 +5,7 @@
 
   .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-column-gap: 40px;
     grid-row-gap: 20px;
     margin-bottom: 20px;
@@ -26,6 +26,7 @@
       font-size: 14px;
       background: $gray-100-10;
       padding: 8px;
+      min-width: 38px;
     }
 
     .limitActive {
@@ -59,6 +60,10 @@
   }
 }
 
+.select {
+  background: $black;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -70,15 +75,25 @@
   }
 }
 
-.pagnt {
-  margin-top: 40px;
+.options {
+  display: flex;
 }
 
 .buttomMargin {
   margin-bottom: 40px;
 }
 
+.footer {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 480px) {
+  .container {
+    margin-top: 10px;
+  }
   .content {
     margin: 10px 0;
     flex-direction: column;
@@ -103,9 +118,10 @@
       }
     }
   }
-  .pagnt {
+  .footer {
     padding: 0;
     margin: 15px 0;
+    flex-direction: column;
 
     & > * {
       justify-content: space-around;

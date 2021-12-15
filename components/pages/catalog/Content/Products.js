@@ -6,113 +6,120 @@ import Chips from './Chips';
 import Pagination from '@mui/material/Pagination';
 import {IconButton} from '@mui/material';
 import classNames from 'classnames';
+import Select from "../../../Select";
+import Order from "./Order";
+import Limit from "./Limit";
+import {status as statusEnum} from "../../../../src/enums";
+import {NoResults} from "../../../InformBlocks";
 
 const plural = require('plural-ru');
 
 @inject(({RootStore: {CatalogStore, PageStore}}) => {
-  return {
-    products: CatalogStore.products || [],
-    productsAvailable: CatalogStore.productsAvailable,
-    count: CatalogStore.count,
-    fastfilter: CatalogStore.fastfilter,
-    setPage: PageStore.setPage,
-    setLimit: PageStore.setLimit,
-    page: PageStore.page,
-    limit: PageStore.limit
-  };
+    return {
+        products: CatalogStore.products || [],
+        productsAvailable: CatalogStore.productsAvailable,
+        count: CatalogStore.count,
+        fastfilter: CatalogStore.fastfilter,
+        setPage: PageStore.setPage,
+        setLimit: PageStore.setLimit,
+        page: PageStore.page,
+        limit: PageStore.limit,
+        isLastLevel: CatalogStore.isLastLevel
+    };
 }) @observer
 class Content extends React.Component {
-  get label() {
-    const {
-      count,
-      fastfilter
-    } = this.props;
+    get label() {
+        const {
+            count,
+            fastfilter
+        } = this.props;
 
-    const pluralLabel = plural(
-      count,
-      'товар',
-      'товара',
-      'товаров'
-    );
+        const pluralLabel = plural(
+            count,
+            'товар',
+            'товара',
+            'товаров'
+        );
 
-    if (fastfilter) {
-      return `По вашему запросу «${fastfilter}» нашлось ${count} ${pluralLabel}`;
+        if (fastfilter) {
+            return `По вашему запросу «${fastfilter}» нашлось ${count} ${pluralLabel}`;
+        }
+
+        return `${count} ${pluralLabel}`;
     }
 
-    return `${count} ${pluralLabel}`;
-  }
+    get count() {
+        const {
+            count,
+            limit
+        } = this.props;
 
-  get count() {
-    const {
-      count,
-      limit
-    } = this.props;
+        return Math.ceil(count / limit);
+    }
 
-    return Math.ceil(count / limit);
-  }
+    setPage = (_, count) => {
+        const {setPage} = this.props;
 
-    setPage =(_, count) => {
-      const {setPage} = this.props;
+        setPage(count);
+    }
 
-      setPage(count);
+    get InformBlock() {
+        const {status, productsAvailable, fastfilter} = this.props;
+
+        if (!productsAvailable && status !== statusEnum.LOADING) {
+            return <NoResults label={fastfilter} />;
+        }
+
+        return <div/>;
     }
 
     get pagination() {
-      const {page} = this.props;
+        const {page} = this.props;
 
-      return (
-        <Pagination
-          size='small'
-          className={s.pagnt}
-          count={this.count}
-          page={Number(page)}
-          onChange={this.setPage}
-          color={'secondary'}
-        />
-      );
-    }
-
-    get limit() {
-      const {limit, setLimit} = this.props;
-
-      return [12, 24, 36].map((item) => (
-        <IconButton
-          onClick={() => setLimit(item)}
-          key={item}
-          size={'small'}
-          className={classNames(s.limitButton, {[s.limitActive]: item === Number(limit)})}
-        >
-          {item}
-        </IconButton>
-      ));
+        return (
+            <Pagination
+                size='small'
+                className={s.pagnt}
+                count={this.count}
+                page={Number(page)}
+                onChange={this.setPage}
+                color={'secondary'}
+            />
+        );
     }
 
     render() {
-      const {products, isLastLevel, productsAvailable} = this.props;
+        const {products, isLastLevel, fastfilter, productsAvailable} = this.props;
 
-      if (!productsAvailable) {
-        return null;
-      }
+        if (!isLastLevel && !fastfilter) {
+            return <div/>;
+        }
 
-      return (
-        <div className={s.cardsContainer}>
-          <div className={s.header}>
-            <div className={s.count}>
-              {this.label}
+        return (
+            <div className={s.cardsContainer}>
+                <div className={s.header}>
+                    <div className={s.count}>
+                        {this.label}
+                    </div>
+                    <div>
+                        <div className={s.options}>
+                            <Order/>
+                        </div>
+                    </div>
+                </div>
+                <Chips/>
+                {this.InformBlock}
+                <div className={s.cards}>
+                    <Cards items={products} value={1}/>
+                </div>
+                <div className={s.footer}>
+                    {this.pagination}
+                    <div>
+                        <Limit/>
+                    </div>
+                </div>
             </div>
-           <div>
-             <div className={s.limit}>
-               {this.limit}
-             </div>
-           </div>
-          </div>
-          <Chips />
-          <div className={s.cards}>
-            <Cards items={products} withPhone={isLastLevel} />
-          </div>
-          {this.pagination}
-        </div>
-      );
+        );
     }
 }
 

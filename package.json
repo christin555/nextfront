@@ -34,6 +34,7 @@
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
     "react-responsive-carousel": "^3.2.22",
+    "react-select": "^5.2.1",
     "react-text-mask": "^5.4.3",
     "react-youtube": "^7.13.1",
     "sass": "1.43.4",

@@ -11,7 +11,7 @@ class LaminateFilterView extends React.Component {
 
         const {RootStore} = this.props;
 
-        this.FilterStore = RootStore.FloorStore;
+        this.FilterStore = RootStore.SportStore;
     }
 
     render() {
@@ -25,6 +25,5 @@ class LaminateFilterView extends React.Component {
     }
 }
 
-LaminateFilterView.CATEGORY = 'laminate';
 
 export default LaminateFilterView;

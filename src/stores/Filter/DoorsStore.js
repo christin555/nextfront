@@ -3,7 +3,8 @@ import {BaseFilterStore} from './Base';
 
 export class DoorsStore extends BaseFilterStore {
   constructor(RootStore) {
-    super(DoorsStore.category, RootStore);
+    const category = RootStore.RouterStore.query.category;
+    super(category, RootStore);
 
     makeObservable(this);
   }
@@ -16,10 +17,6 @@ export class DoorsStore extends BaseFilterStore {
   tableFields = {
     finishingMaterial: 'finishingMaterials',
     collectionId: 'collections'
-  }
-
-  static get category() {
-    return 'doors';
   }
 
   @computed get collections() {

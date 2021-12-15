@@ -2,16 +2,17 @@ import React from 'react';
 import {inject, Provider} from 'mobx-react';
 import Fields from './fields';
 import FilterView from '../FilterView';
-import {FloorStore} from "../../../../../src/stores/Filter/FloorStore";
+import {KeramogranitStore} from "../../../../../src/stores/Filter/KeramogranitStore";
+import DoorsFilterView from "../Doors/view";
 
 @inject('RootStore')
-class LaminateFilterView extends React.Component {
+class KeramogranitFilterView extends React.Component {
     constructor(props) {
         super(props);
 
         const {RootStore} = this.props;
 
-        this.FilterStore = RootStore.FloorStore;
+        this.FilterStore = RootStore.KeramogranitStore;
     }
 
     render() {
@@ -25,6 +26,6 @@ class LaminateFilterView extends React.Component {
     }
 }
 
-LaminateFilterView.CATEGORY = 'laminate';
+KeramogranitFilterView.CATEGORY = KeramogranitStore.category;
 
-export default LaminateFilterView;
+export default KeramogranitFilterView;

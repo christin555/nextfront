@@ -9,7 +9,7 @@ const SimpleAccordion = (props) => {
 
   return (
     <Accordion elevation={0} square={true} key={id} className={s.accordionItem}>
-      <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}>
+      <AccordionSummary className={s.summary} expandIcon={<ExpandMoreIcon />}  >
         <span className={s.heading}>
           {name}
           {active && <span className={s.active} />}

@@ -1,7 +1,7 @@
 @import '../../../../styles/variables.module';
 
 .filter {
-  width: 20vw;
+  width: 25vw;
   margin-right: 50px;
 
   .title {
@@ -32,7 +32,7 @@
     .active {
       width: 6px;
       height: 6px;
-      background: #c13535;
+      background: $secondary;
       border-radius: 100%;
       display: block;
       margin: 0 10px;
@@ -40,9 +40,12 @@
   }
 
   .details {
-    padding: 5px 16px 0 16px;
+    padding: 0 0 0 10px;
     display: flex;
     flex-direction: column;
+    max-height: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .checkboxControl {
       font-size: 16px;
@@ -52,6 +55,7 @@
 
 .accordionItem {
   border: 0;
+  margin: 0 !important;
   box-shadow: none;
 
   &:before {
@@ -60,8 +64,9 @@
 }
 
 .summary {
-  padding: 0px;
+  padding: 0px !important;
   border-bottom: 1px solid $gray-20;
+  min-height: 48px !important;
 
   & > * {
     min-height: 40px !important;
@@ -70,10 +75,24 @@
   }
 }
 
+.price {
+  display: flex;
+  align-items: center;
+}
+
+.rangeSeparator {
+  flex-shrink: 0;
+  margin: 0 0.4rem;
+  background-color: #b5b5b9;
+  width: 10px;
+  height: 1.2px;
+}
+
 @media only screen and (max-width: 480px) {
   .filter {
     flex-direction: column;
     width: unset;
+    margin-right: 0;
 
     .title {
       margin-top: 10px;

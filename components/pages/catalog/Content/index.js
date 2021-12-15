@@ -18,16 +18,6 @@ import Filter from '../Filter';
   };
 })
 class Content extends React.Component {
-  get InformBlock() {
-    const {status, productsAvailable, fastfilter} = this.props;
-
-    if (!productsAvailable && status !== statusEnum.LOADING) {
-      return <NoResults label={fastfilter} />;
-    }
-
-    return <div/>;
-  }
-
   render() {
     const {hierarchy, fastfilter} = this.props;
     if (fastfilter) {
@@ -43,14 +33,12 @@ class Content extends React.Component {
     }
 
     return (
-
       <div className={s.container}>
         <Hierarchy hierarchy={hierarchy} />
         <Categories />
         <div className={s.content}>
           <Filter />
-          {this.InformBlock}
-          <Products />
+          <Products/>
         </div>
       </div>
     );

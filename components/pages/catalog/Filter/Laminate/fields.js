@@ -4,6 +4,7 @@ import {inject, observer} from 'mobx-react';
 import FormCheckbox from '../Base/FormCheckbox';
 import SimpleAccordion from '../Base/SimpleAccordion';
 import {toJS} from 'mobx';
+import Price from "../Base/Price";
 
 @inject(({FilterStore}) => {
   return {
@@ -14,6 +15,10 @@ import {toJS} from 'mobx';
     brands: FilterStore.brands,
     collections: FilterStore.collections,
     setValue: FilterStore.setValue,
+
+    setPrice: FilterStore.setPrice,
+    setPricePath: FilterStore.setPricePath,
+
     checked: toJS(FilterStore.checked),
     disabled: toJS(FilterStore.disabled),
 
@@ -49,6 +54,18 @@ class Fields extends Component {
         onChange={this.props.setValue('resistanceClass')}
       />
     ));
+  }
+
+  get price() {
+    return (
+        <Price
+            minPrice={this.props.checked?.minPrice}
+            maxPrice={this.props.checked?.maxPrice}
+            checked={this.props.checked}
+            onChange={this.props.setPrice}
+            onSave={this.props.setPricePath}
+        />
+    );
   }
 
   get thickness() {
@@ -141,6 +158,9 @@ class Fields extends Component {
         </SimpleAccordion>
         <SimpleAccordion id={2} name={'Коллекция'} active={isCollectionsActive}>
           {this.collections}
+        </SimpleAccordion>
+        <SimpleAccordion id={7} name={'Цена'} active={isWidthActive}>
+          {this.price}
         </SimpleAccordion>
         <SimpleAccordion id={3} name={'Оттенок'} active={isColorActive}>
           {this.color}

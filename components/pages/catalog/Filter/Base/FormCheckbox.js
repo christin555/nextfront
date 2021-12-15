@@ -24,12 +24,14 @@ const FormCheckbox = (props) => {
           checked={checked}
           onChange={handleChecked}
           name='checkedA'
+          style={{padding: '4px 9px'}}
+          color={'secondary'}
         />
       )}
       label={name}
     />
   );
-};
+}
 
 FormCheckbox.propTypes = {
   checked: PropTypes.bool,

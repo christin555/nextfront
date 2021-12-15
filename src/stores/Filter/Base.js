@@ -8,6 +8,7 @@ export class BaseFilterStore {
     @observable checked = {};
     @observable chips = [];
     @observable currentParams = {};
+    @observable category;
 
     // Override in child;
     fieldsLabel = {};
@@ -51,6 +52,21 @@ export class BaseFilterStore {
         this.chips = [];
     }
 
+    @action initPrice = (val, chips, checked) => {
+        const price = val.split("-");
+
+        checked['minPrice'] = price[0];
+        checked['maxPrice'] = price[1];
+        const label = `${price[0]} - ${price[1]}`;
+
+        chips.push({
+            fieldName: this.fieldsLabel['price'],
+            label: label,
+            key: 'price',
+            val: 'price'
+        })
+    }
+
     @action initChecked() {
         const _chips = []
         const _checked = {};
@@ -58,7 +74,10 @@ export class BaseFilterStore {
             if (key !== 'category') {
                 const _key = this.tableFields[key]
 
-                if (Array.isArray(value)) {
+                if (key === 'price') {
+                    this.initPrice(value, _chips, _checked);
+
+                } else if (Array.isArray(value)) {
                     value.forEach((val) => {
                         _checked[`${key}-${val}`] = true;
 
@@ -73,8 +92,16 @@ export class BaseFilterStore {
                 } else {
                     _checked[`${key}-${value}`] = true;
 
-                    const item = this.values[_key]?.find(({id}) => Number(id) === Number(value));
-                    item && _chips.push({
+                    let item = this.values[_key]?.find(({id}) => Number(id) === Number(value));
+
+                    if (!item) {
+                        item = {
+                            name: 'Да',
+                            val: 1
+                        }
+                    }
+
+                    _chips.push({
                         fieldName: this.fieldsLabel[key],
                         label: item.name,
                         key: key,
@@ -89,9 +116,10 @@ export class BaseFilterStore {
     }
 
 
-    clearPath() {
+    async clearPath() {
         const {limit, page} = {...this.RouterStore.query || {}};
         const query = {}
+
         if (limit) {
             query[limit] = limit;
         }
@@ -99,16 +127,10 @@ export class BaseFilterStore {
             query[page] = page
         }
 
-        this.RouterStore.push({
-                pathname: this.RouterStore.pathname,
-                query: {
-                    category: this.RouterStore.router.query.category,
-                    ...query
-                }
-            },
-            undefined,
-            {shallow: true}
-        );
+        await this.pushRouter({
+            category: this.RouterStore.router.query.category,
+            ...query
+        })
     }
 
     getBody() {
@@ -127,6 +149,38 @@ export class BaseFilterStore {
         // implement in children
     }
 
+    @action setPrice = (price, key) => {
+        this.checked[key] = price;
+    }
+
+    setPricePath = async (price, key) => {
+        /// await this.resetPage();
+
+        !this.checked['minPrice'] && this.setPrice('1000', 'minPrice');
+        !this.checked['maxPrice'] && this.setPrice('4200', 'maxPrice');
+
+        // await this.resetPage();
+        await this.setPathPrice(
+            `${this.checked['minPrice']}-${this.checked['maxPrice']}`.replace(/\s/g, ''),
+            true
+        );
+
+        const oldChip = this.chips.find(({key}) => key === 'price');
+        const label = ` от ${this.checked['minPrice']} до ${this.checked['maxPrice']}`;
+
+        if (oldChip) {
+            oldChip.label = label;
+        } else {
+            this.setChips(
+                'price',
+                {
+                    name: label
+                },
+                true
+            );
+        }
+    }
+
     setValue = (key) => async (checked, item) => {
         const {id} = item;
 
@@ -140,20 +194,20 @@ export class BaseFilterStore {
         await this.afterValueCheck(key, item, checked);
     };
 
-    hasValue = (key, id) => this.checked[`${key}-${id}`];
+    hasValue = (key, id) => this.checked[`${key} -${id}`];
 
     hasKey = (key) => Object
         .keys(this.checked)
         .filter((checkedKey) => checkedKey.indexOf(key) > -1 && this.checked[checkedKey] === true).length > 0;
 
     resetPage = () => {
-        // this.PageStore.setPage(1);
+        //this.PageStore.setPage(1);
     };
 
     async loadValues() {
         try {
-            const values = await api.post('catalog/getFilterFields', this.getBody());
 
+            const values = await api.post('catalog/getFilterFields', this.getBody());
             this._setValues(values);
             this.initChecked();
         } catch (e) {
@@ -185,6 +239,33 @@ export class BaseFilterStore {
         }
     };
 
+    async setPathPrice(val, checked) {
+        const urlSearch = toJS({...Router.router.query || {}});
+
+        if (checked) {
+            urlSearch['price'] = val
+        } else {
+            delete urlSearch['price']
+        }
+
+
+        await this.pushRouter(urlSearch)
+    }
+
+    pushRouter = async (urlSearch) => {
+        await this.RouterStore.push({
+                pathname: this.RouterStore.pathname,
+                query: {
+                    category: this.RouterStore.router.query.category,
+                    ...urlSearch
+                }
+            },
+            undefined,
+            {shallow: true});
+
+        this.setCurrentParams(urlSearch)
+    }
+
     async setPath(key, id, checked) {
         const urlSearch = toJS({...Router.router.query || {}});
 
@@ -199,16 +280,6 @@ export class BaseFilterStore {
         }
 
 
-        await this.RouterStore.push({
-                pathname: this.RouterStore.pathname,
-                query: {
-                    category: this.RouterStore.router.query.category,
-                    ...urlSearch
-                }
-            },
-            undefined,
-            {shallow: true});
-
-        this.setCurrentParams(urlSearch)
+        await this.pushRouter(urlSearch)
     }
 }

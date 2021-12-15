@@ -15,7 +15,7 @@ class CatalogStore {
     @observable isLastLevel;
     @observable count = 0;
 
-@observable body = {};
+    @observable body = {};
 
     constructor(RootStore) {
         this.hydrate(RootStore);
@@ -101,10 +101,14 @@ class CatalogStore {
     };
 
     getCountProducts = async () => {
-        const {category, filter, fastfilter} = this;
+        const {category, filter, fastfilter, isLastLevel} = this;
+
+        if (!isLastLevel && !fastfilter) {
+            return;
+        }
 
         try {
-            const body = {searchParams: {category,  filter: {...filter, fastfilter},}};
+            const body = {searchParams: {category, filter: {...filter, fastfilter},}};
             const count = await api.post('catalog/countProducts ', body);
 
             this.setCount(count);
@@ -118,8 +122,8 @@ class CatalogStore {
     }
 
     getCatalog = async () => {
-        const {category, filter, fastfilter} = this;
-        const {offset, limit} = this.PageStore;
+        const {category, filter, fastfilter, isLastLevel} = this;
+        const {offset, limit, order, optionsOrder} = this.PageStore;
 
         this.setStatus(statusEnum.LOADING);
 
@@ -130,12 +134,13 @@ class CatalogStore {
                     filter: {...filter, fastfilter},
                 },
                 limit,
-                offset
+                offset,
+                order: optionsOrder.find(({value}) => value === Number(order))
             };
             // if (isObjectEqual(toJS(this.body), body)) {
             //     return
             // }
-            this.setBody(body)
+            //this.setBody(body)
 
             const {categories, products} = await api.post('catalog/getCatalog', body);
 

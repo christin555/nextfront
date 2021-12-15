@@ -6,13 +6,20 @@ export class PageStore {
     CatalogStore
     @observable limit;
     @observable page;
+    @observable order;
 
+    optionsOrder = [
+        {value: 1, label: 'Исходная сортировка', direction: 'asc', field: 'name'},
+        {value: 3, label: 'Цены: по убыванию', direction: 'desc', field: 'price'},
+        {value: 4, label: 'Цены: по возрастанию', direction: 'asc', field: 'price'}
+    ]
     constructor(RootStore) {
         makeObservable(this);
         this.RouterStore = RootStore.RouterStore;
 
-        this.limit =  RootStore.RouterStore.router.query.limit || 12;
-        this.page = RootStore.RouterStore.router.query.page || 1;
+        this.limit =  Number(RootStore.RouterStore.router.query.limit) || 12;
+        this.page = Number(RootStore.RouterStore.router.query.page) || 1;
+        this.order = Number(RootStore.RouterStore.router.query.order) || 1;
     }
 
     @computed get offset() {
@@ -30,7 +37,18 @@ export class PageStore {
         }, undefined, {shallow: true});
     };
 
-    @action setLimit = async(limit) => {
+    @action setOrder = async({value: order}) => {
+        this.order = order;
+
+        await Router.router.push({
+            query: {
+                ...this.RouterStore.query,
+                order
+            },
+        }, undefined, {shallow: true});
+    };
+
+    @action setLimit = async({value: limit}) => {
         this.limit = limit;
 
         await Router.router.push({

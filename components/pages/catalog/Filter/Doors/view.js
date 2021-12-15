@@ -26,6 +26,4 @@ class DoorsFilterView extends React.Component {
   }
 }
 
-DoorsFilterView.CATEGORY = DoorsStore.category;
-
 export default DoorsFilterView;

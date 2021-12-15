@@ -25,6 +25,5 @@ class LaminateFilterView extends React.Component {
     }
 }
 
-LaminateFilterView.CATEGORY = 'laminate';
 
 export default LaminateFilterView;

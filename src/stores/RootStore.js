@@ -1,6 +1,6 @@
 import {makeObservable, observable, action, computed, toJS, reaction} from 'mobx';
 import {DoorsStore} from './Filter/DoorsStore';
-import {LaminateStore} from './Filter/LaminateStore';
+import {FloorStore} from './Filter/FloorStore';
 import {CatalogStore} from "./CatalogStore";
 import PopularStore from "./PopularStore";
 import {status as statusEnum} from "../enums";
@@ -8,6 +8,8 @@ import {PageStore} from "./CatalogStore/PageStore";
 import {ProductStore} from "./ProductStore";
 import {ArticlesStore} from "./ArticlesStore";
 import Router from "next/router";
+import {KeramogranitStore} from "./Filter/KeramogranitStore";
+import {SportStore} from "./Filter/SportStore";
 
 const isServer = typeof window === 'undefined';
 
@@ -15,36 +17,29 @@ class RootStore {
     @observable stores = {};
     initialData;
     RouterStore;
-   // @observable ActiveFilterStore = {};
+
+    // @observable ActiveFilterStore = {};
 
     constructor({initialData = {}, RouterStore}) {
         this.RouterStore = RouterStore;
         this.initialData = initialData;
-       // this.searchValue = RouterStore.query.fastfilter || '';
-
-        // reaction(
-        //     ()=>this.RouterStore.query.category,
-        //     this.setActiveFilterStore
-        // )
-    }
-
-    setActiveFilterStore = () => {
-        switch (this.RouterStore.query.category) {
-            case DoorsStore.category:
-                this.ActiveFilterStore = this.DoorsStore;
-            case LaminateStore.category:
-                this.ActiveFilterStore =  this.LaminateStore;
-            default:
-                this.ActiveFilterStore = {};
-        }
+        // this.searchValue = RouterStore.query.fastfilter || '';
     }
 
     get ActiveFilterStore() {
         switch (this.RouterStore.query.category) {
-            case DoorsStore.category:
+            case 'doors':
                 return this.DoorsStore;
-            case LaminateStore.category:
-                return this.LaminateStore;
+            case KeramogranitStore.category:
+                return this.KeramogranitStore;
+            case 'sport':
+                return this.SportStore;
+            case 'quartzvinyl':
+            case 'laminate':
+                return this.FloorStore;
+            case 'quartzvinyl_kleevay':
+            case 'quartzvinyl_zamkovay':
+                return this.FloorStore;
             default:
                 return {};
         }
@@ -80,13 +75,38 @@ class RootStore {
         return this.stores.DoorsStore || {};
     }
 
-    get LaminateStore() {
-        if (!this.stores.LaminateStore) {
-            const Store = new LaminateStore(this);
-            this.register('LaminateStore', Store);
+    get SportStore() {
+        if (!this.stores.SportStore) {
+            const Store = new SportStore(this);
+
+            this.register('SportStore', Store);
         }
 
-        return this.stores.LaminateStore || {};
+        return this.stores.SportStore || {};
+    }
+
+    get KeramogranitStore() {
+        if (!this.stores.KeramogranitStore) {
+            const Store = new KeramogranitStore(this);
+
+            this.register('KeramogranitStore', Store);
+        }
+
+        return this.stores.KeramogranitStore || {};
+    }
+
+    get FloorStore() {
+        if (!this.stores.FloorStore) {
+            const Store = new FloorStore(this);
+
+            this.register('FloorStore', Store);
+        }
+
+        if (this.stores.FloorStore?.category !== this.RouterStore.query.category) {
+            this.stores.FloorStore.changeCategory(this.RouterStore.query)
+        }
+
+        return this.stores.FloorStore || {};
     }
 
     get PageStore() {
@@ -121,6 +141,9 @@ class RootStore {
     }
 
     @action register = (name, store) => {
+        if (this.stores[name]) {
+            delete this.stores[name];
+        }
         this.stores[name] = store;
     };
 }

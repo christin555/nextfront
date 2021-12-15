@@ -10,6 +10,10 @@ const theme = createTheme({
             },
             styleOverrides: {
                 root: {
+                    '& [class*="MuiInputLabel"]': {
+                        display: 'none',
+                        transition: 'none'
+                    },
                     '& [class*="notchedOutline"]': {
                         border: 'none'
                     },
@@ -42,23 +46,23 @@ const theme = createTheme({
                         }
                     },
                     '& [class*="MuiFormHelperText-root"]': {
-                        fontSize: '12px',
+                        fontSize: '14px',
                         margin: '0px',
                         lineHeight: '16px'
                     },
 
                     '& [class*="MuiOutlinedInput-root"]': {
-                        'padding': '8px 12px',
-                        'borderRadius': '10px',
-                        'fontSize': '14px',
-                        'lineHeight': '20px',
+                        'padding': '5px 4px',
+                        'borderRadius': '2px',
+                        'fontSize': '16px',
+                        'lineHeight': '18px',
                         backgroundColor: 'white',
-                        'border': `1px solid ${'rgb(255,255,255)'}`,
+                        'border': `1px solid ${'rgb(182,182,182)'}`,
                         '&:hover:not(:focus):not(:disabled)': {
-                            borderColor: 'rgba(255,255,255,0.99)'
+                            borderColor: 'rgba(109,109,109,0.99)'
                         },
                         '&:focus, &:focus-within': {
-                            border: `1px solid ${'rgba(217,217,217,0.83)'}`
+                            border: `1px solid ${'rgba(68,67,67,0.83)'}`
                         },
                         '& svg': {
                             fontSize: '20px'
@@ -73,7 +77,7 @@ const theme = createTheme({
 
 const TextField = (props) => (
  <ThemeProvider theme={theme}>
-     <TextFieldUi {...props}/>
+     <TextFieldUi {...props} />
  </ThemeProvider>
 
 );

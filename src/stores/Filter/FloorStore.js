@@ -2,8 +2,9 @@ import {computed, makeObservable, observable, action, toJS} from 'mobx';
 import {BaseFilterStore} from './Base';
 import Router from "next/router";
 
-export class LaminateStore extends BaseFilterStore {
+export class FloorStore extends BaseFilterStore {
     @observable disabled = {};
+
     fieldsLabel = {
         'color': 'Оттенок',
         'resistanceClass': 'Класс нагрузки',
@@ -11,43 +12,65 @@ export class LaminateStore extends BaseFilterStore {
         'width': 'Ширина',
         'brandId': 'Бренд',
         'collectionId': 'Коллекция',
-        'withHeatingFloor': 'Совместимость с теплыми полами'
+        'withHeatingFloor': 'Совместимость с теплыми полами',
+        'bestseller': 'Хит продаж',
+        'price': 'Цена',
+        fixation: 'Тип соединения',
+        texture: 'Дизайн'
     };
 
     tableFields = {
         color: 'color',
-        resistanceClasses: 'resistanceClass' ,
+        resistanceClasses: 'resistanceClass',
         thickness: 'thickness',
-        width:'width' ,
+        width: 'width',
         brandId: 'brands',
         collectionId: 'collections',
-        withHeatingFloor: 'withHeatingFloor'
+        withHeatingFloor: 'withHeatingFloor',
+        bestseller: 'bestseller',
+        fixation: 'fixation',
+        texture: 'texture'
     }
-    constructor(RootStore) {
-        super(LaminateStore.category, RootStore);
 
+    constructor(RootStore) {
+        const category = RootStore.RouterStore.query.category;
+        super(category, RootStore);
         makeObservable(this);
     }
 
+    @action changeCategory = async(query) => {
+        this.category = query.category;
+        this.values = [];
+        this.checked = [];
+        this.chips = [];
+        this.currentParams = [];
 
-    static get category() {
-        return 'laminate';
+        this.setCurrentParams(query);
+        await this.loadValues();
     }
 
     @computed get color() {
         return this.values.color;
     }
 
+    @computed get fixation() {
+        return this.values.fixation;
+    }
+
     @computed get resistanceClasses() {
         return this.values.resistanceClasses;
     }
 
+    @computed get texture() {
+        return this.values.texture;
+    }
+
     @computed get thickness() {
-        return this.values.thickness;
+        return this.values.thickness?.slice().sort((a, b) => a.name - b.name);
     }
 
     @computed get width() {
-        return this.values.width;
+        return this.values.width?.slice().sort((a, b) => a.name - b.name);
     }
 
     @computed get brands() {
@@ -68,6 +91,22 @@ export class LaminateStore extends BaseFilterStore {
 
     @computed get isThicknessActive() {
         return this.hasKey('thickness');
+    }
+
+    @computed get isPriceActive() {
+        return this.hasKey('price');
+    }
+
+    @computed get isTextureActive() {
+        return this.hasKey('texture');
+    }
+
+    @computed get isFixationActive() {
+        return this.hasKey('fixation');
+    }
+
+    @computed get isBestsellerActive() {
+        return this.hasKey('bestseller');
     }
 
     @computed get isWidthActive() {

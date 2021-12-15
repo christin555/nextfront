@@ -14,7 +14,7 @@ class Filter extends Component {
     const Fields = filterFabric(this.props.category);
 
     if (!Fields) {
-      return null;
+      return <div/>;
     }
 
     return <Fields />
