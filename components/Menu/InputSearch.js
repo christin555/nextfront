@@ -28,7 +28,7 @@ class InputSearch extends Component {
                     value={searchValue}
                 />
                 <SearchIcon onClick={() => {
-                    onClick();
+                    onClick && onClick();
                     search()
                 }}/>
             </div>
