@@ -179,7 +179,7 @@ class Product extends React.Component {
               <title className={s.name}>
                 {values.name}
                 <span className={s.collection}>
-                  Коллекция {values.collectionName}
+                   {values.collectionName && `Коллекция ${values.collectionName}`}
                 </span>
               </title>
               <Divider />
