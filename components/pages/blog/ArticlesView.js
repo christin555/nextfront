@@ -12,20 +12,6 @@ import Head from "next/head";
     };
 })
 class ArticlesView extends React.Component {
-    getMedia = ({src, type}) => {
-        switch (type) {
-            case 'youtube':
-                return {
-                    component: "iframe",
-                    image: `https://www.youtube.com/embed/${src}`
-                }
-            case 'img':
-                return {image: src}
-            default:
-                return {}
-        }
-    }
-
     render() {
         const {articles} = this.props;
 

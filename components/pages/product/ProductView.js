@@ -33,7 +33,12 @@ class Product extends React.Component {
                 rows.push(
                     <div className={s.row}>
                         <div>
-                            <span>{title}</span> <span> {values[name]}</span>
+                            <span>
+                                {title}
+                            </span>
+                            <span>
+                                {values[name]}
+                            </span>
                         </div>
                     </div>
                 );
@@ -94,7 +99,7 @@ class Product extends React.Component {
     }
 
     get chars() {
-        const chars = JSON.parse(this.props.values.chars);
+        const chars = JSON.parse(this.props.values.chars || null);
 
         if(!chars || !Array.isArray(chars)){
             return <div/>
