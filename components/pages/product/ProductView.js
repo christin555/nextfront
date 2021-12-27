@@ -99,7 +99,7 @@ class Product extends React.Component {
     }
 
     get chars() {
-        const chars = JSON.parse(this.props.values.chars || null);
+        const chars = JSON.parse(this.props.values?.chars || null);
 
         if(!chars || !Array.isArray(chars)){
             return <div/>
