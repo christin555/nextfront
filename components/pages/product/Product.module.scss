@@ -5,6 +5,20 @@
   @include paddingStandard;
 }
 
+.charsBlock {
+  display: flex;
+  flex-direction: row;
+  @include paddingStandard;
+  justify-content: space-between;
+
+  & > * {
+    padding: 0 10px;
+  }
+
+  .charIcon{
+    color: $green-100;
+  }
+}
 
 .door {
   background: url(../../../public/wall.jpg) no-repeat top;
@@ -245,8 +259,7 @@
 
     .product {
       margin-left: 0;
-      padding: 10px 0;
-      @include paddingStandard;
+      padding: 10px 0 !important;
 
       .name {
         flex-direction: column;
@@ -267,7 +280,16 @@
     grid-template-columns: 1fr;
   }
 
-  .call{
+  .call {
     width: 100%;
+  }
+
+  .charsBlock {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin: 5px 0 10px 0;
+    }
   }
 }

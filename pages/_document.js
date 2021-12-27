@@ -18,6 +18,13 @@ export default class MyDocument extends Document {
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                     />
+
+                    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&family=Oswald:wght@200;300&family=Roboto:wght@100;300;400;500&display=swap"
+                        rel="stylesheet"/>
+
                     <meta
                         name="description"
                         content="Напольные покрытия и двери | Тюмень"
@@ -39,7 +46,8 @@ export default class MyDocument extends Document {
                     }}>
                     </script>
                     <noscript>
-                        <div><img src="https://mc.yandex.ru/watch/85534450" styles="position:absolute; left:-9999px;"
+                        <div><img src="https://mc.yandex.ru/watch/85534450"
+                                  styles="position:absolute; left:-9999px;"
                                   alt=""/></div>
                     </noscript>
                     {/* <!-- /Yandex.Metrika counter --> */}
@@ -156,4 +164,5 @@ MyDocument.getInitialProps = async (ctx) => {
         // Styles fragment is rendered after the app and page rendering finish.
         styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
     };
-};
+}
+;
