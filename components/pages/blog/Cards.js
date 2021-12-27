@@ -52,7 +52,7 @@ class ArticlesView extends React.Component {
             const media = this.getMedia({src, type});
 
             return (
-                <Card sx={{maxWidth: maxW || 345}} key={id}>
+                <Card sx={{maxWidth: maxW || 350}} key={id}>
                     <CardActionArea>
                         <CardMedia
                             alt={title}

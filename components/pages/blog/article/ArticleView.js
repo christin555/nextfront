@@ -125,8 +125,8 @@ class ArticlesView extends React.Component {
                             <span className={s.date}>
                             {createdAt && dayjs(createdAt).format('D MMMM')}
                         </span>
-
                         </Box>
+
                         <CardMedia
                             alt={title}
                             className={s.media}
