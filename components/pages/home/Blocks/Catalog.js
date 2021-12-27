@@ -35,6 +35,16 @@ const items = [
     name: 'Паркет',
     img: 'https://www.tarkett.ru/media/img/large/IN_TEE_Salsa_premium.jpg',
     alias: 'parquet'
+  },
+  {
+    name: 'Пробковое покрытие',
+    img: 'https://master-pola.com/static/images/2/f1162e0f35b7e9a0748b6df16a773c71.jpg',
+    alias: 'probkovoe_pokrytie'
+  },
+  {
+    name: 'Напольный плинтус',
+    img: 'https://alpinefloor.su/upload/resize_cache/iblock/baa/455_365_2/1100.jpg',
+    alias: 'napolnyy-plintus'
   }
 ];
 
