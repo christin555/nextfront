@@ -96,6 +96,10 @@ class Product extends React.Component {
     get chars() {
         const chars = JSON.parse(this.props.values.chars);
 
+        if(!chars || !Array.isArray(chars)){
+            return <div/>
+        }
+
         return (
             <div className={s.charsBlock}>
                 {chars.map(({key, value}) => {
