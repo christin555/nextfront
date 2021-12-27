@@ -99,7 +99,7 @@ class Product extends React.Component {
         return (
             <div className={s.charsBlock}>
                 {chars.map(({key, value}) => {
-                    return <div>
+                    return <div key={key}>
                             <Typography variant="button" component="h6">
                                <CheckIcon className={s.charIcon}/> {key}
                             </Typography>
