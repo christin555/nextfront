@@ -69,6 +69,15 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .content{
+    display: flex;
+    flex-flow: wrap-reverse;
+  }
+
+  .cards{
+    margin-right: 0;
+  }
+
   .header, .content {
     padding: 0 10px;
 

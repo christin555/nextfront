@@ -99,7 +99,7 @@ class ArticlesView extends React.Component {
                         <Typography color='h4'>
                             Читaйтe тaкжe
                         </Typography>
-                        <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(2)} maxW={250}/>
+                        <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(0, 2)}/>
                         <NextLink
                             href={{
                                 pathname: '/blog',

@@ -73,9 +73,9 @@ class ArticlesView extends React.Component {
                                 }>
                                 {(content || '').replace(/\\n/g, '').substr(0, 150)}
                             </Typography>
-                            <span className={s.date}>
-                            {createdAt && dayjs(createdAt).format('D MMMM')}
-                        </span>
+                        {/*    <span className={s.date}>*/}
+                        {/*    {createdAt && dayjs(createdAt).format('D MMMM')}*/}
+                        {/*</span>*/}
                         </CardContent>
                     </CardActionArea>
                     <CardActions className={s.actions}>

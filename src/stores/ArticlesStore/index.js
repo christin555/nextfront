@@ -19,6 +19,7 @@ class ArticlesStore {
       this.getArticlesDisposer = autorun(this.getArticle);
     }
   }
+
    hydrate(RootStore) {
     const {ArticlesStore = {}} = RootStore.initialData.stores || {};
 
