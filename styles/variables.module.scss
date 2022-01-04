@@ -6,8 +6,8 @@
   }
 
   @media (min-width: 1300px) {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 80px;
+    padding-right: 80px;
   }
 
   @media (min-width: 1700px){
@@ -27,7 +27,7 @@
 }
 
 $white: #ffffff;
-$black: #131212;
+$black: #343436;
 
 $white-20: #F7F7F7;
 $white-10: rgba(255, 255, 255, 0.9);
@@ -37,6 +37,7 @@ $gray-20: #f8f8f8;
 $gray-30: #dcdbdb;
 $gray-40: #ababab;
 $gray-100: #9299a7;
+$gray-50: #eaeaea;
 
 $gray-100-10: rgba(146, 153, 167, 0.1);
 $gray-100-40: #838c91;
@@ -44,7 +45,9 @@ $gray-300: #575963;
 $gray-200: #67676F;
 $gray-400: #6b6c71;
 $gray-500: #222222;
+$home-black:  #343436;
 
+$dark-blue: #1c537a;
 $main-blue: #1976d2;
 $main-blue-40: rgba(25, 118, 210, 0.4);
 
