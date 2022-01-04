@@ -1,0 +1,96 @@
+@import '../../styles/variables.module';
+
+.content {
+  @include paddingStandard;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  margin-bottom: 40px;
+  background: $white-20;
+  padding: 20px 24px;
+
+  .headerCard {
+    padding: 5px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 1px solid $gray-100-40;
+
+    .icon {
+      font-size: 25px;
+      color: $gray-500;
+      margin-right: 15px;
+    }
+  }
+
+  .headerContent {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      width: 48%
+    }
+
+    li::marker {
+      color: $secondary;
+    }
+
+    .address {
+      font-weight: 400;
+      color: $secondary;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px;
+
+  .icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+}
+
+.divider {
+  margin: 20px 0;
+  height: 1px;
+  display: block;
+  background: $gray-50;
+}
+
+
+.header {
+  background: rgb(246, 246, 246);
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 20px 80px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.line {
+  margin-top: 8px;
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: #c41414;
+}
+
+@media only screen and (max-width: 480px) {
+  .header, .content {
+    padding: 0 10px;
+  }
+}
