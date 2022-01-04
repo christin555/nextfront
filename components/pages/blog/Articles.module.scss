@@ -7,15 +7,24 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 40px;
   grid-row-gap: 20px;
+
+  & > * {
+    height: 250px;
+  }
 }
 
-.date{
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
   color: $gray-200;
-  font-size: 14px;
-  letter-spacing: 0.85pt;
+  font-size: 12px;
   display: flex;
   align-items: center;
   margin-top: 8px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .title {
@@ -27,9 +36,15 @@
   height: 45px;
   margin-bottom: 5px;
   line-height: 1.3;
+  font-family: 'Roboto', sans-serif;
 }
-.actions{
-  padding: 0 10px 4px 10px!important;
+
+.actions {
+  padding: 0 10px 4px 10px !important;
+}
+
+.content {
+  margin-top: 10px;
 }
 
 .articleContent {
@@ -39,7 +54,9 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  line-height: 1.3;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 
   &::before {
     content: "";
@@ -91,7 +108,7 @@
     }
   }
 
-  .header{
+  .header {
     padding-top: 10px;
     padding-bottom: 10px;
   }

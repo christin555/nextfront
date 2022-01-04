@@ -3,6 +3,7 @@ import doors from '../../../../public/doors.jpg';
 import CatalogCard from '../../../CatalogCard';
 import Button from '../../../Button';
 import NextLink from "next/link";
+import React from "react";
 
 //заменить на получение с бк
 const items = [
@@ -57,25 +58,17 @@ function Blocks( ) {
     <div className={s.catalogBlock}>
       <div className={s.catalogItems}>
         <div className={s.mainBlock}>
-          <span>
-            <p>
-            В нашем салоне вы можете подобрать для своего помещения напольное покрытие на любой вкус и цвет.
-            </p>
-            <p>
-           С уверенностью гарантируем, что высокое качество нашего товара будет радовать вас долгие годы.
-            </p>
-          </span>
+          <div className={s.back}>МАСТЕР <br/> ПОЛА </div>
           <div className={s.buttonContainer}>
             <NextLink href={`/catalog`} passHref>
               <Button
                   className={s.but}
                   variant={'outlined'}
               >
-                {'Каталог'}
+                {' Смотреть весь Каталог'}
               </Button>
             </NextLink>
           </div>
-
         </div>
         {blocksCatalog}
       </div>

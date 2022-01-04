@@ -1,0 +1,49 @@
+@import '../../../../../styles/variables.module';
+
+.inputs {
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  margin: 20px 0;
+  width: min-content;
+  padding: 30px;
+  box-shadow: -1px -2px 20px 5px rgb(0 0 0 / 5%);
+
+  & > * {
+    min-width: 300px !important;
+  }
+
+  & > * + * {
+    margin-left: 20px !important;
+  }
+}
+
+.button {
+  background-color: $secondary !important;
+}
+
+.container {
+  display: flex;
+  margin-top: 0px !important;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  @include paddingStandard;
+  text-align: center;
+  // border-bottom: 1px solid $gray-50;
+  //background: url(../../../../../public/mramor.jpg) no-repeat left center fixed;
+  // -webkit-background-size: cover;
+  // background-size: cover;
+
+  p {
+    color: $gray-100-40;
+  }
+
+  span {
+    font-weight: 400;
+  }
+
+  .phone {
+    color: $main-blue;
+  }
+}

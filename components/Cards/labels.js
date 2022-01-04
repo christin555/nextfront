@@ -8,6 +8,7 @@ class Labels extends React.Component {
         const {
             isPopular,
             isNew,
+            isBestPrice,
             withPopularLabel
         } = this.props;
 
@@ -16,6 +17,9 @@ class Labels extends React.Component {
 
         if (withPopularLabel && isPopular) {
             blocks.push(<div className={s.isPopular}>  ХИТ ПРОДАЖ</div>)
+        }
+        if (isBestPrice) {
+            blocks.push(<div className={s.isBestPrice}> ЛУЧШАЯ ЦЕНА</div>)
         }
         if (isNew) {
             blocks.push(<div className={s.isNew}> НОВИНКА</div>)

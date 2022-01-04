@@ -7,6 +7,24 @@
   flex-grow: 1;
 }
 
+.upButton {
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgba(50, 49, 49, 0.76) !important;
+  position: fixed !important;
+  bottom: 40px;
+  right: 20px;
+
+  &:hover {
+    background: #1f1f1f !important;
+  }
+
+  .upIcon {
+    color: #f9f9fd;
+    font-size: 20px;
+  }
+}
+
 .content {
   flex-grow: 1;
 }
@@ -14,6 +32,7 @@
 .isNotHome {
   margin-top: 140px;
 }
+
 @media only screen and (max-width: 480px) {
   .isNotHome {
     margin-top: 70px;

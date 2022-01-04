@@ -6,10 +6,10 @@
   justify-content: space-between;
   align-items: stretch;
   height: 100%;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 7%);
 }
 
 .root {
-  border-radius: 0 !important;
   height: 100%;
 
   .area {
@@ -91,13 +91,23 @@
   @include label;
 }
 
-.isNew {
+.isBestPrice{
   @include label;
   background-color: #27cb0c;
 
   &:after {
     border-left: 6px solid #27cb0c;
     border-top: 10px solid #27cb0c;
+  }
+}
+
+.isNew {
+  @include label;
+  background-color: #bcebf1;
+
+  &:after {
+    border-left: 6px solid #bcebf1;
+    border-top: 10px solid #bcebf1;
   }
 }
 
@@ -150,7 +160,6 @@
 
   .name {
     color: $gray-400;
-    font-weight: 400;
   }
 
   .price {

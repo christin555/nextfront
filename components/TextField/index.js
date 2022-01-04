@@ -11,7 +11,7 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     '& [class*="MuiInputLabel"]': {
-                        display: 'none',
+                        //display: 'none',
                         transition: 'none'
                     },
                     '& [class*="notchedOutline"]': {

@@ -10,6 +10,10 @@ import {ArticlesStore} from "./ArticlesStore";
 import Router from "next/router";
 import {KeramogranitStore} from "./Filter/KeramogranitStore";
 import {SportStore} from "./Filter/SportStore";
+import {HomeStore} from "./HomeStore";
+import WorksStore from "./WorksStore";
+import {BlocksStore} from "./BlocksStore";
+import ServicesStore from "./ServicesStore";
 
 const isServer = typeof window === 'undefined';
 
@@ -22,7 +26,7 @@ class RootStore {
 
     constructor({initialData = {}, RouterStore}) {
         this.RouterStore = RouterStore;
-        this.initialData = initialData;
+        this.initialData = {stores: {}, ...initialData};
         // this.searchValue = RouterStore.query.fastfilter || '';
     }
 
@@ -44,6 +48,43 @@ class RootStore {
                 return {};
         }
     }
+
+
+    getStore = (name, NewStore) => {
+        if (!this.stores[name]) {
+            const Store = new NewStore(this);
+
+            this.register(name, Store);
+        }
+
+        return this.stores[name] || {};
+    }
+
+
+    get WorksStore() {
+        return this.getStore('WorksStore', WorksStore)
+    }
+
+
+    get BlocksStore() {
+        return this.getStore('BlocksStore', BlocksStore)
+    }
+
+
+    get ServicesStore() {
+        return this.getStore('ServicesStore', ServicesStore)
+    }
+
+    get HomeStore() {
+        if (!this.stores.HomeStore) {
+            const Store = new HomeStore(this);
+
+            this.register('HomeStore', Store);
+        }
+
+        return this.stores.HomeStore || {};
+    }
+
 
     get ArticlesStore() {
         if (!this.stores.ArticlesStore) {
@@ -145,6 +186,8 @@ class RootStore {
             delete this.stores[name];
         }
         this.stores[name] = store;
+
+        this.initialData.stores[name] = store;
     };
 }
 

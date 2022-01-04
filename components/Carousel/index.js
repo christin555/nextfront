@@ -7,7 +7,9 @@ import Image from 'next/image';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import { IconButton } from '@mui/material';
+import {IconButton} from '@mui/material';
+import styles from "../mainLayout.module.scss";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const CarouselView = ({imgs, width, className}) => {
     const carouselRef = useRef(null);
@@ -44,8 +46,8 @@ const CarouselView = ({imgs, width, className}) => {
         images = [{original: Nophoto}];
     }
 
-    images = imgs.map(({src}, index) =>  <Carousel.Item  key={index} className={s.itemCarousel} >
-        <img  alt="Third slide" src={src}/>
+    images = imgs.map(({src}, index) => <Carousel.Item key={index} className={s.itemCarousel}>
+        <img alt="Third slide" src={src}/>
     </Carousel.Item>);
 
     useEffect(() => {
@@ -59,15 +61,24 @@ const CarouselView = ({imgs, width, className}) => {
     }, []);
 
     return (
-        <div ref={carouselBlockRef} >
+        <div ref={carouselBlockRef}>
             <Carousel
-                prevIcon = {<ArrowBackIosNewIcon className={s.prevIcon}/>}
-                nextIcon = {<ArrowForwardIosIcon className={s.prevIcon}/>}
+                prevIcon={
+                    <IconButton size={'large'} className={s.upButton}>
+                        <ArrowBackIosNewIcon className={s.icon}/>
+                    </IconButton>
+                }
+                nextIcon={
+                    <IconButton size={'large'} className={s.upButton}>
+                        <ArrowForwardIosIcon className={s.icon}/>
+                    </IconButton>
+                }
                 interval={null}
                 className={s.carouselHeight}>
-                   {images}
+                {images}
             </Carousel>
         </div>
-)}
+    )
+}
 
 export default CarouselView;

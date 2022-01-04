@@ -5,11 +5,12 @@ import s from './Article.module.scss';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {Box} from '@mui/material';
-import Cards from "../Cards";
+import Cards from "../../../NewsCards/Cards";
 import NextLink from 'next/link';
 import Button from '../../../Button';
 import dayjs from 'dayjs';
 import Head from "next/head";
+
 require('dayjs/locale/ru');
 
 dayjs.locale('ru')
@@ -95,11 +96,13 @@ class ArticlesView extends React.Component {
                     <div className={s.line}/>
                 </div>
                 <div className={s.content}>
-                    <div className={s.cards}>
+                    <div className={s.sidebar}>
                         <Typography color='h4'>
                             Читaйтe тaкжe
                         </Typography>
-                        <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(0, 2)}/>
+                        <div className={s.cards}>
+                            <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(0, 2)}/>
+                        </div>
                         <NextLink
                             href={{
                                 pathname: '/blog',
@@ -112,7 +115,7 @@ class ArticlesView extends React.Component {
                         </NextLink>
                     </div>
                     <div className={s.article}>
-                    <Typography
+                        <Typography
                             className={s.articleContent}
                             variant="h5" component="h2"
                         >
@@ -134,8 +137,8 @@ class ArticlesView extends React.Component {
                         />
 
                         <Typography
-                                    className={s.articleContent}
-                                    component={'div'}>
+                            className={s.articleContent}
+                            component={'div'}>
                             {(content || '')
                                 .split('\n')
                                 .map((item, index) =>

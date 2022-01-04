@@ -12,9 +12,10 @@ const menu = [
     {name: 'Каталог', important: true, link: '/catalog'},
     {name: 'О нас', important: false, link: '/about'},
     //{name: 'Контакты', important: false, link: '/contacts'},
-    {name: 'Оплата и доставка', important: false, link: '/delivery'},
+    {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
     {name: 'Наш блог', important: false, link: '/blog'},
-    {name: 'Услуги', important: true, link: '/works'}
+    {name: 'Услуги', important: true, link: '/services'},
+    {name: 'Работы', important: true, link: '/works'}
 ]
 
 export default function Menu() {

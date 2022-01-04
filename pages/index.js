@@ -7,6 +7,9 @@ const index = () => <Home />
 
 index.getInitialProps = async({ MobxStore, req  }) => {
     await MobxStore.RootStore.PopularStore.getPopularProducts();
+    await MobxStore.RootStore.HomeStore.getWorks();
+    await MobxStore.RootStore.HomeStore.getServices();
+    await MobxStore.RootStore.HomeStore.getArticles();
 
     let userAgent;
     let deviceType;

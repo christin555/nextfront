@@ -6,22 +6,54 @@ import {alert} from '../Notifications';
 class HomeStore {
     RouterStore
 
-    @observable popularProducts;
-    constructor() {
-      makeObservable(this);
+    @observable works;
+    @observable services;
+    @observable articles;
 
-      this.getPopularProducts();
+    constructor(RootStore) {
+        makeObservable(this);
+
+        const {HomeStore = {}} = RootStore.initialData.stores || {};
+
+        this.services = HomeStore.services;
+        this.works = HomeStore.works;
+        this.articles = HomeStore.articles;
     }
 
-    @action setPopularProducts= (popularProducts) => {
-      this.popularProducts = popularProducts;
+    @action setServices = (services) => {
+        this.services = services;
     }
 
-    getPopularProducts = async() => {
-      try {
-        const popular = await api.post(`products/getPopular`);
-      } catch(_) {
-      }
+    @action setArticles = (articles) => {
+        this.articles = articles;
+    }
+
+    getWorks = async () => {
+        try {
+            const popular = await api.post(`products/getPopular`);
+        } catch (_) {
+        }
+    }
+
+    getServices = async () => {
+        try {
+            const services = await api.post(`services/get`);
+            this.setServices(services);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    getArticles = async() => {
+        try {
+            console.log('getArticles')
+            const articles = await api.post('articles/getArticles', {limit: 5, isPopular: true});
+
+            this.setArticles(articles);
+            console.log(articles)
+        } catch(e) {
+            alert({type: 'error', title: 'Ошибка при получении статей'});
+        }
     }
 }
 

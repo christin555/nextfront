@@ -16,7 +16,8 @@ class ArticlesStore {
     this.hydrate(RootStore);
 
     if (!isServer) {
-      this.getArticlesDisposer = autorun(this.getArticle);
+      this.getArticleDisposer = autorun(this.getArticle);
+      this.getArticlesDisposer = autorun(this.getArticles);
     }
   }
 
@@ -26,7 +27,6 @@ class ArticlesStore {
     this.RouterStore = RootStore.RouterStore;
     this.articles = ArticlesStore.articles;
     this.article = ArticlesStore.article;
-
    }
 
   @action setStatus = (status) => {
@@ -63,7 +63,7 @@ class ArticlesStore {
   getArticles = async() => {
     this.setStatus(statusEnum.LOADING);
     try {
-      const articles = await api.get('articles/getArticles');
+      const articles = await api.post('articles/getArticles', {});
 
       this.setArticles(articles);
       this.setStatus(statusEnum.SUCCESS);

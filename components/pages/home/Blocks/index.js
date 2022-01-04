@@ -5,15 +5,22 @@ import Catalog from './Catalog';
 import About from './About';
 import Blog from './Blog';
 import Popular from '../../../Popular';
+import Works from './Works';
+import Services from './Services';
+import Contact from "./Contact";
+import News from "./New";
 
 const Blocks = () => (
-  <div className={s.homeBlocks}>
-    <Chars />
-    <Catalog />
-    <Popular/>
-    <About />
-    <Blog />
-  </div>
+    <div className={s.homeBlocks}>
+        <Chars/>
+        <Catalog/>
+        <Popular/>
+        <Works/>
+        <Services/>
+        <Blog/>
+        <Contact/>
+        <About/>
+    </div>
 );
 
 export default Blocks;

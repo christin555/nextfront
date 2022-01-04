@@ -7,6 +7,11 @@ a {
   &:visited {
     color: inherit !important;
   }
+
+  &:hover{
+    color: $secondary !important;
+    cursor: pointer;
+  }
 }
 
 li, p {
@@ -26,7 +31,6 @@ h1 {
 }
 
 h4 {
-  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   margin: 5px 0;
 }

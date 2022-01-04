@@ -23,18 +23,9 @@
 }
 
 .footerAbout {
-  margin: 60px 0;
+  margin-top: 60px;
   @include paddingStandard;
   background: $gray-20;
-  display: grid;
-  grid-template-columns:  minmax(200px, 25vw) auto;
-  grid-column-gap: 40px;
-
-
-  .imgBlock {
-    display: flex;
-    position: relative;
-  }
 
   .text {
     padding: 20px 0;
@@ -209,13 +200,6 @@
   color: $white-10;
 }
 
-@media only screen and (max-width: 780px) {
-  .footerAbout {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 @media only screen and (max-width: 1020px) {
   .logoBlock {
     margin-right: 0;
@@ -244,10 +228,6 @@
   .contactsContainer {
     min-width: initial;
     width: inherit;
-  }
-
-  .footerAbout {
-    margin-top: 20px;
   }
 
   .footer {

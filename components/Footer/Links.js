@@ -10,11 +10,11 @@ const Footer = () => {
     },
     {
       name: 'Услуги',
-      alias: '/works'
+      alias: '/services'
     },
     {
       name: 'Оплата и доставка',
-      alias: '/delivery'
+      alias: '/deliveryandpayment'
     },
     {
       name: 'О нас',

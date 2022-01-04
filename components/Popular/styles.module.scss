@@ -1,15 +1,26 @@
 @import '../../styles/variables.module';
 
-.carouselItem {
-  margin: 20px 0;
-}
-
-.title {
+.container {
+  padding-bottom: 40px;
+  //border-top: 1px solid $gray-50;
   @include paddingStandard;
 }
 
+.carouselItem {
+  padding: 0 10px;
+}
+
+.carouselContainer {
+  @include paddingStandard;
+}
+
+.cards {
+  margin-top: 40px;
+  margin-left: -10px;
+}
+
 .cardContainer {
-  padding: 0 20px;
+  padding: 2px 0;
   height: 100%;
 }
 

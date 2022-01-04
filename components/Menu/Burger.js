@@ -2,15 +2,9 @@ import styles from './Burger.module.scss';
 import {Drawer, Divider, IconButton} from '@mui/material';
 import cn from 'classnames';
 import CloseIcon from '@mui/icons-material/Close';
-import PlaceIcon from '@mui/icons-material/Place';
-import PhoneIcon from '@mui/icons-material/Phone';
 import MenuIcon from '@mui/icons-material/Menu';
-import TextField from '../TextField';
-import SearchIcon from '@mui/icons-material/Search';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import React, {useState, useEffect} from 'react';
 import InputSearch from "./InputSearch";
-import s from "../Footer/Footer.module.scss";
 
 export default function Burger({pathname, menu, toPage, search, setParams, setSearch}) {
     const [state, setState] = useState({isOpen: false});

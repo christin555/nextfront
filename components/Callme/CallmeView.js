@@ -103,9 +103,8 @@ class Callme extends React.Component {
                 />
               </div>
               <div className={s.helperText}>
-                Я даю согласие на обработку моих персональных данных
+                Я даю согласие на обработку персональных данных
               </div>
-              <div>
                 <Button
                   size={'small'}
                   className={s.call}
@@ -113,8 +112,7 @@ class Callme extends React.Component {
                 >
                   Оставить заявку
                 </Button>
-              </div>
-            </div>
+               </div>
           </div>
         </Modal>
       </React.Fragment>

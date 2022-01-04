@@ -33,6 +33,8 @@
     "react-alice-carousel": "^2.5.1",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
+    "react-grid-gallery": "^0.5.5",
+    "react-photo-gallery": "^8.0.0",
     "react-responsive-carousel": "^3.2.22",
     "react-select": "^5.2.1",
     "react-text-mask": "^5.4.3",

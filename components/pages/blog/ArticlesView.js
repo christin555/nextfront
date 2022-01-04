@@ -2,7 +2,7 @@ import React from 'react';
 import {inject} from 'mobx-react';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Articles.module.scss';
-import Cards from "./Cards";
+import Cards from "../../NewsCards/Cards";
 import Head from "next/head";
 
 

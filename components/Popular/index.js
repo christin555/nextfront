@@ -5,6 +5,8 @@ import Card from '../Cards/Card';
 import {inject, observer} from 'mobx-react';
 import s from './styles.module.scss';
 import Title from '../Title';
+import Present from '../Icons/Present';
+
 
 @inject(({RootStore: {PopularStore}}) => {
     return {
@@ -50,27 +52,28 @@ class CardsView extends Component {
 
 
         return (
-            <div>
-                <Title title={'Популярные товары'} className={s.title}/>
-                <Carousel
-                    swipeable={true}
-                    draggable={false}
-                    showDots={false}
-                    responsive={this.responsive}
-                    infinite={true}
-                    autoPlay={deviceType !== 'mobile'}
-                    autoPlaySpeed={2000}
-                    keyBoardControl={true}
-                    customTransition='all 1s linear'
-                    transitionDuration={3000}
-                    containerClass='carousel-container'
-                    removeArrowOnDeviceType={['tablet', 'mobile']}
-                    deviceType={deviceType}
-                    itemClass={s.carouselItem}
-                    ssr={true}
-                >
-                    {Cards}
-                </Carousel>
+            <div className={s.container}>
+                <Title title={'Выбор покупателей'} className={s.title}/>
+
+              <div className={s.cards}>
+                  <Carousel
+                      swipeable={true}
+                      draggable={false}
+                      showDots={false}
+                      responsive={this.responsive}
+                      infinite={false}
+                      autoPlay={false}
+                      keyBoardControl={true}
+                      customTransition='all 0.5s linear'
+                      transitionDuration={300}
+                      removeArrowOnDeviceType={['tablet', 'mobile']}
+                      deviceType={deviceType}
+                      itemClass={s.carouselItem}
+                      ssr={true}
+                  >
+                      {Cards}
+                  </Carousel>
+              </div>
             </div>
         );
     }

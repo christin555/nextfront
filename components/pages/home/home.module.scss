@@ -24,7 +24,7 @@
     align-items: flex-start;
     min-height: inherit;
     justify-content: flex-end;
-    padding: 0 10vw;
+    @include paddingStandard;
   }
 }
 
@@ -34,7 +34,6 @@
   align-items: flex-start;
   justify-content: center;
   font-family: Montserrat;
-  max-width: 70vw;
   margin: 60px 0;
   text-align: left;
 

@@ -1,0 +1,26 @@
+
+.blog {
+  margin-top: 40px;
+}
+
+.cards {
+
+  display: flex;
+  margin-top: 20px;
+  overflow: hidden;
+
+  & > * {
+    min-width: 200px;
+    flex: 0 1 100%;
+  }
+
+  & > * + * {
+    margin-left: 20px;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

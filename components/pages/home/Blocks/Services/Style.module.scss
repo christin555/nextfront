@@ -1,0 +1,27 @@
+@import '../../../../../styles/variables.module';
+
+.container {
+  @include paddingStandard;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.cardContainer {
+  max-width: 280px;
+}
+
+.carouselItem + .carouselItem {
+  padding-left: 20px;
+}
+
+.card {
+  height: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+}
