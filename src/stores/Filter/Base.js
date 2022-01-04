@@ -89,7 +89,7 @@ export class BaseFilterStore {
                             val: item.id
                         });
                     })
-                } else {
+                } else if(this.fieldsLabel[key]){
                     _checked[`${key}-${value}`] = true;
 
                     let item = this.values[_key]?.find(({id}) => Number(id) === Number(value));
