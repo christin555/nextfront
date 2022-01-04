@@ -1,7 +1,6 @@
 import React from 'react';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Delivery.module.scss';
-import ArticlesBlock from '../../components/ArticlesBlock';
 import Head from "next/head";
 import {Typography} from "@mui/material";
 import StoreIcon from '@mui/icons-material/Store';
@@ -102,7 +101,7 @@ class Delivery extends React.Component {
                         </a>
                     </div>
                     <div className={s.divider}/>
-                    <ArticlesBlock/>
+                
                 </div>
             </React.Fragment>
         );

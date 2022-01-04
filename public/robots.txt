@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://master-pola.com
+
+# Sitemaps
+Sitemap: https://master-pola.com/sitemap.xml
+Sitemap: https://master-pola.com/server-sitemap.xml
