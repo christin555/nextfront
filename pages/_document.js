@@ -47,7 +47,8 @@ export default class MyDocument extends Document {
                     </script>
                     <noscript>
                         <div>
-                            <img src="https://mc.yandex.ru/watch/87012520" style="position:absolute; left:-9999px;"
+                            <img src="https://mc.yandex.ru/watch/87012520"
+                                 styles="position:absolute; left:-9999px;"
                                  alt=""/>
                         </div>
                     </noscript>
