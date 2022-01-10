@@ -5,21 +5,19 @@ import {Component} from "react";
 @inject('RootStore')
 @observer
 class index extends Component {
-    constructor(props) {
-        super();
-        const {RootStore, RootStoreUp} = props;
+    static async getInitialProps({RootStore, query}) {
 
-        RootStore.mergeStores(RootStoreUp);
-    }
-
-    static async getInitialProps({RootStore, req}) {
+        RootStore.ProductStore.setAlias(query.id)
         await RootStore.ProductStore.getProduct();
         await RootStore.ProductStore.getHierarchy();
 
         return {RootStoreUp: RootStore};
     }
 
-    render(){
+    render() {
+        const {RootStore, RootStoreUp} = this.props;
+
+        RootStore.mergeStores(RootStoreUp);
         return <ProductView/>
     }
 }

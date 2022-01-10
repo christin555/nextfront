@@ -12,13 +12,14 @@ class ProductStore {
     @observable hierarchy;
     @observable values;
     @observable fields;
+    @observable  alias;
 
     constructor(RootStore) {
         this.hydrate(RootStore);
 
         makeObservable(this);
 
-        if(!isServer) {
+        if (!isServer) {
             this.getHierarchyDisposer = autorun(this.getHierarchy);
             this.getCatalogDisposer = autorun(this.getProduct);
         }
@@ -33,8 +34,8 @@ class ProductStore {
         this.fields = ProductStore.fields;
     }
 
-    @computed get alias() {
-        return this.RouterStore.query.id || null;
+    @action setAlias = (alias) => {
+        this.alias = alias;
     }
 
     @action setValues = (values) => {
@@ -49,8 +50,15 @@ class ProductStore {
         this.hierarchy = hierarchy;
     }
 
+    @action merge = ({values, hierarchy, fields, alias}) => {
+        this.fields = fields;
+        this.hierarchy = hierarchy;
+        this.values = values;
+        this.alias = alias;
+    }
+
     getHierarchy = async () => {
-        if (!this.alias){
+        if (!this.alias) {
             return
         }
         try {
@@ -64,7 +72,7 @@ class ProductStore {
     }
 
     getProduct = async () => {
-        if (!this.alias){
+        if (!this.alias) {
             return
         }
         try {
