@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Work.module.scss';
 import {inject, observer} from "mobx-react";
-import Gallery from 'react-photo-gallery';
 import Carousel from "../../components/Carousel";
 import {Typography} from "@mui/material";
 import formatPrice from "../../src/utils/formatPrice";
