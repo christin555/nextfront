@@ -4,6 +4,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Articles.module.scss';
 import Cards from "../../NewsCards/Cards";
 import Head from "next/head";
+import Hierarchy from "../../HierarchyNew";
 
 
 @inject(({RootStore: {ArticlesStore}}) => {
@@ -43,9 +44,10 @@ class ArticlesView extends React.Component {
                     ></script>
                 </Head>
                 <div className={s.header}>
-                    {'НАШ БЛОГ'}
+                    {'БЛОГ'}
                     <div className={s.line}/>
                 </div>
+                <Hierarchy hierarchy={[{pathname: '/blog', name: 'Блог'}]}/>
                 <div className={s.cards}>
                         <Cards articles={articles}/>
                 </div>

@@ -21,6 +21,8 @@ class CustomApp extends App {
         const MobxStore = new initializeStore({router: appContext.router});
 
         appContext.ctx.MobxStore = MobxStore;
+        appContext.ctx.RootStore = MobxStore.RootStore;
+
         const appProps = await App.getInitialProps(appContext);
 
         return {
@@ -32,6 +34,7 @@ class CustomApp extends App {
     constructor(props) {
         super(props);
         const isServer = typeof window === 'undefined';
+
         this.MobxStore = isServer ? props.initialMobxState : new initializeStore(
             {initialData: props.initialMobxState, router: props.router}
         );
@@ -43,7 +46,7 @@ class CustomApp extends App {
         return (
             <Provider  {...this.MobxStore}>
                 <NextNProgress
-                    color="#29D"
+                    color="#3d6da4"
                     startPosition={0.3}
                     stopDelayMs={200}
                     height={3}

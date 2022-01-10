@@ -44,7 +44,7 @@ class CardView extends React.Component {
             //       shallow={true}>
             /*<a className={classNames(s.aComonent)}>*/
             <div>
-                <Card className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
+                <Card className={classNames(s.root, classNamesRoot)}>
                     <CardActionArea className={s.area}>
                         <CardMedia
                             className={s.media}

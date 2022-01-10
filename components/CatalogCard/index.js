@@ -31,16 +31,11 @@ class Card extends React.Component {
                 <img src={img}/>
                 <div className={s.name}>
                     <NextLink
-                        href={{
-                            pathname: '/catalog/[category]',
-                            query: {category: alias}
-                        }}
-                        as={`/catalog/${alias}`}
+                        href={`/catalog/${alias}`}
                         passHref
-                        shallow={true}
                     >
                         <Button
-                            onClick={() => this.routeChange(alias)}
+                           //  onClick={() => this.routeChange(alias)}
                             className={s.but}
                             variant={'outlined'}
                         >

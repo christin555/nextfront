@@ -1,12 +1,27 @@
 import ArticleView from '../../../components/pages/blog/article/ArticleView'
+import {inject, observer} from "mobx-react";
+import {Component} from "react";
 
-const index = () =>  <ArticleView />
+@inject('RootStore')
+@observer
+class index extends Component {
+    static async getInitialProps({MobxStore, query}) {
+        MobxStore.RootStore.ArticlesStore.setAlias(query?.id);
 
-index.getInitialProps = async({MobxStore}) => {
-    await MobxStore.RootStore.ArticlesStore.getArticle();
-    await MobxStore.RootStore.ArticlesStore.getArticles();
+        await MobxStore.RootStore.ArticlesStore.getArticle();
+        await MobxStore.RootStore.ArticlesStore.getArticles();
 
-    return {MobxStore};
+        return {MobxStore, RootStoreUp: MobxStore.RootStore};
+    }
+
+    render(){
+        const {RootStore, RootStoreUp} = this.props;
+
+        RootStore.mergeStores(RootStoreUp);
+
+        return <ArticleView/>
+    }
 }
+
 
 export default index;

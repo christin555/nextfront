@@ -88,7 +88,8 @@ class CardView extends React.Component {
                 <a className={classNames(s.aComonent)}>
                     <Card className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
                         <CardActionArea className={s.area}>
-                            <Labels isPopular={isPopular} isBestPrice = {isBestPrice} withPopularLabel={withPopularLabel}/>
+                            <Labels isPopular={isPopular} isBestPrice={isBestPrice}
+                                    withPopularLabel={withPopularLabel}/>
                             <CardMedia
                                 className={s.media}
                             >
@@ -106,9 +107,9 @@ class CardView extends React.Component {
                                 <div className={s.header}>  {
                                     brand && (
                                         <span className={s.brand}>
-                    {brand}
+                                            {brand}
                                             {this.collectionLabel}
-                  </span>
+                                        </span>
                                     )
                                 }
                                     <span className={s.name}>{name}</span>

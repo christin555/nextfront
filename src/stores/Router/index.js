@@ -30,10 +30,9 @@ class RouterStore {
     }
 
     @action push = async (params) => {
-        await Router.router.push(params);
-
-        this.router = {...Router.router}
+        await  this.router.push(params);
     }
+
 
     @action setValue = ({target: {value}}) => {
         this.searchValue = value;

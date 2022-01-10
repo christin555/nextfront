@@ -5,20 +5,30 @@ import Gallery from 'react-photo-gallery';
 import Carousel from "../../components/Carousel";
 import {Typography} from "@mui/material";
 import formatPrice from "../../src/utils/formatPrice";
-import Hierarchy from "../../components/Hierarchy";
+import Hierarchy from "../../components/HierarchyNew";
 import PlaceIcon from '@mui/icons-material/Place';
 import CardService from "../../components/ServiceCard";
 import CardProduct from "../../components/Cards/Card";
 import {Box} from "@mui/material";
 
 
-@inject(({RootStore: {WorksStore}}) => {
+@inject(({RootStore: {WorksStore}, RootStore}) => {
     return {
-        work: WorksStore.work || []
+        work: WorksStore.work || [],
+        RootStore
     };
 })
 @observer
 class Work extends React.Component {
+
+    static async getInitialProps({MobxStore, query}) {
+        await MobxStore.RootStore.WorksStore.setId(query?.id);
+
+        await MobxStore.RootStore.WorksStore.getWork();
+
+        return {MobxStore, RootStoreUp: MobxStore.RootStore};
+    }
+
 
     get cardsProducts() {
         const {products} = this.props.work;
@@ -65,19 +75,22 @@ class Work extends React.Component {
     }
 
     render() {
+        const {RootStore, RootStoreUp} = this.props;
+
+        RootStore.mergeStores(RootStoreUp);
+
+
         const {work} = this.props;
 
         const hierarchy = [
             {pathname: '/works', name: 'Работы'},
-            {pathname: `/work/{work.id}`, name: work.name}
+            {pathname: `/work/${work.id}`, name: work.name}
         ]
-
-        console.log('s', work);
 
         return (
             <React.Fragment>
                 <div className={s.content}>
-                    {/*<Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>*/}
+                    <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
 
                     <div className={s.card}>
                         <div className={s.top}>
@@ -95,8 +108,12 @@ class Work extends React.Component {
                                 <Typography variant={'h6'}>
                                     {work.name}
                                 </Typography>
+                                <span className={s.amount}>
+                                    {work.square}
+                                </span>
                                 <Typography variant={'overline'}>
-                                    <PlaceIcon className={s.icon}/> {work.place}
+                                    <PlaceIcon className={s.icon}/>
+                                    {work.place}
                                 </Typography>
 
                                 {this.services}
@@ -124,12 +141,5 @@ class Work extends React.Component {
         );
     }
 }
-
-Work.getInitialProps = async ({MobxStore}) => {
-    await MobxStore.RootStore.WorksStore.getWork();
-
-    return {MobxStore};
-}
-
 
 export default Work;

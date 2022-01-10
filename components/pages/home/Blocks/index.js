@@ -8,7 +8,6 @@ import Popular from '../../../Popular';
 import Works from './Works';
 import Services from './Services';
 import Contact from "./Contact";
-import News from "./New";
 
 const Blocks = () => (
     <div className={s.homeBlocks}>

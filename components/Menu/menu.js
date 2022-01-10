@@ -67,7 +67,6 @@ export default function Menu() {
                         <a href={'tel:+79829881522'} className={styles.phone}>
                             +7 (982) 988-15-22
                         </a>
-                        <Tooltip title={'г. Тюмень, ул. Федюнинского д. 62 к. 1'}>
                             <a
                                 target={'_blank'}
                                 rel='noopener noreferrer'
@@ -75,8 +74,8 @@ export default function Menu() {
                                 href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
                             >
                                 <PlaceIcon className={styles.iconContact}/>
+                                Тюмень, Федюнинского 62 к1
                             </a>
-                        </Tooltip>
                     </div>
                     <BurgerMenu toPage={toPage} menu={menu}/>
                 </div>

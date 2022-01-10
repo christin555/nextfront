@@ -49,11 +49,9 @@ class BlocksStore {
 
     getArticles = async () => {
         try {
-            console.log('getArticles')
             const articles = await api.post('articles/getArticles', {limit: 5, isPopular: true});
 
             this.setArticles(articles);
-            console.log(articles)
         } catch (e) {
             alert({type: 'error', title: 'Ошибка при получении статей'});
         }

@@ -28,9 +28,14 @@ class HomeStore {
         this.articles = articles;
     }
 
+    @action setWorks  = (works) => {
+        this.works = works;
+    }
+
     getWorks = async () => {
         try {
-            const popular = await api.post(`products/getPopular`);
+            const works = await api.post(`works/get`, {limit: 6});
+            this.setWorks(works);
         } catch (_) {
         }
     }
@@ -46,11 +51,9 @@ class HomeStore {
 
     getArticles = async() => {
         try {
-            console.log('getArticles')
             const articles = await api.post('articles/getArticles', {limit: 5, isPopular: true});
 
             this.setArticles(articles);
-            console.log(articles)
         } catch(e) {
             alert({type: 'error', title: 'Ошибка при получении статей'});
         }

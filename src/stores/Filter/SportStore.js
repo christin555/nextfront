@@ -20,8 +20,7 @@ export class SportStore extends BaseFilterStore {
     }
 
     constructor(RootStore) {
-        const category = RootStore.RouterStore.query.category;
-        super(category, RootStore);
+        super(RootStore);
         makeObservable(this);
     }
 

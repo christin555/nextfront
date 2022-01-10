@@ -5,13 +5,12 @@ import Card from '../Cards/Card';
 import {inject, observer} from 'mobx-react';
 import s from './styles.module.scss';
 import Title from '../Title';
-import Present from '../Icons/Present';
 
 
 @inject(({RootStore: {PopularStore}}) => {
     return {
-        popularProducts: PopularStore.popularProducts || [],
-        deviceType: PopularStore.deviceType
+        popularProducts: PopularStore?.popularProducts || [],
+        deviceType: PopularStore?.deviceType
     };
 })
 @observer
@@ -24,7 +23,7 @@ class CardsView extends Component {
         },
         tablet: {
             breakpoint: {max: 1024, min: 464},
-            items: 3,
+            items: 2,
             slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
@@ -38,7 +37,6 @@ class CardsView extends Component {
         const {popularProducts, deviceType} = this.props;
 
         const Cards = popularProducts.map((item, index) => (
-            <div key={index} className={s.cardContainer}>
                 <Card
                     classNamesRoot={s.card}
                     withCategory={true}
@@ -47,9 +45,7 @@ class CardsView extends Component {
                     key={index}
                     {...item}
                 />
-            </div>
         ));
-
 
         return (
             <div className={s.container}>

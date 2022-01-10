@@ -84,5 +84,14 @@
   }
 }
 
+.amount{
+  font-weight: 300 !important;
+  display: block;
+  color: $gray-50;
+}
+
 @media only screen and (max-width: 480px) {
+  .cards{
+    grid-template-columns: 1fr;
+  }
 }

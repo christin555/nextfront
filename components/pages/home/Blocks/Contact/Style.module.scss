@@ -47,3 +47,20 @@
     color: $main-blue;
   }
 }
+
+@media only screen and (max-width: 780px) {
+  .inputs {
+    width: 100%;
+    flex-direction: column;
+    padding: 30px 10px;
+
+    & > * {
+      width: 100%;
+      min-width: 200px !important;
+    }
+
+    & > * + * {
+      margin: 20px 0 !important;
+    }
+  }
+}

@@ -3,27 +3,35 @@ import s from './Works.module.scss';
 import Callme from '../../components/Callme';
 import Card from "../../components/WorkCard";
 import {inject, observer} from "mobx-react";
+import Hierarchy from "../../components/HierarchyNew";
 
 
 @inject(({RootStore: {WorksStore}}) => {
     return {
-        works: WorksStore.works || []
+        works: WorksStore.works || [],
+        setId: WorksStore.setId
     };
 })
 @observer
 class Works extends React.Component {
 
+    onClick = (id) => {
+        //this.props.setId(id);
+    }
+
     get cards() {
         const {works} = this.props;
 
-        console.log(works)
-        return works.map((item) => (<Card {...item}/>));
+        return works.map((item) => (<Card onClick = {this.onClick} {...item}/>));
     }
 
 
     render() {
+        const hierarchy = [{pathname: '/works', name: 'Работы'}]
+
         return (
             <React.Fragment>
+                <Hierarchy hierarchy={hierarchy}/>
                 {/*<div className={s.header}>*/}
                 {/*    {'Услуги'}*/}
                 {/*    <div className={s.line}/>*/}

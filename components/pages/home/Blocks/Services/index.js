@@ -5,6 +5,7 @@ import Card from '../../../../ServiceCard';
 import {inject, observer} from 'mobx-react';
 import s from './Style.module.scss';
 import Title from '../../../../Title';
+import Link from 'next/link';
 
 @inject(({RootStore: {HomeStore}}) => {
     return {
@@ -22,7 +23,7 @@ class CardsView extends Component {
         },
         tablet: {
             breakpoint: {max: 1024, min: 464},
-            items: 3,
+            items: 2,
             slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
@@ -50,7 +51,14 @@ class CardsView extends Component {
             <div className={s.container}>
                 <div className={s.header}>
                     <Title title={'Популярные услуги'}/>
-                    <a> Все услуги </a>
+                    <Link href={{
+                        pathname: '/services',
+                    }}
+                          as={`/services`}
+                          passHref
+                    >
+                        <a> Все услуги </a>
+                    </Link>
                 </div>
                 <Carousel
                     swipeable={true}

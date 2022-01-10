@@ -17,6 +17,11 @@ class PopularStore {
       }
     }
 
+    @action merge = ({deviceType, popularProducts}) => {
+        this.popularProducts = popularProducts;
+        this.deviceType = deviceType;
+    }
+
     @action setPopularProducts = (popularProducts) => {
       this.popularProducts = popularProducts;
     }

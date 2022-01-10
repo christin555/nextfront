@@ -12,7 +12,8 @@ const theme = createTheme({
                 root: {
                     fontWeight: 400,
                     fontSize: '16px',
-                    height: '40px',
+                    minHeight: '40px',
+                    height: 'min-content',
                     lineHeight: '24px',
                     letterSpacing: '.25px',
                     textTransform: 'none',

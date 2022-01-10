@@ -5,6 +5,7 @@ import s from './Works.module.scss';
 import Callme from '../../components/Callme';
 import Card from "../../components/ServiceCard";
 import {inject, observer} from "mobx-react";
+import Hierarchy from "../../components/HierarchyNew";
 
 
 @inject(({RootStore: {ServicesStore}}) => {
@@ -28,7 +29,6 @@ class Works extends React.Component {
     get cards() {
         const {services} = this.props;
 
-        console.log(services)
         return services.map((item) => (<Card {...item}/>));
     }
 
@@ -40,6 +40,7 @@ class Works extends React.Component {
                 {/*    {'Услуги'}*/}
                 {/*    <div className={s.line}/>*/}
                 {/*</div>*/}
+                <Hierarchy hierarchy={[{pathname: '/services', name: 'Услуги'}]}/>
                 <div className={s.content}>
                     <div className={s.preview}>
                         <div className={s.text}>

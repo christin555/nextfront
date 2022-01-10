@@ -7,6 +7,9 @@ import StoreIcon from '@mui/icons-material/Store';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Box from "@mui/material/Box";
 import PhoneIcon from '@mui/icons-material/Phone';
+import Hierarchy from '../../components/HierarchyNew';
+import ArticlesBlock from '../../components/ArticlesBlock'
+import classNames from "classnames";
 
 class Delivery extends React.Component {
 
@@ -20,17 +23,20 @@ class Delivery extends React.Component {
                     {'ОПЛАТА И ДОСТАВКА'}
                     <div className={s.line}/>
                 </div>
+                <Hierarchy hierarchy={[{pathname: '/deliveryandpayment', name: 'Оплата и доставка'}]}/>
                 <div className={s.content}>
-                    <Box margin={'10px 0 20px'}>
+                    <Box margin={'10px 0 20px'} className={s.padding}>
                         <Typography variant={'subtitle2'}>
-                            Заказ оформляется по 100 % предоплате
+                            Заказ оформляется по 100% предоплате
                         </Typography>
                     </Box>
 
                     <div className={s.card}>
                         <div className={s.headerCard}>
-                            <Typography variant={'subtitle2'}> <StoreIcon className={s.icon}/> Забрать в
-                                магазине</Typography>
+                            <Typography variant={'subtitle2'} className={s.title}>
+                                <StoreIcon className={s.icon}/>
+                                Забрать в магазине
+                            </Typography>
                             <Typography variant={'subtitle2'}> Бесплатно</Typography>
                         </div>
                         <div className={s.headerContent}>
@@ -51,9 +57,10 @@ class Delivery extends React.Component {
                     </div>
                     <div className={s.card}>
                         <div className={s.headerCard}>
-                            <Typography variant={'subtitle2'}> <LocalShippingIcon className={s.icon}/> Доставка по
+                            <Typography variant={'subtitle2'} className={s.title}>
+                                <LocalShippingIcon className={s.icon}/> Доставка по
                                 городу </Typography>
-                            <Typography variant={'subtitle2'}> 800 ₽</Typography>
+                            <Typography variant={'subtitle2'}> 700 ₽</Typography>
                         </div>
                         <div className={s.headerContent}>
                             <div>
@@ -73,7 +80,8 @@ class Delivery extends React.Component {
                     </div>
                     <div className={s.card}>
                         <div className={s.headerCard}>
-                            <Typography variant={'subtitle2'}> <LocalShippingIcon className={s.icon}/> Доставка по
+                            <Typography variant={'subtitle2'} className={s.title}>
+                                <LocalShippingIcon className={s.icon}/> Доставка по
                                 России </Typography>
                             <Typography variant={'subtitle2'}> Уточняйте у менеджера </Typography>
                         </div>
@@ -87,12 +95,12 @@ class Delivery extends React.Component {
                                 <Typography variant={'body2'}> Оплата </Typography>
                                 <ul className="list">
                                     <li className="list-item">банковской картой</li>
-                                    <li className="list-item">выставление счета(для юридических лиц)</li>
+                                    <li className="list-item">выставление счета (для юридических лиц)</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div className={s.footer}>
+                    <div className={classNames(s.padding, s.footer)}>
                         <Typography variant={'body2'}>
                             Остались вопросы? Звоните!
                         </Typography>
@@ -101,7 +109,9 @@ class Delivery extends React.Component {
                         </a>
                     </div>
                     <div className={s.divider}/>
-                
+                    <div className={s.padding}>
+                        <ArticlesBlock/>
+                    </div>
                 </div>
             </React.Fragment>
         );

@@ -8,6 +8,7 @@ const isServer = typeof window === 'undefined';
 class WorksStore {
     @observable works = [];
     @observable work = {};
+    @observable id = null;
 
     RouterStore
 
@@ -27,13 +28,20 @@ class WorksStore {
     hydrate(RootStore) {
         const {WorksStore = {}} = RootStore.initialData.stores || {};
 
-        this.RouterStore = RootStore.RouterStore;
         this.works = WorksStore.works;
         this.work = WorksStore.work;
+        this.id = WorksStore.id;
     }
 
-    @computed get id() {
-        return this.RouterStore.router.query.id || null;
+    @action merge({id, work, works}) {
+        this.id = id;
+        this.work = work;
+        this.works = works;
+    }
+
+
+    @action setId(id) {
+        this.id = id;
     }
 
     @action setWorks = (services) => {
@@ -48,8 +56,6 @@ class WorksStore {
         try {
             const services = await API.post('works/get', {})
             this.setWorks(services);
-            console.log(services)
-
         } catch (err) {
             console.log(err)
         }
@@ -64,8 +70,6 @@ class WorksStore {
             const id = this.id;
             const work = await API.post('work/get', {id})
             this.setWork(work);
-            console.log(work)
-
         } catch (err) {
             console.log(err)
         }

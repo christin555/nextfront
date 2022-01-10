@@ -6,7 +6,9 @@ import formatPrice from "../../src/utils/formatPrice";
 import Link from 'next/link';
 
 
-export default function MultiActionAreaCard({size, id, name, img, price}) {
+export default function MultiActionAreaCard({onClick, size, id, name, img, amount, price}) {
+
+
     return (
         <Link href={{
             pathname: '/work/[id]',
@@ -14,11 +16,16 @@ export default function MultiActionAreaCard({size, id, name, img, price}) {
         }}
               passHref
               shallow={true}>
-            <a className={s.card}>
+            <a className={s.card} onClick={() => onClick && onClick(id)}>
                 <div className={classNames(s.workName, s[size])}>
                     {name}
+                    <Typography variant={'body2'} className={s.amount} >
+                     {amount}
+                    </Typography>
                     {
-                        price ? <Typography variant={'body2'}> {formatPrice(price, true, false)} </Typography> :
+                        price ? <Typography variant={'body2'}>
+                                {formatPrice(price, true, false)}
+                        </Typography> :
                             <span/>
                     }
                 </div>

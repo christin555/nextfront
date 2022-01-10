@@ -22,7 +22,7 @@ h2 {
   margin: 8px 0;
   line-height: 1.4em;
   font-weight: 500;
-  font-size: 1.8em;
+  font-size: 1.4em;
 }
 
 h1 {
@@ -43,6 +43,7 @@ body {
 }
 
 ::-webkit-scrollbar {
+  height: 5px;
   width: 5px;
   background-color: #f9f9fd;
 }

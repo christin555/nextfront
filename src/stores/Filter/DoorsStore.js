@@ -3,8 +3,7 @@ import {BaseFilterStore} from './Base';
 
 export class DoorsStore extends BaseFilterStore {
   constructor(RootStore) {
-    const category = RootStore.RouterStore.query.category;
-    super(category, RootStore);
+    super(RootStore);
 
     makeObservable(this);
   }

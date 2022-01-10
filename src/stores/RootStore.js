@@ -16,22 +16,27 @@ import {BlocksStore} from "./BlocksStore";
 import ServicesStore from "./ServicesStore";
 
 const isServer = typeof window === 'undefined';
+let count = 0;
 
 class RootStore {
     @observable stores = {};
     initialData;
     RouterStore;
 
+    @observable category;
+
     // @observable ActiveFilterStore = {};
 
     constructor({initialData = {}, RouterStore}) {
         this.RouterStore = RouterStore;
-        this.initialData = {stores: {}, ...initialData};
+        this.initialData = initialData.stores || {};
+        this.category = initialData.category;
+        ++count;
         // this.searchValue = RouterStore.query.fastfilter || '';
     }
 
     get ActiveFilterStore() {
-        switch (this.RouterStore.query.category) {
+        switch (this.category) {
             case 'doors':
                 return this.DoorsStore;
             case KeramogranitStore.category:
@@ -57,6 +62,7 @@ class RootStore {
             this.register(name, Store);
         }
 
+
         return this.stores[name] || {};
     }
 
@@ -64,7 +70,6 @@ class RootStore {
     get WorksStore() {
         return this.getStore('WorksStore', WorksStore)
     }
-
 
     get BlocksStore() {
         return this.getStore('BlocksStore', BlocksStore)
@@ -76,118 +81,85 @@ class RootStore {
     }
 
     get HomeStore() {
-        if (!this.stores.HomeStore) {
-            const Store = new HomeStore(this);
-
-            this.register('HomeStore', Store);
-        }
-
-        return this.stores.HomeStore || {};
+        return this.getStore('HomeStore', HomeStore)
     }
 
 
     get ArticlesStore() {
-        if (!this.stores.ArticlesStore) {
-            const Store = new ArticlesStore(this);
-
-            this.register('ArticlesStore', Store);
-        }
-
-        return this.stores.ArticlesStore || {};
+        return this.getStore('ArticlesStore', ArticlesStore)
     }
 
     get ProductStore() {
-        if (!this.stores.ProductStore) {
-            const Store = new ProductStore(this);
-
-            this.register('ProductStore', Store);
-        }
-
-        return this.stores.ProductStore || {};
+        return this.getStore('ProductStore', ProductStore)
     }
 
     get DoorsStore() {
-        if (!this.stores.DoorsStore) {
-            const Store = new DoorsStore(this);
-
-            this.register('DoorsStore', Store);
-        }
-
-        return this.stores.DoorsStore || {};
+        return this.getStore('DoorsStore', DoorsStore)
     }
 
     get SportStore() {
-        if (!this.stores.SportStore) {
-            const Store = new SportStore(this);
-
-            this.register('SportStore', Store);
-        }
-
-        return this.stores.SportStore || {};
+        return this.getStore('SportStore', SportStore)
     }
 
     get KeramogranitStore() {
-        if (!this.stores.KeramogranitStore) {
-            const Store = new KeramogranitStore(this);
-
-            this.register('KeramogranitStore', Store);
-        }
-
-        return this.stores.KeramogranitStore || {};
+        return this.getStore('KeramogranitStore', KeramogranitStore)
     }
 
     get FloorStore() {
-        if (!this.stores.FloorStore) {
-            const Store = new FloorStore(this);
-
-            this.register('FloorStore', Store);
-        }
-
-        if (this.stores.FloorStore?.category !== this.RouterStore.query.category) {
-            this.stores.FloorStore.changeCategory(this.RouterStore.query)
-        }
-
-        return this.stores.FloorStore || {};
+        return this.getStore('FloorStore', FloorStore)
     }
 
     get PageStore() {
-        if (!this.stores.PageStore) {
-            const Store = new PageStore(this);
-
-            this.register('PageStore', Store);
-        }
-
-        return this.stores.PageStore || {};
+        return this.getStore('PageStore', PageStore)
     }
 
     get CatalogStore() {
-        if (!this.stores.CatalogStore) {
-            const Store = new CatalogStore(this);
-
-            this.register('CatalogStore', Store);
-            return Store
-        }
-
-        return this.stores.CatalogStore;
+        return this.getStore('CatalogStore', CatalogStore)
     }
 
     get PopularStore() {
-        if (!this.stores.PopularStore) {
-            const Store = new PopularStore(this);
+        return this.getStore('PopularStore', PopularStore)
+    }
 
-            this.register('PopularStore', Store);
-            return Store
-        }
-        return this.stores.PopularStore || {};
+    @action setCategory = (category) => {
+        this.category = category;
+    };
+
+    @action mergeStores = ({stores, category}) => {
+        this.category = category;
+
+        Object.keys(stores).forEach((key) => {
+                if (key === 'HomeStore') {
+                    this.stores.HomeStore = stores.HomeStore;
+                } else if (key === 'category') {
+                    this.category = stores.category;
+                } else {
+
+                    if (!this.stores[key]) {
+                        this.stores[key] = this[key]
+                    }
+
+                    this.stores[key] && this.stores[key]?.merge && this.stores[key].merge(stores[key]);
+
+                }
+            }
+        )
+
+        //this.stores = stores;
+    }
+
+    @action deleteStore = (name) => {
+        delete this.stores[name];
     }
 
     @action register = (name, store) => {
         if (this.stores[name]) {
             delete this.stores[name];
         }
+
         this.stores[name] = store;
 
-        this.initialData.stores[name] = store;
+        this.initialData[name] = store;
     };
 }
 

@@ -1,12 +1,27 @@
 import ProductView from '../../components/pages/product/ProductView'
+import {inject, observer} from "mobx-react";
+import {Component} from "react";
 
-const index = () =>  <ProductView />
+@inject('RootStore')
+@observer
+class index extends Component {
+    constructor(props) {
+        super();
+        const {RootStore, RootStoreUp} = props;
 
-index.getInitialProps = async({MobxStore}) => {
-    await MobxStore.RootStore.ProductStore.getProduct();
-    await MobxStore.RootStore.ProductStore.getHierarchy();
+        RootStore.mergeStores(RootStoreUp);
+    }
 
-    return {MobxStore};
+    static async getInitialProps({RootStore, req}) {
+        await RootStore.ProductStore.getProduct();
+        await RootStore.ProductStore.getHierarchy();
+
+        return {RootStoreUp: RootStore};
+    }
+
+    render(){
+        return <ProductView/>
+    }
 }
 
 export default index;

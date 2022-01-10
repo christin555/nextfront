@@ -14,19 +14,24 @@ export class BaseFilterStore {
     fieldsLabel = {};
     tableFields = {};
 
-    constructor(category, RootStore) {
-        this.category = category;
+    constructor(RootStore) {
+        this.category = RootStore.category;
         this.RouterStore = RootStore.RouterStore;
 
         this.setCurrentParams(RootStore.RouterStore.query);
 
-        // this.values = RootStore.initialData.ActiveFilterStore?.values || {};
-        // this.checked = RootStore.initialData.ActiveFilterStore?.checked || {};
-        // this.chips = RootStore.initialData.ActiveFilterStore?.chips || [];
-
         this.loadValues();
 
         makeObservable(this);
+    }
+
+
+    @action merge = ({values, category, checked, currentParams, chips}) => {
+        this.values = values || [];
+        this.category = category;
+        this.chips = chips;
+        this.checked = checked;
+        this.currentParams = currentParams;
     }
 
     @action setCurrentParams = (_params) => {
@@ -37,6 +42,9 @@ export class BaseFilterStore {
         this.currentParams = params;
     }
 
+    @action setCategory(category) {
+        this.category = category;
+    }
 
     @computed get isActive() {
         return Object.values(this.checked).filter(Boolean).length;
@@ -50,6 +58,7 @@ export class BaseFilterStore {
         this.clearPath();
         this.checked = {};
         this.chips = [];
+        this.currentParams = {}
     }
 
     @action initPrice = (val, chips, checked) => {
@@ -206,7 +215,6 @@ export class BaseFilterStore {
 
     async loadValues() {
         try {
-
             const values = await api.post('catalog/getFilterFields', this.getBody());
             this._setValues(values);
             this.initChecked();
@@ -253,17 +261,19 @@ export class BaseFilterStore {
     }
 
     pushRouter = async (urlSearch) => {
-        await this.RouterStore.push({
-                pathname: this.RouterStore.pathname,
+        await Router.push({
+                pathname: '/catalog',
                 query: {
                     category: this.RouterStore.router.query.category,
                     ...urlSearch
                 }
             },
             undefined,
-            {shallow: true});
+            {shallow: true}
+        );
+       // await this.RouterStore.pushFilter(urlSearch)
 
-        this.setCurrentParams(urlSearch)
+        this.setCurrentParams(urlSearch);
     }
 
     async setPath(key, id, checked) {

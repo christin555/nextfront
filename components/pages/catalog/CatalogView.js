@@ -4,7 +4,7 @@ import {inject, observer} from 'mobx-react';
 import Title from '../../Title';
 import Content from './Content'
 import Head from "next/head";
-import {autorun} from "mobx";
+import {autorun, toJS} from "mobx";
 
 
 @inject(({RootStore: {CatalogStore}}) => {
@@ -13,17 +13,11 @@ import {autorun} from "mobx";
         status: CatalogStore.status,
         fastfilter: CatalogStore.fastfilter,
         alias: CatalogStore.category,
+        products: toJS(CatalogStore.products),
         CatalogStore
     };
 }) @observer
 class Catalog extends React.Component {
-    componentWillUnmount() {
-
-        // this.props.CatalogStore.getHierarchyDisposer();
-        // this.props.CatalogStore.getCatalogDisposer();
-        // this.props.CatalogStore.getCountProductsDisposer();
-    }
-
     get headerTitle() {
         const {hierarchy, fastfilter} = this.props;
 
@@ -35,7 +29,7 @@ class Catalog extends React.Component {
     }
 
     render() {
-        const {status} = this.props
+        const {status} = this.props;
 
         return (
             <>

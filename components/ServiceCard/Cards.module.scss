@@ -8,7 +8,7 @@
 }
 
 .root {
-  height: min-content;
+  height: max-content;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -37,7 +37,7 @@
 }
 
 .media {
-  height: 120px;
+  height: 160px;
   overflow: hidden;
   position: relative;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Content.module.scss';
-import {inject} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 import Hierarchy from '../../../Hierarchy';
 import {status as statusEnum} from '../../../../src/enums';
 import {InWork, NoResults} from '../../../InformBlocks';
@@ -14,12 +14,14 @@ import Filter from '../Filter';
     hierarchy: CatalogStore.hierarchy || [],
     status: CatalogStore.status,
     productsAvailable: CatalogStore.productsAvailable,
-    fastfilter: CatalogStore.fastfilter
+    fastfilter: CatalogStore.fastfilter,
+    category: CatalogStore.category
   };
-})
+})@observer
 class Content extends React.Component {
   render() {
-    const {hierarchy, fastfilter} = this.props;
+    const {hierarchy, fastfilter, category} = this.props;
+
     if (fastfilter) {
       return (
         <div className={s.container}>
@@ -37,7 +39,7 @@ class Content extends React.Component {
         <Hierarchy hierarchy={hierarchy} />
         <Categories />
         <div className={s.content}>
-          <Filter />
+          <Filter category={category}/>
           <Products/>
         </div>
       </div>

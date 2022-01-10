@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 @inject(({RootStore: {HomeStore}}) => {
     return {
-        works: HomeStore.works || [1, 2, 4, 5, 6, 7]
+        works: HomeStore.works || []
     };
 })
 @observer

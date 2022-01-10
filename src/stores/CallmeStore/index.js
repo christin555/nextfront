@@ -26,6 +26,11 @@ class CallmeStore {
       this.phone = value;
     }
 
+    @action clear = () => {
+        this.phone = '';
+        this.name = '';
+    }
+
     checkFields = () => this.phone && this.name
 
     apply = (product) => {
@@ -65,6 +70,9 @@ class CallmeStore {
           type: 'success',
           title: 'Ваша заявка принята! Наш специалист свяжется с вами в ближайщее время'
         });
+
+        this.clear();
+
       } catch(e) {
           console.log(e);
         alert({type: 'error', title: 'Извините, произошла ошибка при создании заявки'});

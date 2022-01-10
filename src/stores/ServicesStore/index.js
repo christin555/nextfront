@@ -25,8 +25,6 @@ class ServicesStore {
         try {
             const services = await API.post('services/get', {})
             this.setServices(services);
-            console.log(services)
-
         } catch (err) {
             console.log(err)
         }

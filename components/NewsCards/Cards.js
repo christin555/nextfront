@@ -16,21 +16,11 @@ require('dayjs/locale/ru');
 
 dayjs.locale('ru')
 
-@inject(`RouterStore`)
+@inject(`RootStore`)
 @observer
 class ArticlesView extends React.Component {
     routeChange = (alias) => {
-        const pathname = `/blog/article/${alias}`;
-
-        this.props.RouterStore.push({
-                pathname: '/blog/article/[id]',
-                query: {
-                    id: alias
-                },
-            },
-            undefined,
-            {shallow: true}
-        );
+        this.props.RootStore.ArticlesStore.setAlias(alias);
     }
 
     render() {
@@ -48,8 +38,8 @@ class ArticlesView extends React.Component {
                     passHref
                     shallow={true}
                 >
-                    <a className={s.card}>
-                        <Card className={s.root} sx={{maxWidth: maxW}} key={id} onClick={() => this.routeChange(alias)}>
+                    <a className={s.card} onClick={() => this.routeChange(alias)}>
+                        <Card className={s.root} sx={{maxWidth: maxW}} key={id}>
                             <CardMedia
                                 alt={title}
                                 className={classNames(s.media, mediaClass)}

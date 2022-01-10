@@ -259,7 +259,8 @@
 
   & > * {
     width: 100%;
-    max-width: 260px;
+    max-width: 300px;
+    min-width: 200px;
   }
 
   & > * + * {
@@ -323,6 +324,10 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .popularNews {
+    overflow-x: scroll;
+    padding-bottom: 20px;
+  }
   .homeBlocks > * + * {
     margin-top: 20px;
   }
@@ -333,8 +338,11 @@
       flex-direction: column;
 
       .iconsblock {
+        padding: 20px 0 0;
 
-        padding: 20px;
+        & > * + * {
+          margin-left: 16px;
+        }
 
         h3 {
           height: 70px;
@@ -344,44 +352,45 @@
   }
 
   .blog {
-    display: flex;
-    flex-direction: column;
+    .mainBlog {
+      display: flex;
+      flex-direction: column;
 
-    .blockArticles {
-      grid-template-rows: minmax(300px, 400px);
-      grid-template-columns: auto;
-    }
+      .desc > .buttonArt {
+        margin: 0 0 20px 0;
+      }
 
-    .desc > .buttonArt {
-      margin: 0 0 20px 0;
+      .blockArticles {
+        display: none;
+      }
     }
   }
+
   .catalogBlock {
     flex-direction: column;
+
+    .catalogItems {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      .mainBlock {
+        .back {
+          width: 110%;
+          font-size: 108px;
+          overflow: hidden;
+          height: 100%;
+        }
+      }
+    }
   }
 
   .charsBlock {
-    display: flex;
-    flex-direction: column;
-
-    & > * {
+    .charsBlocks {
+      flex-direction: column;
       margin: 0;
-      width: 100%;
-    }
 
-    .border {
-      width: 70px;
-      height: 70px;
-
-      .borderIcon {
-        font-size: 70px;
+      & > * + * {
+        margin: 20px 0;
       }
-    }
-
-    .icontext {
-      padding: 4px;
-      margin: 10px 0 0 10px;
-      font-size: 20px;
     }
   }
 
@@ -390,12 +399,4 @@
     margin-top: 8px;
   }
 
-  .catalogContainer {
-    align-items: center;
-    margin-top: 20px;
-
-    .mainBlock > .buttonContainer {
-      align-content: flex-start;
-    }
-  }
 }
