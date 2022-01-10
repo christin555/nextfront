@@ -29,7 +29,7 @@ class Works extends React.Component {
     get cards() {
         const {services} = this.props;
 
-        return services.map((item) => (<Card {...item}/>));
+        return services.map((item, index) => (<Card key ={index} {...item}/>));
     }
 
 

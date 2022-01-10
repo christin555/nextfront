@@ -22,7 +22,7 @@ class Works extends React.Component {
     get cards() {
         const {works} = this.props;
 
-        return works.map((item) => (<Card onClick = {this.onClick} {...item}/>));
+        return works.map((item) => (<Card key={item.id} onClick={this.onClick} {...item}/>));
     }
 
 

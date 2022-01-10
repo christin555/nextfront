@@ -33,13 +33,13 @@ class Work extends React.Component {
     get cardsProducts() {
         const {products} = this.props.work;
 
-        return products.map((item) => (<CardProduct {...item}/>));
+        return products.map((item) => (<CardProduct key={item.id} {...item}/>));
     }
 
     get cardsServices() {
         const {services} = this.props.work;
 
-        return services.map((item) => (<CardService {...item}/>));
+        return services.map((item) => (<CardService key={item.id} {...item}/>));
     }
 
     get products() {

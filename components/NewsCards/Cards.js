@@ -37,19 +37,20 @@ class ArticlesView extends React.Component {
                     as={`/blog/article/${alias}`}
                     passHref
                     shallow={true}
+                    key={id}
                 >
                     <a className={s.card} onClick={() => this.routeChange(alias)}>
                         <Card className={s.root} sx={{maxWidth: maxW}} key={id}>
                             <CardMedia
                                 alt={title}
                                 className={classNames(s.media, mediaClass)}
-                                image ={imgPreview}
+                                image={imgPreview}
                             />
                         </Card>
                         <div className={s.content}>
                             <span
                                 className={s.articleContent}
-                                >
+                            >
                                 {(title || '').replace(/\\n/g, '').substr(0, 150)}
                             </span>
                             <span className={s.date}>
