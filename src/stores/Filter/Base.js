@@ -262,7 +262,7 @@ export class BaseFilterStore {
 
     pushRouter = async (urlSearch) => {
         await Router.push({
-                pathname: '/catalog',
+                pathname: this.RouterStore.router.pathname,
                 query: {
                     category: this.RouterStore.router.query.category,
                     ...urlSearch

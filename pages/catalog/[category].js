@@ -5,10 +5,11 @@ import {Component} from "react";
 @inject('RootStore')
 @observer
 class index extends Component {
-    componentWillUnmount() {
-        const {RootStore, RootStoreUp} = this.props;
+    constructor(props) {
+        super(props)
+        const {RootStore, RootStoreUp} = props;
 
-        RootStore.CatalogStore.closeStore();
+        RootStore.mergeStores(RootStoreUp);
     }
 
     static async getInitialProps({MobxStore, query}) {

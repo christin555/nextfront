@@ -20,6 +20,8 @@ class CatalogStore {
     @observable isLastLevel;
     @observable count = 0;
 
+    @observable ActiveFilterStore;
+
     @observable body = {};
 
     constructor(RootStore) {
@@ -135,7 +137,7 @@ class CatalogStore {
     };
 
     @computed get filter() {
-        return this.ActiveFilterStore.currentParams || {};
+        return toJS(this.ActiveFilterStore.currentParams) || {};
     }
 
     getCatalog = async () => {
@@ -157,7 +159,6 @@ class CatalogStore {
             //     return
             // }
             //this.setBody(body)
-
             const {categories, products} = await api.post('catalog/getCatalog', body);
             this.setCategories(categories);
             this.setProducts(products);
