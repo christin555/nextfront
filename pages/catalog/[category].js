@@ -17,14 +17,13 @@ class index extends Component {
         await MobxStore.RootStore.CatalogStore.getHierarchy();
         await MobxStore.RootStore.CatalogStore.getCatalog()
         await MobxStore.RootStore.CatalogStore.getCountProducts();
-        
+
 
         return {MobxStore, RootStoreUp: MobxStore.RootStore};
     }
 
-    render(){
+    render() {
         const {RootStore, RootStoreUp} = this.props;
-
         RootStore.mergeStores(RootStoreUp);
 
         return <CatalogView/>

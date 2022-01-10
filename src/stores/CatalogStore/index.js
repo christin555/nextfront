@@ -66,7 +66,7 @@ class CatalogStore {
     }
 
 
-    @action merge = ({products, category, ActiveFilterStore, isLastLevel, count, categories, hierarchy, status}) => {
+    @action merge = ({products, category, isLastLevel, count, categories, hierarchy, status}, {ActiveFilterStore}) => {
         this.category = category;
         this.products = products;
         this.status = status;

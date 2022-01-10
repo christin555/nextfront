@@ -98,7 +98,7 @@ export class BaseFilterStore {
                             val: item.id
                         });
                     })
-                } else if(this.fieldsLabel[key]){
+                } else if (this.fieldsLabel[key]) {
                     _checked[`${key}-${value}`] = true;
 
                     let item = this.values[_key]?.find(({id}) => Number(id) === Number(value));
@@ -271,7 +271,7 @@ export class BaseFilterStore {
             undefined,
             {shallow: true}
         );
-       // await this.RouterStore.pushFilter(urlSearch)
+        // await this.RouterStore.pushFilter(urlSearch)
 
         this.setCurrentParams(urlSearch);
     }

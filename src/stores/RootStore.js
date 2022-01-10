@@ -139,8 +139,8 @@ class RootStore {
                         this.stores[key] = this[key]
                     }
 
-                    this.stores[key] && this.stores[key]?.merge && this.stores[key].merge(stores[key]);
-
+                    this.stores[key] && this.stores[key]?.merge && this.stores[key].merge(stores[key], this);
+                    console.log('w', this.stores[key]);
                 }
             }
         )
