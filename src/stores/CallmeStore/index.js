@@ -46,9 +46,9 @@ class CallmeStore {
         this.toggleShow();
     }
 
-    getLocation = () => {
+    getLocation = async() => {
         try {
-            const address = axios.get('  https://geolocation-db.com/json/')
+            const address = await axios.get('https://geolocation-db.com/json/').then(({data}) => data);
             return address
         } catch (e) {
             return null
@@ -70,7 +70,7 @@ class CallmeStore {
     sendEmail = async (_product) => {
         const {phone, name} = this;
         const product = this.getProduct(_product);
-        const address = this.getLocation();
+        const address = await this.getLocation();
 
         try {
             const body = {phone, name, product, address};
