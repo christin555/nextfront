@@ -9,7 +9,7 @@ import React from "react";
 const items = [
   {
     name: 'Двери',
-    img: 'https://wide-world.ru/image/catalog/news/dverisruchkami.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/dverisruchkami_0b7530e248.jpg',
     alias: 'doors'
   },
   {
@@ -24,17 +24,17 @@ const items = [
   },
   {
     name: 'Спортивное покрытие',
-    img: 'https://www.tarkett.ru/media/img/large/IN_TEE_OMNISPORTS_V65.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/IN_TEE_OMNISPORTS_V65_9eb7111f73.jpg',
     alias: 'sport'
   },
   {
     name: 'Керамогранит',
-    img: 'https://modern05.ru/upload/iblock/c6e/c6e3c78be9b57ea2f7fc411c9c953f33.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/fee1b628a0f559ee6029cd6c9e297338_dadb476b9b.jpg',
     alias: 'keramogranit'
   },
   {
     name: 'Паркет',
-    img: 'https://www.tarkett.ru/media/img/large/IN_TEE_Salsa_premium.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/IN_TEE_Salsa_premium_1693c6be6d.jpg',
     alias: 'parquet'
   },
   {
@@ -44,7 +44,7 @@ const items = [
   },
   {
     name: 'Напольный плинтус',
-    img: 'https://alpinefloor.su/upload/resize_cache/iblock/baa/455_365_2/1100.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/233248_914519_bg_53fa4d1d8a.jpg',
     alias: 'napolnyy-plintus'
   }
 ];
