@@ -3,10 +3,14 @@ import cn from 'classnames';
 import PlaceIcon from '@mui/icons-material/Place';
 import {Tooltip} from '@mui/material';
 import BurgerMenu from './Burger';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Router, {useRouter} from 'next/router';
 import Image from 'next/image'
 import InputSearch from "./InputSearch";
+import Callme from "../Callme";
+import Typography from "@mui/material/Typography";
+import s from "../Footer/Footer.module.scss";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const menu = [
     {name: 'Каталог', important: true, link: '/catalog'},
@@ -15,7 +19,8 @@ const menu = [
     {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
     {name: 'Наш блог', important: false, link: '/blog'},
     {name: 'Услуги', important: true, link: '/services'},
-    {name: 'Работы', important: true, link: '/works'}
+    {name: 'Наши работы', important: true, link: '/works'},
+    {name: 'Контакты', important: true, link: '/contacts'}
 ]
 
 export default function Menu() {
@@ -63,19 +68,40 @@ export default function Menu() {
                         </div>
                     </div>
                     <div className={styles.left}>
-                       <InputSearch/>
-                        <a href={'tel:+79829881522'} className={styles.phone}>
-                            +7 (982) 988-15-22
-                        </a>
+                        <InputSearch/>
+                        <div className={styles.phoneBlock}>
                             <a
-                                target={'_blank'}
-                                rel='noopener noreferrer'
-                                className={styles.address}
-                                href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
+                                href={'tel:+79829881522'}
+                                className={styles.phone}
+                                title='Позвонить'
                             >
-                                <PlaceIcon className={styles.iconContact}/>
-                                Тюмень, Федюнинского 62 к1
+                                8 (982) 988-15-22
                             </a>
+                            <Callme ButtonCall={
+                                <span className={styles.callme}>
+                                    Заказать звонок
+                                </span>
+                            }/>
+                        </div>
+                        <a
+                            target={'_blank'}
+                            rel='noopener noreferrer'
+                            className={styles.address}
+                            href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
+                            title='Показать адрес в 2GIS'
+                        >
+                            <PlaceIcon className={styles.iconContact}/>
+                            Тюмень, Федюнинского 62 к1
+                        </a>
+                        <a
+                            className={styles.messenger}
+                            target={'_blank'}
+                            rel='noopener noreferrer'
+                            href={`https://wa.me/89829881522`}
+                            title='Написать в WhatsApp'
+                        >
+                            <WhatsAppIcon className={styles.icon} />
+                        </a>
                     </div>
                     <BurgerMenu toPage={toPage} menu={menu}/>
                 </div>

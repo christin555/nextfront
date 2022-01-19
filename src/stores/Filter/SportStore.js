@@ -3,7 +3,6 @@ import {BaseFilterStore} from './Base';
 import Router from "next/router";
 
 export class SportStore extends BaseFilterStore {
-    @observable disabled = {};
     fieldsLabel = {
         'colorFamily': 'Оттенок',
         'totalThickness': 'Размер',

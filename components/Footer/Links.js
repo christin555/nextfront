@@ -21,8 +21,16 @@ const Footer = () => {
       alias: '/about'
     },
     {
+      name: 'Наши работы',
+      alias: '/articles'
+    },
+    {
       name: 'Блог',
-      alias: '/gallery'
+      alias: '/works'
+    },
+    {
+      name: 'Контакты',
+      alias: '/contacts'
     }
   ];
 

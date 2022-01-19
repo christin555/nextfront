@@ -4,6 +4,14 @@ const status = {
   ERROR: 3
 };
 
+const finishing = {
+  MATERIAL: 1,
+  WINDOW: 2,
+  PHOTO: 3
+};
+
+
 module.exports = {
-  status
+  status,
+  finishing
 };

@@ -3,7 +3,6 @@ import {BaseFilterStore} from './Base';
 import Router from "next/router";
 
 export class KeramogranitStore extends BaseFilterStore {
-    @observable disabled = {};
     fieldsLabel = {
         'color': 'Оттенок',
         'size': 'Размер',

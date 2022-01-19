@@ -388,6 +388,16 @@
       flex-direction: column;
       margin: 0;
 
+      .char {
+        align-items: center;
+        width: 100%;
+        flex-direction: row;
+
+        & > * + * {
+          margin-left: 18px;
+        }
+      }
+
       & > * + * {
         margin: 20px 0;
       }

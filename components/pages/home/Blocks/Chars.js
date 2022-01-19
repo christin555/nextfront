@@ -34,8 +34,10 @@ const Blocks = () => (
                 blocks.map(({icon, text, desc}, index) => (
                     <div key={index} className={s.char}>
                         <div>{icon} </div>
-                        <div className={s.titleChar}>{text} </div>
-                        <div className={s.descChar}> {desc}</div>
+                        <div>
+                            <div className={s.titleChar}>{text} </div>
+                            <div className={s.descChar}> {desc}</div>
+                        </div>
                     </div>
                 ))
             }

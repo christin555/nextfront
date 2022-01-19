@@ -14,6 +14,7 @@ import formatPrice from '../../../src/utils/formatPrice';
 import Head from "next/head";
 import Typography from "@mui/material/Typography";
 import CheckIcon from '@mui/icons-material/Check';
+import FinishingMaterialBlock from './FinishingMaterialBlock';
 
 @inject(({RootStore: {ProductStore}}) => {
     return {
@@ -101,7 +102,7 @@ class Product extends React.Component {
     get chars() {
         const chars = JSON.parse(this.props.values?.chars || null);
 
-        if(!chars || !Array.isArray(chars)){
+        if (!chars || !Array.isArray(chars)) {
             return <div/>
         }
 
@@ -109,9 +110,9 @@ class Product extends React.Component {
             <div className={s.charsBlock}>
                 {chars.map(({key, value}) => {
                     return <div key={key}>
-                            <Typography variant="button" component="h6">
-                               <CheckIcon className={s.charIcon}/> {key}
-                            </Typography>
+                        <Typography variant="button" component="h6">
+                            <CheckIcon className={s.charIcon}/> {key}
+                        </Typography>
                         <span> {value} </span>
                     </div>
                 })}
@@ -119,41 +120,15 @@ class Product extends React.Component {
         );
     }
 
-    get finishingMaterial() {
-        const {fields} = this.props;
-        const finishingMaterial = fields.find(({name}) => name === 'finishingMaterial');
-
-        if (!finishingMaterial) {
-            return null;
-        }
-
-        return (
-            <div className={s.materials}>
-                <span> Материал отделки </span>
-                <div className={s.items}> {
-                    finishingMaterial.values.map(({id, name, img}) => (
-                        <div key={id}>
-                            <div className={s.materialImg}>
-                                <img alt={name} src={img}/>
-                            </div>
-                            <span>{name}</span>
-                        </div>
-                    ))
-                }
-                </div>
-            </div>
-        );
-    }
-
     render() {
-        const {values, hierarchy} = this.props;
+        const {values, hierarchy, fields} = this.props;
 
         return (
             <>
                 <Head>
                     <title>    {values.name} | Мастер Пола</title>
                     <meta name='description'
-                          content={`Тюмень купить ${values.category} ${values.brand} коллекция ${values.collectionName} ${values.name}. ${hierarchy.map(({name}) => name).join(', ')}`}/>
+                          content={`Тюмень купить ${values.category} ${values.brand} коллекция ${values.collection} ${values.name}. ${hierarchy.map(({name}) => name).join(', ')}`}/>
                     <script type="application/ld+json"
                             dangerouslySetInnerHTML={{
                                 __html: JSON.stringify(
@@ -203,12 +178,14 @@ class Product extends React.Component {
                             className={s.carousel}
                         />
                         <div className={s.product}>
-                            <span className={s.brand}> {values.brand} </span>
+                            <span className={s.brand}>
+                                  {values.category} {values.brand}
+                            </span>
                             <title className={s.name}>
                                 {values.name}
                                 <span className={s.collection}>
-                   {values.collectionName && `Коллекция ${values.collectionName}`}
-                </span>
+                                    {values.collection && `Коллекция ${values.collection}`}
+                                </span>
                             </title>
                             <Divider/>
                             <description className={s.desc}> {values.description} </description>
@@ -225,7 +202,7 @@ class Product extends React.Component {
                             <div className={s.chars}>
                                 {this.mainFields}
                             </div>
-                            {this.finishingMaterial}
+                            <FinishingMaterialBlock fields={fields}/>
                             <div className={s.additional}>
                                 {this.chipFields}
                             </div>
@@ -239,7 +216,9 @@ class Product extends React.Component {
                         </div>
                     </div>
                     {this.chars}
-                    <div className={s.titleCharacteristic}> Характеристики товара</div>
+                    <div className={s.titleCharacteristic}>
+                        Характеристики товара
+                    </div>
                     <div className={s.characteristic}>
                         {this.allFields}
                     </div>

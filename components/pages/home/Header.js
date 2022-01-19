@@ -28,7 +28,7 @@ const Header = () => (
             target={'_blank'}
             rel='noopener noreferrer'
             href='https://www.youtube.com/channel/UC86lrjiQpHt0Fwzr0FoBxyA'
-            title='Перейти на канал в Instagram'
+            title='Перейти на канал в YouTube'
           >  <YouTubeIcon className={s.icon} />
                   youtube
           </a>

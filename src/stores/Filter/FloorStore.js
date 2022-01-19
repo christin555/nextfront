@@ -3,8 +3,6 @@ import {BaseFilterStore} from './Base';
 import Router from "next/router";
 
 export class FloorStore extends BaseFilterStore {
-    @observable disabled = {};
-
     fieldsLabel = {
         'color': 'Оттенок',
         'resistanceClass': 'Класс нагрузки',
@@ -139,40 +137,18 @@ export class FloorStore extends BaseFilterStore {
         this.chips = this.chips.filter((chip) => chip.key !== colId);
     };
 
-    @action disableCollectionsByBrandId = (brandId, checked) => {
+    initDisabled(){
         const brandIds = Object.keys(this.checked)
             .filter((key) => key.indexOf('brandId') > -1 && this.checked[key])
             .map((key) => Number(key.split('-')[1]));
 
-        // Если ничего не выбрано в брендах, то все коллекции по умолчанию можно тыкать
-        if (!brandIds.length) {
-            this.setToKey('disabled', 'collectionId', false);
-
-            return;
-        }
-
         this.collections.forEach((collection) => {
             const brId = collection.brandId;
 
-            let state;
-
-            if (checked) {
-                // Дизейблим если бренд текущего элемента не был выбран в фильтре
-                state = !brandIds.includes(brId) && brId !== brandId;
-            } else {
-                // Если бренд в фильтре был выбран, а потом чекбокс убрали,
-                // то необходимо снова задизейблить
-                state = !brandIds.includes(brandId) && brId === brandId;
-            }
+            let state = !brandIds.includes(brId);
 
             this.setDisabled('collectionId', collection.id, state);
         });
-    };
-
-    clear() {
-        super.clear();
-
-        this.disabled = {};
     }
 
     afterValueCheck = (key, {id}, checked) => {
@@ -180,18 +156,5 @@ export class FloorStore extends BaseFilterStore {
             this.clearCheckedCollections();
             this.disableCollectionsByBrandId(id, checked);
         }
-    };
-
-    setToKey = (field, key, value) => {
-        Object.keys(this[field])
-            .forEach((objectKey) => {
-                if (objectKey.indexOf(key) > -1) {
-                    this[field][objectKey] = value;
-                }
-            });
-    };
-
-    setDisabled = (key, value, state) => {
-        this.disabled[`${key}-${value}`] = state;
     };
 }

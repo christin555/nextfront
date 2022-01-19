@@ -13,7 +13,7 @@ const FormCheckbox = (props) => {
     }
   };
 
-  return (
+  return !disabled &&
     <FormControlLabel
       className={s.checkboxControl}
       key={id}
@@ -29,8 +29,8 @@ const FormCheckbox = (props) => {
         />
       )}
       label={name}
-    />
-  );
+    /> || null
+
 }
 
 FormCheckbox.propTypes = {

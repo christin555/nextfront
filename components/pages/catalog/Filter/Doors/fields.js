@@ -8,14 +8,30 @@ import {toJS} from 'mobx';
 @inject(({FilterStore}) => {
   return {
     collections: FilterStore.collections,
+    brands: FilterStore.brands,
     finishingMaterials: FilterStore.finishingMaterials,
     setValue: FilterStore.setValue,
     isCollectionActive: FilterStore.isCollectionActive,
     isFinishingMaterialActive: FilterStore.isFinishingMaterialActive,
-    checked: toJS(FilterStore.checked)
+    checked: toJS(FilterStore.checked),
+    isBrandActive: FilterStore.isBrandActive,
+
+    disabled: toJS(FilterStore.disabled),
   };
 })
 class Fields extends Component {
+  get brands() {
+    return this.props.brands?.map(({id, name}) => (
+        <FormCheckbox
+            checked={this.isChecked('brandId', id)}
+            key={id}
+            name={name}
+            id={id}
+            onChange={this.props.setValue('brandId')}
+        />
+    ));
+  }
+
   get collections() {
     return this.props.collections?.map(({id, name}) => (
       <FormCheckbox
@@ -23,6 +39,7 @@ class Fields extends Component {
         key={id}
         name={name}
         id={id}
+        disabled={this.isDisabled('collectionId', id)}
         onChange={this.props.setValue('collectionId')}
       />
     ));
@@ -35,6 +52,7 @@ class Fields extends Component {
         key={id}
         name={name}
         id={id}
+        disabled={this.isDisabled('finishingMaterial', id)}
         onChange={this.props.setValue('finishingMaterial')}
       />
     ));
@@ -46,14 +64,24 @@ class Fields extends Component {
     return checked[`${key}-${value}`] || false;
   };
 
+  isDisabled = (key, value) => {
+    const {disabled} = this.props;
+
+    return disabled[`${key}-${value}`];
+  };
+
   render() {
     const {
       isFinishingMaterialActive,
-      isCollectionActive
+      isCollectionActive,
+      isBrandActive
     } = this.props;
 
     return (
       <React.Fragment>
+        <SimpleAccordion id={3} name={'Фабрика'} active={isBrandActive}>
+          {this.brands}
+        </SimpleAccordion>
         <SimpleAccordion id={1} name={'Коллекция'} active={isCollectionActive}>
           {this.collections}
         </SimpleAccordion>

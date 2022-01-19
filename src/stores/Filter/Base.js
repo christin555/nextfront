@@ -9,6 +9,7 @@ export class BaseFilterStore {
     @observable chips = [];
     @observable currentParams = {};
     @observable category;
+    @observable disabled = {};
 
     // Override in child;
     fieldsLabel = {};
@@ -59,6 +60,7 @@ export class BaseFilterStore {
         this.checked = {};
         this.chips = [];
         this.currentParams = {}
+        this.disabled = {};
     }
 
     @action initPrice = (val, chips, checked) => {
@@ -76,6 +78,49 @@ export class BaseFilterStore {
         })
     }
 
+    @action disableCollectionsByBrandId = (brandId, checked) => {
+        const brandIds = Object.keys(this.checked)
+            .filter((key) => key.indexOf('brandId') > -1 && this.checked[key])
+            .map((key) => Number(key.split('-')[1]));
+
+        // Если ничего не выбрано в брендах, то все коллекции по умолчанию можно тыкать
+        if (!brandIds.length) {
+            this.setToKey('disabled', 'collectionId', false);
+
+            return;
+        }
+
+        this.collections.forEach((collection) => {
+            const brId = collection.brandId;
+
+            let state;
+
+            if (checked) {
+                // Дизейблим если бренд текущего элемента не был выбран в фильтре
+                state = !brandIds.includes(brId) && brId !== brandId;
+            } else {
+                // Если бренд в фильтре был выбран, а потом чекбокс убрали,
+                // то необходимо снова задизейблить
+                state = !brandIds.includes(brandId) && brId === brandId;
+            }
+
+            this.setDisabled('collectionId', collection.id, state);
+        });
+    };
+
+    setDisabled = (key, value, state) => {
+        this.disabled[`${key}-${value}`] = state;
+    };
+
+    setToKey = (field, key, value) => {
+        Object.keys(this[field])
+            .forEach((objectKey) => {
+                if (objectKey.indexOf(key) > -1) {
+                    this[field][objectKey] = value;
+                }
+            });
+    };
+
     @action initChecked() {
         const _chips = []
         const _checked = {};
@@ -85,7 +130,6 @@ export class BaseFilterStore {
 
                 if (key === 'price') {
                     this.initPrice(value, _chips, _checked);
-
                 } else if (Array.isArray(value)) {
                     value.forEach((val) => {
                         _checked[`${key}-${val}`] = true;
@@ -146,6 +190,12 @@ export class BaseFilterStore {
         return {
             category: this.category
         };
+    }
+
+
+    // Тут можно переопределить логику после выбора элемента
+    initDisabled() {
+        // implement in child
     }
 
     // Тут можно переопределить логику после выбора элемента
@@ -218,6 +268,7 @@ export class BaseFilterStore {
             const values = await api.post('catalog/getFilterFields', this.getBody());
             this._setValues(values);
             this.initChecked();
+            this.initDisabled();
         } catch (e) {
             console.log(e);
             alert({type: 'error', title: 'Ошибка при получении фильтра'});

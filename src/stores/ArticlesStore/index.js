@@ -14,7 +14,6 @@ class ArticlesStore {
     constructor(RootStore) {
         makeObservable(this);
         this.hydrate(RootStore);
-        console.log('constr')
 
         if (!isServer) {
             this.getArticleDisposer = autorun(this.getArticle);

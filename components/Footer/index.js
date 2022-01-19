@@ -19,7 +19,7 @@ const Footer = () => (
       <span className={s.policy}>
           Политика конфиденциальности
       <br />
-           © Мастер Пола, 2021
+           © Мастер Пола, 2022
       </span>
       <Copy />
     </div>

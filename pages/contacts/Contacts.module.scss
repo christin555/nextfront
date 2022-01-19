@@ -1,0 +1,110 @@
+@import '../../styles/variables.module';
+
+
+.divider {
+  margin: 40px 0;
+  height: 1px;
+  display: block;
+  background: $gray-50;
+}
+
+.content {
+  @include paddingStandard;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  min-height: 300px;
+  grid-column-gap: 20px;
+}
+
+.phone {
+  margin-top: 10px;
+  color: $secondary;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .messenger {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: $home-black;
+  }
+
+  .icon {
+    font-size: 24px;
+    color: inherit;
+    margin-right: 8px;
+  }
+}
+
+.name {
+  text-transform: uppercase;
+  color: $home-black;
+}
+
+.titleField {
+  text-transform: uppercase;
+  color: $gray-100;
+  font-weight: 400;
+}
+
+.header {
+  background: rgb(246, 246, 246);
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  @include paddingStandard;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.line {
+  margin-top: 8px;
+  display: block;
+  height: 2px;
+  width: 40px;
+  background: #c41414;
+}
+
+@media only screen and (max-width: 480px) {
+  .padding {
+    @include paddingStandard;
+  }
+  .content {
+    padding: 0;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+
+    .image {
+      grid-row-start: 2;
+      min-height: 500px;
+      margin-top: 20px;
+      height: 100%;
+    }
+
+    .cardBody {
+      @include paddingStandard;
+    }
+  }
+}

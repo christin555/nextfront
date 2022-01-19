@@ -36,6 +36,7 @@ const Contacts = () => (
           target={'_blank'}
           rel='noopener noreferrer'
           href={`https://wa.me/89829881522`}
+          title='Написать в WhatsApp'
         >
           <WhatsAppIcon className={s.icon} />
         </a>
