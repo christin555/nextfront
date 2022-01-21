@@ -16,13 +16,6 @@
   & > *, a, a:visited {
     color: $white !important;
   }
-
-  .search {
-    input[class*="MuiInputBase-input"],
-    input[class*="MuiInputBase-input"]::placeholder {
-      color: $white-10;
-    }
-  }
 }
 
 .isScrolled {
@@ -36,12 +29,18 @@
     color: $gray-500 !important;
   }
 
-  .search {
+  .headerSearch {
+    display: flex;
+
     input[class*="MuiInputBase-input"],
     input[class*="MuiInputBase-input"]::placeholder {
       color: $gray-400;
     }
   }
+}
+
+.headerSearch {
+  display: none;
 }
 
 .container {
@@ -136,16 +135,8 @@
       align-items: center;
 
       .search {
-        cursor: pointer;
-        border: 1px solid #959595;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1px 10px;
         width: 28vw;
         margin-right: 20px;
-        height: 36px;
-        align-items: center;
       }
 
       .phone {
@@ -160,6 +151,10 @@
   }
 }
 
+.headerSearch {
+  display: none;
+}
+
 .callme {
   font-size: 10px;
   text-transform: uppercase;
@@ -168,42 +163,72 @@
 
 .menuContainer {
   padding: 85px 0 20px 0;
-
-  @include paddingStandard;
 }
 
 .menu {
+  @include paddingStandard;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   line-height: 24px;
-  font-weight: 300;
-  height: 40px;
-  text-transform: uppercase;
+  font-size: 14px;
+  height: min-content;
+  //text-transform: uppercase;
   letter-spacing: .5px;
+  font-weight: 400;
+  justify-content: space-between;
+  align-items: center;
+  color: $white-20;
+
 
   .isActive {
-    color: #c41414;
+    color: #ffffff;
   }
 
-  .important {
-    // border-bottom: 1px solid $gray-20;
-
-    &:hover {
-      // border-bottom: 2px solid $white;
-    }
+  &:not(.isHome) {
+    background-color: $home-black;
   }
 
   & > * {
-    padding: 5px 0;
-    height: 25px;
-    margin-right: 40px;
-    color: $gray-500;
+    display: flex;
+    padding: 12px 0;
+    align-items: center;
+    //margin-right: 40px;
 
     &:hover {
-      color: $gray-300;
+      color: $gray-50 !important;
       cursor: pointer;
     }
+
+    .icon {
+      font-size: 16px;
+      margin-right: 6px;
+    }
+  }
+
+  .search {
+    display: flex;
+    width: 22vw;
+    margin-left: 30px;
+  }
+}
+
+.search {
+  border: 1px solid $gray-100-40;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1px 10px;
+  height: 36px;
+  align-items: center;
+
+
+  input[class*="MuiInputBase-input"],
+  input[class*="MuiInputBase-input"]::placeholder {
+    color: $white-10;
+  }
+
+  .iconSearch {
+    color: $gray-30;
   }
 }
 

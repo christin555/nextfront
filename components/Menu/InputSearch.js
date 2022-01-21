@@ -4,7 +4,7 @@ import {inject, observer} from 'mobx-react';
 import styles from "./menu.module.scss";
 import {InputBase} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import {toJS} from "mobx";
+import cn from "classnames";
 
 @inject(({RouterStore}) => {
     return {
@@ -16,9 +16,9 @@ import {toJS} from "mobx";
 @observer
 class InputSearch extends Component {
     render() {
-        const {search, setValue, searchValue, onClick} = this.props;
+        const {search, setValue, searchValue, onClick, className} = this.props;
         return (
-            <div className={styles.search}>
+            <div className={cn(styles.search, className)}  >
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
                     placeholder={'Поиск'}
@@ -27,7 +27,7 @@ class InputSearch extends Component {
                     //onKeyPress={search}
                     value={searchValue}
                 />
-                <SearchIcon onClick={() => {
+                <SearchIcon className={styles.iconSearch} onClick={() => {
                     onClick && onClick();
                     search()
                 }}/>

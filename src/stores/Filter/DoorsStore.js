@@ -48,6 +48,9 @@ export class DoorsStore extends BaseFilterStore {
     @action clearCheckedCollections = async () => {
         const params = toJS(Router.query);
 
+        if (!'collectionId' in params) {
+            return
+        }
 
         delete params['collectionId'];
         delete params['finishingMaterial'];
@@ -120,9 +123,9 @@ export class DoorsStore extends BaseFilterStore {
     }
 
 
-    beforeValueCheck = (key, {id}, checked) => {
+    beforeValueCheck = async(key, {id}, checked) => {
         if (key === 'brandId') {
-            this.clearCheckedCollections();
+            await this.clearCheckedCollections();
             this.disableFinishingByBrandId(id, checked);
             this.disableCollectionsByBrandId(id, checked);
         }

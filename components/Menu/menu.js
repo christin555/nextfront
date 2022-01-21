@@ -8,14 +8,12 @@ import Router, {useRouter} from 'next/router';
 import Image from 'next/image'
 import InputSearch from "./InputSearch";
 import Callme from "../Callme";
-import Typography from "@mui/material/Typography";
-import s from "../Footer/Footer.module.scss";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import AppsIcon from '@mui/icons-material/Apps';
 
 const menu = [
-    {name: 'Каталог', important: true, link: '/catalog'},
-    {name: 'О нас', important: false, link: '/about'},
-    //{name: 'Контакты', important: false, link: '/contacts'},
+    {name: 'Каталог', important: true, link: '/catalog', Icon: AppsIcon},
+    {name: 'О компании', important: false, link: '/about'},
     {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
     {name: 'Наш блог', important: false, link: '/blog'},
     {name: 'Услуги', important: true, link: '/services'},
@@ -66,23 +64,6 @@ export default function Menu() {
                         <div className={styles.name}>
                             <div> МАСТЕР ПОЛА</div>
                         </div>
-                    </div>
-                    <div className={styles.left}>
-                        <InputSearch/>
-                        <div className={styles.phoneBlock}>
-                            <a
-                                href={'tel:+79829881522'}
-                                className={styles.phone}
-                                title='Позвонить'
-                            >
-                                8 (982) 988-15-22
-                            </a>
-                            <Callme ButtonCall={
-                                <span className={styles.callme}>
-                                    Заказать звонок
-                                </span>
-                            }/>
-                        </div>
                         <a
                             target={'_blank'}
                             rel='noopener noreferrer'
@@ -103,25 +84,42 @@ export default function Menu() {
                             <WhatsAppIcon className={styles.icon} />
                         </a>
                     </div>
+                    <div className={styles.left}>
+                        <InputSearch className={styles.headerSearch} />
+
+                        <div className={styles.phoneBlock}>
+                            <a
+                                href={'tel:+79829881522'}
+                                className={styles.phone}
+                                title='Позвонить'
+                            >
+                                8 (982) 988-15-22
+                            </a>
+                            <Callme ButtonCall={
+                                <span className={styles.callme}>
+                                    Заказать звонок
+                                </span>
+                            }/>
+                        </div>
+                    </div>
                     <BurgerMenu toPage={toPage} menu={menu}/>
                 </div>
             </div>
             <div className={styles.menuContainer}>
                 <div className={cn(styles.menu, {[styles.isHome]: isHome})}>
                     {
-                        menu.map(({name, important, link}, index) => (
+                        menu.map(({name, link, Icon}, index) => (
                             <a
                                 key={link}
-                                className={cn({
-                                    [styles.important]: important,
-                                    [styles.isActive]: link === pathname
-                                })}
+                                className={cn({[styles.isActive]: link === pathname})}
                                 href={link}
                             >
-                                {name}
+                                {Icon ? <Icon className={styles.icon}/>: null} {name}
                             </a>
                         ))
                     }
+
+                    <InputSearch />
                 </div>
             </div>
         </header>
