@@ -37,18 +37,11 @@ class Contact extends React.Component {
 
     render() {
         const {
-            className,
-            isShow,
-            toggleShow,
-            product,
             name,
             phone,
             setPhone,
             setName,
-            apply,
-            buttonText,
-            buttonProps,
-            isShowButText = true
+            apply
         } = this.props;
 
         return (

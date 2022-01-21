@@ -194,11 +194,6 @@
     align-items: center;
     //margin-right: 40px;
 
-    &:hover {
-      color: $gray-50 !important;
-      cursor: pointer;
-    }
-
     .icon {
       font-size: 16px;
       margin-right: 6px;
@@ -209,6 +204,7 @@
     display: flex;
     width: 22vw;
     margin-left: 30px;
+    border: 1px solid $gray-50-20;
   }
 }
 

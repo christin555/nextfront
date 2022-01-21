@@ -384,6 +384,8 @@
   }
 
   .charsBlock {
+    padding-bottom: 30px;
+
     .charsBlocks {
       flex-direction: column;
       margin: 0;
@@ -392,14 +394,15 @@
         align-items: center;
         width: 100%;
         flex-direction: row;
+        margin:0;
 
         & > * + * {
           margin-left: 18px;
         }
       }
 
-      & > * + * {
-        margin: 20px 0;
+      .char + .char {
+        margin-top: 40px;
       }
     }
   }

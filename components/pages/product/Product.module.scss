@@ -16,7 +16,7 @@
     padding: 0 10px;
   }
 
-  .charIcon{
+  .charIcon {
     color: $green-100;
   }
 }
@@ -258,10 +258,12 @@
     display: flex;
     flex-direction: column;
 
+    &:not(.door) .product{
+      padding: 10px 0 !important;
+    }
+
     .product {
       margin-left: 0;
-      padding: 10px 0 !important;
-
       .name {
         flex-direction: column;
         align-items: flex-start;
