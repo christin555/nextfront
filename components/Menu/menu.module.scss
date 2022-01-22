@@ -30,7 +30,7 @@
   }
 
   .headerSearch {
-    display: flex;
+    display: flex !important;
 
     input[class*="MuiInputBase-input"],
     input[class*="MuiInputBase-input"]::placeholder {
@@ -40,6 +40,26 @@
 }
 
 .headerSearch {
+  display: none;
+  border-radius: 6px;
+  border: 1px solid $gray-100-40;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1px 10px;
+  height: 36px;
+  align-items: center;
+
+  input[class*="MuiInputBase-input"],
+  input[class*="MuiInputBase-input"]::placeholder {
+    color: $white-10;
+
+  }
+
+  .iconSearch {
+    color: $gray-30;
+  }
+
   display: none;
 }
 
@@ -62,9 +82,10 @@
     left: 0;
     bottom: 0;
     z-index: -1;
-    background-color: white;
     transition: opacity .3s;
     opacity: 0;
+    background: rgb(255 255 255 / 90%);
+    backdrop-filter: saturate(180%) blur(20px)
   }
 
   &:not(.isHome) .headerBackground {
@@ -134,7 +155,7 @@
       display: flex;
       align-items: center;
 
-      .search {
+      .headerSearch {
         width: 28vw;
         margin-right: 20px;
       }
@@ -149,10 +170,6 @@
       }
     }
   }
-}
-
-.headerSearch {
-  display: none;
 }
 
 .callme {
@@ -197,34 +214,14 @@
     .icon {
       font-size: 16px;
       margin-right: 6px;
+      color: $gray-100-40;
     }
   }
 
-  .search {
+  .headerSearch {
     display: flex;
     width: 22vw;
     margin-left: 30px;
-    border: 1px solid $gray-50-20;
-  }
-}
-
-.search {
-  border: 1px solid $gray-100-40;
-  cursor: pointer;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1px 10px;
-  height: 36px;
-  align-items: center;
-
-
-  input[class*="MuiInputBase-input"],
-  input[class*="MuiInputBase-input"]::placeholder {
-    color: $white-10;
-  }
-
-  .iconSearch {
-    color: $gray-30;
   }
 }
 
@@ -274,7 +271,15 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1900px ) and (min-width: 930px){
+  .header {
+    .headerSearch {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 930px) {
   .header {
     height: 50px;
 

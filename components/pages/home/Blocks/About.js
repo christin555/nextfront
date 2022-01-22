@@ -9,7 +9,7 @@ const About = () => (
     <h2> Напольные покрытия и двери в Тюмени </h2>
     <div className={s.aboutBock}>
       <div className={s.image}>
-        <Image src={'/master.jpg'} layout='fill'/>
+        <Image src={'/master.jpg'} layout='fill' priority={true}/>
       </div>
       <div className={s.textAbout}>
         <div className={s.divider} />

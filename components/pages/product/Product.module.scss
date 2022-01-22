@@ -252,13 +252,13 @@
   margin-top: 20px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 930px) {
 
   .content > .card {
     display: flex;
     flex-direction: column;
 
-    &:not(.door) .product{
+    &:not(.door) .card{
       padding: 10px 0 !important;
     }
 

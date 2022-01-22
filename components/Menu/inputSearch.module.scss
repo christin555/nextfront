@@ -1,0 +1,10 @@
+@import '../../styles/variables.module';
+
+.search {
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1px 10px;
+  height: 36px;
+  align-items: center;
+}

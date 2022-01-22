@@ -128,7 +128,7 @@ class Product extends React.Component {
                 <Head>
                     <title>    {values.name} | Мастер Пола</title>
                     <meta name='description'
-                          content={`Тюмень купить ${values.category} ${values.brand} коллекция ${values.collection} ${values.name}. ${hierarchy.map(({name}) => name).join(', ')}`}/>
+                          content={`Купить ${values.category} ${values.brand} коллекция ${values.collection}, ${values.name}`}/>
                     <script type="application/ld+json"
                             dangerouslySetInnerHTML={{
                                 __html: JSON.stringify(

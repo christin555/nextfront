@@ -59,7 +59,13 @@ export default function Menu() {
                         onClick={() => toPage('/')}
                     >
                         <div className={styles.logo}>
-                            <Image src={'/logo.png'} alt={'logo'} width="64" height="64"/>
+                            <Image
+                                priority={true}
+                                src={'/logo.png'}
+                                alt={'logo'}
+                                width="64"
+                                height="64"
+                            />
                         </div>
                         <div className={styles.name}>
                             <div> МАСТЕР ПОЛА</div>
@@ -113,13 +119,13 @@ export default function Menu() {
                                 key={link}
                                 className={cn({[styles.isActive]: link === pathname})}
                                 href={link}
+                                title={name}
                             >
                                 {Icon ? <Icon className={styles.icon}/>: null} {name}
                             </a>
                         ))
                     }
-
-                    <InputSearch />
+                    <InputSearch className={styles.headerSearch}/>
                 </div>
             </div>
         </header>

@@ -54,12 +54,16 @@ class ArticlesView extends React.Component {
 
     render() {
         const {article, articles, alias} = this.props;
-        const {title, content, createdAt, type} = article;
+        const {title, content, createdAt} = article;
 
         return (
             <React.Fragment>
                 <Head>
                     <title>  {title} </title>
+                    <meta
+                        name="description"
+                        content={content}
+                    />
                     <script type="application/ld+json"
                             dangerouslySetInnerHTML={{
                                 __html: JSON.stringify(

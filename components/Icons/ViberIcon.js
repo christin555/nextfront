@@ -12,8 +12,5 @@ const ViberIcon = (props) => (
   </SvgIcon>
 );
 
-ViberIcon.defaultProps = {
-  htmlColor: '#3B5998'
-};
 
 export default ViberIcon;

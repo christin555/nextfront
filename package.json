@@ -40,6 +40,7 @@
     "react-text-mask": "^5.4.3",
     "react-youtube": "^7.13.1",
     "sass": "1.43.4",
+    "sharp": "^0.29.3",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
