@@ -101,7 +101,7 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
                                 <a
                                     target={'_blank'}
                                     rel='noopener noreferrer'
-                                    href={`https://wa.me/89829881522`}
+                                    href={`https://wa.me/79829881522`}
                                     title='Написать в WhatsApp'
                                 >
                                     <WhatsAppIcon className={styles.icon}/>
