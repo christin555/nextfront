@@ -34,6 +34,10 @@ class ProductStore {
         this.fields = ProductStore.fields;
     }
 
+    @action setStatus = (status) => {
+        this.status = status;
+    }
+
     @action setAlias = (alias) => {
         this.alias = alias;
     }
@@ -66,9 +70,7 @@ class ProductStore {
             const {hierarchy} = await api.post('catalog/getHierarchy', body);
 
             this.setHierarchy(hierarchy);
-        } catch (_) {
-            alert({type: 'error', title: 'Ошибка при получении иерархии'});
-        }
+        } catch (_) {}
     }
 
     getProduct = async () => {
@@ -80,8 +82,11 @@ class ProductStore {
 
             this.setValues(values);
             this.setFields(fields);
+
+            this.setStatus(statusEnum.SUCCESS)
         } catch (_) {
-            alert({type: 'error', title: 'Ошибка при получении товара'});
+            console.log('error')
+            this.setStatus(statusEnum.ERROR)
         }
     }
 }

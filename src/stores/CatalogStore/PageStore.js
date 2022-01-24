@@ -26,6 +26,14 @@ export class PageStore {
         return (this.page - 1) * this.limit;
     }
 
+    @action setLimitWithoutSSR = async(limit) => {
+        this.limit = limit;
+    }
+
+    @action setPageWithoutSSR = async(page) => {
+        this.page = page;
+    }
+
     @action setPage = async(page) => {
         this.page = page;
 

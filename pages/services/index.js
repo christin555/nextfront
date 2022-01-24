@@ -6,6 +6,7 @@ import Callme from '../../components/Callme';
 import Card from "../../components/ServiceCard";
 import {inject, observer} from "mobx-react";
 import Hierarchy from "../../components/HierarchyNew";
+import Head from "next/head";
 
 
 @inject(({RootStore: {ServicesStore}}) => {
@@ -36,6 +37,11 @@ class Works extends React.Component {
     render() {
         return (
             <React.Fragment>
+                <Head>
+                    <title>    Услуги | Мастер Пола </title>
+                    <meta name='description'
+                          content={`Команда, которой можно доверить ремонт. Предоставляем услги монтажа и ремонта под ключ. Более 10 лет опыта`}/>
+                </Head>
                 {/*<div className={s.header}>*/}
                 {/*    {'Услуги'}*/}
                 {/*    <div className={s.line}/>*/}

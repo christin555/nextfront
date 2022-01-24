@@ -11,10 +11,10 @@ import s from './Product.module.scss';
 import Callme from '../../Callme';
 import {toJS} from 'mobx';
 import formatPrice from '../../../src/utils/formatPrice';
-import Head from "next/head";
 import Typography from "@mui/material/Typography";
 import CheckIcon from '@mui/icons-material/Check';
 import FinishingMaterialBlock from './FinishingMaterialBlock';
+import Meta from "../../HeadComponent";
 
 @inject(({RootStore: {ProductStore}}) => {
     return {
@@ -120,56 +120,56 @@ class Product extends React.Component {
         );
     }
 
+    get breadcumbs() {
+        const {values, hierarchy} = this.props;
+
+        return {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+                [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item":
+                            {
+                                "@id": "https://master-pola.com/catalog",
+                                "name": "Каталог"
+                            }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item":
+                            {
+                                "@id": `https://master-pola.com/catalog/${hierarchy[hierarchy.length - 1]?.alias}`,
+                                "name": hierarchy[hierarchy.length - 1]?.name
+                            }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item":
+                            {
+                                "@id": `https://master-pola.com/product/${this.props.alias}`,
+                                "name": `${values.brand} ${values.name}`
+                            }
+                    }
+                ]
+        }
+    }
+
     render() {
         const {values, hierarchy, fields} = this.props;
 
         return (
             <>
-                <Head>
-                    <title>    {values.name} | Мастер Пола</title>
-                    <meta name='description'
-                          content={`Купить ${values.category} ${values.brand} коллекция ${values.collection}, ${values.name}`}/>
-                    <script type="application/ld+json"
-                            dangerouslySetInnerHTML={{
-                                __html: JSON.stringify(
-                                    {
-                                        "@context": "http://schema.org",
-                                        "@type": "BreadcrumbList",
-                                        "itemListElement":
-                                            [
-                                                {
-                                                    "@type": "ListItem",
-                                                    "position": 1,
-                                                    "item":
-                                                        {
-                                                            "@id": "https://master-pola.com/catalog",
-                                                            "name": "Каталог"
-                                                        }
-                                                },
-                                                {
-                                                    "@type": "ListItem",
-                                                    "position": 2,
-                                                    "item":
-                                                        {
-                                                            "@id": `https://master-pola.com/catalog/${hierarchy[hierarchy.length - 1]?.alias}`,
-                                                            "name": hierarchy[hierarchy.length - 1]?.name
-                                                        }
-                                                },
-                                                {
-                                                    "@type": "ListItem",
-                                                    "position": 2,
-                                                    "item":
-                                                        {
-                                                            "@id": `https://master-pola.com/product/${this.props.alias}`,
-                                                            "name": `${values.brand} ${values.name}`
-                                                        }
-                                                }
-                                            ]
-                                    }
-                                )
-                            }}
-                    ></script>
-                </Head>
+                <Meta
+                    desc={`Купить ${values.category} ${values.brand} коллекция ${values.collection}, ${values.name}`}
+                    title={`${values.category}  ${values.name} | ${values.collection}`}
+                    breadcumbs={this.breadcumbs}
+                />
+
                 <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
                 <div className={s.content}>
                     <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>

@@ -88,6 +88,13 @@ class Work extends React.Component {
 
         return (
             <React.Fragment>
+                <title>
+                    {work.name}
+                </title>
+                <meta
+                    name='description'
+                    content={work.description}
+                />
                 <div className={s.content}>
                     <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
 

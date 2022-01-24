@@ -61,7 +61,7 @@ const CarouselView = ({imgs, width, className}) => {
     }, []);
 
     return (
-        <div ref={carouselBlockRef} className={s.container}>
+        <div ref={carouselBlockRef}>
             <Carousel
                 prevIcon={
                     <IconButton size={'large'} className={s.upButton}>

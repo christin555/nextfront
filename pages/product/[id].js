@@ -1,4 +1,4 @@
-import ProductView from '../../components/pages/product/ProductView'
+import ProductView from '../../components/pages/product'
 import {inject, observer} from "mobx-react";
 import {Component} from "react";
 

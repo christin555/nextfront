@@ -1,12 +1,11 @@
-import {observable, get, action, autorun, computed, makeObservable, reaction, toJS} from 'mobx';
+import {observable, action, autorun, computed, makeObservable, reaction, toJS} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import {alert} from '../Notifications';
 import Router from "next/router";
-import {isObjectEqual} from "../../utils/isObjectEqual";
 
 const isServer = typeof window === 'undefined';
-let countser = 0;
+
 
 class CatalogStore {
 
@@ -140,10 +139,23 @@ class CatalogStore {
         return toJS(this.ActiveFilterStore.currentParams) || {};
     }
 
+    checkPageStore = () => {
+        const {offset, limit} = this.PageStore;
+
+        if (limit > 36) {
+            this.PageStore.setLimitWithoutSSR(36)
+        }
+
+        if (offset > this.count) {
+            this.PageStore.setPageWithoutSSR(1)
+        }
+    }
+
     getCatalog = async () => {
-        const {category, filter, fastfilter, isLastLevel} = this;
+        const {category, filter, fastfilter} = this;
         const {offset, limit, order, optionsOrder} = this.PageStore;
         this.setStatus(statusEnum.LOADING);
+        this.checkPageStore();
 
         try {
             const body = {
