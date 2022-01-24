@@ -13,10 +13,6 @@ export default function Meta(props) {
             <link rel="canonical" href={`${props.canonical}`}/>
         }
         {
-            props.js &&
-            <script type="text/javascript" src={`${props.js}`}></script>
-        }
-        {
             props.breadcumbs &&
             <script type="application/ld+json"
                     dangerouslySetInnerHTML={{
