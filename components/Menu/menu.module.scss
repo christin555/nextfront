@@ -198,7 +198,7 @@
 
 
   .isActive {
-    color: #ffffff;
+    border-bottom: 2px solid $secondary
   }
 
   &:not(.isHome) {
