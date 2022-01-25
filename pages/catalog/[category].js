@@ -23,7 +23,6 @@ class index extends Component {
             await MobxStore.RootStore.CatalogStore.getCountProducts()
         ])
 
-        console.log('headers', headers);
         return {headers, RootStoreUp: MobxStore.RootStore};
     }
 

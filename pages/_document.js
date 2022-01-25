@@ -25,11 +25,6 @@ export default class MyDocument extends Document {
                     <link
                         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&family=Oswald:wght@200;300&family=Roboto:wght@100;300;400;500&display=swap"
                         rel="stylesheet"/>
-                    <meta
-                        name="description"
-                        content="Напольные покрытия и двери | Тюмень"
-                    />
-
 
                   {/*  <!-- Yandex.Metrika counter --> */}
                     <script type="text/javascript" dangerouslySetInnerHTML={{
@@ -53,8 +48,6 @@ export default class MyDocument extends Document {
                         </div>
                     </noscript>
                    {/*  <!-- /Yandex.Metrika counter --> */}
-
-
                     {/*   <!-- Yandex.Metrika counter --> */}
                     <script type="text/javascript" dangerouslySetInnerHTML={{
                         __html: ` (function (m,e,t,r,i,k,a) {

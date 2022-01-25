@@ -3,8 +3,7 @@ import s from './Catalog.module.scss';
 import {inject, observer} from 'mobx-react';
 import Title from '../../Title';
 import Content from './Content'
-import Head from "next/head";
-import {autorun, toJS} from "mobx";
+import {toJS} from "mobx";
 import Meta from "../../HeadComponent";
 
 
@@ -58,7 +57,7 @@ class Catalog extends React.Component {
     }
 
     render() {
-        const {headers} = this.props;
+        const {headers = {}} = this.props;
         const desc = headers.desc;
         const title = headers.title;
         const canonical = headers.asPath;

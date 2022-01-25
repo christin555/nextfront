@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
@@ -54,9 +53,6 @@ class CustomApp extends App {
                 />
                 <CacheProvider value={emotionCache}>
                     <ReactNotification />
-                    <Head>
-                        <title>Мастер Пола</title>
-                    </Head>
                     <meta name="viewport" content="initial-scale=1, width=device-width"/>
                     <ThemeProvider theme={theme}>
                         <CssBaseline/>
