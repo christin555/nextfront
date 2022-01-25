@@ -58,17 +58,18 @@ class Catalog extends React.Component {
     }
 
     render() {
-        const {alias} = this.props;
-        const url = alias && `/${alias}` || '';
-        const desc = `Купить ${alias ? alias : 'напольные покрытия и двери'} в Тюмени. Только проверенные и качественные бренды по лучшей цене`;
+        const {headers} = this.props;
+        const desc = headers.desc;
+        const title = headers.title;
+        const canonical = headers.asPath;
 
         return (
             <>
                 <Meta
                     desc={desc}
-                    title={`${this.headerTitle} | Мастер Пола`}
+                    title={title}
                     breadcumbs={this.breadcumbs}
-                    canonical={url}
+                    canonical={canonical}
                 />
 
                 <div className={s.header}>

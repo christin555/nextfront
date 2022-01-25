@@ -46,7 +46,6 @@ const Price = (props) => {
                 value={minPrice}
                 onChange={({target: {value}}) => _onChange(value, 'minPrice')}
                 id="outlined-basic" variant="outlined" placeholder={'1 000'}
-                focus
             />
             <div className={s.rangeSeparator}/>
             <TextField

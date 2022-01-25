@@ -20,6 +20,10 @@ export default function Meta(props) {
                     }}>
             </script>
         }
+       {
+           props.keywords &&
+           <meta name="Keywords" content={props.keywords} />
+       }
     </Head>
 }
 

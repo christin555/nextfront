@@ -186,7 +186,6 @@ class CatalogStore {
         //this.getHierarchyDisposer();
         //this.getCatalogDisposer();
         //this.getCountProductsDisposer();
-
     }
 }
 

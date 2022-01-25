@@ -9,11 +9,11 @@ const Header = () => (
     <div className={s.overlay}>
       <div className={s.txtblocks}>
         <h2 className={s.name}>
-            РЕАЛИЗУЙТЕ МЕЧТЫ ВМЕСТЕ С НАМИ
+            Реализуйте мечты вместе с нами
         </h2>
-        <h2 className={s.slogan}>
-            САЛОН НАПОЛЬНЫХ ПОКРЫТИЙ И ДВЕРЕЙ
-        </h2>
+        <h1 className={s.slogan}>
+            Салон напольных покрытий и дверей
+        </h1>
         <div className={s.subs}>
           <a
             target={'_blank'}
@@ -36,7 +36,6 @@ const Header = () => (
       </div>
     </div>
   </div>
-
 );
 
 export default Header;

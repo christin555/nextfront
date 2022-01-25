@@ -1,7 +1,5 @@
 import Home from './home';
 import MobileDetect from "mobile-detect";
-import {CatalogStore} from "../src/stores/CatalogStore";
-import PopularStore from "../src/stores/PopularStore";
 import {inject, observer} from "mobx-react";
 import {Component} from "react";
 
@@ -16,6 +14,8 @@ class index extends Component {
     }
 
     static async getInitialProps({MobxStore, req}) {
+
+
         await MobxStore.RootStore.PopularStore.getPopularProducts();
         await MobxStore.RootStore.HomeStore.getWorks();
         await MobxStore.RootStore.HomeStore.getServices();
@@ -41,7 +41,7 @@ class index extends Component {
 
         MobxStore.RootStore.PopularStore.setDevice(deviceType)
 
-        return {MobxStore, RootStoreUp: MobxStore.RootStore};
+        return {RootStoreUp: MobxStore.RootStore};
     }
 
     render(){
@@ -49,11 +49,6 @@ class index extends Component {
     }
 
 }
-// const index = ({RootStore}) => {
-//     console.log('index,', RootStore);
-//     return <Home/>
-// }
-
 
 
 export default index;

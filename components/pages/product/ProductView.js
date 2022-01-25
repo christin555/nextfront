@@ -58,10 +58,11 @@ class Product extends React.Component {
 
         fields.filter(({type}) => type === 'isChip').forEach(({title, name, icon}) => {
             const Icon = Icons[icon];
+            const val = `${title} - ${values[name]}`;
 
             if (values[name]) {
                 rows.push(
-                    <Chip label={`${title} - ${values[name]}`} icon={Icon && <Icon className={s.iconChip}/> || null}/>
+                    <Chip key= {val} label={val} icon={Icon && <Icon className={s.iconChip}/> || null}/>
                 );
             }
         });
