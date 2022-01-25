@@ -13,15 +13,17 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ViberIcon from "../../components/Icons/ViberIcon";
+import Meta from "../../components/HeadComponent";
 
 class Delivery extends React.Component {
 
     render() {
         return (
             <React.Fragment>
-                <Head>
-                    <title> Контакты | Мастер Пола</title>
-                </Head>
+                <Meta
+                    desc={'Салон напольных покрытий и дверей Мастер Пола находится в Тюмени в ЖК Ново-Патрушева. График работы с 10:00 до 19:00 без выходных и перерывов'}
+                    title={'Контакты салона -  Мастер Пола'}
+                />
                 <div className={s.header}>
                     {'КОНТАКТЫ'}
                     <div className={s.line}/>

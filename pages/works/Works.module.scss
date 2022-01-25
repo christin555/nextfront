@@ -35,8 +35,10 @@
     @include paddingStandard;
 
 
-    h2 {
+    h1 {
       margin-bottom: 20px;
+      line-height: 1.4em;
+      font-size: 1.4em;
 
       &::after {
         content: "";

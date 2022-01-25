@@ -5,6 +5,7 @@ import s from './Articles.module.scss';
 import Cards from "../../NewsCards/Cards";
 import Head from "next/head";
 import Hierarchy from "../../HierarchyNew";
+import Meta from "../../HeadComponent";
 
 
 @inject(({RootStore: {ArticlesStore}}) => {
@@ -13,36 +14,35 @@ import Hierarchy from "../../HierarchyNew";
     };
 })
 class ArticlesView extends React.Component {
+    get breadcumbs(){
+        return {
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+                [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item":
+                            {
+                                "@id": "https://master-pola.com/blog",
+                                "name": "Блог"
+                            }
+                    }
+                ]
+        }
+    }
     render() {
         const {articles} = this.props;
 
         return (
             <React.Fragment>
-                <Head>
-                    <title>   Наш блог | Мастер Пола</title>
-                    <script type="application/ld+json"
-                            dangerouslySetInnerHTML={{
-                                __html: JSON.stringify(
-                                    {
-                                        "@context": "http://schema.org",
-                                        "@type": "BreadcrumbList",
-                                        "itemListElement":
-                                            [
-                                                {
-                                                    "@type": "ListItem",
-                                                    "position": 1,
-                                                    "item":
-                                                        {
-                                                            "@id": "https://master-pola.com/blog",
-                                                            "name": "Блог"
-                                                        }
-                                                }
-                                            ]
-                                    }
-                                )
-                            }}
-                    ></script>
-                </Head>
+                    <Meta
+                        desc={'Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады поделиться своими знаниями! Рассказываем как укладывать и выбрать напольное покрытие'}
+                        title={'Наш блог - советы, новости и полезные статьти - Мастер Пола'}
+                        breadcumbs={this.breadcumbs}
+                    />
+
                 <div className={s.header}>
                     {'БЛОГ'}
                     <div className={s.line}/>

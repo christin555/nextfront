@@ -58,12 +58,12 @@ class CardView extends React.Component {
                     </CardActionArea>
                 </Card>
                 <div className={s.content}>
-                    <span>{name}</span>
+                    <p>{name}</p>
                     {
                         price && (
-                            <span className={s.price}>
+                            <p className={s.price}>
                                             {formatPrice(price)}
-                                        </span>
+                                        </p>
                         ) || null
                     }
                 </div>

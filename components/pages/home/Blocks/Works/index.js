@@ -18,7 +18,7 @@ class Works extends Component {
 
         const Cards = works.map((item, index) => (
             <div key={index} className={s.cardContainer}>
-                <Card {...item} size={index === 0 ? 'medium' : 'small'}/>
+                <Card {...item}/>
             </div>
         ));
 
@@ -26,8 +26,7 @@ class Works extends Component {
         return (
             <div className={s.container}>
                 <div className={s.header}>
-                    <h2>Наши работы </h2>
-
+                    <h3>Наши работы </h3>
                     <Link href={{
                         pathname: '/works',
                     }}

@@ -9,27 +9,27 @@ import React from "react";
 const items = [
   {
     name: 'Двери',
-    img: 'https://master-pola.com/dashboard/uploads/dverisruchkami_0b7530e248.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/photo_2022_01_25_21_01_38_f1a32e838d.jpg',
     alias: 'doors'
   },
   {
     name: 'Ламинат',
-    img: '/laminate.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/laminat_solid_chic_alsafloor_foto_v_interere_6_aa60f3c35c.jpg',
     alias: 'laminate'
   },
   {
     name: 'Кварцвинил',
-    img: '/quartzvinyl.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/ba72e6_b3a05b7df61e406cba189eea66a94a9f_mv2_aef523142e.jpg',
     alias: 'quartzvinyl'
   },
   {
     name: 'Спортивное покрытие',
-    img: 'https://master-pola.com/dashboard/uploads/IN_TEE_OMNISPORTS_V65_9eb7111f73.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/072420_1_ca4222c651.jpeg',
     alias: 'sport'
   },
   {
     name: 'Керамогранит',
-    img: 'https://master-pola.com/dashboard/uploads/fee1b628a0f559ee6029cd6c9e297338_dadb476b9b.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/330db195af6f0c5679e31849367988f1_9ea988a2da.jpg',
     alias: 'keramogranit'
   },
   {
@@ -39,7 +39,7 @@ const items = [
   },
   {
     name: 'Пробковое покрытие',
-    img: 'https://master-pola.com/static/images/2/f1162e0f35b7e9a0748b6df16a773c71.jpg',
+    img: 'https://master-pola.com/dashboard/uploads/52ec984cc72302fd412e2aa145a6526c_XL_3564cf1886.jpg',
     alias: 'probkovoe_pokrytie'
   },
   {

@@ -61,28 +61,24 @@
 
 .content {
   flex-grow: 1;
-  padding: 10px 2px;
+  padding: 5px 2px;
   justify-content: space-between;
   place-self: flex-start;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.56);
   min-height: 30px;
-  font-weight: 300;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.5px;
 
   .price {
+    font-size: 16px;
     display: flex;
-    margin-top: 10px;
-    font-size: 18px;
-    color: $gray-500;
     justify-content: space-between;
 
     .unit {
       padding: 5px;
-      font-size: 14px;
       font-weight: 200;
       color: #7f7f7f;
     }

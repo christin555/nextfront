@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import classNames from 'classnames';
 
 const Title = ({title, className}) => (
-  <h2 className={classNames(s.title, className)}>{title}</h2>
+  <h3 className={classNames(s.title, className)}>{title}</h3>
 );
 
 export default Title;

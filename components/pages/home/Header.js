@@ -8,12 +8,14 @@ const Header = () => (
     <div className={s.shadow} />
     <div className={s.overlay}>
       <div className={s.txtblocks}>
-        <h2 className={s.name}>
-            Реализуйте мечты вместе с нами
-        </h2>
-        <h1 className={s.slogan}>
-            Салон напольных покрытий и дверей
-        </h1>
+        <div>
+            <h1 className={s.name}>
+                Хочешь сделать что-то хорошо – сделай сам.<br/>Хочешь идеальные полы – обратись к Мастер Пола!
+            </h1>
+            <h2 className={s.slogan}>
+                Салон напольных покрытий и дверей
+            </h2>
+        </div>
         <div className={s.subs}>
           <a
             target={'_blank'}

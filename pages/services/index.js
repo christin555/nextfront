@@ -7,6 +7,7 @@ import Card from "../../components/ServiceCard";
 import {inject, observer} from "mobx-react";
 import Hierarchy from "../../components/HierarchyNew";
 import Head from "next/head";
+import Meta from "../../components/HeadComponent";
 
 
 @inject(({RootStore: {ServicesStore}}) => {
@@ -37,11 +38,10 @@ class Works extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Head>
-                    <title>    Услуги | Мастер Пола </title>
-                    <meta name='description'
-                          content={`Команда, которой можно доверить ремонт. Предоставляем услги монтажа и ремонта под ключ. Более 10 лет опыта`}/>
-                </Head>
+                <Meta
+                    desc={'Проффесионально предоставляем услуги монтажа напольных покрытий и дверей. Наши специалисты имеют многолетний опыт. На все выполненные работы предоставлется гарантия'}
+                    title={'Услуги монтажа и ремонта под ключ в Тюмени - Мастер Пола'}
+                />
                 {/*<div className={s.header}>*/}
                 {/*    {'Услуги'}*/}
                 {/*    <div className={s.line}/>*/}
@@ -50,9 +50,9 @@ class Works extends React.Component {
                 <div className={s.content}>
                     <div className={s.preview}>
                         <div className={s.text}>
-                            <h2>
+                            <h1>
                                 Команда, которой можно доверить ремонт
-                            </h2>
+                            </h1>
                             <p>
                                 Неважно, хотите ли вы отремонтировать ваш дом,
                                 построить новый с нуля или вам нужны только небольшие косметические работы, - мы сможем

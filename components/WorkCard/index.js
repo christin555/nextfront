@@ -1,12 +1,11 @@
 import * as React from 'react';
 import s from '../pages/home/Blocks/Works/Style.module.scss';
-import classNames from "classnames";
 import {Typography} from "@mui/material";
 import formatPrice from "../../src/utils/formatPrice";
 import Link from 'next/link';
 
 
-export default function MultiActionAreaCard({onClick, size, id, name, img, amount, price}) {
+export default function MultiActionAreaCard({onClick, id, name, img, amount, price}) {
 
 
     return (
@@ -16,22 +15,25 @@ export default function MultiActionAreaCard({onClick, size, id, name, img, amoun
         }}
               passHref
               shallow={true}>
-            <a className={s.card} onClick={() => onClick && onClick(id)}>
-                <div className={classNames(s.workName, s[size])}>
-                    {name}
-                    <Typography variant={'body2'} className={s.amount} >
-                     {amount}
-                    </Typography>
-                    {
-                        price ? <Typography variant={'body2'}>
-                                {formatPrice(price, true, false)}
-                        </Typography> :
-                            <span/>
-                    }
+            <div className={s.card} onClick={() => onClick && onClick(id)}>
+                <div className={s.mediaBlock}>  <img src={img}/> </div>
+                <div className={s.workName}>
+                 <div>
+                     {name}
+                     <Typography variant={'body2'} className={s.amount} >
+                         {amount}
+                     </Typography>
+                     {
+                         price ? <Typography variant={'body2'}>
+                                 {formatPrice(price, true, false)}
+                             </Typography> :
+                             <span/>
+                     }
+                 </div>
+                    <a className={s.button} onClick={() => onClick && onClick(id)}> Подробнее </a>
                 </div>
-                <div className={s.backCard}></div>
-                <img src={img}/>
-            </a>
+
+            </div>
         </Link>
     );
 }

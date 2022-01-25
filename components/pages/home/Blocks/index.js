@@ -15,10 +15,12 @@ const Blocks = () => (
         <Catalog/>
         <Popular/>
         <Works/>
-        <Services/>
-        <Blog/>
         <Contact/>
-        <About/>
+         <Blog/>
+         <About/>
+        <Services/>
+
+
     </div>
 );
 

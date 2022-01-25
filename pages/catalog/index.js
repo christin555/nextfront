@@ -1,27 +1,28 @@
 import CatalogView from '../../components/pages/catalog/CatalogView'
 import {inject, observer} from "mobx-react";
 import {Component} from "react";
+import api from "../../src/api";
 
 @inject('RootStore')
 @observer
 class index extends Component {
     static async getInitialProps({MobxStore, query, pathname, asPath}) {
-        console.log(query, pathname, asPath)
-
         MobxStore.RootStore.setCategory(query?.category);
 
-        await MobxStore.RootStore.CatalogStore.getHierarchy();
-        await MobxStore.RootStore.CatalogStore.getCatalog()
+        const [headers] = await Promise.all([
+            await api.post('/seo/getHeaders', {query, pathname, asPath}),
+            await MobxStore.RootStore.CatalogStore.getHierarchy(),
+        ])
 
-        return {RootStoreUp: MobxStore.RootStore};
+        return {headers, RootStoreUp: MobxStore.RootStore};
     }
 
     render() {
-        const {RootStore, RootStoreUp} = this.props;
+        const {RootStore, RootStoreUp, headers} = this.props;
 
         RootStore.mergeStores(RootStoreUp);
 
-        return <CatalogView/>
+        return <CatalogView headers={headers}/>
     }
 
 }

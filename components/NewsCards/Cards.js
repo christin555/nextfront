@@ -40,7 +40,7 @@ class ArticlesView extends React.Component {
                     key={id}
                 >
                     <a className={s.card} onClick={() => this.routeChange(alias)}>
-                        <Card className={s.root} sx={{maxWidth: maxW}} key={id}>
+                        <Card sx={{maxWidth: maxW}} key={id}>
                             <CardMedia
                                 alt={title}
                                 className={classNames(s.media, mediaClass)}

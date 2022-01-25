@@ -10,15 +10,17 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import Hierarchy from '../../components/HierarchyNew';
 import ArticlesBlock from '../../components/ArticlesBlock'
 import classNames from "classnames";
+import Meta from "../../components/HeadComponent";
 
 class Delivery extends React.Component {
 
     render() {
         return (
             <React.Fragment>
-                <Head>
-                    <title> ОПЛАТА И ДОСТАВКА | Мастер Пола</title>
-                </Head>
+                <Meta
+                    desc={'Купить напольные покрытий в Тюмени в салоне Мастер Пола можно без QR кода. Заказ оформляется по 100% предоплате. Доставка по городу и России'}
+                    title={'Оплата и доставка -  Мастер Пола'}
+                />
                 <div className={s.header}>
                     {'ОПЛАТА И ДОСТАВКА'}
                     <div className={s.line}/>

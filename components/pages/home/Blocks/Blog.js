@@ -16,11 +16,6 @@ const mock = [
         type: 'youtube'
     },
     {
-        title: 'Фрески AFFRESCO',
-        src: 'wHxlaxkd8cU',
-        type: 'youtube'
-    },
-    {
         title: 'Ищите интересное и практичное решение для ремонта квартиры?',
         src: 'A8YKSOwEFFE',
         type: 'youtube'
@@ -58,9 +53,7 @@ class Blog extends Component {
                         <Title title={'Помогаем выбрать лучшее'}/>
                         <p>
                             Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады
-                            поделиться
-                            своими
-                            знаниями!
+                            поделиться своими знаниями!
                         </p>
                         <NextLink href={`/catalog`} passHref>
                             <Button

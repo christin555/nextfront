@@ -4,6 +4,7 @@ import Callme from '../../components/Callme';
 import Card from "../../components/WorkCard";
 import {inject, observer} from "mobx-react";
 import Hierarchy from "../../components/HierarchyNew";
+import Meta from "../../components/HeadComponent";
 
 
 @inject(({RootStore: {WorksStore}}) => {
@@ -31,6 +32,10 @@ class Works extends React.Component {
 
         return (
             <React.Fragment>
+                <Meta
+                    desc={'Наши клиенты доверяют нам свой ремонт. Наши специалисты имеют многолетний опыт. На все выполненные работы предоставлется гарантия'}
+                    title={'Выполненные работы Мастер Пола'}
+                />
                 <Hierarchy hierarchy={hierarchy}/>
                 {/*<div className={s.header}>*/}
                 {/*    {'Услуги'}*/}
@@ -39,9 +44,9 @@ class Works extends React.Component {
                 <div className={s.content}>
                     <div className={s.preview}>
                         <div className={s.text}>
-                            <h2>
+                            <h1>
                                 Команда, которой можно доверить ремонт
-                            </h2>
+                            </h1>
                             <p>
                                 Неважно, хотите ли вы отремонтировать ваш дом,
                                 построить новый с нуля или вам нужны только небольшие косметические работы, - мы сможем
