@@ -9,6 +9,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import CardService from "../../components/ServiceCard";
 import CardProduct from "../../components/Cards/Card";
 import {Box} from "@mui/material";
+import Meta from "../../components/HeadComponent";
 
 
 @inject(({RootStore: {WorksStore}, RootStore}) => {
@@ -88,12 +89,9 @@ class Work extends React.Component {
 
         return (
             <React.Fragment>
-                <title>
-                    {work.name}
-                </title>
-                <meta
-                    name='description'
-                    content={work.description}
+                <Meta
+                    desc={work.description}
+                    title={work.name}
                 />
                 <div className={s.content}>
                     <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
