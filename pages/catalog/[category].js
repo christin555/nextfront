@@ -1,4 +1,4 @@
-import CatalogView from '../../components/pages/catalog/CatalogView'
+import CatalogView from '../../components/pages/catalog'
 import {inject, observer} from "mobx-react";
 import {Component} from "react";
 import api from "../../src/api";

@@ -177,8 +177,6 @@ class CatalogStore {
             this.setStatus(statusEnum.SUCCESS);
         } catch (err) {
             this.setStatus(statusEnum.ERROR);
-            console.log(err);
-            alert({type: 'error', title: 'Ошибка при получении товаров'});
         }
     };
 

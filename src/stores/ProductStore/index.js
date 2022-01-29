@@ -85,7 +85,6 @@ class ProductStore {
 
             this.setStatus(statusEnum.SUCCESS)
         } catch (_) {
-            console.log('error')
             this.setStatus(statusEnum.ERROR)
         }
     }

@@ -162,12 +162,13 @@ class Product extends React.Component {
 
     render() {
         const {values, hierarchy, fields} = this.props;
+        const price = values.price ? ` - ${formatPrice(values.price)} ` : '';
 
         return (
             <>
                 <Meta
-                    desc={`Купить ${values.category} ${values.brand} коллекция ${values.collection}, ${values.name}`}
-                    title={`${values.category}  ${values.name} | ${values.collection}`}
+                    desc={`Купить ${values.category} ${values.brand} коллекция ${values.collection}, ${values.name} в Тюмени. Наши цены вам понравятся! `}
+                    title={`${values.category} ${values.name} от ${values.brand} ${price} - Мастер Пола`}
                     breadcumbs={this.breadcumbs}
                 />
 
