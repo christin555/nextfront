@@ -12,16 +12,16 @@ import PageNotFound from "../../InformBlocks/PageNotFound";
 }) @observer
 class Product extends React.Component {
     render() {
-        const {status} = this.props;
+        const {status, headers} = this.props;
 
         if (status === statusEnum.LOADING) {
             return <Loader/>
         }
         if (status === statusEnum.SUCCESS) {
-            return <CatalogView/>
+            return <CatalogView headers={headers}/>
         }
         if (status === statusEnum.ERROR) {
-            return <PageNotFound />
+            return <PageNotFound/>
         }
         return null;
     }
