@@ -11,7 +11,7 @@ import Order from "./Order";
 import Limit from "./Limit";
 import {status as statusEnum} from "../../../../src/enums";
 import {NoResults} from "../../../InformBlocks";
-
+import Skeleton from '@mui/material/Skeleton';
 const plural = require('plural-ru');
 
 @inject(({RootStore: {CatalogStore, PageStore}}) => {
@@ -24,15 +24,21 @@ const plural = require('plural-ru');
         setLimit: PageStore.setLimit,
         page: PageStore.page,
         limit: PageStore.limit,
-        isLastLevel: CatalogStore.isLastLevel
+        isLastLevel: CatalogStore.isLastLevel,
+        status: CatalogStore.status
     };
 }) @observer
 class Content extends React.Component {
     get label() {
         const {
             count,
-            fastfilter
+            fastfilter,
+            status
         } = this.props;
+
+        if (status === statusEnum.LOADING) {
+            return   <Skeleton width={210} variant="text" />
+        }
 
         const pluralLabel = plural(
             count,
@@ -67,7 +73,7 @@ class Content extends React.Component {
         const {status, productsAvailable, fastfilter} = this.props;
 
         if (!productsAvailable && status !== statusEnum.LOADING) {
-            return <NoResults label={fastfilter} />;
+            return <NoResults label={fastfilter}/>;
         }
 
         return <div/>;
@@ -89,7 +95,7 @@ class Content extends React.Component {
     }
 
     render() {
-        const {products, isLastLevel, fastfilter, productsAvailable} = this.props;
+        const {products, isLastLevel, fastfilter} = this.props;
 
         if (!isLastLevel && !fastfilter) {
             return <div/>;

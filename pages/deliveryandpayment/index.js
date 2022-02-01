@@ -11,6 +11,7 @@ import Hierarchy from '../../components/HierarchyNew';
 import ArticlesBlock from '../../components/ArticlesBlock'
 import classNames from "classnames";
 import Meta from "../../components/HeadComponent";
+import Title from "../../components/Title";
 
 class Delivery extends React.Component {
 
@@ -21,10 +22,7 @@ class Delivery extends React.Component {
                     desc={'Купить напольные покрытий в Тюмени в салоне Мастер Пола можно без QR кода. Заказ оформляется по 100% предоплате. Доставка по городу и России'}
                     title={'Оплата и доставка -  Мастер Пола'}
                 />
-                <div className={s.header}>
-                    {'ОПЛАТА И ДОСТАВКА'}
-                    <div className={s.line}/>
-                </div>
+                <Title title={'Доставка и оплата'}/>
                 <Hierarchy hierarchy={[{pathname: '/deliveryandpayment', name: 'Оплата и доставка'}]}/>
                 <div className={s.content}>
                     <Box margin={'10px 0 20px'} className={s.padding}>

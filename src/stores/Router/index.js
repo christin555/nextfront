@@ -39,19 +39,16 @@ class RouterStore {
     }
 
     @action search = async () => {
-        if (!this.searchValue) {
-            return
-        }
+        this.fastfilter = this.searchValue.trim();
         this.push({
                 pathname: '/catalog',
                 query: {
-                    fastfilter: this.searchValue.trim()
+                    fastfilter: this.fastfilter
                 }
             },
-            undefined,
+            '/catalog',
             {shallow: true}
         );
-        this.fastfilter = this.searchValue;
     }
 }
 

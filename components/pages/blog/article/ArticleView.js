@@ -11,6 +11,7 @@ import Button from '../../../Button';
 import dayjs from 'dayjs';
 import Head from "next/head";
 import Hierarchy from "../../../HierarchyNew";
+import Title from "../../../Title";
 
 require('dayjs/locale/ru');
 
@@ -96,10 +97,7 @@ class ArticlesView extends React.Component {
                             }}
                     ></script>
                 </Head>
-                <div className={s.header}>
-                    БЛОГ
-                    <div className={s.line}/>
-                </div>
+                <Title title={'Наш блог'}/>
                 <Hierarchy hierarchy={[{pathname: '/blog', name: 'Блог'}, {pathname: `/blog/article/${alias}`, name: title}]}/>
                 <div className={s.content}>
                     <div className={s.sidebar}>

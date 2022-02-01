@@ -10,14 +10,3 @@
     background: #c41414;
   }
 }
-
-.header {
-  //background: rgb(246, 246, 246);
-  display: flex;
-  flex-direction: column;
-  font-weight: 400;
-  padding: 15px 0;
-  margin-bottom: 10px;
-
-  @include paddingStandard;
-}

@@ -6,6 +6,7 @@ import Cards from "../../NewsCards/Cards";
 import Head from "next/head";
 import Hierarchy from "../../HierarchyNew";
 import Meta from "../../HeadComponent";
+import Title from "../../Title";
 
 
 @inject(({RootStore: {ArticlesStore}}) => {
@@ -42,11 +43,7 @@ class ArticlesView extends React.Component {
                         title={'Наш блог - советы, новости и полезные статьти - Мастер Пола'}
                         breadcumbs={this.breadcumbs}
                     />
-
-                <div className={s.header}>
-                    {'БЛОГ'}
-                    <div className={s.line}/>
-                </div>
+                <Title title={'Наш блог'}/>
                 <Hierarchy hierarchy={[{pathname: '/blog', name: 'Блог'}]}/>
                 <div className={s.cards}>
                         <Cards articles={articles}/>

@@ -5,7 +5,7 @@ import {Component} from "react";
 @inject('RootStore')
 @observer
 class index extends Component {
-    static async getInitialProps({RootStore, query}) {
+    static async getInitialProps({MobxStore: {RootStore}, query}) {
 
         RootStore.ProductStore.setAlias(query.id)
         await RootStore.ProductStore.getProduct();

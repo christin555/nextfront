@@ -1,8 +1,8 @@
 import {observable, action, autorun, computed, makeObservable, reaction, toJS} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from 'api';
-import {alert} from '../Notifications';
 import Router from "next/router";
+import {isObjectEqual} from "../../utils/isObjectEqual";
 
 const isServer = typeof window === 'undefined';
 
@@ -16,31 +16,35 @@ class CatalogStore {
     @observable category;
 
     @observable hierarchy;
+    @observable fastFilter;
     @observable isLastLevel;
     @observable count = 0;
+    @observable isHydrating;
 
     @observable ActiveFilterStore;
 
-    @observable body = {};
+    body = {};
 
     constructor(RootStore) {
         this.hydrate(RootStore);
         makeObservable(this);
 
         if (!isServer) {
+            this.getCountProductsDisposer = autorun(this.getCountProducts);
             this.getHierarchyDisposer = autorun(this.getHierarchy);
             this.getCatalogDisposer = autorun(this.getCatalog);
-            this.getCountProductsDisposer = autorun(this.getCountProducts);
         }
     }
 
     async hydrate(RootStore) {
+        this.isHydrating = true;
         const {CatalogStore = {}} = RootStore.initialData || {};
 
         this.RouterStore = RootStore.RouterStore;
         this.PageStore = RootStore.PageStore;
         this.ActiveFilterStore = RootStore.ActiveFilterStore;
         this.category = RootStore.category;
+        this.fastfilter = RootStore.RouterStore.fastfilter;
 
         this.body = CatalogStore.body || {};
         this.categories = CatalogStore.categories;
@@ -48,15 +52,16 @@ class CatalogStore {
         this.hierarchy = CatalogStore.hierarchy || [];
         this.isLastLevel = CatalogStore.isLastLevel;
         this.count = CatalogStore.count || 0;
+        this.isHydrating = false;
     }
 
     // @computed get category() {
     //     return this.RouterStore.query.category || null;
     // }
 
-    @computed get fastfilter() {
-        return this.RouterStore.fastfilter || null;
-    }
+    // @computed get fastfilter() {
+    //     return this.RouterStore.fastfilter || null;
+    // }
 
     @computed get router() {
         return Router.router;
@@ -67,15 +72,16 @@ class CatalogStore {
     }
 
 
-    @action merge = ({products, category, isLastLevel, count, categories, hierarchy, status}, {ActiveFilterStore}) => {
-        this.category = category;
-        this.products = products;
-        this.status = status;
-        this.count = count;
-        this.categories = categories;
-        this.hierarchy = hierarchy;
-        this.isLastLevel = isLastLevel;
+    @action merge = (newProps, {ActiveFilterStore}) => {
+        this.isHydrating = true;
+        (['category', 'fastfilter']).forEach((key) => {
+            if (newProps[key] !== this[key]) {
+                this[key] = newProps[key]
+            }
+        })
+        this.PageStore.setPageWithoutSSR(1);
         this.ActiveFilterStore = ActiveFilterStore;
+        this.isHydrating = false;
     };
 
     @action setBody = (body) => {
@@ -107,6 +113,10 @@ class CatalogStore {
     };
 
     getHierarchy = async () => {
+        if (this.isHydrating) {
+            return
+        }
+
         try {
             const body = {category: this.category};
             const {hierarchy, isLastLevel} = await api.post('catalog/getHierarchy', body);
@@ -119,9 +129,13 @@ class CatalogStore {
     };
 
     getCountProducts = async () => {
+        if (this.isHydrating) {
+            return
+        }
+
         const {category, filter, fastfilter, isLastLevel} = this;
 
-        if (!isLastLevel && !fastfilter) {
+        if (!category && !fastfilter) {
             return;
         }
 
@@ -129,6 +143,7 @@ class CatalogStore {
             const body = {searchParams: {category, filter: {...filter, fastfilter},}};
             const count = await api.post('catalog/countProducts ', body);
 
+            this.checkPageStore(count)
             this.setCount(count);
         } catch (_) {
             // do nothing
@@ -139,23 +154,29 @@ class CatalogStore {
         return toJS(this.ActiveFilterStore.currentParams) || {};
     }
 
-    checkPageStore = () => {
+    checkPageStore = (count) => {
         const {offset, limit} = this.PageStore;
 
         if (limit > 36) {
-            this.PageStore.setLimitWithoutSSR(36)
+            this.PageStore.setLimitWithoutSSR(36);
+            return true
         }
 
-        if (offset > this.count) {
+        if (offset > count) {
             this.PageStore.setPageWithoutSSR(1)
+            return true
         }
     }
 
     getCatalog = async () => {
+        if (this.isHydrating) {
+            return
+        }
+
+        this.setStatus(statusEnum.LOADING);
+
         const {category, filter, fastfilter} = this;
         const {offset, limit, order, optionsOrder} = this.PageStore;
-        this.setStatus(statusEnum.LOADING);
-        this.checkPageStore();
 
         try {
             const body = {
@@ -167,10 +188,6 @@ class CatalogStore {
                 offset,
                 order: optionsOrder.find(({value}) => value === Number(order))
             };
-            // if (isObjectEqual(toJS(this.body), body)) {
-            //     return
-            // }
-            //this.setBody(body)
             const {categories, products} = await api.post('catalog/getCatalog', body);
             this.setCategories(categories);
             this.setProducts(products);
@@ -181,9 +198,9 @@ class CatalogStore {
     };
 
     closeStore() {
-        //this.getHierarchyDisposer();
-        //this.getCatalogDisposer();
-        //this.getCountProductsDisposer();
+        this.getHierarchyDisposer();
+        this.getCatalogDisposer();
+        this.getCountProductsDisposer();
     }
 }
 

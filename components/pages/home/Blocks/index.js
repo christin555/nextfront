@@ -19,8 +19,6 @@ const Blocks = () => (
          <Blog/>
          <About/>
         <Services/>
-
-
     </div>
 );
 

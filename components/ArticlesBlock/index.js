@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import s from './style.module.scss';
-import Title from '../Title';
+import TitleBlock from '../TitleBlock';
 import NextLink from "next/link";
 import Cards from "../NewsCards/Cards";
 import {inject, observer} from "mobx-react";
-import {Typography} from "@mui/material";
-
 
 @inject(({RootStore: {BlocksStore}}) => {
     return {
@@ -22,9 +20,7 @@ class Blog extends Component {
             <div className={s.blog}>
                 <div>
                     <div className={s.title}>
-                        <Typography variant={'h6'}>
-                            {'Помогаем выбрать лучшее'}
-                        </Typography>
+                        <TitleBlock title={'Помогаем выбрать лучшее'}/>
                         <NextLink href={`/catalog`} passHref>
                             <a> Все статьи </a>
                         </NextLink>

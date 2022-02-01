@@ -10,6 +10,7 @@ import CardService from "../../components/ServiceCard";
 import CardProduct from "../../components/Cards/Card";
 import {Box} from "@mui/material";
 import Meta from "../../components/HeadComponent";
+import Title from "../../components/Title";
 
 
 @inject(({RootStore: {WorksStore}, RootStore}) => {
@@ -94,8 +95,8 @@ class Work extends React.Component {
                     title={work.name}
                 />
                 <div className={s.content}>
+                    <Title title={work.name}/>
                     <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
-
                     <div className={s.card}>
                         <div className={s.top}>
                             <div>

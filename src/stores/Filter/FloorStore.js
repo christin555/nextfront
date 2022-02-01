@@ -142,6 +142,12 @@ export class FloorStore extends BaseFilterStore {
             .filter((key) => key.indexOf('brandId') > -1 && this.checked[key])
             .map((key) => Number(key.split('-')[1]));
 
+        if (!brandIds.length) {
+            this.setToKey('disabled', 'collectionId', false);
+
+            return;
+        }
+
         this.collections.forEach((collection) => {
             const brId = collection.brandId;
 

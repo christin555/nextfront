@@ -183,12 +183,12 @@ class Product extends React.Component {
                             <span className={s.brand}>
                                   {values.category} {values.brand}
                             </span>
-                            <title className={s.name}>
+                            <div className={s.name}>
                                 {values.name}
                                 <span className={s.collection}>
                                     {values.collection && `Коллекция ${values.collection}`}
                                 </span>
-                            </title>
+                            </div>
                             <Divider/>
                             <description className={s.desc}> {values.description} </description>
                             {

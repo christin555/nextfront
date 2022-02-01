@@ -18,7 +18,7 @@ import Meta from "../../HeadComponent";
     };
 }) @observer
 class Catalog extends React.Component {
-    get breadcumbs(){
+    get breadcumbs() {
 
         return {
             "@context": "http://schema.org",
@@ -46,6 +46,7 @@ class Catalog extends React.Component {
                 ]
         }
     }
+
     get headerTitle() {
         const {hierarchy, fastfilter} = this.props;
 
@@ -70,10 +71,7 @@ class Catalog extends React.Component {
                     breadcumbs={this.breadcumbs}
                     canonical={canonical}
                 />
-
-                <div className={s.header}>
-                    <Title title={this.headerTitle}/>
-                </div>
+                <Title title={this.headerTitle}/>
                 <div className={s.content}>
                     <Content/>
                 </div>

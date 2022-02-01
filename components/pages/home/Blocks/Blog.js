@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import s from './Blocks.module.scss';
 import YouTube from 'react-youtube';
-import Title from '../../../Title';
+import TitleBlock from '../../../TitleBlock';
 import Button from '../../../Button';
 import Link from "next/link";
 import NextLink from "next/link";
@@ -50,7 +50,7 @@ class Blog extends Component {
             <div className={s.blog}>
                 <div className={s.mainBlog}>
                     <div className={s.desc}>
-                        <Title title={'Помогаем выбрать лучшее'}/>
+                        <TitleBlock title={'Помогаем выбрать лучшее'}/>
                         <p>
                             Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады
                             поделиться своими знаниями!

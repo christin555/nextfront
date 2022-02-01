@@ -8,6 +8,7 @@ import {inject, observer} from "mobx-react";
 import Hierarchy from "../../components/HierarchyNew";
 import Head from "next/head";
 import Meta from "../../components/HeadComponent";
+import Title from "../../components/Title";
 
 
 @inject(({RootStore: {ServicesStore}}) => {
@@ -42,10 +43,7 @@ class Works extends React.Component {
                     desc={'Проффесионально предоставляем услуги монтажа напольных покрытий и дверей. Наши специалисты имеют многолетний опыт. На все выполненные работы предоставлется гарантия'}
                     title={'Услуги монтажа и ремонта под ключ в Тюмени - Мастер Пола'}
                 />
-                {/*<div className={s.header}>*/}
-                {/*    {'Услуги'}*/}
-                {/*    <div className={s.line}/>*/}
-                {/*</div>*/}
+                <Title title={'Услуги'}/>
                 <Hierarchy hierarchy={[{pathname: '/services', name: 'Услуги'}]}/>
                 <div className={s.content}>
                     <div className={s.preview}>

@@ -130,7 +130,7 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
                                 rel='noopener noreferrer'
                                 title={'Посмотреть адрес в 2GIS'}
                                 className={styles.infoText}
-                                href={'https://2gistyles.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
+                                href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
                             >
                                 Тюмень, ул. Федюнинского 62 к1, 1 этаж
                                 (ЖК Ново-Патрушево)

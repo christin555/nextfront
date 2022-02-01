@@ -11,10 +11,7 @@ const names = {
 const FinishingMaterialBlock = (props) => {
 
     const {fields} = props;
-
     const finishingMaterial = fields.find(({name}) => name === 'finishingMaterial')?.values;
-
-    console.log(finishingMaterial)
 
     if (!finishingMaterial) {
         return null;
@@ -24,7 +21,7 @@ const FinishingMaterialBlock = (props) => {
 
     [finishing.MATERIAL, finishing.WINDOW, finishing.PHOTO].forEach((material) => {
         const materials = finishingMaterial[material];
-        console.log(finishingMaterial[material], material, materials?.length)
+
         if (materials?.length) {
             blocks.push(
                 <div className={s.materials}>
@@ -44,8 +41,6 @@ const FinishingMaterialBlock = (props) => {
             )
         }
     })
-
-    console.log(blocks, ';bloc')
 
     return blocks.length && blocks || null;
 }

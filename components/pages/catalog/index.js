@@ -4,6 +4,7 @@ import {status as statusEnum} from '../../../src/enums';
 import Loader from "../../Loader";
 import CatalogView from "./CatalogView";
 import PageNotFound from "../../InformBlocks/PageNotFound";
+import Box from "@mui/material/Box";
 
 @inject(({RootStore: {CatalogStore}}) => {
     return {
@@ -14,16 +15,14 @@ class Product extends React.Component {
     render() {
         const {status, headers} = this.props;
 
-        if (status === statusEnum.LOADING) {
-            return <Loader/>
-        }
-        if (status === statusEnum.SUCCESS) {
-            return <CatalogView headers={headers}/>
-        }
         if (status === statusEnum.ERROR) {
             return <PageNotFound/>
         }
-        return null;
+
+        return <>
+            {status === statusEnum.LOADING  && <Loader/> || <Box position={'absolute'}/>}
+            <CatalogView headers={headers}/>
+        </>;
     }
 }
 

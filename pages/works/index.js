@@ -5,6 +5,7 @@ import Card from "../../components/WorkCard";
 import {inject, observer} from "mobx-react";
 import Hierarchy from "../../components/HierarchyNew";
 import Meta from "../../components/HeadComponent";
+import Title from "../../components/Title";
 
 
 @inject(({RootStore: {WorksStore}}) => {
@@ -15,10 +16,6 @@ import Meta from "../../components/HeadComponent";
 })
 @observer
 class Works extends React.Component {
-
-    onClick = (id) => {
-        //this.props.setId(id);
-    }
 
     get cards() {
         const {works} = this.props;
@@ -36,11 +33,8 @@ class Works extends React.Component {
                     desc={'Наши клиенты доверяют нам свой ремонт. Наши специалисты имеют многолетний опыт. На все выполненные работы предоставлется гарантия'}
                     title={'Выполненные работы Мастер Пола'}
                 />
+                <Title title={'Наши работы'}/>
                 <Hierarchy hierarchy={hierarchy}/>
-                {/*<div className={s.header}>*/}
-                {/*    {'Услуги'}*/}
-                {/*    <div className={s.line}/>*/}
-                {/*</div>*/}
                 <div className={s.content}>
                     <div className={s.preview}>
                         <div className={s.text}>

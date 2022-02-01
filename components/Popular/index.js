@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Card from '../Cards/Card';
 import {inject, observer} from 'mobx-react';
 import s from './styles.module.scss';
-import Title from '../Title';
+import TitleBlock from '../TitleBlock';
 
 
 @inject(({RootStore: {PopularStore}}) => {
@@ -49,7 +49,7 @@ class CardsView extends Component {
 
         return (
             <div className={s.container}>
-                <Title title={'Выбор покупателей'} className={s.title}/>
+                <TitleBlock title={'Выбор покупателей'} className={s.title}/>
 
               <div className={s.cards}>
                   <Carousel

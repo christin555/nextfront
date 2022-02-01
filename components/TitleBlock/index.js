@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import {Typography} from "@mui/material";
 
 const Title = ({title, className}) => (
-    <div className={s.header}>
-        <Typography component={'h1'} variant={'h5'} className={classNames(s.title, className)}>{title}</Typography>
-    </div>
+        <Typography component={'h3'} variant={'h6'} className={classNames(s.title, className)}>
+            {title}
+        </Typography>
 );
 
 export default Title;

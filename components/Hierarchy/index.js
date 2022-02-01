@@ -8,27 +8,10 @@ import Router from "next/router";
 import NextLink from "next/link";
 import HomeIcon from "@mui/icons-material/Home";
 
-@inject(`RouterStore`)
+@inject(`RootStore`)
 @observer
 class Hierarchy extends React.Component {
-    routeChange = (alias) => {
-        const pathname = `/catalog/${alias}`;
-
-        this.props.RouterStore.push({
-                pathname: '/catalog/[category]',
-                query: {
-                    category: alias
-                },
-            },
-            undefined,
-            {shallow: true}
-        );
-    }
-
-    toCatalog = () => this.props.RouterStore.push({
-        pathname: '/catalog',
-        query: {}
-    });
+    routeChange = (alias) => this.props.RootStore.setCategoryMerge(alias)
 
     render() {
         const {hierarchy, className} = this.props;
@@ -40,7 +23,6 @@ class Hierarchy extends React.Component {
                         pathname: '/',
                     }}
                     passHref
-                    shallow={true}
                 >
                     <a style={{display: 'flex'}}><HomeIcon className={s.homeIcon}/></a>
                 </NextLink>
@@ -52,18 +34,24 @@ class Hierarchy extends React.Component {
                     passHref
                     shallow={true}
                 >
-                    <a style={{display: 'flex'}}>Каталог</a>
+                    <a style={{display: 'flex'}} onClick={() => this.routeChange(null)}>Каталог</a>
                 </NextLink>
                 {
                     hierarchy.map(({name, alias}, index) => (
                         <React.Fragment key={index}>
                             <ArrowForwardIosIcon className={s.icon}/>
-                            <span
-                                onClick={() => index !== hierarchy.length - 1 && alias && this.routeChange(alias)}
-                                className={index === hierarchy.length - 1 ? s.last : null}
-                            >
-                {name}
-              </span>
+                            <NextLink
+                                href={`/catalog/[category]`}
+                                as={`/catalog/${alias}`}
+                                passHref
+                                shallow={true}>
+                                <a
+                                    onClick={() => index !== hierarchy.length - 1 && alias && this.routeChange(alias)}
+                                    className={index === hierarchy.length - 1 ? s.last : null}
+                                >
+                                    {name}
+                                </a>
+                            </NextLink>
                         </React.Fragment>
                     ))
                 }

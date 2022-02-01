@@ -14,6 +14,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ViberIcon from "../../components/Icons/ViberIcon";
 import Meta from "../../components/HeadComponent";
+import Title from "../../components/Title";
 
 class Delivery extends React.Component {
 
@@ -24,10 +25,7 @@ class Delivery extends React.Component {
                     desc={'Салон напольных покрытий и дверей Мастер Пола находится в Тюмени в ЖК Ново-Патрушева. График работы с 10:00 до 19:00 без выходных и перерывов'}
                     title={'Контакты салона -  Мастер Пола'}
                 />
-                <div className={s.header}>
-                    {'КОНТАКТЫ'}
-                    <div className={s.line}/>
-                </div>
+                <Title title={'Контакты'}/>
                 <Hierarchy hierarchy={[{pathname: '/contacts', name: 'Контакты'}]}/>
                 <div className={s.content}>
                     <Box margin={'10px 0 20px'} className={s.padding}>

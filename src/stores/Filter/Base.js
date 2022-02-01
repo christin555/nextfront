@@ -55,12 +55,16 @@ export class BaseFilterStore {
         this.values = values;
     }
 
-    @action.bound clear() {
-        this.clearPath();
+    @action resetTemps() {
         this.checked = {};
         this.chips = [];
         this.currentParams = {}
         this.disabled = {};
+    }
+
+    @action.bound clear() {
+        this.clearPath();
+        this.resetTemps();
     }
 
     @action initPrice = (val, chips, checked) => {

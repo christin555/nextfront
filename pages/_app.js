@@ -1,11 +1,11 @@
-import { ThemeProvider } from '@mui/material/styles';
+import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider } from '@emotion/react';
+import {CacheProvider} from '@emotion/react';
 import createEmotionCache from '../src/createEmotionCache';
 import "../styles/globals.scss";
 import theme from '../styles/theme/DefaultStyle';
-import App  from 'next/app';
-import { Provider } from 'mobx-react';
+import App from 'next/app';
+import {Provider} from 'mobx-react';
 import initializeStore from '../src/stores/stores';
 import {withRouter} from 'next/router';
 import ReactNotification from 'react-notifications-component';
@@ -20,8 +20,6 @@ class CustomApp extends App {
         const MobxStore = new initializeStore({router: appContext.router});
 
         appContext.ctx.MobxStore = MobxStore;
-        appContext.ctx.RootStore = MobxStore.RootStore;
-
         const appProps = await App.getInitialProps(appContext);
 
         return {
@@ -52,11 +50,11 @@ class CustomApp extends App {
                     showOnShallow={true}
                 />
                 <CacheProvider value={emotionCache}>
-                    <ReactNotification />
+                    <ReactNotification/>
                     <meta name="viewport" content="initial-scale=1, width=device-width"/>
                     <ThemeProvider theme={theme}>
                         <CssBaseline/>
-                        <MainLayout  router={router}>
+                        <MainLayout router={router}>
                             <Component {...pageProps} />
                         </MainLayout>
                     </ThemeProvider>

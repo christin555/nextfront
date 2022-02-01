@@ -15,9 +15,6 @@ import WorksStore from "./WorksStore";
 import {BlocksStore} from "./BlocksStore";
 import ServicesStore from "./ServicesStore";
 
-const isServer = typeof window === 'undefined';
-let count = 0;
-
 class RootStore {
     @observable stores = {};
     initialData;
@@ -25,14 +22,10 @@ class RootStore {
 
     @observable category;
 
-    // @observable ActiveFilterStore = {};
-
     constructor({initialData = {}, RouterStore}) {
         this.RouterStore = RouterStore;
         this.initialData = initialData.stores || {};
         this.category = initialData.category;
-        ++count;
-        // this.searchValue = RouterStore.query.fastfilter || '';
     }
 
     get ActiveFilterStore() {
@@ -123,6 +116,11 @@ class RootStore {
 
     @action setCategory = (category) => {
         this.category = category;
+    };
+
+    @action setCategoryMerge = (category, fastfilter) => {
+        this.category = category;
+        this.CatalogStore.merge({category, fastfilter}, this)
     };
 
     @action mergeStores = ({stores, category}) => {

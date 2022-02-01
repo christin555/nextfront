@@ -10,17 +10,17 @@ class index extends Component {
         MobxStore.RootStore.setCategory(query?.category);
 
         const [headers] = await Promise.all([
-            await api.post('/seo/getHeaders', {query, pathname, asPath}),
-            await MobxStore.RootStore.CatalogStore.getHierarchy(),
+             api.post('/seo/getHeaders', {query, pathname, asPath}),
+             MobxStore.RootStore.CatalogStore.getHierarchy(),
         ])
 
-        return {headers, RootStoreUp: MobxStore.RootStore};
+        return {headers};
     }
 
     render() {
         const {RootStore, RootStoreUp, headers} = this.props;
 
-        RootStore.mergeStores(RootStoreUp);
+        //RootStore.mergeStores(RootStoreUp);
 
         return <CatalogView headers={headers}/>
     }

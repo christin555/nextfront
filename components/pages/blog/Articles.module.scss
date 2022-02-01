@@ -77,25 +77,6 @@
   border: 0;
 }
 
-.header {
-  background: rgb(246, 246, 246);
-  font-size: 24px;
-  display: flex;
-  flex-direction: column;
-  @include paddingStandard;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-
-.line {
-  margin-top: 8px;
-  display: block;
-  height: 2px;
-  width: 40px;
-  background: #c41414;
-}
 
 @media only screen and (max-width: 480px) {
   .iframe {
