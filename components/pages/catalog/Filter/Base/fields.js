@@ -1,12 +1,12 @@
 import FormCheckbox from "./FormCheckbox";
 import React from "react";
 import Price from "./Price";
-import Filter from "../FilterView";
 
 const isChecked = (checked, key, value) => !!checked[`${key}-${value}`];
 const isDisabled = (disabled, key, value) => disabled[`${key}-${value}`];
 
-const fields = ({checked, disabled, values, setValue, setPrice, setPricePath}) => (key) => {
+// eslint-disable-next-line react/display-name
+const Fields = ({checked, disabled, values, setValue, setPrice, setPricePath}) => (key) => {
     if(key === 'price') {
        return <Price
             minPrice={checked?.minPrice}
@@ -38,4 +38,4 @@ const fields = ({checked, disabled, values, setValue, setPrice, setPricePath}) =
     ));
 }
 
-export default fields;
+export default Fields;
