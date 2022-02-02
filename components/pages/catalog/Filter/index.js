@@ -11,7 +11,7 @@ class Filter extends Component {
       return <div/>;
     }
 
-    return <Fields />
+    return Fields
   }
 }
 

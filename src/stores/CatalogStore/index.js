@@ -21,7 +21,7 @@ class CatalogStore {
     @observable count = 0;
     @observable isHydrating;
 
-    @observable ActiveFilterStore;
+    @observable ActiveFilterStore = {};
 
     body = {};
 
@@ -42,10 +42,10 @@ class CatalogStore {
 
         this.RouterStore = RootStore.RouterStore;
         this.PageStore = RootStore.PageStore;
-        this.ActiveFilterStore = RootStore.ActiveFilterStore;
         this.category = RootStore.category;
         this.fastfilter = RootStore.RouterStore.fastfilter;
 
+        this.ActiveFilterStore = CatalogStore.ActiveFilterStore || {};
         this.body = CatalogStore.body || {};
         this.categories = CatalogStore.categories;
         this.products = CatalogStore.products;
@@ -71,8 +71,11 @@ class CatalogStore {
         return !!this.products?.length;
     }
 
+    @action setActiveFilterStore(ActiveFilterStore) {
+        this.ActiveFilterStore = ActiveFilterStore
+    }
 
-    @action merge = (newProps, {ActiveFilterStore}) => {
+    @action merge = (newProps) => {
         this.isHydrating = true;
         (['category', 'fastfilter']).forEach((key) => {
             if (newProps[key] !== this[key]) {
@@ -80,7 +83,6 @@ class CatalogStore {
             }
         })
         this.PageStore.setPageWithoutSSR(1);
-        this.ActiveFilterStore = ActiveFilterStore;
         this.isHydrating = false;
     };
 

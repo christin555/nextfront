@@ -12,37 +12,20 @@ export class DoorsStore extends BaseFilterStore {
     fieldsLabel = {
         'collectionId': 'Коллекция',
         'finishingMaterial': 'Материал отделки',
-        'brandId': 'Фабрика'
+        'brandId': 'Фабрика',
+        isPopular: 'Хит продаж'
     };
 
-    tableFields = {
-        finishingMaterial: 'finishingMaterials',
-        collectionId: 'collections',
-        brandId: 'brands'
-    }
-
     @computed get brands() {
-        return this.values.brands;
+        return this.values.brandId;
     }
 
     @computed get collections() {
-        return this.values.collections;
+        return this.values.collectionId;
     }
 
     @computed get finishingMaterials() {
-        return this.values.finishingMaterials;
-    }
-
-    @computed get isBrandActive() {
-        return this.hasKey('brandId');
-    }
-
-    @computed get isFinishingMaterialActive() {
-        return this.hasKey('finishingMaterial');
-    }
-
-    @computed get isCollectionActive() {
-        return this.hasKey('collectionId');
+        return this.values.finishingMaterial;
     }
 
     @action clearCheckedCollections = async () => {
@@ -96,7 +79,8 @@ export class DoorsStore extends BaseFilterStore {
         });
     };
 
-    initDisabled() {
+    @action initDisabled() {
+        const disabled = {};
         const brandIds = Object.keys(this.checked)
             .filter((key) => key.indexOf('brandId') > -1 && this.checked[key])
             .map((key) => Number(key.split('-')[1]));
@@ -107,23 +91,23 @@ export class DoorsStore extends BaseFilterStore {
 
         this.collections.forEach((collection) => {
             const brId = collection.brandId;
-
             let state = !brandIds.includes(brId);
 
-            this.setDisabled('collectionId', collection.id, state);
+            disabled[`collectionId-${collection.id}`] = state;
         });
 
         this.finishingMaterials.forEach((collection) => {
             const brId = collection.brandId;
-
             let state = !brandIds.includes(brId);
 
-            this.setDisabled('finishingMaterial', collection.id, state);
+            disabled[`collectionId-${collection.id}`] = state;
         });
+
+        this.disabled = disabled;
     }
 
 
-    beforeValueCheck = async(key, {id}, checked) => {
+    beforeValueCheck = async (key, {id}, checked) => {
         if (key === 'brandId') {
             await this.clearCheckedCollections();
             this.disableFinishingByBrandId(id, checked);

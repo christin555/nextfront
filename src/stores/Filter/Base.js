@@ -13,7 +13,6 @@ export class BaseFilterStore {
 
     // Override in child;
     fieldsLabel = {};
-    tableFields = {};
 
     constructor(RootStore) {
         this.category = RootStore.category;
@@ -82,14 +81,15 @@ export class BaseFilterStore {
         })
     }
 
+
     @action disableCollectionsByBrandId = (brandId, checked) => {
         const brandIds = Object.keys(this.checked)
-            .filter((key) => key.indexOf('brandId') > -1 && this.checked[key])
+            .filter((key) => key.indexOf('brands') > -1 && this.checked[key])
             .map((key) => Number(key.split('-')[1]));
 
         // Если ничего не выбрано в брендах, то все коллекции по умолчанию можно тыкать
         if (!brandIds.length) {
-            this.setToKey('disabled', 'collectionId', false);
+            this.setToKey('disabled', 'collections', false);
 
             return;
         }
@@ -108,7 +108,7 @@ export class BaseFilterStore {
                 state = !brandIds.includes(brandId) && brId === brandId;
             }
 
-            this.setDisabled('collectionId', collection.id, state);
+            this.setDisabled('collections', collection.id, state);
         });
     };
 
@@ -130,15 +130,13 @@ export class BaseFilterStore {
         const _checked = {};
         Object.entries(this.currentParams).forEach(([key, value]) => {
             if (key !== 'category') {
-                const _key = this.tableFields[key]
-
                 if (key === 'price') {
                     this.initPrice(value, _chips, _checked);
                 } else if (Array.isArray(value)) {
                     value.forEach((val) => {
                         _checked[`${key}-${val}`] = true;
 
-                        const item = this.values[_key]?.find(({id}) => Number(id) === Number(val));
+                        const item = this.values[key]?.find(({id}) => Number(id) === Number(val));
                         item && _chips.push({
                             fieldName: this.fieldsLabel[key],
                             label: item.name,
@@ -149,7 +147,7 @@ export class BaseFilterStore {
                 } else if (this.fieldsLabel[key]) {
                     _checked[`${key}-${value}`] = true;
 
-                    let item = this.values[_key]?.find(({id}) => Number(id) === Number(value));
+                    let item = this.values[key]?.find(({id}) => Number(id) === Number(value));
 
                     if (!item) {
                         item = {

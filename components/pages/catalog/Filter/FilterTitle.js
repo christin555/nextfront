@@ -7,8 +7,7 @@ import Button from '../../../Button';
 @inject(({FilterStore}) => {
   return {
     isActive: FilterStore.isActive,
-    clear: FilterStore.clear,
-    checked: FilterStore.checked
+    clear: FilterStore.clear
   };
 })
 @observer
@@ -16,8 +15,7 @@ class FilterTitle extends React.Component {
   render() {
     const {
       clear,
-      isActive,
-      checked
+      isActive
     } = this.props;
 
     return (

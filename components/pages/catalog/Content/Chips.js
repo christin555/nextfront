@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Chip from '../../../Chip';
 import {observable, toJS} from "mobx";
 
-@inject(({RootStore: {ActiveFilterStore}}) => {
+@inject(({RootStore: {CatalogStore: {ActiveFilterStore}}}) => {
   return {
     chips: toJS(ActiveFilterStore.chips),
     isFilterActive: ActiveFilterStore.isActive,

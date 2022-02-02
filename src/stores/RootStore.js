@@ -28,26 +28,6 @@ class RootStore {
         this.category = initialData.category;
     }
 
-    get ActiveFilterStore() {
-        switch (this.category) {
-            case 'doors':
-                return this.DoorsStore;
-            case KeramogranitStore.category:
-                return this.KeramogranitStore;
-            case 'sport':
-                return this.SportStore;
-            case 'quartzvinyl':
-            case 'laminate':
-                return this.FloorStore;
-            case 'quartzvinyl_kleevay':
-            case 'quartzvinyl_zamkovay':
-                return this.FloorStore;
-            default:
-                return {};
-        }
-    }
-
-
     getStore = (name, NewStore) => {
         if (!this.stores[name]) {
             const Store = new NewStore(this);
@@ -141,8 +121,6 @@ class RootStore {
                 }
             }
         )
-
-        //this.stores = stores;
     }
 
     @action deleteStore = (name) => {

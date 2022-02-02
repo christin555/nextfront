@@ -1,26 +1,22 @@
 import React from 'react';
-import DoorsFilterView from './Doors/view';
-import LaminateFilterView from './Laminate/view';
-import QuartzvinylFilterView from './Quartzvinyl/view';
-import KeramogranitFilterView from './Keramogranit/view';
-import SportFilterView from './Sport/view';
+import FilterViewHOC from "./Base/StoreContainer";
 
 const filterFabric = (category) => {
-  switch (category) {
-    case 'doors':
-      return DoorsFilterView;
-    case KeramogranitFilterView.CATEGORY:
-      return KeramogranitFilterView;
-    case LaminateFilterView.CATEGORY:
-      return LaminateFilterView;
-    case 'sport':
-      return SportFilterView;
-    case 'quartzvinyl':
-    case 'quartzvinyl_zamkovay':
-    case 'quartzvinyl_kleevay':
-      return QuartzvinylFilterView;
-    default:
-      return null;
-  }
+    switch (category) {
+        case 'doors':
+            return <FilterViewHOC storeName={'DoorsStore'} addFields={['isPopular']}/>;
+        case 'keramogranit':
+            return <FilterViewHOC storeName={'KeramogranitStore'} addFields={['price', 'isPopular']}/>;
+        case 'quartzvinyl':
+        case 'quartzvinyl_zamkovay':
+        case 'quartzvinyl_kleevay':
+        case 'laminate':
+        case 'probkovoe_pokrytie':
+            return <FilterViewHOC storeName={'FloorStore'} addFields={['price', 'isPopular']}/>;
+        case 'sport':
+            return <FilterViewHOC storeName={'SportStore'} addFields={['isPopular']}/>;
+        default:
+            return null;
+    }
 };
 export default filterFabric;
