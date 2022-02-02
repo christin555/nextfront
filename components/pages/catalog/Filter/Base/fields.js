@@ -1,6 +1,7 @@
 import FormCheckbox from "./FormCheckbox";
 import React from "react";
 import Price from "./Price";
+import Filter from "../FilterView";
 
 const isChecked = (checked, key, value) => !!checked[`${key}-${value}`];
 const isDisabled = (disabled, key, value) => disabled[`${key}-${value}`];
@@ -37,7 +38,4 @@ const fields = ({checked, disabled, values, setValue, setPrice, setPricePath}) =
     ));
 }
 
-
-export {
-    fields
-}
+export default fields;

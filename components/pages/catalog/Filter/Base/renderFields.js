@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {inject, observer} from 'mobx-react';
 import SimpleAccordion from './SimpleAccordion';
 import {toJS} from 'mobx';
-import {fields} from './fields';
+import fields from './fields';
 import {Skeleton} from "@mui/material";
 
 @inject(({FilterStore}) => {
