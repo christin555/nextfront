@@ -2,7 +2,7 @@
 
 .footer {
   color: $gray-40;
-  background: #464646;
+  background: $home-black;
   text-align: center;
   bottom: 0;
   justify-content: center;
@@ -15,7 +15,7 @@
   .content {
     padding-top: 40px;
     @include paddingStandard;
-    border-top: 0.5px solid #727272;
+    border-top: 0.5px solid #5a5a5a;
     flex-direction: row;
     display: flex;
     width: -webkit-fill-available;
@@ -137,7 +137,6 @@
   padding: 40px 0;
   @include paddingStandard;
   display: flex;
-  margin-right: 20px;
   letter-spacing: 1.5px;
   place-self: flex-start;
   color: white;
@@ -183,23 +182,18 @@
 }
 
 @media only screen and (max-width: 1020px) {
-
-  .logoBlock {
-    margin-right: 0;
-  }
-
   .policy {
     margin: 20px 0;
   }
+
   .links {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 10px;
+    grid-column-gap: 20px;
     text-align: center;
 
     & > * {
       margin: 0;
-      align-items: center;
     }
   }
 
@@ -216,32 +210,11 @@
   .footer {
     .content {
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
 
       & > * {
         margin-bottom: 40px;
-      }
-
-      .menu {
-        flex-flow: wrap;
-        justify-content: center;
-      }
-
-      .info {
-        height: min-content;
-
-        .address {
-          margin: 20px 0;
-          font-size: 12px;
-
-          .iconContact {
-            font-size: 14px;
-          }
-        }
-
-        & > * + * {
-          margin: 10px 0;
-        }
+        text-align: left;
       }
     }
   }
