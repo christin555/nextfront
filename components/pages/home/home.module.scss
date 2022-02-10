@@ -32,7 +32,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  font-family: Montserrat;
   height: 100%;
   margin: calc(50% - 80px) 0 40px;
   text-align: left;
@@ -40,7 +39,7 @@
   .name {
     font-size: 1.65em;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.05em;
     color: $white;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
