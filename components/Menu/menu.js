@@ -1,6 +1,5 @@
 import styles from './menu.module.scss';
 import cn from 'classnames';
-import PlaceIcon from '@mui/icons-material/Place';
 import {Tooltip} from '@mui/material';
 import BurgerMenu from './Burger';
 import React, {useEffect, useState} from 'react';
@@ -10,6 +9,10 @@ import InputSearch from "./InputSearch";
 import Callme from "../Callme";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import AppsIcon from '@mui/icons-material/Apps';
+import NearMeIcon from '@mui/icons-material/NearMe';
+import InstagramIcon from "@mui/icons-material/Instagram";
+import ViberIcon from "../Icons/ViberIcon";
+import Box from "@mui/material/Box";
 
 const menu = [
     {name: 'Каталог', important: true, link: '/catalog', Icon: AppsIcon},
@@ -77,22 +80,39 @@ export default function Menu() {
                             href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
                             title='Показать адрес в 2GIS'
                         >
-                            <PlaceIcon className={styles.iconContact}/>
+                            <NearMeIcon className={styles.icon}/>
                             Тюмень, Федюнинского 62 к1
                         </a>
-                        <a
-                            className={styles.messenger}
-                            target={'_blank'}
-                            rel='noopener noreferrer'
-                            href={`https://wa.me/79829881522`}
-                            title='Написать в WhatsApp'
-                        >
-                            <WhatsAppIcon className={styles.icon} />
-                        </a>
+                        <Box margin={'0 20px'} display={'flex'}>
+                            <a
+                                className={styles.messenger}
+                                target={'_blank'}
+                                rel='noopener noreferrer'
+                                href={`https://wa.me/79829881522`}
+                                title='Написать в WhatsApp'
+                            >
+                                <WhatsAppIcon className={styles.icon} />
+                            </a>
+                            <a
+                                className={styles.messenger}
+                                target={'_blank'}
+                                rel='noopener noreferrer'
+                                href='https://www.instagram.com/masterpola72'
+                                title='Перейти на канал в Instagram'
+                            >
+                                <InstagramIcon className={styles.icon}  />
+                            </a>
+                            <a
+                                className={styles.messenger}
+                                target={'_blank'}
+                                rel='noopener noreferrer'
+                                href={`viber://chat?number=%289829881522`}
+                            >
+                                <ViberIcon className={styles.icon}  />
+                            </a>
+                        </Box>
                     </div>
                     <div className={styles.left}>
-                        <InputSearch className={styles.headerSearch} />
-
                         <div className={styles.phoneBlock}>
                             <a
                                 href={'tel:+79829881522'}
@@ -112,7 +132,7 @@ export default function Menu() {
                 </div>
             </div>
             <div className={styles.menuContainer}>
-                <div className={cn(styles.menu, {[styles.isHome]: isHome})}>
+                <nav className={cn(styles.menu, {[styles.isHome]: isHome})}>
                     {
                         menu.map(({name, link, Icon}, index) => (
                             <a
@@ -126,7 +146,7 @@ export default function Menu() {
                         ))
                     }
                     <InputSearch className={styles.headerSearch}/>
-                </div>
+                </nav>
             </div>
         </header>
     )
