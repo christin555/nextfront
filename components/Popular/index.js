@@ -37,39 +37,38 @@ class CardsView extends Component {
         const {popularProducts, deviceType} = this.props;
 
         const Cards = popularProducts.map((item, index) => (
-                <Card
-                    classNamesRoot={s.card}
-                    withCategory={true}
-                    withPopularLabel={false}
-                    withPhone={false}
-                    key={index}
-                    {...item}
-                />
+            <Card
+                classNamesRoot={s.card}
+                withCategory={true}
+                withPopularLabel={false}
+                withPhone={false}
+                key={index}
+                {...item}
+            />
         ));
 
         return (
             <div className={s.container}>
-                <TitleBlock title={'Выбор покупателей'} className={s.title}/>
-
-              <div className={s.cards}>
-                  <Carousel
-                      swipeable={true}
-                      draggable={false}
-                      showDots={false}
-                      responsive={this.responsive}
-                      infinite={false}
-                      autoPlay={false}
-                      keyBoardControl={true}
-                      customTransition='all 0.5s linear'
-                      transitionDuration={300}
-                      removeArrowOnDeviceType={['tablet', 'mobile']}
-                      deviceType={deviceType}
-                      itemClass={s.carouselItem}
-                      ssr={true}
-                  >
-                      {Cards}
-                  </Carousel>
-              </div>
+                <TitleBlock title={'Выбор покупателей'}/>
+                <div className={s.cards}>
+                    <Carousel
+                        swipeable={true}
+                        draggable={false}
+                        showDots={false}
+                        responsive={this.responsive}
+                        infinite={false}
+                        autoPlay={false}
+                        keyBoardControl={true}
+                        customTransition='all 0.5s linear'
+                        transitionDuration={300}
+                        removeArrowOnDeviceType={['tablet', 'mobile']}
+                        deviceType={deviceType}
+                        itemClass={s.carouselItem}
+                        ssr={true}
+                    >
+                        {Cards}
+                    </Carousel>
+                </div>
             </div>
         );
     }

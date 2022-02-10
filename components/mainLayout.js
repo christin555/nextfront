@@ -7,12 +7,12 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import {IconButton} from "@mui/material";
 
 export default function mainLayout({router, children}) {
-    const isNotHome = router.pathname !== '/';
+    const isHome = router.pathname === '/';
 
     return (
         <div className={styles.wrapper}>
             <Menu pathname={router.pathname}/>
-            <main className={cn(styles.content, {[styles.isNotHome]: isNotHome})}>
+            <main className={cn(styles.content, {[styles.isHome]: isHome})}>
                 {children}
                 <IconButton size={'large'} className={styles.upButton} onClick={() => window.scrollTo(0, 0)}>
                     <ArrowUpwardIcon className={styles.upIcon} />

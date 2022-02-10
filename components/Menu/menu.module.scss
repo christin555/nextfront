@@ -9,18 +9,7 @@
   }
 }
 
-.isHome {
-  background: none;
-  box-shadow: none !important;
-
-  & > *, a, a:visited {
-    color: $white !important;
-  }
-}
-
 .isScrolled {
-  box-shadow: 0 4px 20px rgba(217, 216, 216, 0.56) !important;
-
   .headerBackground {
     opacity: 1 !important;
   }
@@ -40,12 +29,6 @@
   padding: 1px 10px;
   height: 36px;
   align-items: center;
-
-  input[class*="MuiInputBase-input"],
-  input[class*="MuiInputBase-input"]::placeholder {
-    color: $white-10;
-
-  }
 
   .iconSearch {
     color: $gray-30;
@@ -74,41 +57,16 @@
     bottom: 0;
     z-index: -1;
     transition: opacity .3s;
-    opacity: 0;
+    opacity: 1;
     background: rgb(255 255 255 / 90%);
     backdrop-filter: saturate(180%) blur(20px)
-  }
-
-  &:not(.isHome) .headerBackground {
-    opacity: 1;
-  }
-
-  &:not(.isScrolled), .isHome .name {
-    padding-top: 10px;
-    font-size: 38px !important;
-  }
-
-  &.isScrolled, &:not(.isHome) .name {
-    font-size: 32px !important;
-  }
-
-  &:not(.isHome) input[class*="MuiInputBase-input"],
-  &:not(.isHome) input[class*="MuiInputBase-input"]::placeholder {
-    color: $gray-400;
-  }
-
-  &:not(.isHome) .callme {
-    color: $secondary;
-  }
-
-  &.isScrolled .callme {
-    color: $secondary;
   }
 
   .headerContent {
     display: flex;
     justify-content: space-between;
     height: 60px;
+    background: white;
     @include paddingStandard;
 
     .logoBlock {
@@ -120,9 +78,11 @@
 
       .logo {
         margin: 5px 0;
-        width: 45px;
-        height: 45px;
         transition: transform .2s, -webkit-transform .2s;
+        display: flex;
+        align-items: center;
+        width: 35px;
+        height: 35px;
 
         img {
           width: inherit;
@@ -130,16 +90,16 @@
         }
 
         &:hover {
-          transform: scale(1.2);
+          transform: scale(1.02);
         }
       }
     }
 
     .name {
-      font-family: oswald;
-      letter-spacing: 1.5px !important;
-      font-weight: 500;
-      margin-left: 15px;
+      font-size: 24px;
+      font-weight: 400;
+      margin-left: 10px;
+      text-transform: uppercase;
     }
 
     .left {
@@ -163,45 +123,63 @@
   text-transform: uppercase;
   letter-spacing: .8px;
   font-weight: 400;
+  color: $secondary;
 }
 
 .menuContainer {
-  padding: 85px 0 20px 0;
-}
-
-.menu {
+  padding-top: 60px;
   @include paddingStandard;
   display: flex;
-  flex-direction: row;
+  color: $white-20;
+  background-color: $home-black;
   line-height: 24px;
   font-size: 14px;
   height: min-content;
-  //text-transform: uppercase;
   letter-spacing: .5px;
   font-weight: 400;
-  justify-content: space-between;
+}
+
+.grayMenu {
+  color: $gray-30;
+
+  a {
+    display: flex;
+
+    & > *:hover {
+      color: inherit;
+    }
+  }
+
+  &::before {
+    background-color: rgba(255, 255, 255, 0.2);
+    content: '';
+    height: 30px;
+    width: 1px;
+    margin-left: 30px;
+  }
+
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
   align-items: center;
-  color: $white-20;
+  height: auto;
 
   .isActive {
     border-bottom: 2px solid $secondary
   }
 
-  &:not(.isHome) {
-    background-color: $home-black;
-  }
-
-  & > * {
+  li {
+    padding: 12px 0;
+    margin: 0;
     display: flex;
-    padding: 10px 8px;
     align-items: center;
-    //margin-right: 40px;
-
-    .icon {
-      font-size: 16px !important;
-      margin-right: 6px;
-      color: $gray-100-40;
-    }
+    height: min-content;
   }
 
   .headerSearch {
@@ -219,13 +197,9 @@
   cursor: pointer;
 }
 
-.messenger {
-  margin: 0 5px;
-  display: flex;
-
-  .icon {
-    font-size: 20px !important;
-  }
+.icon {
+  font-size: 20px !important;
+  color: $gray-100-40;
 }
 
 .address {
@@ -238,16 +212,15 @@
   line-height: 24px;
   font-size: 12px;
   font-weight: 300;
-  color: inherit;
-  margin-left: 20px;
+  margin-left: 30px;
 
   svg {
     transition: unset;
   }
 
   .icon {
-    font-size: 20px !important;
-    margin-right: 6px;
+    font-size: 16px !important;
+    margin-right: 4px;
     color: $gray-300;
   }
 }
@@ -258,9 +231,8 @@
     height: 50px;
 
     .name {
-      font-size: 28px;
+      font-size: 26px;
     }
-
 
     .left, .address, .messenger {
       display: none !important;
@@ -275,12 +247,6 @@
         .logo {
           width: 30px;
           height: 30px;
-          font-size: 20px;
-
-          img {
-            width: inherit;
-            height: inherit;
-          }
         }
       }
     }

@@ -1,6 +1,8 @@
 @import '../../styles/variables.module';
 
 .title {
+  margin-bottom: 20px !important;
+
   &:after {
     content: "";
     display: block;

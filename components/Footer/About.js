@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './Footer.module.scss';
 import Image from 'next/image';
+import {Typography} from "@mui/material";
 
 const FooterAbout = () => (
     <div className={s.footerAbout}>
         <div className={s.text}>
-            <h4>Купить напольные покрытия в Тюмени</h4>
+            <Typography variant={'subtitle1'}>КУПИТЬ НАПОЛЬНЫЕ ПОКРЫТИЯ В ТЮМЕНИ</Typography>
             <span>
         <p>
           Напольное покрытие – один из ключевых элементов оформления интерьера, принимающий на себя главную нагрузку в помещении.

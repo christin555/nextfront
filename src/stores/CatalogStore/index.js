@@ -2,7 +2,6 @@ import {observable, action, autorun, computed, makeObservable, reaction, toJS} f
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import Router from "next/router";
-import {isObjectEqual} from "../../utils/isObjectEqual";
 
 const isServer = typeof window === 'undefined';
 
@@ -54,14 +53,6 @@ class CatalogStore {
         this.count = CatalogStore.count || 0;
         this.isHydrating = false;
     }
-
-    // @computed get category() {
-    //     return this.RouterStore.query.category || null;
-    // }
-
-    // @computed get fastfilter() {
-    //     return this.RouterStore.fastfilter || null;
-    // }
 
     @computed get router() {
         return Router.router;
@@ -144,7 +135,6 @@ class CatalogStore {
         try {
             const body = {searchParams: {category, filter: {...filter, fastfilter},}};
             const count = await api.post('catalog/countProducts ', body);
-
             this.checkPageStore(count)
             this.setCount(count);
         } catch (_) {

@@ -1,19 +1,21 @@
 @import '../../styles/variables.module';
 
 .footer {
-  color: $gray-10;
-  background: $gray-500;
+  color: $gray-40;
+  background: #464646;
   text-align: center;
   bottom: 0;
   justify-content: center;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  padding: 70px 0;
-  @include paddingStandard;
   letter-spacing: 0.5px;
+  font-size: 14px;
+  align-items: flex-start;
 
   .content {
+    padding-top: 40px;
+    @include paddingStandard;
+    border-top: 0.5px solid #727272;
     flex-direction: row;
     display: flex;
     width: -webkit-fill-available;
@@ -23,7 +25,7 @@
 }
 
 .footerAbout {
-  margin-top: 60px;
+  margin-top: 40px;
   @include paddingStandard;
   background: $gray-20;
 
@@ -39,6 +41,7 @@
 }
 
 .links {
+  font-size: 14px;
   display: flex;
   text-align: left;
 
@@ -50,18 +53,16 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    text-transform: uppercase;
 
 
     .categoryName {
-      color: $red;
       margin-bottom: 30px;
       font-weight: 400;
     }
 
     & > * {
       color: $gray-10;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       line-height: 24px;
 
       &:hover {
@@ -75,44 +76,19 @@
 
 .contactsContainer {
   display: flex;
-  flex-shrink: 0;
   flex-direction: column;
-  background: linear-gradient(180deg, #0C4487 0%, #D23314 100%);
-  padding: 5px;
-  min-width: 400px;
-
-  .contacts {
-    padding: 20px;
-    background: $gray-500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  align-items: flex-start;
 
   .phone {
+    color: white !important;
     margin-bottom: 20px;
-  }
-
-  a {
-    text-decoration: none;
-    color: $white-10;
     font-size: 24px;
-    font-weight: 400;
-    letter-spacing: 0.5px !important;
   }
 
   p {
     margin: 0;
-    color: $gray-30;
-    font-size: 14px;
+    text-align: left;
     max-width: 250px;
-  }
-
-  span {
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-
   }
 }
 
@@ -138,12 +114,7 @@
   }
 
   .icon {
-    font-size: 22px;
-    color: $white-10;
-
-    &:hover {
-      color: $gray-100-40;
-    }
+    font-size: 25px;
   }
 
   .messenger {
@@ -158,13 +129,18 @@
   align-items: flex-end;
   text-align: left;
   letter-spacing: 0.5pt;
+  @include paddingStandard;
+  margin: 40px 0;
 }
 
 .logoBlock {
+  padding: 40px 0;
+  @include paddingStandard;
   display: flex;
-  height: 40px;
   margin-right: 20px;
   letter-spacing: 1.5px;
+  place-self: flex-start;
+  color: white;
 
   .logo {
     position: relative;
@@ -193,18 +169,21 @@
 }
 
 .policy {
-  margin: 70px 0;
+  margin: 20px 0;
   text-transform: none;
   font-size: 14px;
   cursor: pointer;
-  color: $white-10;
+  @include paddingStandard;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 @media only screen and (max-width: 1020px) {
-
-  .footerAbout {
-    margin-top: 20px;
-  }
 
   .logoBlock {
     margin-right: 0;
@@ -236,9 +215,6 @@
   }
 
   .footer {
-    padding-top: 40px;
-    padding-bottom: 20px;
-
     .content {
       flex-direction: column;
       align-items: center;

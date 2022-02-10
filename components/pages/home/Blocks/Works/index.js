@@ -4,6 +4,7 @@ import s from './Style.module.scss';
 import Card from '../../../../WorkCard';
 import classNames from "classnames";
 import Link from 'next/link';
+import {Typography} from "@mui/material";
 
 @inject(({RootStore: {HomeStore}}) => {
     return {
@@ -22,11 +23,10 @@ class Works extends Component {
             </div>
         ));
 
-
         return (
             <div className={s.container}>
                 <div className={s.header}>
-                    <h3>Наши работы </h3>
+                    <Typography variant={'subtitle1'}>Наши работы </Typography>
                     <Link href={{
                         pathname: '/works',
                     }}

@@ -1,11 +1,10 @@
 import styles from './menu.module.scss';
 import cn from 'classnames';
-import {Tooltip} from '@mui/material';
 import BurgerMenu from './Burger';
 import React, {useEffect, useState} from 'react';
 import Router, {useRouter} from 'next/router';
 import Image from 'next/image'
-import InputSearch from "./InputSearch";
+import InputSearch from "./InputSearchMenu";
 import Callme from "../Callme";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import AppsIcon from '@mui/icons-material/Apps';
@@ -15,7 +14,7 @@ import ViberIcon from "../Icons/ViberIcon";
 import Box from "@mui/material/Box";
 
 const menu = [
-    {name: 'Каталог', important: true, link: '/catalog', Icon: AppsIcon},
+    {name: 'Каталог', important: true, link: '/catalog'},
     {name: 'О компании', important: false, link: '/about'},
     {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
     {name: 'Наш блог', important: false, link: '/blog'},
@@ -57,12 +56,11 @@ export default function Menu() {
             <div className={cn(styles.header, {[styles.isScrolled]: isScrolled, [styles.isHome]: isHome})}>
                 <div className={styles.headerBackground}/>
                 <div className={styles.headerContent}>
-                    <div
-                        className={styles.logoBlock}
-                        onClick={() => toPage('/')}
-                    >
-                        <div className={styles.logo}>
+                    <div className={styles.logoBlock}>
+                        <div className={styles.logo}
+                             onClick={() => toPage('/')}>
                             <Image
+                                className={styles.logo}
                                 priority={true}
                                 src={'/logo.png'}
                                 alt={'logo'}
@@ -70,8 +68,8 @@ export default function Menu() {
                                 height="64"
                             />
                         </div>
-                        <div className={styles.name}>
-                            <div> МАСТЕР ПОЛА</div>
+                        <div className={styles.name} onClick={() => toPage('/')}>
+                            Мастер Пола
                         </div>
                         <a
                             target={'_blank'}
@@ -83,34 +81,6 @@ export default function Menu() {
                             <NearMeIcon className={styles.icon}/>
                             Тюмень, Федюнинского 62 к1
                         </a>
-                        <Box margin={'0 20px'} display={'flex'}>
-                            <a
-                                className={styles.messenger}
-                                target={'_blank'}
-                                rel='noopener noreferrer'
-                                href={`https://wa.me/79829881522`}
-                                title='Написать в WhatsApp'
-                            >
-                                <WhatsAppIcon className={styles.icon} />
-                            </a>
-                            <a
-                                className={styles.messenger}
-                                target={'_blank'}
-                                rel='noopener noreferrer'
-                                href='https://www.instagram.com/masterpola72'
-                                title='Перейти на канал в Instagram'
-                            >
-                                <InstagramIcon className={styles.icon}  />
-                            </a>
-                            <a
-                                className={styles.messenger}
-                                target={'_blank'}
-                                rel='noopener noreferrer'
-                                href={`viber://chat?number=%289829881522`}
-                            >
-                                <ViberIcon className={styles.icon}  />
-                            </a>
-                        </Box>
                     </div>
                     <div className={styles.left}>
                         <div className={styles.phoneBlock}>
@@ -131,23 +101,55 @@ export default function Menu() {
                     <BurgerMenu toPage={toPage} menu={menu}/>
                 </div>
             </div>
-            <div className={styles.menuContainer}>
-                <nav className={cn(styles.menu, {[styles.isHome]: isHome})}>
+            <nav className={styles.menuContainer}>
+                <ul className={styles.menu}>
+                    <li><InputSearch/></li>
                     {
                         menu.map(({name, link, Icon}, index) => (
-                            <a
-                                key={link}
-                                className={cn({[styles.isActive]: link === pathname})}
-                                href={link}
-                                title={name}
-                            >
-                                {Icon ? <Icon className={styles.icon}/>: null} {name}
-                            </a>
+                            <li key={link}  className={cn({[styles.isActive]: link === pathname})}>
+                                <a
+                                    href={link}
+                                    title={name}
+                                >
+                                    {Icon ? <Icon className={styles.icon}/> : null} {name}
+                                </a>
+                            </li>
                         ))
                     }
-                    <InputSearch className={styles.headerSearch}/>
-                </nav>
-            </div>
+                </ul>
+
+                <ul  className={cn(styles.menu, styles.grayMenu)}>
+                    <li>
+                        <a
+                            target={'_blank'}
+                            rel='noopener noreferrer'
+                            href={`https://wa.me/79829881522`}
+                            title='Написать в WhatsApp'
+                        >
+                            <WhatsAppIcon className={styles.icon}/>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            target={'_blank'}
+                            rel='noopener noreferrer'
+                            href='https://www.instagram.com/masterpola72'
+                            title='Перейти на канал в Instagram'
+                        >
+                            <InstagramIcon className={styles.icon}/>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            target={'_blank'}
+                            rel='noopener noreferrer'
+                            href={`viber://chat?number=%289829881522`}
+                        >
+                            <ViberIcon className={styles.icon}/>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </header>
     )
 }

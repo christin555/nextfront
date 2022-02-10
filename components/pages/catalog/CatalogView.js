@@ -5,6 +5,7 @@ import Title from '../../Title';
 import Content from './Content'
 import {toJS} from "mobx";
 import Meta from "../../HeadComponent";
+import Contact from "../home/Blocks/Contact";
 
 
 @inject(({RootStore: {CatalogStore}}) => {

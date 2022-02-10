@@ -6,23 +6,21 @@ import DefaultStyle from '../../styles/theme/DefaultStyle';
 import Copy from './CopyBlock';
 import Contacts from './Contacts';
 import FooterAbout from './About';
+import Social from './Social';
 
 const Footer = () => (
 <>
     <FooterAbout />
-    <div className={s.footer}>
-      <div className={s.content}>
+    <footer className={s.footer}>
         <LogoBlock />
-        <Links />
-        <Contacts />
+      <div className={s.content}>
+          <Contacts />
+          <Links />
+          <Social />
       </div>
-      <span className={s.policy}>
-          Политика конфиденциальности
-      <br />
-           © Мастер Пола, 2022
-      </span>
+      <span className={s.policy}>©2019 - 2022, «Мастер Пола» </span>
       <Copy />
-    </div>
+    </footer>
 </>
 );
 

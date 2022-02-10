@@ -5,10 +5,6 @@ import Link from 'next/link';
 const Footer = () => {
   const itemsMenu = [
     {
-      name: 'Каталог',
-      alias: '/catalog'
-    },
-    {
       name: 'Услуги',
       alias: '/services'
     },
@@ -52,8 +48,20 @@ const Footer = () => {
       alias: '/catalog/sport'
     },
     {
+      name: 'Пробковое покрытие',
+      alias: '/catalog/probkovoe_pokrytie'
+    },
+    {
       name: 'Двери',
       alias: '/catalog/doors'
+    },
+    {
+      name: 'Напольный плинтус',
+      alias: '/catalog/napolnyy-plintus'
+    },
+    {
+      name: 'Настенная пробка',
+      alias: '/catalog/nastennaya_probka'
     }
   ];
 
@@ -67,7 +75,7 @@ const Footer = () => {
         }
       </div>
       <div>
-        <span className={s.categoryName}> Меню </span>
+        <span className={s.categoryName}> О компании </span>
         {
           itemsMenu.map(({name, alias}) =>
             <Link href={alias} key={alias}>{name}</Link>)

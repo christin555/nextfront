@@ -5,7 +5,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Header = () => (
   <div className={s.wrapper}>
-    <div className={s.shadow} />
     <div className={s.overlay}>
       <div className={s.txtblocks}>
         <div>

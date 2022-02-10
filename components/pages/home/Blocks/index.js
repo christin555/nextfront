@@ -16,8 +16,8 @@ const Blocks = () => (
         <Popular/>
         <Works/>
         <Contact/>
-         <Blog/>
-         <About/>
+        <Blog/>
+        <About/>
         <Services/>
     </div>
 );

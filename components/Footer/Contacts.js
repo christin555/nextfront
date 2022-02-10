@@ -1,64 +1,24 @@
 import React from 'react';
 import s from './Footer.module.scss';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import ViberIcon from '../../components/Icons/ViberIcon';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Callme from '../Callme';
+import Box from "@mui/material/Box";
 
 const Contacts = () => (
-  <div className={s.contactsContainer}>
-    <div className={s.contacts}>
-      <a
-        target={'_blank'}
-        rel='noopener noreferrer'
-        href='tel:89829881522'
-        itemProp='telephone'
-        className={s.phone}
-      >
-        8 (982) 988-15-22
-      </a>
-      <p>
-        Задать вопрос, оформить покупку или заказать расчет
-      </p>
-      <Callme className={s.button} buttonText={'ЗАКАЗАТЬ ЗВОНОК'} />
-      <div className={s.messangers}>
+    <div className={s.contactsContainer}>
         <a
-          target={'_blank'}
-          rel='noopener noreferrer'
-          href='https://www.instagram.com/masterpola72'
-          title='Перейти на канал в Instagram'
+            target={'_blank'}
+            rel='noopener noreferrer'
+            href='tel:89829881522'
+            itemProp='telephone'
+            className={s.phone}
         >
-          <InstagramIcon className={s.icon} />
+            8 (982) 988-15-22
         </a>
-        <a
-          className={s.messenger}
-          target={'_blank'}
-          rel='noopener noreferrer'
-          href={`https://wa.me/79829881522`}
-          title='Написать в WhatsApp'
-        >
-          <WhatsAppIcon className={s.icon} />
-        </a>
-        <a
-          className={s.messenger}
-          target={'_blank'}
-          rel='noopener noreferrer'
-          href={`viber://chat?number=%289829881522`}
-        >
-          <ViberIcon className={s.icon} />
-        </a>
-        <a
-          className={s.messenger}
-          target={'_blank'}
-          rel='noopener noreferrer'
-          href={`mailto:masterpola72@mail.ru`}
-        >
-          <MailOutlineIcon className={s.icon} />
-        </a>
-      </div>
+        <p>
+            Задать вопрос, оформить покупку или заказать расчет
+        </p>
+        <Callme className={s.button} buttonText={'ЗАКАЗАТЬ ЗВОНОК'}/>
     </div>
-  </div>
 
 );
 
