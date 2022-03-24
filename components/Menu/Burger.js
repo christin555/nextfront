@@ -10,6 +10,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import s from "../Footer/Footer.module.scss";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ViberIcon from "../Icons/ViberIcon";
+import VkIcon from "../Icons/VK";
 
 export default function Burger({pathname, menu, toPage, search, setParams, setSearch}) {
     const [state, setState] = useState({isOpen: false});
@@ -97,6 +98,14 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
                                     title='Перейти на канал в Instagram'
                                 >
                                     <InstagramIcon className={styles.icon}/>
+                                </a>
+                                <a
+                                    target={'_blank'}
+                                    rel='noopener noreferrer'
+                                    href='https://vk.com/masterpola'
+                                    title='Перейти на канал в ВК'
+                                > <VkIcon className={s.icon}/>
+                                    ВКонтакте
                                 </a>
                                 <a
                                     target={'_blank'}

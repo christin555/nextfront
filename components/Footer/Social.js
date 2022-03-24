@@ -3,6 +3,7 @@ import s from './Footer.module.scss';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ViberIcon from '../../components/Icons/ViberIcon';
+import VkIcon from '../../components/Icons/VK';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Box from "@mui/material/Box";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -35,6 +36,15 @@ const Contacts = () => (
                 title='Перейти на канал в Instagram'
             >
                 <InstagramIcon className={s.icon}/>
+            </a>
+            <a
+                className={s.messenger}
+                target={'_blank'}
+                rel='noopener noreferrer'
+                href='https://vk.com/masterpola'
+                title='Перейти в сообщество ВКонтакте'
+            >
+                <VkIcon className={s.icon}/>
             </a>
             <a
                 className={s.messenger}
