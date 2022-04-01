@@ -25,7 +25,7 @@ export default function MultiActionAreaCard({onClick, id, name, img, amount, pri
                      </Typography>
                      {
                          price ? <Typography variant={'body2'}>
-                                 {formatPrice(price, true, false)}
+                                 {formatPrice({price, withCurrency: true, isSquare: false})}
                              </Typography> :
                              <span/>
                      }

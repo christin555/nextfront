@@ -36,8 +36,8 @@ const Price = (props) => {
         onSave(_val, type)
     }
 
-    const minPrice = formatPrice(checked?.minPrice, false);
-    const maxPrice = formatPrice(checked?.maxPrice, false);
+    const minPrice = formatPrice({price: checked?.minPrice, isSquare: false});
+    const maxPrice = formatPrice({price:checked?.maxPrice, isSquare:  false});
 
     return (
         <div className={s.price}>

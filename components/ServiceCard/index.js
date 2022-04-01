@@ -62,7 +62,7 @@ class CardView extends React.Component {
                     {
                         price && (
                             <p className={s.price}>
-                                            {formatPrice(price)}
+                                            {formatPrice({price})}
                                         </p>
                         ) || null
                     }

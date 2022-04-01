@@ -132,7 +132,7 @@ class Work extends React.Component {
 
                                         </Typography>
                                            <Typography variant={'h6'}>
-                                            {formatPrice(work.price, true, false)}
+                                            {formatPrice({price: work.price, withCurrency: true, isSquare: false})}
                                            </Typography>
                                        </span> :
                                         <span/>

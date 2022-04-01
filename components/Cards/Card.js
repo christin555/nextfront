@@ -116,7 +116,7 @@ class CardView extends React.Component {
                                 </div>
                                 {
                                     price && (
-                                        <span className={s.price}>{formatPrice(price)}</span>
+                                        <span className={s.price}>{formatPrice({price, isDoor})}</span>
                                     ) || null
                                 }
                                 {this.colors}

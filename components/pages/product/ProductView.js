@@ -62,7 +62,7 @@ class Product extends React.Component {
 
             if (values[name]) {
                 rows.push(
-                    <Chip key= {val} label={val} icon={Icon && <Icon className={s.iconChip}/> || null}/>
+                    <Chip key={val} label={val} icon={Icon && <Icon className={s.iconChip}/> || null}/>
                 );
             }
         });
@@ -121,6 +121,11 @@ class Product extends React.Component {
         );
     }
 
+    get categoryAlias() {
+        const {hierarchy} = this.props;
+        return hierarchy[hierarchy.length - 1]?.alias
+    }
+
     get breadcumbs() {
         const {values, hierarchy} = this.props;
 
@@ -143,7 +148,7 @@ class Product extends React.Component {
                         "position": 2,
                         "item":
                             {
-                                "@id": `https://master-pola.com/catalog/${hierarchy[hierarchy.length - 1]?.alias}`,
+                                "@id": `https://master-pola.com/catalog/${this.categoryAlias}`,
                                 "name": hierarchy[hierarchy.length - 1]?.name
                             }
                     },
@@ -160,15 +165,21 @@ class Product extends React.Component {
         }
     }
 
+    get price() {
+        return formatPrice({
+            price: this.props.values.price,
+            isDoor: this.props.values?.category?.toLowerCase() === 'двери'
+        });
+    }
+
     render() {
         const {values, hierarchy, fields} = this.props;
-        const price = values.price ? ` - ${formatPrice(values.price)} ` : '';
 
         return (
             <>
                 <Meta
-                    desc={`Купить ${values.category} ${values.brand} коллекция ${values.collection}, ${values.name} в Тюмени. Наши цены вам понравятся! `}
-                    title={`${values.category} ${values.name} от ${values.brand} ${price} - Мастер Пола`}
+                    desc={`Купить ${values.category} ${values.brand} ${values.collection} в Тюмени. Наши цены вам понравятся! `}
+                    title={`${values.category} ${values.name} от ${values.brand} - ${this.price} - Мастер Пола`}
                     breadcumbs={this.breadcumbs}
                 />
 
@@ -196,7 +207,7 @@ class Product extends React.Component {
                                     <div className={s.price}>
                     <span className={s.value}>
                       <MonetizationOnIcon className={s.icon}/>
-                        {formatPrice(values.price)}
+                        {this.price}
                     </span>
                                     </div>
                                 ) || null
