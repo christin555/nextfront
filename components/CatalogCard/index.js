@@ -20,6 +20,7 @@ class Card extends React.Component {
                     loader={()=> img}
                     src={img}
                     layout="fill"
+                    alt={name}
                 />
                 <div className={s.name}>
                     <NextLink

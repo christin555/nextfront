@@ -5,7 +5,7 @@ import Image from 'next/image';
 const LogoBlock = () => (
   <div className={s.logoBlock}>
     <div className={s.logo}>
-      <Image src={'/logo.png'} layout='fill'/>
+      <Image src={'/logo.png'} layout='fill' alt={'Логотип Мастер Пола'}/>
     </div>
     <div className={s.nameLogo}>
       <div className={s.name}>МАСТЕР ПОЛА</div>

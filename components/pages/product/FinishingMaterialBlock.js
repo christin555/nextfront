@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./Product.module.scss";
 import {finishing} from '../../../src/enums';
+import Image from 'next/image'
 
 const names = {
     [finishing.MATERIAL]: 'Материал отделки',
@@ -30,7 +31,7 @@ const FinishingMaterialBlock = (props) => {
                         materials.map(({id, name, img}) => (
                             <div key={id}>
                                 <div className={s.materialImg}>
-                                    <img alt={name} src={img}/>
+                                    <Image alt={name} layout='fill' src={img}/>
                                 </div>
                                 {name && <span>{name}</span> || null}
                             </div>

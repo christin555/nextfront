@@ -51,6 +51,7 @@ class CardView extends React.Component {
                             className={s.media}
                         >
                             <Image
+                                alt={name}
                                 quality={45}
                                 className={s.img}
                                 src={img}

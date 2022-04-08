@@ -42,7 +42,7 @@ const About = () => (
     </div>
     <div className={s.content}>
       <div className={s.mediaBlock}>
-        <Image src={'/about.jpg'} layout='fill' />
+        <Image src={'/about.jpg'} layout='fill' placeholder={'blur'} alt={'О компании'}/>
       </div>
       <div className={s.text}>
         <h2> Профессионализм </h2>

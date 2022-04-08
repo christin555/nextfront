@@ -6,10 +6,8 @@ import s from './carousel.module.scss';
 import Image from 'next/image';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
 import {IconButton} from '@mui/material';
-import styles from "../mainLayout.module.scss";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+
 
 const CarouselView = ({imgs, width, className}) => {
     const carouselRef = useRef(null);
@@ -47,7 +45,7 @@ const CarouselView = ({imgs, width, className}) => {
     }
 
     images = imgs.map(({src}, index) => <Carousel.Item key={index} className={s.itemCarousel}>
-        <img alt="Third slide" src={src}/>
+        <Image layout='fill' alt={'Слайд'} src={src}/>
     </Carousel.Item>);
 
     useEffect(() => {
