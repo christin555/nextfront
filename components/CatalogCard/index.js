@@ -14,7 +14,13 @@ class Card extends React.Component {
 
         return (
             <div className={s.card}>
-                <Image src={img} layout="fill"/>
+                <Image
+                    quality={50}
+                    priority={true}
+                    loader={()=> img}
+                    src={img}
+                    layout="fill"
+                />
                 <div className={s.name}>
                     <NextLink
                         href={`/catalog/[category]`}
