@@ -98,7 +98,6 @@ class CardView extends React.Component {
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
                                     src={img || imgs && imgs[0]?.src}
                                     layout='fill'
-                                    placeholder={"blur"}
                                 />
                                 <Buttons {...this.props} />
                             </CardMedia>

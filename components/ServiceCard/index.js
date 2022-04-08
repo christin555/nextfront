@@ -55,7 +55,6 @@ class CardView extends React.Component {
                                 className={s.img}
                                 src={img}
                                 layout='fill'
-                                placeholder={"blur"}
                             />
                         </CardMedia>
                     </CardActionArea>
