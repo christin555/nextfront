@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import s from './Blocks.module.scss';
-import YouTube from 'react-youtube';
 import TitleBlock from '../../../TitleBlock';
 import Button from '../../../Button';
-import Link from "next/link";
 import NextLink from "next/link";
 import {Typography} from "@mui/material";
 import Cards from "../../../NewsCards/Cards";
@@ -20,7 +18,6 @@ const mock = [
         src: 'A8YKSOwEFFE',
         type: 'youtube'
     }
-
 ];
 
 
@@ -34,17 +31,6 @@ class Blog extends Component {
 
     render() {
         const {articles} = this.props;
-
-        const blocks = mock.map(({title, src}, index) => (
-            <div key={index} className={s.article}>
-                <YouTube
-                    className={s.video}
-                    videoId={src}
-                    opts={{width: '100%', height: '100%'}}
-                />
-                <div className={s.titleArticle}> {title} </div>
-            </div>
-        ));
 
         return (
             <div className={s.blog}>
@@ -64,9 +50,6 @@ class Blog extends Component {
                                 {'ВСЕ СТАТЬИ'}
                             </Button>
                         </NextLink>
-                    </div>
-                    <div className={s.blockArticles}>
-                        {blocks}
                     </div>
                 </div>
                 <div className={s.popularBlock}>
