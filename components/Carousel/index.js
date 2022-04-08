@@ -54,7 +54,7 @@ const CarouselView = ({imgs, width, className}) => {
         const node = carouselBlockRef.current;
 
         if (node) {
-            node.addEventListener('keydown', keyDownHandler);
+            node.addEventListener('keydown', keyDownHandler, {passive: true});
         }
 
         return () => node.removeEventListener('keydown', keyDownHandler);

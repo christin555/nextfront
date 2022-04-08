@@ -39,7 +39,7 @@ export default function Menu() {
             }
         };
 
-        window.addEventListener('scroll', handleScrollPos);
+        window.addEventListener('scroll', handleScrollPos, {passive: true});
 
         return () => {
             window.removeEventListener('scroll', handleScrollPos);
