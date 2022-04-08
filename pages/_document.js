@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
                 
                 
                   {/*  <!-- Vk pixel --> */}
-                    <script type="text/javascript" dangerouslySetInnerHTML={{
+                    <script defer type="text/javascript" dangerouslySetInnerHTML={{
                         __html: `!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("VK-RTRG-1240897-fKHEb"),VK.Retargeting.Hit()},document.head.appendChild(t)}();`
                     }}>
                     </script>
@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
                     </noscript>
 
                     {/*   <!-- Yandex.Metrika counter --> */}
-                    <script type="text/javascript" dangerouslySetInnerHTML={{
+                    <script defer type="text/javascript" dangerouslySetInnerHTML={{
                         __html: ` (function (m,e,t,r,i,k,a) {
                         m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
                         m[i].l = 1 * new Date(); k = e.createElement(t),a = e.getElementsByTagName(t)[0],k.async = 1,k.src = r,a.parentNode.insertBefore(k,a)
@@ -58,9 +58,8 @@ export default class MyDocument extends Document {
                
 
                     {/* <!-- Global site tag (gtag.js) - Google Analytics -->*/}
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-207713666-1">
-                    </script>
-                    <script dangerouslySetInnerHTML={{
+                    <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-207713666-1"> </script>
+                    <script defer dangerouslySetInnerHTML={{
                         __html: ` window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
@@ -72,7 +71,7 @@ export default class MyDocument extends Document {
 
                     <meta name="facebook-domain-verification" content="vnlq6fu1lmnh8pdtmfxokzw7lrzqlh"/>
                     {/* <!-- Facebook Pixel Code -->*/}
-                    <script dangerouslySetInnerHTML={{
+                    <script defer dangerouslySetInnerHTML={{
                         __html: `
                     !function (f,b,e,v,n,t,s) {
                         if (f.fbq) return; n = f.fbq = function () {
