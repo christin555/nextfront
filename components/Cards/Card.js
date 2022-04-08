@@ -94,11 +94,11 @@ class CardView extends React.Component {
                                 className={s.media}
                             >
                                 <Image
+                                    loader={()=> img || imgs && imgs[0]?.src}
                                     quality={50}
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
                                     src={img || imgs && imgs[0]?.src}
-                                    width={250}
-                                    height={180}
+                                    layout="fill"
                                     priority={true}
                                 />
                                 <Buttons {...this.props} />
