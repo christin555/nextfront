@@ -8,6 +8,7 @@ import {inject, observer} from 'mobx-react';
 import Link from 'next/link';
 import formatPrice from '../../src/utils/formatPrice';
 import classNames from 'classnames';
+import Image from 'next/image'
 
 @inject('RouterStore') @observer
 
@@ -49,10 +50,12 @@ class CardView extends React.Component {
                         <CardMedia
                             className={s.media}
                         >
-                            <img
+                            <Image
+                                quality={45}
                                 className={s.img}
                                 src={img}
                                 layout='fill'
+                                placeholder={"blur"}
                             />
                         </CardMedia>
                     </CardActionArea>
