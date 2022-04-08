@@ -105,7 +105,6 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
                                     href='https://vk.com/masterpola'
                                     title='Перейти на канал в ВК'
                                 > <VkIcon className={s.icon}/>
-                                    ВКонтакте
                                 </a>
                                 <a
                                     target={'_blank'}

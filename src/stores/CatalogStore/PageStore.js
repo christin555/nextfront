@@ -9,7 +9,7 @@ export class PageStore {
     @observable order;
 
     optionsOrder = [
-        {value: 1, label: 'Исходная сортировка', direction: 'asc', field: 'name'},
+        {value: 1, label: 'Исходная сортировка', direction: 'asc', field: null},
         {value: 3, label: 'Цены: по убыванию', direction: 'desc', field: 'price'},
         {value: 4, label: 'Цены: по возрастанию', direction: 'asc', field: 'price'}
     ]
