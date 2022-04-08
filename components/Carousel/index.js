@@ -45,7 +45,14 @@ const CarouselView = ({imgs, width, className}) => {
     }
 
     images = imgs.map(({src}, index) => <Carousel.Item key={index} className={s.itemCarousel}>
-        <Image layout='fill' alt={'Слайд'} src={src}/>
+        <Image
+            placeholder={'blur'}
+            blurDataURL="/blur.png"
+            layout='fill'
+            alt={'Слайд'}
+            src={src}
+            loader={()=> src}
+        />
     </Carousel.Item>);
 
     useEffect(() => {
