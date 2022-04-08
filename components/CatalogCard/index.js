@@ -3,6 +3,7 @@ import s from './Card.module.scss';
 import Button from '../Button';
 import NextLink from 'next/link';
 import {inject, observer} from "mobx-react";
+import Image from 'next/image'
 
 @inject(`RootStore`)
 @observer
@@ -13,7 +14,7 @@ class Card extends React.Component {
 
         return (
             <div className={s.card}>
-                <img src={img}/>
+                <Image src={img} layout="fill"/>
                 <div className={s.name}>
                     <NextLink
                         href={`/catalog/[category]`}

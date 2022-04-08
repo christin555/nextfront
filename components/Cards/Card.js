@@ -9,9 +9,9 @@ import {inject, observer} from 'mobx-react';
 import Buttons from './Buttons';
 import Link from 'next/link';
 import formatPrice from '../../src/utils/formatPrice';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import classNames from 'classnames';
 import Labels from './labels';
+import Image from 'next/image'
 
 const plural = require('plural-ru');
 
@@ -93,10 +93,12 @@ class CardView extends React.Component {
                             <CardMedia
                                 className={s.media}
                             >
-                                <img
+                                <Image
+                                    quality={50}
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
                                     src={img || imgs && imgs[0]?.src}
                                     layout='fill'
+                                    placeholder={"blur"}
                                 />
                                 <Buttons {...this.props} />
                             </CardMedia>
