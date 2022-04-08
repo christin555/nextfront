@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
                     <link rel="icon" href="/logo.png"/>
                     <link rel="apple-touch-icon" href="/logo.png"/>
                     <meta name="theme-color" content={theme.palette.main}/>
+    
                     <meta property="og:site_name" content="Мастер Пола" />
                     <meta property="og:type" content="website" />
                     <meta property="og:image" content={'/magazine.jpg'} />
