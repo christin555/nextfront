@@ -258,13 +258,12 @@
     display: flex;
     flex-direction: column;
 
-    &:not(.door) .card{
-      padding: 10px 0 !important;
+    &:not(.door) .product {
+      padding: 0 !important;
     }
 
     .product {
       margin-left: 0;
-      padding:  0 !important;
 
       .name {
         flex-direction: column;
@@ -276,6 +275,8 @@
       }
     }
   }
+
+
 
   .materials > .items {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));

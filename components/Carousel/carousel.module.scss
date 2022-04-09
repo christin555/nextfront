@@ -2,7 +2,7 @@
 
 
 .carouselHeight {
-  height: 500px;
+  max-height: 500px;
 }
 
 .upButton {
@@ -21,7 +21,7 @@
 }
 
 .itemCarousel {
-  height: 500px;
+  max-height: 500px;
   position: relative;
 
   & > * {
