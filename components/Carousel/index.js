@@ -45,15 +45,18 @@ const CarouselView = ({imgs, width, className}) => {
     }
 
     images = imgs.map(({src}, index) => <Carousel.Item key={index} className={s.itemCarousel}>
-        <Image
-            placeholder={'blur'}
-            blurDataURL="/blur.png"
-            height = {500}
-            width = {800}
-            alt={'Слайд'}
-            src={src}
-            loader={() => src}
-        />
+            <Image
+                className={'image'}
+                placeholder={'blur'}
+                blurDataURL="/blur.png"
+                width="100%"
+                height="100%"
+                layout="responsive"
+                objectFit="contain"
+                alt={'Слайд'}
+                src={'https://master-pola.com' + src}
+                loader={() => 'https://master-pola.com' + src}
+            />
     </Carousel.Item>);
 
     useEffect(() => {

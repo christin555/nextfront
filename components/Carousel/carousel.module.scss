@@ -20,15 +20,11 @@
   }
 }
 
-.itemCarousel{
+.itemCarousel {
   height: 500px;
+  position: relative;
 
-  img{
-    margin: 0 auto;
-    height: 500px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    width: 100%;
-    display: block;
+  & > * {
+    position: initial !important;
   }
 }
