@@ -18,8 +18,9 @@ export default function MultiActionAreaCard({onClick, id, name, img, amount, pri
             <div className={s.card} onClick={() => onClick && onClick(id)}>
                 <div className={s.mediaBlock}>
                     <Image
-                        quality={50}
-                        layout='fill'
+                        quality={75}
+                        width={300}
+                        height={200}
                         alt={name}
                         src={img}
                     />

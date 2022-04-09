@@ -48,10 +48,11 @@ const CarouselView = ({imgs, width, className}) => {
         <Image
             placeholder={'blur'}
             blurDataURL="/blur.png"
-            layout='fill'
+            height = {500}
+            width = {800}
             alt={'Слайд'}
             src={src}
-            loader={()=> src}
+            loader={() => src}
         />
     </Carousel.Item>);
 
