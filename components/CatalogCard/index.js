@@ -15,11 +15,13 @@ class Card extends React.Component {
         return (
             <div className={s.card}>
                 <Image
+                    placeholder={'blur'}
+                    blurDataURL="/blur.png"
                     quality={50}
-                    priority={true}
-                    loader={()=> img}
+                    loader={() => img}
                     src={img}
-                    layout="fill"
+                    width={443}
+                    height={252}
                     alt={name}
                 />
                 <div className={s.name}>
