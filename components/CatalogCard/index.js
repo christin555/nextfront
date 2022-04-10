@@ -18,11 +18,14 @@ class Card extends React.Component {
                     placeholder={'blur'}
                     blurDataURL="/blur.png"
                     quality={50}
-                    loader={() => img}
-                    src={img}
-                    width={443}
-                    height={252}
+                    loader={() => 'https://master-pola.com' + img}
+                    src={'https://master-pola.com' + img}
+                    width={'100%'}
+                    layout="responsive"
+                    objectFit={'cover'}
+                    height={'100%'}
                     alt={name}
+                    className={'image'}
                 />
                 <div className={s.name}>
                     <NextLink

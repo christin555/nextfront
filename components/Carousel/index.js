@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef} from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import Nophoto from "../../public/nophoto.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,34 +9,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {IconButton} from '@mui/material';
 
 
-const CarouselView = ({imgs, width, className}) => {
+const CarouselView = ({imgs}) => {
     const carouselRef = useRef(null);
     const carouselBlockRef = useRef(null);
-
-    const keyDownHandler = ({key}) => {
-        const node = carouselRef.current;
-
-        if (!node) {
-            return;
-        }
-
-        switch (key) {
-            case 'ArrowRight':
-            case 'd':
-                node.slideRight();
-                break;
-            case 'ArrowLeft':
-            case 'a':
-                node.slideLeft();
-                break;
-            case 'Enter':
-                node.fullScreen();
-                break;
-            case 'Escape':
-                node.exitFullScreen();
-                break;
-        }
-    };
 
     let images;
 
@@ -46,7 +21,6 @@ const CarouselView = ({imgs, width, className}) => {
 
     images = imgs.map(({src}, index) => <Carousel.Item key={index} className={s.itemCarousel}>
             <Image
-                className={'image'}
                 placeholder={'blur'}
                 blurDataURL="/blur.png"
                 width="100%"
@@ -58,16 +32,6 @@ const CarouselView = ({imgs, width, className}) => {
                 loader={() => 'https://master-pola.com' + src}
             />
     </Carousel.Item>);
-
-    useEffect(() => {
-        const node = carouselBlockRef.current;
-
-        if (node) {
-            node.addEventListener('keydown', keyDownHandler, {passive: true});
-        }
-
-        return () => node.removeEventListener('keydown', keyDownHandler);
-    }, []);
 
     return (
         <div ref={carouselBlockRef}>
