@@ -28,8 +28,8 @@ const CarouselView = ({imgs}) => {
                 layout="responsive"
                 objectFit="contain"
                 alt={'Слайд'}
-                src={'https://master-pola.com' + src}
-                loader={() => 'https://master-pola.com' + src}
+                src={src}
+                loader={() => src}
             />
     </Carousel.Item>);
 
