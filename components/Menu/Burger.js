@@ -7,7 +7,6 @@ import React, {useState, useEffect} from 'react';
 import InputSearch from "./InputSearch";
 import Image from "next/image";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import s from "../Footer/Footer.module.scss";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ViberIcon from "../Icons/ViberIcon";
 import VkIcon from "../Icons/VK";
@@ -21,11 +20,6 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
 
     const setOpen = (isOpen) => {
         setState({isOpen});
-    };
-
-    const toPageWithClose = (link) => {
-        setOpen(false);
-        toPage(link);
     };
 
     return (
@@ -75,7 +69,6 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
                                                 [styles.important]: important,
                                                 [styles.isActive]: link === pathname
                                             })}
-                                            // onClick={() => toPageWithClose(link)}
                                         >
                                             <a
                                                 href={link}

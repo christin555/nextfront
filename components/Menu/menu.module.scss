@@ -9,16 +9,6 @@
   }
 }
 
-.isScrolled {
-  .headerBackground {
-    opacity: 1 !important;
-  }
-
-  & > *, a, a:visited {
-    color: $gray-500 !important;
-  }
-}
-
 .headerSearch {
   display: none;
   border-radius: 2px;
@@ -38,14 +28,16 @@
 }
 
 .container {
-  position: absolute;
+  position: sticky !important;
+  top: 0;
   width: 100%;
   z-index: 1001;
 }
 
 .header {
+  background: white;
   width: 100%;
-  position: fixed;
+  //position: fixed;
   z-index: 2;
   top: 0;
 
@@ -66,7 +58,6 @@
     display: flex;
     justify-content: space-between;
     height: 60px;
-    background: white;
     @include paddingStandard;
 
     .logoBlock {
@@ -127,7 +118,6 @@
 }
 
 .menuContainer {
-  padding-top: 60px;
   @include paddingStandard;
   display: flex;
   color: $white-20;
@@ -227,8 +217,13 @@
 
 
 @media only screen and (max-width: 930px) {
+
+  .container {
+    top: -27px !important;
+  }
+
   .header {
-    height: 50px;
+    position: unset;
 
     .name {
       font-size: 26px;
@@ -256,4 +251,3 @@
     display: none;
   }
 }
-

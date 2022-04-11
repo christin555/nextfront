@@ -15,6 +15,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ViberIcon from "../../components/Icons/ViberIcon";
 import Meta from "../../components/HeadComponent";
 import Title from "../../components/Title";
+import VkIcon from "../../components/Icons/VK";
 
 class Delivery extends React.Component {
 
@@ -99,6 +100,15 @@ class Delivery extends React.Component {
                                     >
                                         <InstagramIcon className={s.icon}/> Instagram
                                     </a>
+                                       <a
+                                           className={s.messenger}
+                                           target={'_blank'}
+                                           rel='noopener noreferrer'
+                                           href='https://vk.com/masterpola'
+                                           title='Перейти на канал в ВК'
+                                       > <VkIcon className={s.icon}/>
+                                           ВКонтакте
+                                       </a>
                                     <a
                                         className={s.messenger}
                                         target={'_blank'}

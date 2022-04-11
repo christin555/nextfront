@@ -5,7 +5,8 @@ import Title from '../../Title';
 import Content from './Content'
 import {toJS} from "mobx";
 import Meta from "../../HeadComponent";
-import Contact from "../home/Blocks/Contact";
+import DescriptionMain from "./Description";
+import Reels from "./Reels";
 
 
 @inject(({RootStore: {CatalogStore}}) => {
@@ -76,6 +77,7 @@ class Catalog extends React.Component {
                 <div className={s.content}>
                     <Content/>
                 </div>
+                <DescriptionMain/>
             </>
         );
     }

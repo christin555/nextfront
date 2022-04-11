@@ -13,27 +13,27 @@ class Card extends React.Component {
         const {name, alias, img} = this.props;
 
         return (
-            <div className={s.card}>
-                <Image
-                    placeholder={'blur'}
-                    blurDataURL="/blur.png"
-                    quality={50}
-                    loader={() => 'https://master-pola.com' + img}
-                    src={'https://master-pola.com' + img}
-                    width={'100%'}
-                    layout="responsive"
-                    objectFit={'cover'}
-                    height={'100%'}
-                    alt={name}
-                    className={'image'}
-                />
-                <div className={s.name}>
-                    <NextLink
-                        href={`/catalog/[category]`}
-                        as={`/catalog/${alias}`}
-                        passHref
-                        shallow={true}
-                    >
+            <NextLink
+                href={`/catalog/[category]`}
+                as={`/catalog/${alias}`}
+                passHref
+                shallow={true}
+            >
+                <div className={s.card} onClick={() => this.props.RootStore.setCategoryMerge(alias)}>
+                    <Image
+                        placeholder={'blur'}
+                        blurDataURL="/blur.png"
+                        quality={50}
+                        loader={() => 'https://master-pola.com' + img}
+                        src={'https://master-pola.com' + img}
+                        width={'100%'}
+                        layout="responsive"
+                        objectFit={'cover'}
+                        height={'100%'}
+                        alt={name}
+                        className={'image'}
+                    />
+                    <div className={s.name}>
                         <Button
                             onClick={() => this.props.RootStore.setCategoryMerge(alias)}
                             className={s.but}
@@ -41,9 +41,10 @@ class Card extends React.Component {
                         >
                             {name}
                         </Button>
-                    </NextLink>
+
+                    </div>
                 </div>
-            </div>
+            </NextLink>
         );
     }
 }

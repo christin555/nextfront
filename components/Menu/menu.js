@@ -7,11 +7,10 @@ import Image from 'next/image'
 import InputSearch from "./InputSearchMenu";
 import Callme from "../Callme";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import AppsIcon from '@mui/icons-material/Apps';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ViberIcon from "../Icons/ViberIcon";
-import Box from "@mui/material/Box";
+import MobileHeader from "./MobileHeader";
 
 const menu = [
     {name: 'Каталог', important: true, link: '/catalog'},
@@ -26,7 +25,6 @@ const menu = [
 export default function Menu() {
     const router = useRouter();
     const pathname = router?.pathname;
-    const isHome = pathname === '/';
     const toPage = (pathname) => Router.push(pathname);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -46,67 +44,66 @@ export default function Menu() {
         };
     });
 
-    const onKeyPressHandler = (event) => {
-        if (event.charCode === 13) {
-        }
-    }
 
     return (
-        <header className={styles.container}>
-            <div className={cn(styles.header, {[styles.isScrolled]: isScrolled, [styles.isHome]: isHome})}>
-                <div className={styles.headerBackground}/>
-                <div className={styles.headerContent}>
-                    <div className={styles.logoBlock}>
-                        <div className={styles.logo}
-                             onClick={() => toPage('/')}>
-                            <Image
-                                className={styles.logo}
-                                priority={true}
-                                src={'/logo.png'}
-                                alt={'logo'}
-                                width="64"
-                                height="64"
-                            />
-                        </div>
-                        <div className={styles.name} onClick={() => toPage('/')}>
-                            Мастер Пола
-                        </div>
-                        <a
-                            target={'_blank'}
-                            rel='noopener noreferrer'
-                            className={styles.address}
-                            href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
-                            title='Показать адрес в 2GIS'
-                        >
-                            <NearMeIcon className={styles.icon}/>
-                            Тюмень, Федюнинского 62 к1
-                        </a>
-                    </div>
-                    <div className={styles.left}>
-                        <div className={styles.phoneBlock}>
+        <>
+            <header className={styles.container}>
+                <div className={styles.header}>
+                    <MobileHeader/>
+                    {/*<div className={styles.headerBackground}/>*/}
+                    <div className={styles.headerContent}>
+                        <div className={styles.logoBlock}>
+                            <div className={styles.logo}
+                                 onClick={() => toPage('/')}>
+                                <Image
+                                    className={styles.logo}
+                                    priority={true}
+                                    src={'/logo.png'}
+                                    alt={'logo'}
+                                    width="64"
+                                    height="64"
+                                />
+                            </div>
+                            <div className={styles.name} onClick={() => toPage('/')}>
+                                Мастер Пола
+                            </div>
                             <a
-                                href={'tel:+79829881522'}
-                                className={styles.phone}
-                                title='Позвонить'
+                                target={'_blank'}
+                                rel='noopener noreferrer'
+                                className={styles.address}
+                                href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
+                                title='Показать адрес в 2GIS'
                             >
-                                8 (982) 988-15-22
+                                <NearMeIcon className={styles.icon}/>
+                                Тюмень, Федюнинского 62 к1
                             </a>
-                            <Callme ButtonCall={
-                                <span className={styles.callme}>
+                        </div>
+                        <div className={styles.left}>
+                            <div className={styles.phoneBlock}>
+                                <a
+                                    href={'tel:+79829881522'}
+                                    className={styles.phone}
+                                    title='Позвонить'
+                                >
+                                    8 (982) 988-15-22
+                                </a>
+                                <Callme ButtonCall={
+                                    <span className={styles.callme}>
                                     Заказать звонок
                                 </span>
-                            }/>
+                                }/>
+                            </div>
                         </div>
+                        <BurgerMenu toPage={toPage} menu={menu}/>
                     </div>
-                    <BurgerMenu toPage={toPage} menu={menu}/>
                 </div>
-            </div>
+            </header>
             <nav className={styles.menuContainer}>
                 <ul className={styles.menu}>
                     <li><InputSearch/></li>
                     {
                         menu.map(({name, link, Icon}, index) => (
-                            <li key={link}  className={cn({[styles.isActive]: link === pathname})}>
+                            <li key={link} className={cn({[styles.isActive]: link === pathname})}>
                                 <a
                                     href={link}
                                     title={name}
@@ -117,8 +114,7 @@ export default function Menu() {
                         ))
                     }
                 </ul>
-
-                <ul  className={cn(styles.menu, styles.grayMenu)}>
+                <ul className={cn(styles.menu, styles.grayMenu)}>
                     <li>
                         <a
                             target={'_blank'}
@@ -150,6 +146,6 @@ export default function Menu() {
                     </li>
                 </ul>
             </nav>
-        </header>
+        </>
     )
 }

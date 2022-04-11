@@ -10,6 +10,7 @@ let theme = createTheme({
     'fontWeightLight': 300,
     'fontWeightRegular': 400,
     'fontWeightMedium': 500,
+    fontWeightBold: 400,
     'body1': {
       'fontSize': 16,
       fontWeight: 300
