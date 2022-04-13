@@ -12,6 +12,8 @@ import formatPrice from '../../src/utils/formatPrice';
 import classNames from 'classnames';
 import Labels from './labels';
 import Image from 'next/image'
+import StarIcon from '@mui/icons-material/Star';
+import Box from "@mui/material/Box";
 
 const plural = require('plural-ru');
 
@@ -25,6 +27,33 @@ class CardView extends React.Component {
         }
 
         return <span> {`| ${collection}`} </span>;
+    }
+
+    get priceRow() {
+        const {price, salePrice, isDoor} = this.props;
+        const currentPrice = salePrice || price;
+
+        if (!currentPrice) {
+            return null
+        }
+
+        const priceBlock = <span className={s.price}>
+                {formatPrice({price: currentPrice, isDoor})}
+                </span>;
+
+        const oldPrice = salePrice && <span className={s.salePrice}>
+                        {formatPrice({price, withCurrency: false})}
+                    </span> || null
+
+
+        return <Box
+            marginTop={'10px'}
+            display={'flex'}
+            alignItems={'center'}
+        >
+            {priceBlock}
+            {oldPrice}
+        </Box>
     }
 
     get colors() {
@@ -60,7 +89,7 @@ class CardView extends React.Component {
         );
     }
 
-     convertImage = (w, h) => `
+    convertImage = (w, h) => `
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
       <linearGradient id="g">
@@ -74,23 +103,21 @@ class CardView extends React.Component {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
-     toBase64 = (str) =>
-    typeof window === 'undefined'
-        ? Buffer.from(str).toString('base64')
-        : window.btoa(str);
+    toBase64 = (str) =>
+        typeof window === 'undefined'
+            ? Buffer.from(str).toString('base64')
+            : window.btoa(str);
 
     render() {
         const {
             alias,
             isDoor,
             img,
-            imgs = [],
             name,
             brand,
-            price,
             isPopular,
             isBestPrice,
-            withPopularLabel = true,
+            salePercent,
             withCategory = false,
             category,
             classNamesRoot
@@ -107,21 +134,24 @@ class CardView extends React.Component {
                 <a className={classNames(s.aComonent)}>
                     <Card className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
                         <CardActionArea className={s.area}>
-                            <Labels isPopular={isPopular} isBestPrice={isBestPrice}
-                                    withPopularLabel={withPopularLabel}/>
+                            <Labels
+                                salePercent={salePercent}
+                                isBestPrice={isBestPrice}
+                            />
                             <CardMedia
                                 className={s.media}
                             >
+
                                 <Image
                                     placeholder={'blur'}
                                     blurDataURL="/blur.png"
                                     height={180}
                                     width={260}
                                     alt={name}
-                                    loader={()=> img}
+                                    loader={() => img || "/blur.png"}
                                     quality={50}
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
-                                    src={img}
+                                    src={img || "/blur.png"}
                                 />
                                 <Buttons {...this.props} />
                             </CardMedia>
@@ -137,13 +167,16 @@ class CardView extends React.Component {
                                         </span>
                                     )
                                 }
-                                    <span className={s.name}>{name}</span>
+                                    <span className={s.name}>
+                                        {name}
+                                    </span>
                                 </div>
                                 {
-                                    price && (
-                                        <span className={s.price}>{formatPrice({price, isDoor})}</span>
-                                    ) || null
+                                    isPopular && <span className={s.popular}>
+                                     <StarIcon className={s.starIcon}/>  <span className={s.mark}> 5 </span> хит продаж
+                                    </span> || null
                                 }
+                                {this.priceRow}
                                 {this.colors}
                             </CardContent>
                         </CardActionArea>

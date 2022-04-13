@@ -6,21 +6,22 @@ class Labels extends React.Component {
 
     render() {
         const {
-            isPopular,
             isNew,
             isBestPrice,
-            withPopularLabel
+            withPopularLabel,
+            salePercent
         } = this.props;
 
 
         const blocks = [];
 
-        if (withPopularLabel && isPopular) {
-            blocks.push(<div className={s.isPopular}>  ХИТ ПРОДАЖ</div>)
+        if (salePercent) {
+            blocks.push(<div className={s.sale}>  {`-${salePercent}%`}</div>)
         }
         if (isBestPrice) {
-            blocks.push(<div className={s.isBestPrice}> ЛУЧШАЯ ЦЕНА</div>)
+            blocks.push(<div className={s.isBestPrice}> Лучшая цена</div>)
         }
+
         if (isNew) {
             blocks.push(<div className={s.isNew}> НОВИНКА</div>)
         }
@@ -29,9 +30,7 @@ class Labels extends React.Component {
             return <div/>
         }
 
-        return <div className={s.labels}>
-            {blocks}
-        </div>
+        return blocks
     }
 }
 

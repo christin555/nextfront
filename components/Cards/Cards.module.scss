@@ -74,30 +74,22 @@
 }
 
 @mixin label {
-  display: flex;
-  padding: 0 8px;
-  height: 20px;
+  z-index: 20;
+  position: absolute;
+  padding: 4px 10px;
+  border-radius: 2px;
   color: #ffffff;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 20px;
-  text-transform: uppercase;
-  background-color: $secondary;
-  letter-spacing: 1.2px;
+  font-weight: bold;
 }
 
-.isPopular {
+.isBestPrice {
   @include label;
-}
 
-.isBestPrice{
-  @include label;
-  background-color: #27cb0c;
+  border-radius: 4px;
+  top: 10px;
+  left: 14px;
 
-  &:after {
-    border-left: 6px solid #27cb0c;
-    border-top: 10px solid #27cb0c;
-  }
+  background-color: #549af1;
 }
 
 .isNew {
@@ -122,6 +114,19 @@
   color: $gray-200;
 }
 
+.sale {
+  @include label;
+
+  top: 150px;
+  right: 14px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px #575757;
+  font-weight: bold;
+  background: $red;
+  transform: skewX(-10grad);
+}
+
 .bestPrice {
   color: $main-green;
   font-size: 20px !important;
@@ -137,26 +142,55 @@
   padding-left: 8px;
 }
 
+.salePrice{
+  color: $gray-100;
+  text-decoration: line-through $gray-100 1px !important;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
 .content {
   flex-grow: 1;
-  padding: 14px;
+  padding: 10px 8px !important;
   justify-content: space-between;
   place-self: flex-start;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.56);
   min-height: 30px;
-  font-weight: 300;
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   letter-spacing: 0.5px;
 
   .brand {
     font-size: 12px;
-    color: $gray-200;
+    color: $gray-100;
     margin-bottom: 6px;
     text-transform: uppercase;
   }
+
+  .popular {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: $gray-100;
+
+    .mark {
+      color: $red;
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    .starIcon {
+      font-size: 16px;
+      margin-right: 2px;
+      color: $red;
+    }
+  }
+
 
   .name {
     color: $gray-500;
@@ -164,7 +198,6 @@
 
   .price {
     display: flex;
-    margin-top: 10px;
     font-size: 18px;
     color: $gray-500;
     justify-content: space-between;
@@ -172,7 +205,6 @@
     .unit {
       padding: 5px;
       font-size: 14px;
-      font-weight: 200;
       color: #7f7f7f;
     }
   }
