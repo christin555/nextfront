@@ -171,11 +171,7 @@ class CardView extends React.Component {
                                         {name}
                                     </span>
                                 </div>
-                                {
-                                    isPopular && <span className={s.popular}>
-                                     <StarIcon className={s.starIcon}/>  <span className={s.mark}> 5 </span> хит продаж
-                                    </span> || null
-                                }
+                                <Labels isPopular={isPopular}/>
                                 {this.priceRow}
                                 {this.colors}
                             </CardContent>

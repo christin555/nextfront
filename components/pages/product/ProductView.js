@@ -15,6 +15,8 @@ import Typography from "@mui/material/Typography";
 import CheckIcon from '@mui/icons-material/Check';
 import FinishingMaterialBlock from './FinishingMaterialBlock';
 import Meta from "../../HeadComponent";
+import Box from "@mui/material/Box";
+import Labels from "../../Cards/labels";
 
 @inject(({RootStore: {ProductStore}}) => {
     return {
@@ -165,11 +167,33 @@ class Product extends React.Component {
         }
     }
 
-    get price() {
-        return formatPrice({
-            price: this.props.values.price,
-            isDoor: this.props.values?.category?.toLowerCase() === 'двери'
-        });
+
+    get priceRow() {
+        const {price, salePrice, category} = this.props.values;
+        const currentPrice = salePrice || price;
+        const isDoor = category?.toLowerCase() === 'двери';
+
+        if (!currentPrice) {
+            return null
+        }
+
+        const priceBlock = <span className={s.price}>
+                {formatPrice({price: currentPrice, isDoor})}
+                </span>;
+
+        const oldPrice = salePrice && <span className={s.salePrice}>
+                        {formatPrice({price, withCurrency: false})}
+                    </span> || null
+
+
+        return <Box
+            margin={'10px 0'}
+            display={'flex'}
+            alignItems={'center'}
+        >
+            {priceBlock}
+            {oldPrice}
+        </Box>
     }
 
     render() {
@@ -193,7 +217,9 @@ class Product extends React.Component {
                         <div className={s.product}>
                             <span className={s.brand}>
                                   {values.category} {values.brand}
+                                <Labels salePercent={values.salePercent} className={s.sale}/>
                             </span>
+                            <Labels isPopular={values.isPopular}/>
                             <div className={s.name}>
                                 {values.name}
                                 <span className={s.collection}>
@@ -202,13 +228,14 @@ class Product extends React.Component {
                             </div>
                             <Divider/>
                             <description className={s.desc}> {values.description} </description>
+                            <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
                             {
                                 values.price && (
                                     <div className={s.price}>
-                    <span className={s.value}>
-                      <MonetizationOnIcon className={s.icon}/>
-                        {this.price}
-                    </span>
+                                        <span className={s.value}>
+                                            <MonetizationOnIcon className={s.icon}/>
+                                            {this.priceRow}
+                                        </span>
                                     </div>
                                 ) || null
                             }

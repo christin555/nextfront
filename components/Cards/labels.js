@@ -1,5 +1,7 @@
 import React from 'react';
-import s from './Cards.module.scss';
+import s from './Labels.module.scss';
+import classNames from "classnames";
+import StarIcon from "@mui/icons-material/Star";
 
 
 class Labels extends React.Component {
@@ -8,18 +10,27 @@ class Labels extends React.Component {
         const {
             isNew,
             isBestPrice,
-            withPopularLabel,
-            salePercent
+            className,
+            salePercent,
+            isPopular
         } = this.props;
 
 
         const blocks = [];
 
         if (salePercent) {
-            blocks.push(<div className={s.sale}>  {`-${salePercent}%`}</div>)
+            blocks.push(<div className={classNames(s.sale, className)}>  {`-${salePercent}%`}</div>)
         }
         if (isBestPrice) {
             blocks.push(<div className={s.isBestPrice}> Лучшая цена</div>)
+        }
+        if (isPopular) {
+            blocks.push(
+                <span className={s.popular}>
+                                     <StarIcon className={s.starIcon}/>
+                <span className={s.mark}> 5.0 </span>
+                хит продаж
+            </span>)
         }
 
         if (isNew) {

@@ -22,6 +22,19 @@
   }
 }
 
+.sale {
+  position: static !important;
+  width: min-content;
+}
+
+.salePrice {
+  color: $gray-100;
+  text-decoration: line-through $gray-100 1px !important;
+  font-weight: 400;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
 .door {
   background: url(../../../public/wall.jpg) no-repeat top;
   -webkit-background-size: cover;
@@ -121,6 +134,9 @@
       font-weight: 300;
       margin-top: 10px;
       text-transform: uppercase;
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
     }
 
     .name {
@@ -277,7 +293,6 @@
       }
     }
   }
-
 
 
   .materials > .items {

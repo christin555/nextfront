@@ -1,0 +1,69 @@
+@import '../../styles/variables.module';
+
+@mixin label {
+  z-index: 20;
+  position: absolute;
+  padding: 4px 10px;
+  border-radius: 2px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.sale {
+  @include label;
+
+  top: 150px;
+  right: 14px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px #575757;
+  font-weight: bold;
+  background: $red;
+  transform: skewX(-10grad);
+}
+
+.bestPrice {
+  color: $main-green;
+  font-size: 20px !important;
+}
+
+
+.popular {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: $gray-100;
+
+  .mark {
+    color: $red;
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  .starIcon {
+    font-size: 16px;
+    margin-right: 2px;
+    color: $red;
+  }
+}
+
+.isBestPrice {
+  @include label;
+
+  border-radius: 4px;
+  top: 10px;
+  left: 14px;
+
+  background-color: #549af1;
+}
+
+.isNew {
+  @include label;
+  background-color: #bcebf1;
+
+  &:after {
+    border-left: 6px solid #bcebf1;
+    border-top: 10px solid #bcebf1;
+  }
+}
