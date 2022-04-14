@@ -13,7 +13,6 @@ import ReactPlayer from 'react-player'
 
 class DescriptionMain extends React.Component {
     render() {
-        console.log('resl')
         return <div>
             <ReactPlayer
                 loop={true}

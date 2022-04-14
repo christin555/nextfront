@@ -10,13 +10,14 @@ class FilterViewHOC extends React.Component {
 
         const {RootStore, storeName} = this.props;
 
-        this.FilterStore = RootStore[storeName];
+        this.FilterStore = RootStore.ActiveFilterStore;
 
-        RootStore.CatalogStore.setActiveFilterStore(this.FilterStore);
+       // RootStore.CatalogStore.setActiveFilterStore(this.FilterStore);
     }
 
     componentWillUnmount() {
-        const {RootStore} = this.props;
+        const {RootStore, storeName} = this.props;
+        RootStore.deleteStore(storeName)
         RootStore.CatalogStore.setActiveFilterStore({});
     }
 

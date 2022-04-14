@@ -25,6 +25,7 @@ export class FloorStore extends BaseFilterStore {
 
     constructor(RootStore) {
         super(RootStore);
+
         makeObservable(this);
     }
 

@@ -44,7 +44,7 @@ class CatalogStore {
         this.category = RootStore.category;
         this.fastfilter = RootStore.RouterStore.fastfilter;
 
-        this.ActiveFilterStore = CatalogStore.ActiveFilterStore || {};
+        this.ActiveFilterStore = RootStore.ActiveFilterStore || {};
         this.body = CatalogStore.body || {};
         this.categories = CatalogStore.categories;
         this.products = CatalogStore.products;
@@ -68,11 +68,12 @@ class CatalogStore {
 
     @action merge = (newProps) => {
         this.isHydrating = true;
-        (['category', 'fastfilter']).forEach((key) => {
+        (['category', 'fastfilter', 'ActiveFilterStore']).forEach((key) => {
             if (newProps[key] !== this[key]) {
                 this[key] = newProps[key]
             }
         })
+
         this.PageStore.setPageWithoutSSR(1);
         this.isHydrating = false;
     };

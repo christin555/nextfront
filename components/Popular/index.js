@@ -38,10 +38,7 @@ class CardsView extends Component {
 
         const Cards = popularProducts.map((item, index) => (
             <Card
-                classNamesRoot={s.card}
                 withCategory={true}
-                withPopularLabel={false}
-                withPhone={false}
                 key={index}
                 {...item}
             />

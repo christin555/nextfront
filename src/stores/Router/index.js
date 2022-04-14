@@ -33,7 +33,6 @@ class RouterStore {
         await  this.router.push(params);
     }
 
-
     @action setValue = ({target: {value}}) => {
         this.searchValue = value;
     }

@@ -141,7 +141,6 @@ class CardView extends React.Component {
                             <CardMedia
                                 className={s.media}
                             >
-
                                 <Image
                                     placeholder={'blur'}
                                     blurDataURL="/blur.png"
