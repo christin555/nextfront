@@ -41,7 +41,7 @@ class Blog extends Component {
                             Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады
                             поделиться своими знаниями!
                         </p>
-                        <NextLink href={`/catalog`} passHref>
+                        <NextLink href={`/blog`} passHref>
                             <Button
                                 className={s.buttonArt}
                                 variant={'outlined'}
