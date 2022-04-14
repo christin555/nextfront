@@ -4,13 +4,13 @@ import s from './Articles.module.scss';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import {CardActionArea, CardActions} from '@mui/material';
-import Button from '../Button';
+import MovieIcon from '@mui/icons-material/Movie';
 import NextLink from 'next/link';
 import {inject, observer} from "mobx-react";
 import dayjs from 'dayjs';
 import classNames from "classnames";
+import PlayArrowIcon from '@mui/icons-material/PlayArrowRounded';
+import CollectionsIcon from '@mui/icons-material/Collections';
 
 require('dayjs/locale/ru');
 
@@ -23,11 +23,18 @@ class ArticlesView extends React.Component {
         this.props.RootStore.ArticlesStore.setAlias(alias);
     }
 
+    icons = {
+        'video': <PlayArrowIcon className={s.icon}/>,
+        'collection': <CollectionsIcon className={s.icon}/>,
+        'short': <MovieIcon className={s.icon}/>
+    }
+
     render() {
-        const {articles, maxW, mediaClass} = this.props;
+        const {articles, mediaClass} = this.props;
 
-        return articles.map(({title, createdAt, id, imgPreview, alias}) => {
+        return articles.map(({title, id, watchCount, imgPreview, alias, articleType}) => {
 
+            const icon = this.icons[articleType];
             return (
                 <NextLink
                     href={{
@@ -40,22 +47,21 @@ class ArticlesView extends React.Component {
                     key={id}
                 >
                     <a className={s.card} onClick={() => this.routeChange(alias)}>
-                        <Card sx={{maxWidth: maxW}} key={id}>
+                        <div className={s.cardContainer}>
+                            <div className={s.iconBlock}>
+                                {icon}
+                            </div>
+                            <div className={s.hoverBlock}>
+                               <span>
+                                   <b>{title} </b>
+                                   <p> Просмотры: {watchCount} </p>
+                               </span>
+                            </div>
                             <CardMedia
                                 alt={title}
                                 className={classNames(s.media, mediaClass)}
                                 image={imgPreview}
                             />
-                        </Card>
-                        <div className={s.content}>
-                            <span
-                                className={s.articleContent}
-                            >
-                                {(title || '').replace(/\\n/g, '').substr(0, 150)}
-                            </span>
-                            <span className={s.date}>
-                            {createdAt && dayjs(createdAt).format('D MMMM')}
-                        </span>
                         </div>
                     </a>
                 </NextLink>

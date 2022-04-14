@@ -2,9 +2,8 @@ import React from 'react';
 import {inject} from 'mobx-react';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Article.module.scss';
-import CardMedia from '@mui/material/CardMedia';
+import ArticleContent from './Content';
 import Typography from '@mui/material/Typography';
-import {Box} from '@mui/material';
 import Cards from "../../../NewsCards/Cards";
 import NextLink from 'next/link';
 import Button from '../../../Button';
@@ -24,35 +23,6 @@ dayjs.locale('ru')
     };
 })
 class ArticlesView extends React.Component {
-    get media() {
-        const {article} = this.props;
-        const {src, type} = article;
-        switch (type) {
-            case 'youtube':
-                return {
-                    component: "iframe",
-                    image: `https://www.youtube.com/embed/${src}`
-                }
-            case 'img':
-                return {image: src}
-            default:
-                return {}
-        }
-    }
-
-    get category() {
-        const {category} = this.props.article;
-
-        switch (category) {
-            case 1:
-                return <span className={s.categoryLabel}> Полезные статьи</span>;
-            case 2:
-                return <span className={s.categoryLabel}> Новости</span>;
-        }
-
-        return null;
-    }
-
     render() {
         const {article, articles, alias} = this.props;
         const {title, content, createdAt} = article;
@@ -97,8 +67,7 @@ class ArticlesView extends React.Component {
                             }}
                     ></script>
                 </Head>
-                <Title title={'Наш блог'}/>
-                <Hierarchy hierarchy={[{pathname: '/blog', name: 'Блог'}, {pathname: `/blog/article/${alias}`, name: title}]}/>
+                <Title title={'Наш блог'} pathname={'/blog'}/>
                 <div className={s.content}>
                     <div className={s.sidebar}>
                         <Typography color='h4' fontWeight={400}>
@@ -118,37 +87,7 @@ class ArticlesView extends React.Component {
                             <Button color={'secondary'}> ВCЕ СТАТЬИ </Button>
                         </NextLink>
                     </div>
-                    <div className={s.article}>
-                        <Typography
-                            className={s.articleContent}
-                            variant="h5" component="h2"
-                        >
-                            {title}
-                        </Typography>
-
-                        <Box display={'flex'} margin={'10px 0'}>
-                            {this.category}
-
-                            <span className={s.date}>
-                            {createdAt && dayjs(createdAt).format('D MMMM')}
-                        </span>
-                        </Box>
-
-                        <CardMedia
-                            alt={title}
-                            className={s.media}
-                            {...this.media}
-                        />
-
-                        <Typography
-                            className={s.articleContent}
-                            component={'div'}>
-                            {(content || '')
-                                .split('\n')
-                                .map((item, index) =>
-                                    <span key={index}>{item.replace(/\\n/g, '')}</span>)}
-                        </Typography>
-                    </div>
+                <ArticleContent/>
                 </div>
             </React.Fragment>
         );

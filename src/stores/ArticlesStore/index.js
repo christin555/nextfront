@@ -10,6 +10,7 @@ class ArticlesStore {
     @observable articles;
     @observable article;
     @observable alias;
+    @observable  filter = 'all';
 
     constructor(RootStore) {
         makeObservable(this);
@@ -28,10 +29,22 @@ class ArticlesStore {
         this.article = ArticlesStore.article;
     }
 
+    @computed get articlesFiltered() {
+
+        if (this.filter === 'all') {
+            return this.articles
+        }
+
+        return this.articles.filter(({articleType}) => articleType === this.filter)
+    }
+
     @action merge = ({article, alias, articles}) => {
         this.article = article;
         this.articles = articles;
         this.alias = alias;
+    }
+    @action setFilter = (_, value) => {
+        this.filter = value
     }
 
     @action setStatus = (status) => {

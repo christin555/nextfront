@@ -2,15 +2,41 @@
 
 
 .cards {
+  margin-top: 20px;
   @include paddingStandard;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-column-gap: 40px;
-  grid-row-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 300px));
+  gap: 30px;
   margin-bottom: 40px;
+  justify-content: center;
+}
 
-  & > * {
-    height: 250px;
+.filter {
+  @include paddingStandard;
+
+  .activeIcon {
+    color: $black !important;
+  }
+
+  .icon {
+    color: $gray-200;
+  }
+}
+
+.desc {
+  display: flex;
+  margin: 20px 0;
+  gap: 30px;
+  @include paddingStandard;
+  font-weight: 300;
+
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  p {
+    margin: 0;
   }
 }
 
@@ -80,6 +106,28 @@
 
 
 @media only screen and (max-width: 480px) {
+  .desc {
+    gap: 14px;
+    font-size: 12px;
+    margin: 10px 0 0;
+
+    .logo {
+      max-width: 70px;
+      max-height: 70px;
+    }
+  }
+
+  .filter{
+    padding: 0;
+  }
+
+  .cards {
+    padding: 0;
+    margin: 0;
+    grid-template-columns: repeat(3, minmax(50px, 500px));
+    gap: 1px;
+  }
+
   .iframe {
     width: 100%;
     height: auto;

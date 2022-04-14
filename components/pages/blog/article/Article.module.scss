@@ -5,6 +5,21 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.horizontalContainer {
+  max-width: 850px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  height: min-content;
+}
+
+.verticalContainer {
+  max-width: 850px;
+  display: flex;
+  height: min-content;
 }
 
 .article {
@@ -13,7 +28,7 @@
 }
 
 .sidebar {
-  margin-right: 50px;
+  margin-right: 90px;
 }
 
 .cards {
@@ -22,16 +37,15 @@
   grid-template-columns:  minmax(250px, 1fr);
   margin: 20px 0;
   grid-row-gap: 20px;
-
-  & > * {
-    height: 200px;
-  }
 }
 
 .date {
+  margin-top: 8px;
   color: $gray-200;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .2px;
   font-size: 12px;
-  letter-spacing: 0.85pt;
   display: flex;
   align-items: center;
 }
@@ -47,15 +61,58 @@
   padding: 2px 4px;
 }
 
-.media {
+.mediaV {
+  border-width: 0;
+  max-height: 500px;
+  aspect-ratio: 720 / 1279;
+  flex-basis: 374.918px;
+}
+
+.mediaI {
   height: 400px;
+  max-height: 400px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  & > * {
+    position: initial !important;
+  }
 }
 
 .articleContent {
+  margin-top: 10px;
+  font-size: 16px;
+
   span {
     margin: 6px 0;
     display: block;
   }
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logo {
+  margin-top: 10px;
+  min-width: 45px;
+  min-height: 40px;
+}
+
+.contentText {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  background: $gray-30;
+  height: 1px;
 }
 
 .header {
@@ -79,13 +136,38 @@
 }
 
 @media only screen and (max-width: 930px) {
+
+  .horizontalContainer, .verticalContainer {
+    gap: 0;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 16px !important;
+    margin-top: 10px !important;
+  }
+
+  .articleContent {
+    margin: 0;
+  }
+
+  .logo {
+    display: none !important;
+    min-width: 25px;
+    min-height: 20px;
+    max-width: 30px;
+  }
   .content {
     display: flex;
     flex-flow: wrap-reverse;
+    padding: 0;
+    margin: 0 0 10px;
   }
 
   .cards {
+    width: 100%;
     margin-right: 0;
+    max-width: unset;
   }
 
   .header, .content {
@@ -96,7 +178,10 @@
     }
 
     .sidebar {
-      margin-top: 20px;
+      width: 100%;
+      margin-top: 40px;
+      @include paddingStandard;
+      margin-right: 0;
     }
   }
 
@@ -108,5 +193,10 @@
   .iframe {
     width: 100%;
     height: auto;
+  }
+
+  .date {
+    font-size: 12px;
+    text-transform: unset;
   }
 }

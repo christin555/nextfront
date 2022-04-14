@@ -254,13 +254,8 @@
   display: flex;
   margin-top: 20px;
 
-  .media {
-    height: 150px;
-  }
-
   & > * {
     width: 100%;
-    max-width: 300px;
     min-width: 200px;
   }
 
@@ -328,6 +323,7 @@
     overflow-x: scroll;
     padding-bottom: 20px;
   }
+
   .homeBlocks > * + * {
     margin-top: 20px;
   }

@@ -34,7 +34,7 @@ class HomeStore {
 
     getWorks = async () => {
         try {
-            const works = await api.post(`works/get`, {limit: 6});
+            const works = await api.post(`works/get`, {limit: 4});
             this.setWorks(works);
         } catch (_) {
         }
