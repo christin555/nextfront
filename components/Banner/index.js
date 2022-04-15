@@ -26,7 +26,7 @@ const CarouselView = ({deviceType, className, items}) => {
                 slidesPerView={1}
                 navigation={deviceType !== 'mobile'}
                  autoplay={{
-                    delay: 6500,
+                    delay: 7500,
                     disableOnInteraction: false,
                  }}
                 pagination={{
@@ -48,7 +48,7 @@ const CarouselView = ({deviceType, className, items}) => {
                                 <div className={s.text}>
                                     <div className={s.content}>
                                         <h3> {title} </h3>
-                                        <div className={s.desc}>
+                                        <div className={classNames(s.desc, {[s.alignCenter]: !img})}>
                                             {text}
                                         </div>
                                         <NextLink href={link}

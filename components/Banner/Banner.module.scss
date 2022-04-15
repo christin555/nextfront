@@ -55,7 +55,7 @@
     background: rgba(0, 0, 0, 0.51);
     transition: opacity .3s;
     opacity: 1;
-   // backdrop-filter: saturate(180%) blur(1px);
+    // backdrop-filter: saturate(180%) blur(1px);
     z-index: 3;
     flex-direction: column;
     align-items: center;
@@ -84,12 +84,17 @@
   flex-flow: row-reverse;
 }
 
+.alignCenter {
+  text-align: center !important;
+  -webkit-line-clamp: 2 !important;
+}
+
 @media only screen and (max-width: 930px) {
   .slide {
-    height: 250px;
+    height: 300px;
   }
   .image {
-    height: 250px;
+    height: 300px;
   }
 
   .text {
@@ -98,7 +103,7 @@
     }
 
     .content {
-      font-size: 10px;
+      font-size: 12px;
       padding: 10px 10px 35px;
     }
 
