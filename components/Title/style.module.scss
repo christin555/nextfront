@@ -2,7 +2,6 @@
 
 .title {
   padding: 15px 0;
-  border-bottom: 1px solid $gray-30;
   width: 100%;
 }
 
@@ -23,7 +22,6 @@
 
 @media only screen and (max-width: 930px) {
   .title {
-    border-bottom: unset;
     padding: 10px 0;
     font-size: 18px !important;
   }

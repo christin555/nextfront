@@ -11,6 +11,8 @@
 
 .root {
   height: 100%;
+  box-shadow: unset !important;
+  border-radius: unset !important;
 
   .area {
     display: flex !important;

@@ -4,16 +4,16 @@ module.exports = {
     },
     async headers() {
         return [
-            {
-                source: '/(.*).jpg',
-                locale: false,
-                headers: [
-                    {
-                        key: 'Cache-Control',
-                        value: 'public, max-age=180, stale-while-revalidate=180',
-                    }
-                ],
-            },
+            // {
+            //     source: '/(.*).jpg',
+            //     locale: false,
+            //     headers: [
+            //         {
+            //             key: 'Cache-Control',
+            //             value: 'public, max-age=180, stale-while-revalidate=180',
+            //         }
+            //     ],
+            // },
             {
                 source: '/about',
                 headers: [
