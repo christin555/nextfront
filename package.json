@@ -41,7 +41,8 @@
     "react-youtube": "^7.13.1",
     "sass": "1.43.4",
     "sharp": "^0.29.3",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "swiper": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.14.5",
@@ -52,7 +53,6 @@
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
     "mobile-detect": "^1.4.5",
-    "next-purgecss": "^4.0.0",
     "plural-ru": "^2.0.2",
     "postcss": "^8.4.12",
     "postcss-flexbugs-fixes": "^5.0.2",

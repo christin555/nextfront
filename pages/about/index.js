@@ -33,8 +33,9 @@ const About = () => (
           </div>
         </div>
       <YouTube
+          className={s.video}
         opts={{
-          width: '650',
+          width: '100%',
           height: '100%'
         }}
         videoId={'bAmdyypn8OI'}
@@ -45,7 +46,7 @@ const About = () => (
         <Image
             placeholder={'blur'}
             blurDataURL="/blur.png"
-            src={'/about.jpg'} layout='fill'
+            src={'/masterMain.jpg'} layout='fill'
             alt={'О компании'}/>
       </div>
       <div className={s.text}>

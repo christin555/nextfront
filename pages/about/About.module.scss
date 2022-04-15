@@ -87,27 +87,38 @@
     .title {
       padding: 20px 10px;
       font-size: 14px;
+    }
 
-      .preview {
-        .text {
-          margin-right: 0;
-          font-size: 14px;
-        }
+    .preview {
+      padding: 0;
+      @include paddingStandard;
+
+      .text {
+        margin-right: 0;
+        font-size: 14px;
       }
     }
 
     .video {
-      width: auto;
-      padding: 5px 25px;
+      margin-top: 20px;
+      @include paddingStandard;
+      min-height: 200px;
     }
   }
 
   .content {
     padding: 0;
     flex-direction: column;
+    @include paddingStandard;
+    flex-flow: wrap-reverse;
 
     .text {
-      margin: 5px 10px;
+      margin: 0;
+    }
+
+    .mediaBlock {
+      margin: 20px 0;
+      height: 200px;
     }
   }
 }

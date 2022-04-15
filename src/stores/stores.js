@@ -14,12 +14,14 @@ export default function initializeStore({
                                             initialData = {
                                                 RootStore: {},
                                                 RouterStore: {}
-                                            }, router
+                                            },
+                                            router,
+                                            deviceType
                                         }) {
 
     if (isServer) {
         const RouterStoreC = new RouterStore({router});
-        const RootStoreC = new RootStore({initialData: initialData.RootStore, RouterStore: RouterStoreC});
+        const RootStoreC = new RootStore({initialData: initialData.RootStore, deviceType, RouterStore: RouterStoreC});
 
         return {
             RootStore: RootStoreC,

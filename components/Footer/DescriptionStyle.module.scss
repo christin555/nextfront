@@ -1,0 +1,44 @@
+@import '../../styles/variables.module';
+
+.footerAbout {
+  margin-top: 40px;
+  padding: 20px 0;
+  @include paddingStandard;
+  background: $gray-20;
+
+  .media {
+    min-width: 15%;
+    margin: 10px 20px 0 0;
+  }
+
+  .text {
+    display: flex;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 90%;
+  }
+}
+
+
+@media only screen and (max-width: 1020px) {
+  .text {
+    flex-direction: column;
+  }
+
+  .footerAbout {
+    padding-top: 10px;
+    margin-top: 0;
+
+
+    .media {
+      width: unset !important;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 10px;
+    }
+  }
+
+}

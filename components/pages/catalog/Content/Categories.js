@@ -10,7 +10,7 @@ import s from './Content.module.scss';
 }) @observer
 class CategoriesView extends React.Component {
     render() {
-        const {categories, status} = this.props;
+        const {categories} = this.props;
 
         return (
             <div className={s.categories}>

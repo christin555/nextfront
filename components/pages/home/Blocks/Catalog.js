@@ -22,26 +22,26 @@ const items = [
     img: '/dashboard/uploads/ba72e6_b3a05b7df61e406cba189eea66a94a9f_mv2_aef523142e.jpg',
     alias: 'quartzvinyl'
   },
-  {
-    name: 'Спортивное покрытие',
-    img: '/dashboard/uploads/072420_1_ca4222c651.jpeg',
-    alias: 'sport'
-  },
+  // {
+  //   name: 'Спортивное покрытие',
+  //   img: '/dashboard/uploads/072420_1_ca4222c651.jpeg',
+  //   alias: 'sport'
+  // },
   {
     name: 'Керамогранит',
     img: '/dashboard/uploads/330db195af6f0c5679e31849367988f1_9ea988a2da.jpg',
     alias: 'keramogranit'
   },
-  {
-    name: 'Паркет',
-    img: '/dashboard/uploads/IN_TEE_Salsa_premium_1693c6be6d.jpg',
-    alias: 'parquet'
-  },
-  {
-    name: 'Пробковое покрытие',
-    img: '/dashboard/uploads/52ec984cc72302fd412e2aa145a6526c_XL_3564cf1886.jpg',
-    alias: 'probkovoe_pokrytie'
-  },
+  // {
+  //   name: 'Паркет',
+  //   img: '/dashboard/uploads/IN_TEE_Salsa_premium_1693c6be6d.jpg',
+  //   alias: 'parquet'
+  // },
+  // {
+  //   name: 'Пробковое покрытие',
+  //   img: '/dashboard/uploads/52ec984cc72302fd412e2aa145a6526c_XL_3564cf1886.jpg',
+  //   alias: 'probkovoe_pokrytie'
+  // },
   {
     name: 'Напольный плинтус',
     img: '/dashboard/uploads/233248_914519_bg_53fa4d1d8a.jpg',
@@ -65,7 +65,7 @@ function Blocks( ) {
                   className={s.but}
                   variant={'outlined'}
               >
-                {' Смотреть весь Каталог'}
+                {'Смотреть весь каталог'}
               </Button>
             </NextLink>
           </div>

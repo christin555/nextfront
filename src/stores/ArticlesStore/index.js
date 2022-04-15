@@ -83,7 +83,8 @@ class ArticlesStore {
         try {
             const articles = await api.post('articles/getArticles', {});
 
-            this.setArticles(articles);
+            console.log(articles)
+            this.setArticles(articles.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)));
             this.setStatus(statusEnum.SUCCESS);
         } catch (e) {
             this.setStatus(statusEnum.ERROR);

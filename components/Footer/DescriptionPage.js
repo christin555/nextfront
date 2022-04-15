@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Footer.module.scss';
+import s from './DescriptionStyle.module.scss';
 import Image from 'next/image';
 import {Typography} from "@mui/material";
 

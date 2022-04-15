@@ -3,7 +3,8 @@ import variables from '../variables.module.scss';
 const defaultPalette = {
     main: variables['main-blue'],
     secondary: {
-        main: '#e33371'
+        //main: '#e33371'
+        main: variables.red
     },
     primary: {
         main: '#42a5f5'

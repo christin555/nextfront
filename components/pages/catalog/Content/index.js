@@ -2,13 +2,11 @@ import React from 'react';
 import s from './Content.module.scss';
 import {inject, observer} from 'mobx-react';
 import Hierarchy from '../../../Hierarchy';
-import {status as statusEnum} from '../../../../src/enums';
-import {InWork, NoResults} from '../../../InformBlocks';
 import classNames from 'classnames';
 import Categories from './Categories';
 import Products from './Products';
 import Filter from '../Filter';
-import Contact from "../../home/Blocks/Contact";
+import Banner from "./Banner";
 
 @inject(({RootStore: {CatalogStore}}) => {
     return {
@@ -37,7 +35,8 @@ class Content extends React.Component {
 
         return (
             <div className={s.container}>
-                <Hierarchy hierarchy={hierarchy}/>
+                <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
+                <Banner className={s.banner} />
                 <Categories/>
                 <div className={s.content}>
                     <Filter category={category}/>

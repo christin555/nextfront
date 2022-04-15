@@ -24,8 +24,10 @@ class RootStore {
 
     @observable category;
 
-    constructor({initialData = {}, RouterStore}) {
+    constructor({initialData = {}, RouterStore, deviceType}) {
+        console.log( this.deviceType)
         this.RouterStore = RouterStore;
+        this.deviceType = deviceType || initialData.deviceType;
         this.initialData = initialData.stores || {};
         this.category = initialData.category;
     }

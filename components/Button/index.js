@@ -6,12 +6,16 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {Bed} from "@mui/icons-material";
 
 const theme = createTheme({
+    palette: {
+        secondary: {
+            main: '#D93310',
+        },
+    },
     components: {
         MuiButton: {
             styleOverrides: {
                 root: {
                     fontWeight: 400,
-                    fontSize: '16px',
                     minHeight: '40px',
                     height: 'min-content',
                     lineHeight: '24px',
@@ -68,11 +72,12 @@ const Button = (props) => {
 
     return (
         <ThemeProvider theme={theme}>
-            <ButtonUi className={classes}
-                      variant={variant}
-                      disableElevation={true}
-                      disableFocusRipple={true}
-                      {...elementProps}>
+            <ButtonUi
+                className={classes}
+                variant={variant}
+                disableElevation={true}
+                disableFocusRipple={true}
+                {...elementProps}>
                 {children}
             </ButtonUi>
         </ThemeProvider>

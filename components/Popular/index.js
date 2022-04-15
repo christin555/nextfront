@@ -7,10 +7,10 @@ import s from './styles.module.scss';
 import TitleBlock from '../TitleBlock';
 
 
-@inject(({RootStore: {PopularStore}}) => {
+@inject(({RootStore: {PopularStore, deviceType}}) => {
     return {
         popularProducts: PopularStore?.popularProducts || [],
-        deviceType: PopularStore?.deviceType
+        deviceType: deviceType
     };
 })
 @observer

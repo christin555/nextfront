@@ -13,26 +13,26 @@ const MIN = 1000;
 const Price = (props) => {
     const {checked, onChange, onSave, name, id, disabled} = props;
     const _onChange = (val, type) => {
-        let _val = val;
-
-        if (val > MAX) {
-            _val = MAX
-        }
+        let _val = parseInt(val.replace(/\s+/g, ''),10);
+        // if (val > MAX) {
+        //     _val = MAX
+        // }
 
         onChange(_val, type)
     }
+
     const onBlur = (val, type) => {
         let _val = parseInt(val.replace(/\s+/g, ''),10);
 
-        if (type === 'minPrice' && (_val < MIN || _val > MAX)) {
-            _val = MIN;
-            onChange(_val, type)
-        }
-
-        if (type === 'maxPrice' && (_val > MAX || _val < MIN)) {
-            _val = MAX;
-            onChange(_val, type)
-        }
+        // if (type === 'minPrice' && (_val < MIN || _val > MAX)) {
+        //     _val = MIN;
+        //     onChange(_val, type)
+        // }
+        //
+        // if (type === 'maxPrice' && (_val > MAX || _val < MIN)) {
+        //     _val = MAX;
+        //     onChange(_val, type)
+        // }
         onSave(_val, type)
     }
 

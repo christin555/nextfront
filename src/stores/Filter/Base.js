@@ -67,7 +67,7 @@ export class BaseFilterStore {
     }
 
     @action initPrice = (val, chips, checked) => {
-        const price = val.split("-");
+        const price = val.split("-")
 
         checked['minPrice'] = price[0];
         checked['maxPrice'] = price[1];
@@ -211,6 +211,7 @@ export class BaseFilterStore {
     }
 
     @action setPrice = (price, key) => {
+        console.log(price)
         this.checked[key] = price;
     }
 

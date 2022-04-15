@@ -7,10 +7,10 @@
   object-fit: cover;
   cursor: pointer;
   overflow: hidden;
- // border-radius: 4px;
-  height: 250px;
+  // border-radius: 4px;
+  max-height: 200px;
 
-  &:hover img{
+  &:hover img {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
@@ -35,10 +35,10 @@
     text-align: center;
 
     .but {
+      width: 70%;
       border: 0 solid white;
       border-bottom: 1px solid white;
       color: white;
-      font-size: 16px;
       text-transform: uppercase;
 
       -webkit-transition: border-color 1s ease;
@@ -51,6 +51,17 @@
         color: inherit;
         background: none;
         border: 1px solid white !important;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .card {
+    .name {
+      .but {
+        padding: 0;
       }
     }
   }

@@ -14,32 +14,11 @@ class index extends Component {
     }
 
     static async getInitialProps({MobxStore, req}) {
-
-
         await MobxStore.RootStore.PopularStore.getPopularProducts();
         await MobxStore.RootStore.HomeStore.getWorks();
         await MobxStore.RootStore.HomeStore.getServices();
         await MobxStore.RootStore.HomeStore.getArticles();
 
-        let userAgent;
-        let deviceType;
-        if (req) {
-            userAgent = req.headers["user-agent"];
-        } else {
-            userAgent = navigator.userAgent;
-        }
-
-        const md = new MobileDetect(userAgent);
-
-        if (md.tablet()) {
-            deviceType = "tablet";
-        } else if (md.mobile()) {
-            deviceType = "mobile";
-        } else {
-            deviceType = "desktop";
-        }
-
-        MobxStore.RootStore.PopularStore.setDevice(deviceType)
 
         return {RootStoreUp: MobxStore.RootStore};
     }

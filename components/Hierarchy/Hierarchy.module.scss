@@ -8,7 +8,6 @@
   font-weight: 400;
   color: $gray-100;
   cursor: pointer;
-  margin-bottom: 10px;
   flex-wrap: wrap;
 
   .icon {
@@ -29,3 +28,8 @@
   font-size: 20px !important;
 }
 
+@media only screen and (max-width: 930px) {
+  .level{
+    font-size: 12px;
+  }
+}

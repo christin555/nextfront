@@ -6,7 +6,7 @@ import api from "../../src/api";
 @inject('RootStore')
 @observer
 class index extends Component {
-    static async getInitialProps({MobxStore, query, pathname, asPath}) {
+    static async getInitialProps({MobxStore, query,deviceType, pathname, asPath}) {
         MobxStore.RootStore.setCategory(query?.category);
 
         const [headers] = await Promise.all([
@@ -14,12 +14,13 @@ class index extends Component {
              MobxStore.RootStore.CatalogStore.getHierarchy(),
         ])
 
-        return {headers};
+        return {headers, deviceType};
     }
 
     render() {
-        const {RootStore, RootStoreUp, headers} = this.props;
+        const {RootStore, RootStoreUp, headers, deviceType} = this.props;
 
+        console.log('23', deviceType)
         //RootStore.mergeStores(RootStoreUp);
 
         return <CatalogView headers={headers}/>

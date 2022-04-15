@@ -13,17 +13,45 @@ import 'react-notifications-component/dist/theme.css';
 import MainLayout from '../components/mainLayout'
 import NextNProgress from "nextjs-progressbar";
 import * as React from "react";
+import MobileDetect from "mobile-detect";
+
 const clientSideEmotionCache = createEmotionCache();
+
+const getDeviceType = ({ctx}) => {
+    let userAgent;
+    let deviceType;
+    if (ctx.req) {
+        userAgent = ctx.req.headers["user-agent"];
+    } else {
+        userAgent = navigator.userAgent;
+    }
+
+    const md = new MobileDetect(userAgent);
+
+    if (md.tablet()) {
+        deviceType = "tablet";
+    } else if (md.mobile()) {
+        deviceType = "mobile";
+    } else {
+        deviceType = "desktop";
+    }
+
+    return deviceType
+}
 
 class CustomApp extends App {
     static async getInitialProps(appContext) {
-        const MobxStore = new initializeStore({router: appContext.router});
+
+        const deviceType = getDeviceType(appContext);
+        const MobxStore = new initializeStore({router: appContext.router, deviceType});
 
         appContext.ctx.MobxStore = MobxStore;
         const appProps = await App.getInitialProps(appContext);
 
+
         return {
             ...appProps,
+            deviceType,
             initialMobxState: MobxStore,
         };
     }
@@ -33,7 +61,7 @@ class CustomApp extends App {
         const isServer = typeof window === 'undefined';
 
         this.MobxStore = isServer ? props.initialMobxState : new initializeStore(
-            {initialData: props.initialMobxState, router: props.router}
+            {initialData: props.initialMobxState, router: props.router, deviceType: props.deviceType}
         );
     }
 
