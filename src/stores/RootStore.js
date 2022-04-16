@@ -120,9 +120,10 @@ class RootStore {
     @action setCategoryMerge = async (category, fastfilter) => {
         this.setCategory(category);
 
-        if (this.ActiveFilterStore.category !== category) {
-            this.ActiveFilterStore.updateCategory(category)
+        if (this.ActiveFilterStore.category !== category && this.ActiveFilterStore.updateCategory) {
+            this.ActiveFilterStore?.updateCategory(category)
         }
+
         this.RouterStore.router.query = {category}
         this.CatalogStore.merge({category, fastfilter, ActiveFilterStore: this.ActiveFilterStore}, this)
     };
