@@ -4,10 +4,10 @@ import {inject, observer} from 'mobx-react';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '../../../Button';
 
-@inject(({FilterStore}) => {
+@inject(({RootStore: {ActiveFilterStore}}) => {
   return {
-    isActive: FilterStore.isActive,
-    clear: FilterStore.clear
+    isActive: ActiveFilterStore.isActive,
+    clear: ActiveFilterStore.clear
   };
 })
 @observer

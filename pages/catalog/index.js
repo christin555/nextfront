@@ -20,7 +20,6 @@ class index extends Component {
     render() {
         const {RootStore, RootStoreUp, headers, deviceType} = this.props;
 
-        console.log('23', deviceType)
         //RootStore.mergeStores(RootStoreUp);
 
         return <CatalogView headers={headers}/>

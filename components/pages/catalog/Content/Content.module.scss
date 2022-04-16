@@ -8,6 +8,7 @@
   width: 100%;
 
   .categories {
+    margin: 20px 0;
     @include paddingStandard;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -2,6 +2,7 @@ import {action, computed, makeObservable, observable, toJS} from 'mobx';
 import api from '../../api';
 import {alert} from '../Notifications';
 import Router from 'next/router';
+import formatPrice from "../../utils/formatPrice";
 
 export class BaseFilterStore {
     @observable values = {};
@@ -25,6 +26,11 @@ export class BaseFilterStore {
         makeObservable(this);
     }
 
+    @action updateCategory = (category) =>{
+        this.category = category;
+        this.setCurrentParams({});
+        this.loadValues();
+    }
 
     @action merge = ({values, category, checked, currentParams, chips}) => {
         this.values = values || [];
@@ -71,7 +77,7 @@ export class BaseFilterStore {
 
         checked['minPrice'] = price[0];
         checked['maxPrice'] = price[1];
-        const label = `${price[0]} - ${price[1]}`;
+        const label = ` от ${formatPrice({price: price[0], isSquare: false})} до ${formatPrice({price: price[1], isSquare: false})}`;
 
         chips.push({
             fieldName: this.fieldsLabel['price'],
@@ -211,15 +217,15 @@ export class BaseFilterStore {
     }
 
     @action setPrice = (price, key) => {
-        console.log(price)
         this.checked[key] = price;
     }
 
     setPricePath = async (price, key) => {
         /// await this.resetPage();
 
+        console.log(price , 'erprice')
         !this.checked['minPrice'] && this.setPrice('1000', 'minPrice');
-        !this.checked['maxPrice'] && this.setPrice('4200', 'maxPrice');
+        !this.checked['maxPrice'] && this.setPrice('20000', 'maxPrice');
 
         // await this.resetPage();
         await this.setPathPrice(
@@ -228,7 +234,7 @@ export class BaseFilterStore {
         );
 
         const oldChip = this.chips.find(({key}) => key === 'price');
-        const label = ` от ${this.checked['minPrice']} до ${this.checked['maxPrice']}`;
+        const label = ` от ${formatPrice({price: this.checked['minPrice'], isSquare: false})} до ${formatPrice({price: this.checked['maxPrice'], isSquare: false})}`;
 
         if (oldChip) {
             oldChip.label = label;

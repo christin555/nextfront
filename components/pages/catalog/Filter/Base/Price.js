@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FormControlLabel} from '@mui/material';
 import s from '../Filter.module.scss';
 import Checkbox from '@mui/material/Checkbox';
@@ -11,47 +11,43 @@ const MAX = 4200;
 const MIN = 1000;
 
 const Price = (props) => {
-    const {checked, onChange, onSave, name, id, disabled} = props;
-    const _onChange = (val, type) => {
-        let _val = parseInt(val.replace(/\s+/g, ''),10);
-        // if (val > MAX) {
-        //     _val = MAX
-        // }
-
-        onChange(_val, type)
-    }
+    const {checked, onSave, onChange, name, id, disabled} = props;
+    let [minPrice, setMinPrice] = useState(checked['minPrice']);
+    let [maxPrice, setMaxPrice] = useState(checked['maxPrice']);
 
     const onBlur = (val, type) => {
-        let _val = parseInt(val.replace(/\s+/g, ''),10);
+        let _val = parseInt(val.replace(/\s+/g, ''), 10);
 
-        // if (type === 'minPrice' && (_val < MIN || _val > MAX)) {
-        //     _val = MIN;
-        //     onChange(_val, type)
-        // }
-        //
-        // if (type === 'maxPrice' && (_val > MAX || _val < MIN)) {
-        //     _val = MAX;
-        //     onChange(_val, type)
-        // }
-        onSave(_val, type)
+        console.log('oblur', _val)
+        if (type === 'minPrice') {
+            setMinPrice(_val)
+        }
+
+        if (type === 'maxPrice') {
+            setMaxPrice(_val)
+        }
+
+        onChange(_val, type);
+        onSave(_val, type);
     }
 
-    const minPrice = formatPrice({price: checked?.minPrice, isSquare: false});
-    const maxPrice = formatPrice({price:checked?.maxPrice, isSquare:  false});
+
+    minPrice = formatPrice({price: minPrice, isSquare: false});
+    maxPrice = formatPrice({price: maxPrice, isSquare: false});
 
     return (
         <div className={s.price}>
             <TextField
                 onBlur={({target: {value}}) => onBlur(value, 'minPrice')}
                 value={minPrice}
-                onChange={({target: {value}}) => _onChange(value, 'minPrice')}
+                onChange={({target: {value}}) => setMinPrice(value)}
                 id="outlined-basic" variant="outlined" placeholder={'1 000'}
             />
             <div className={s.rangeSeparator}/>
             <TextField
                 onBlur={({target: {value}}) => onBlur(value, 'maxPrice')}
                 value={maxPrice}
-                onChange={({target: {value}}) => _onChange(value, 'maxPrice')}
+                onChange={({target: {value}}) => setMaxPrice(value)}
                 id="outlined-basic" variant="outlined" placeholder={'4 200'}/>
         </div>
     );

@@ -87,7 +87,7 @@ class ArticlesView extends React.Component {
                             <Icon
                                 className={classNames(s.icon, ({[s.activeIcon]: value === filter}))}/>
                         }
-                             value={value} key={value} onClick={console.log}/>)
+                             value={value} key={value} />)
                     }
                 </Tabs>
                 <div className={s.cards}>

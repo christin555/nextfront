@@ -1,9 +1,8 @@
-import {makeObservable, observable, action, computed} from 'mobx';
+import {observable, action, computed} from 'mobx';
 import {DoorsStore} from './Filter/DoorsStore';
 import {FloorStore} from './Filter/FloorStore';
 import {CatalogStore} from "./CatalogStore";
 import PopularStore from "./PopularStore";
-import {status as statusEnum} from "../enums";
 import {PageStore} from "./CatalogStore/PageStore";
 import {ProductStore} from "./ProductStore";
 import {ArticlesStore} from "./ArticlesStore";
@@ -14,7 +13,6 @@ import {HomeStore} from "./HomeStore";
 import WorksStore from "./WorksStore";
 import {BlocksStore} from "./BlocksStore";
 import ServicesStore from "./ServicesStore";
-import FilterViewHOC from "../../components/pages/catalog/Filter/Base/StoreContainer";
 import React from "react";
 
 class RootStore {
@@ -25,14 +23,13 @@ class RootStore {
     @observable category;
 
     constructor({initialData = {}, RouterStore, deviceType}) {
-        console.log( this.deviceType)
         this.RouterStore = RouterStore;
         this.deviceType = deviceType || initialData.deviceType;
         this.initialData = initialData.stores || {};
-        this.category = initialData.category;
+        this.category = initialData.category || RouterStore.router?.query?.category;
     }
 
-    @computed get ActiveFilterStore(){
+    @computed get ActiveFilterStore() {
         switch (this.category) {
             case 'doors':
                 return this.DoorsStore;
@@ -120,14 +117,18 @@ class RootStore {
         this.category = category;
     };
 
-    @action setCategoryMerge = async(category, fastfilter) => {
+    @action setCategoryMerge = async (category, fastfilter) => {
+        this.setCategory(category);
+
+        if (this.ActiveFilterStore.category !== category) {
+            this.ActiveFilterStore.updateCategory(category)
+        }
         this.RouterStore.router.query = {category}
-        this.category = category;
         this.CatalogStore.merge({category, fastfilter, ActiveFilterStore: this.ActiveFilterStore}, this)
     };
 
     @action mergeStores = ({stores, category}) => {
-        this.category = category;
+        this.setCategory(category);
 
         Object.keys(stores).forEach((key) => {
                 if (key === 'HomeStore') {

@@ -6,28 +6,39 @@ import {toJS} from 'mobx';
 import fields from './fields';
 import {Skeleton} from "@mui/material";
 
-@inject(({FilterStore}) => {
+@inject(({RootStore, RootStore: {ActiveFilterStore}}) => {
     return {
-        values: FilterStore.values,
-        fieldsLabel: FilterStore.fieldsLabel,
+        values: ActiveFilterStore.values || {},
+        fieldsLabel: ActiveFilterStore.fieldsLabel,
 
-        setValue: FilterStore.setValue,
-        setPrice: FilterStore.setPrice,
-        setPricePath: FilterStore.setPricePath,
+        setValue: ActiveFilterStore.setValue,
+        setPrice: ActiveFilterStore.setPrice,
+        setPricePath: ActiveFilterStore.setPricePath,
 
-        checked: toJS(FilterStore.checked),
-        disabled: toJS(FilterStore.disabled),
+        checked: toJS(ActiveFilterStore.checked),
+        disabled: toJS(ActiveFilterStore.disabled),
 
-        hasKey: FilterStore.hasKey
+        hasKey: ActiveFilterStore.hasKey
     };
 }) @observer
 class Fields extends Component {
     render() {
-        const {checked, addFields, disabled, values, setValue, fieldsLabel, setPricePath, setPrice, hasKey} = this.props;
+
+        const {
+            checked,
+            addFields,
+            disabled,
+            values,
+            setValue,
+            fieldsLabel,
+            setPricePath,
+            setPrice,
+            hasKey
+        } = this.props;
 
         if (!Object.keys(values).length) {
             return [0, 1, 2, 3, 4].map((i) =>
-                <Skeleton key={i} style={{ marginTop: 20 }}/>)
+                <Skeleton key={i} style={{marginTop: 20}}/>)
         }
 
         const filterFields = fields({checked, setPricePath, setPrice, disabled, values, setValue});

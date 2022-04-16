@@ -10,8 +10,7 @@ class FilterViewHOC extends React.Component {
 
         const {RootStore, storeName} = this.props;
 
-        this.FilterStore = RootStore.ActiveFilterStore;
-
+        // this.FilterStore = RootStore.ActiveFilterStore;
        // RootStore.CatalogStore.setActiveFilterStore(this.FilterStore);
     }
 
@@ -23,11 +22,9 @@ class FilterViewHOC extends React.Component {
 
     render() {
         return (
-            <Provider FilterStore={this.FilterStore}>
                 <FilterView>
                     <Fields addFields={this.props.addFields}/>
                 </FilterView>
-            </Provider>
         );
     }
 }

@@ -32,6 +32,21 @@ const items = [
         link: '/blog/article/kvarzvinyl_vmesto_keramogranita',
         textButton: 'Подробнее'
     },
+    // {
+    //     img: 'https://master-pola.com/dashboard/uploads/photo_2022_04_13_10_50_39_039da162e1.jpg',
+    //     background: 'https://master-pola.com/dashboard/uploads/photo_2022_04_13_10_50_39_0d960275fc.jpg',
+    //     title: 'SPC под камень',
+    //     text: 'Подборка SPC, которая заменит вам керамогранит',
+    //     link: '/catalog/quartzvinyl_zamkovay?texture=1',
+    //     textButton: 'Смотреть'
+    // },
+    // {
+    //     img: 'https://master-pola.com/dashboard/uploads/photo_2022_04_16_09_44_06_d2d090d7e7.jpg',
+    //     background: 'https://master-pola.com/dashboard/uploads/photo_2022_04_13_10_50_39_0d960275fc.jpg',
+    //     title: 'Чем SPC отличается от винила?',
+    //     link: '/blog/article/otlychie_spc_ot_vinyla',
+    //     textButton: 'Смотреть'
+    // },
     {
         img: 'https://master-pola.com/dashboard/uploads/w_Fh_XC_Fyvoe_M_308d68e83e.jpg',
         background: 'https://master-pola.com/dashboard/uploads/IV_Xh_O_Beh8_Pw_b36daa9e88.jpg',
