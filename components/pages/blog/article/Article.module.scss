@@ -281,4 +281,12 @@
     font-size: 12px;
     text-transform: unset;
   }
+
+  .container {
+    width: 100vw;
+
+    .slide {
+      width: 100vw;
+    }
+  }
 }
