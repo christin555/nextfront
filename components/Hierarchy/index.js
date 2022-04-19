@@ -24,7 +24,7 @@ class Hierarchy extends React.Component {
                     }}
                     passHref
                 >
-                    <a style={{display: 'flex'}}><HomeIcon className={s.homeIcon}/></a>
+                    <a style={{display: 'flex', cursor: 'pointer'}}><HomeIcon className={s.homeIcon}/></a>
                 </NextLink>
                 <ArrowForwardIosIcon className={s.icon}/>
                 <NextLink

@@ -22,7 +22,7 @@ class ArticlesView extends React.Component {
 
     icons = {
         'video': <PlayArrowIcon className={s.icon}/>,
-        'collection': <CollectionsIcon className={s.icon}/>,
+        'carousel': <CollectionsIcon className={s.icon}/>,
         'short': <MovieIcon className={s.icon}/>
     }
 
