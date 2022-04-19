@@ -1,4 +1,4 @@
-import {observable, action, makeObservable} from 'mobx';
+import {observable, action, makeObservable, toJS} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from '../../api';
 import {alert} from '../Notifications';
@@ -10,9 +10,29 @@ class CallmeStore {
     @observable status = statusEnum.LOADING;
     @observable name;
     @observable phone;
+    @observable square
+    @observable channel = 'телефон';
+    @observable listCalculates = [];
 
     constructor() {
         makeObservable(this);
+    }
+
+
+    @action setListCalculates = (value, checked) => {
+        if (this.listCalculates.includes(value) && checked === false) {
+            this.listCalculates = toJS(this.listCalculates).filter(val => val !== value);
+        } else if (checked) {
+             this.listCalculates = [...this.listCalculates, value];
+        }
+    }
+
+    @action setChannel = (_, value) => {
+        this.channel = value;
+    }
+
+    @action setSquare = ({target: {value}}) => {
+        this.square = value;
     }
 
     @action toggleShow = () => {
@@ -46,7 +66,7 @@ class CallmeStore {
         this.toggleShow();
     }
 
-    getLocation = async() => {
+    getLocation = async () => {
         try {
             const address = await axios.get('https://geolocation-db.com/json/').then(({data}) => data);
             return address
@@ -61,19 +81,19 @@ class CallmeStore {
         }
 
         return {
-            id: product.id,
+            alias: product.alias,
             name: product.name,
             img: product.imgs && product.imgs[0]?.src
         };
     }
 
     sendEmail = async (_product) => {
-        const {phone, name} = this;
+        const {phone, name, channel, square, listCalculates} = this;
         const product = this.getProduct(_product);
         const address = await this.getLocation();
 
         try {
-            const body = {phone, name, product, address};
+            const body = {phone, name, product, address, channel, square, listCalculates};
 
             await api.post('send/callme ', body);
 

@@ -15,6 +15,12 @@
   // padding-top: 120% /* Player ratio: 100 / (1280 / 720) */
 }
 
+.container::after {
+  content: "";
+  display: block;
+  // padding-bottom: 100%;
+}
+
 @media only screen and (max-width: 480px) {
 
   .rect {

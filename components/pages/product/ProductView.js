@@ -17,6 +17,7 @@ import FinishingMaterialBlock from './FinishingMaterialBlock';
 import Meta from "../../HeadComponent";
 import Box from "@mui/material/Box";
 import Labels from "../../Cards/labels";
+import Calculation from '../../Сalculation';
 
 @inject(({RootStore: {ProductStore}}) => {
     return {
@@ -246,13 +247,18 @@ class Product extends React.Component {
                             <div className={s.additional}>
                                 {this.chipFields}
                             </div>
-                            <div>
+                            <Box display={'flex'} gap={'20px'}>
+                                <Calculation
+                                    product={values}
+                                    className={s.calculation}
+                                    buttonText={'Оставить заявку'}
+                                />
                                 <Callme
                                     product={values}
                                     className={s.call}
                                     buttonText={'Оставить заявку'}
                                 />
-                            </div>
+                            </Box>
                         </div>
                     </div>
                     {this.chars}

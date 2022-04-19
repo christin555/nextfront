@@ -1,0 +1,91 @@
+@import '../../styles/variables.module';
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 450px;
+  height: min-content;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90%;
+
+  .header {
+    display: flex;
+
+    .closeButton {
+      place-self: flex-end;
+    }
+
+    .title {
+      margin-left: 50px;
+      font-weight: 500;
+      font-size: 24px;
+      place-self: center;
+      color: black;
+      width: 100%;
+      text-align: center;
+      display: block;
+    }
+  }
+
+  .content {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    .desc {
+      margin: 10px 0;
+      color: #1f1f1f;
+      font-weight: 400;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .helperText {
+      color: $gray-40;
+      font-size: 12px;
+    }
+  }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 20px !important;
+  }
+}
+
+.input {
+  border-bottom: 1px solid black;
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  place-self: flex-start;
+  margin: 20px 0 !important;
+}
+
+.buttonMain {
+  border-radius: 0 !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    width: unset;
+    max-height: 100%;
+    border-radius: 0;
+  }
+  .buttonMain {
+    padding: 4px !important;
+  }
+}

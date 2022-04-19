@@ -91,7 +91,7 @@ class Callme extends React.Component {
               </span>
                             {
                                 product && (
-                                    <Card {...product} withPhone={false}/>
+                                    <Card {...product} />
                                 )
                             }
                             <div className={s.inputs}>
@@ -114,6 +114,7 @@ class Callme extends React.Component {
                             </div>
                             <Button
                                 size={'small'}
+                                variant={'contained'}
                                 className={s.call}
                                 onClick={() => apply(product)}
                             >

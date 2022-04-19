@@ -18,8 +18,10 @@
 
 .verticalContainer {
   max-width: 850px;
+  height: auto;
   display: flex;
-  height: min-content;
+  box-sizing: border-box;
+  //height: min-content;
 }
 
 .article {
@@ -71,7 +73,7 @@
 .container {
   width: 400px;
 
-  .slide{
+  .slide {
     width: 400px;
     overflow: hidden;
 
@@ -149,7 +151,73 @@
   background: #c41414;
 }
 
+
+.horizontalContainerPlayer {
+  min-width: 390px;
+  width: 100%;
+  max-height: unset;
+  height: inherit;
+  position: relative;
+}
+
+.verticalContainerPlayer {
+  min-width: 290px;
+  max-height: 50vh;
+  position: relative;
+}
+
+.verticalPlayer {
+  max-height: inherit;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  height: auto !important;
+  width: 100% !important;
+
+  iframe {
+    width: 100%;
+    min-height: 520px;
+  }
+}
+
+.horizontalPlayer {
+  width: auto !important;
+  height: 100% !important;
+  position: unset;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 400px;
+
+  iframe {
+    height: 100%;
+    position: absolute;
+  }
+}
+
 @media only screen and (max-width: 930px) {
+
+  .verticalPlayer {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: auto !important;
+    min-height: 400px;
+  }
+
+  .verticalContainerPlayer {
+    max-height: unset;
+    height: inherit;
+  }
+
+  .verticalContainerPlayer::after {
+    content: "";
+    display: block;
+    // padding-bottom: 100%;
+  }
+
 
   .horizontalContainer, .verticalContainer {
     gap: 0;

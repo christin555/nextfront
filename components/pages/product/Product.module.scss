@@ -264,6 +264,12 @@
   height: 75px;
 }
 
+.calculation {
+  background: $secondary !important;
+  border: 1px solid $secondary !important;
+  color: $white;
+}
+
 .call {
   border-color: black;
   border-radius: 0;
@@ -301,10 +307,6 @@
 
   .characteristic {
     grid-template-columns: 1fr;
-  }
-
-  .call {
-    width: 100%;
   }
 
   .charsBlock {

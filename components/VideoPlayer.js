@@ -1,31 +1,36 @@
 import ReactPlayer from 'react-player';
-import s from './Player.module.scss';
 import React from 'react';
 
 
-const App = ({src}) => (
-    <div className={s.container}>
-    <ReactPlayer
-        allow="autoplay"
-        className={s.rect}
-        playing
-        loop={true}
-        url={src}
-        controls
-        height='100%'
-        config={ {
-            youtube: { playerVars: {
-                    rel: 0,
-                    disablekb: 1,
-                    showinfo: 0
-            } },
-            file: {
-                attributes: {
-                    controlsList: "nodownload noremoteplayback noplaybackrate"
-                }
-            }
-        } } />
-    </div>
-);
+const App = ({src, classNameContainer, classNamePlayer, ...props}) => (
+        <div className={classNameContainer}>
+            <ReactPlayer
+                {...props}
+                allow="autoplay"
+                className={classNamePlayer}
+                playing
+                loop={true}
+                url={src}
+                controls
+                config={{
+                    youtube: {
+                        width: '100%',
+                        height: '100%',
+                        playerVars: {
+                            rel: 0,
+                            disablekb: 1,
+                            showinfo: 0,
+                            frameborder: 0
+                        }
+                    },
+                    file: {
+                        attributes: {
+                            controlsList: "nodownload noremoteplayback noplaybackrate"
+                        }
+                    }
+                }}/>
+        </div>
+    )
+;
 
 export default App;

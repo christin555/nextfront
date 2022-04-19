@@ -44,18 +44,18 @@ const CarouselView = ({deviceType, className, items}) => {
                                 }
                                 <div className={s.text}>
                                     <div className={s.content}>
-                                        <h3> {title} </h3>
+                                        <h3 className={classNames({[s.alignCenter]: !img})}> {title} </h3>
                                         <div className={classNames(s.desc, {[s.alignCenter]: !img})}>
                                             {text}
                                         </div>
-                                        <NextLink href={link}
-                                                  passHref
-                                                  shallow={true}
+                                        {link ? <NextLink href={link}
+                                                          passHref
+                                                          shallow={true}
                                         >
                                             <Button variant={'contained'} color={'secondary'} className={s.button}>
                                                 {textButton}
                                             </Button>
-                                        </NextLink>
+                                        </NextLink> : null}
                                     </div>
 
                                     <div className={s.background}>

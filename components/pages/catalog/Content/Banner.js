@@ -22,6 +22,12 @@ class BannerView extends Component {
 
 const items = [
     {
+        background: 'https://master-pola.com/dashboard/uploads/c0320a5ce672153d0336339a9c049463_502849e92c.jpg',
+        title: 'Хотите получить рассчет стоимости и объемов материалов?',
+        text: 'Выберите товар и закажите рассчет материалов за 10 минут. В рассчет вы можете включить учет сопутствующих товаров' +
+            ' и работ, а также указать препдочитаемый способ связи'
+    },
+    {
         img: 'https://master-pola.com/dashboard/uploads/m_L8_Qf_Tg_WY_60e2162b7e.jpg',
         background: 'https://master-pola.com/dashboard/uploads/photo_2022_04_15_18_35_36_27e3ad8e90.jpg',
         title: 'Кварцвинил вместо керамогранита?',

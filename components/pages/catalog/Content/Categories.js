@@ -12,6 +12,10 @@ class CategoriesView extends React.Component {
     render() {
         const {categories} = this.props;
 
+        if (!categories.length) {
+            return <div/>
+        }
+
         return (
             <div className={s.categories}>
                 {

@@ -39,13 +39,17 @@ class Content extends React.Component {
 
     get media() {
         const {article} = this.props;
-        const {media, articleType, title} = article;
+        const {media, articleType, title, mediaPosition} = article;
         switch (articleType) {
             case 'video':
+            case  'short':
                 const video = media[0];
                 const _src = video.type === 'youtube' ? 'https://www.youtube-nocookie.com/watch?v=' + video.src : video.src;
-                return <PlayerView src={_src}/>
-
+                return <PlayerView
+                    classNameContainer={s[this.mediaPositionPlayerContainerClass[mediaPosition]]}
+                    classNamePlayer={s[this.mediaPositionPlayerClass[mediaPosition]]}
+                    src={_src}
+                />
             case 'img':
                 return <div className={s.mediaI}>
                     <Image
@@ -97,6 +101,16 @@ class Content extends React.Component {
         }
 
         return null;
+    }
+
+    mediaPositionPlayerContainerClass = {
+        horizontal: 'horizontalContainerPlayer',
+        vertical: 'verticalContainerPlayer',
+    }
+
+    mediaPositionPlayerClass = {
+        horizontal: 'horizontalPlayer',
+        vertical: 'verticalPlayer',
     }
 
     mediaPositionClass = {
