@@ -1,0 +1,38 @@
+.rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto !important;
+  max-height: 700px;
+}
+
+.container {
+  min-width: 290px;
+  width: 100%;
+  max-height: 700px;
+  position: relative;
+  //padding-bottom: 100%;
+  // padding-top: 120% /* Player ratio: 100 / (1280 / 720) */
+}
+
+@media only screen and (max-width: 480px) {
+
+  .rect {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: auto !important;
+  }
+
+  .container {
+    max-height: unset;
+    height: inherit;
+  }
+
+  .container::after {
+    content: "";
+    display: block;
+    // padding-bottom: 100%;
+  }
+}

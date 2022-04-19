@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import Nophoto from "../../public/nophoto.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,11 +7,18 @@ import Image from 'next/image';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {IconButton} from '@mui/material';
-
+import {A11y, Thumbs, EffectFade,FreeMode, Navigation, Pagination} from "swiper";
+import {Swiper, SwiperSlide, } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import 'swiper/css/a11y';
 
 const CarouselView = ({imgs}) => {
     const carouselRef = useRef(null);
     const carouselBlockRef = useRef(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     let images;
 
@@ -19,7 +26,7 @@ const CarouselView = ({imgs}) => {
         images = [{original: Nophoto}];
     }
 
-    images = imgs.map(({src}, index) => <Carousel.Item key={index} className={s.itemCarousel}>
+    images = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.itemCarousel}>
             <Image
                 placeholder={'blur'}
                 blurDataURL="/blur.png"
@@ -28,28 +35,55 @@ const CarouselView = ({imgs}) => {
                 layout="responsive"
                 objectFit="contain"
                 alt={'Слайд'}
-                src={src}
-                loader={() => src}
+                src={'https://master-pola.com' + src}
+                loader={() => 'https://master-pola.com' + src}
             />
-    </Carousel.Item>);
+    </SwiperSlide>
+    );
+
+
+   const thumbs = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.thumbCarousel}>
+            <Image
+                quality={30}
+                placeholder={'blur'}
+                blurDataURL="/blur.png"
+                width="80"
+                height="80"
+                objectFit="cover"
+                alt={'Слайд'}
+                src={'https://master-pola.com' + src}
+                loader={() => 'https://master-pola.com' + src}
+            />
+        </SwiperSlide>
+    );
 
     return (
         <div ref={carouselBlockRef}>
-            <Carousel
-                prevIcon={
-                    <IconButton size={'large'} className={s.upButton}>
-                        <ArrowBackIosNewIcon className={s.icon}/>
-                    </IconButton>
-                }
-                nextIcon={
-                    <IconButton size={'large'} className={s.upButton}>
-                        <ArrowForwardIosIcon className={s.icon}/>
-                    </IconButton>
-                }
-                interval={null}
-                className={s.carouselHeight}>
+            <Swiper
+                thumbs={{ swiper: thumbsSwiper }}
+                className={s.carouselHeight}
+                slidesPerView={1}
+                navigation={true}
+                pagination={{
+                    clickable: true
+                }}
+                modules={[
+                    Navigation, Thumbs, Pagination, EffectFade, A11y
+                ]}
+            >
                 {images}
-            </Carousel>
+            </Swiper>
+
+            <Swiper
+                onSwiper={setThumbsSwiper}
+                spaceBetween={10}
+                slidesPerView={'auto'}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+            >
+                {thumbs}
+            </Swiper>
         </div>
     )
 }

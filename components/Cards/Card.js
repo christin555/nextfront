@@ -127,7 +127,7 @@ class CardView extends React.Component {
                                     blurDataURL="/blur.png"
                                     height={180}
                                     width={260}
-                                    alt={name}
+                                    alt={`${category} в Тюмени - ${name}`}
                                     loader={() => img || "/blur.png"}
                                     quality={50}
                                     className={cn(s.img, {[s.isDoor]: isDoor})}

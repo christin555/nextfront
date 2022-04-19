@@ -13,6 +13,18 @@ import Head from "next/head";
 import Hierarchy from "../../../HierarchyNew";
 import Title from "../../../Title";
 import Image from "next/image";
+import YouTube from "react-youtube";
+import ReactPlayer from 'react-player'
+import PlayerView from "../../../VideoPlayer";
+import {A11y, EffectFade, Navigation, Pagination} from "swiper";
+import classNames from "classnames";
+import {Swiper, SwiperSlide} from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import 'swiper/css/a11y';
 
 require('dayjs/locale/ru');
 
@@ -24,20 +36,18 @@ dayjs.locale('ru')
     };
 })
 class Content extends React.Component {
+
     get media() {
         const {article} = this.props;
-        const {src, type, title} = article;
-        switch (type) {
-            case 'youtube':
-                return <CardMedia
-                    alt={title}
-                    className={s.mediaV}
-                    component={"iframe"}
-                    image={`https://www.youtube.com/embed/${src}`}
-                />
+        const {media, articleType, title} = article;
+        switch (articleType) {
+            case 'video':
+                const video = media[0];
+                const _src = video.type === 'youtube' ? 'https://www.youtube-nocookie.com/watch?v=' + video.src : video.src;
+                return <PlayerView src={_src}/>
 
             case 'img':
-                return <div className ={s.mediaI}>
+                return <div className={s.mediaI}>
                     <Image
                         placeholder={'blur'}
                         blurDataURL="/blur.png"
@@ -46,12 +56,33 @@ class Content extends React.Component {
                         layout="responsive"
                         objectFit="contain"
                         alt={title}
-                        src={src}
-                        loader={() => src}
-                        />
+                        src={media[0].src}
+                        loader={() => media[0].src}
+                    />
+                </div>
+            case 'carousel':
+                return <div className={s.container}>
+                    <Swiper
+                        modules={[Navigation, Pagination, A11y]}
+                        slidesPerView={1}
+                        navigation={true}
+                        pagination={{
+                            clickable: true
+                        }}
+                    >
+                        {
+                            media.map(({src, type}, index) => {
+                                return <SwiperSlide key={index}>
+                                    <div className={s.slide}>
+                                        <img src={src}/>
+                                    </div>
+                                </SwiperSlide>
+                            })
+                        }
+                    </Swiper>
                 </div>
             default:
-                return {}
+                return null
         }
     }
 
@@ -75,7 +106,8 @@ class Content extends React.Component {
 
     render() {
         const {article} = this.props;
-        const {title, content, createdAt, mediaPosition, watchCount} = article;
+        const {title, content, createdAt, mediaPosition, watchCount, media = []} = article;
+        console.log(media)
 
         return (
             <div className={s[this.mediaPositionClass[mediaPosition]]}>

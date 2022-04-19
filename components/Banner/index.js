@@ -25,10 +25,10 @@ const CarouselView = ({deviceType, className, items}) => {
                 spaceBetween={20}
                 slidesPerView={1}
                 navigation={deviceType !== 'mobile'}
-                 autoplay={{
+                autoplay={{
                     delay: 7500,
                     disableOnInteraction: false,
-                 }}
+                }}
                 pagination={{
                     clickable: true
                 }}
@@ -39,10 +39,7 @@ const CarouselView = ({deviceType, className, items}) => {
                             <div className={classNames(s.slide, {[s.reverse]: reverse})}>
                                 {
                                     img && <div className={s.image}>
-                                        <img
-                                            className={s.img}
-                                            src={img}
-                                        />
+                                        <img src={img}/>
                                     </div> || null
                                 }
                                 <div className={s.text}>
@@ -52,12 +49,12 @@ const CarouselView = ({deviceType, className, items}) => {
                                             {text}
                                         </div>
                                         <NextLink href={link}
-                                            passHref
-                                            shallow={true}
+                                                  passHref
+                                                  shallow={true}
                                         >
                                             <Button variant={'contained'} color={'secondary'} className={s.button}>
-                                            {textButton}
-                                        </Button>
+                                                {textButton}
+                                            </Button>
                                         </NextLink>
                                     </div>
 

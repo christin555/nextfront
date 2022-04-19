@@ -68,6 +68,20 @@
   flex-basis: 374.918px;
 }
 
+.container {
+  width: 400px;
+
+  .slide{
+    width: 400px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
 .mediaI {
   height: 400px;
   max-height: 400px;
