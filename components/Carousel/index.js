@@ -30,8 +30,8 @@ const CarouselView = ({imgs}) => {
                 layout="responsive"
                 objectFit="contain"
                 alt={'Слайд'}
-                src={'https://master-pola.com' + src}
-                loader={() => 'https://master-pola.com' + src}
+                src={src}
+                loader={() => src}
             />
     </SwiperSlide>
     );
@@ -46,8 +46,8 @@ const CarouselView = ({imgs}) => {
                 height="80"
                 objectFit="cover"
                 alt={'Слайд'}
-                src={'https://master-pola.com' + src}
-                loader={() => 'https://master-pola.com' + src}
+                src={src}
+                loader={() => src}
             />
         </SwiperSlide>
     );
