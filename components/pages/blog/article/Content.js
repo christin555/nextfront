@@ -1,24 +1,14 @@
 import React from 'react';
 import {inject} from 'mobx-react';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Article.module.scss';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {Box} from '@mui/material';
-import Cards from "../../../NewsCards/Cards";
-import NextLink from 'next/link';
-import Button from '../../../Button';
 import dayjs from 'dayjs';
-import Head from "next/head";
-import Hierarchy from "../../../HierarchyNew";
-import Title from "../../../Title";
 import Image from "next/image";
-import YouTube from "react-youtube";
-import ReactPlayer from 'react-player'
 import PlayerView from "../../../VideoPlayer";
-import {A11y, EffectFade, Navigation, Pagination} from "swiper";
-import classNames from "classnames";
+import {A11y, Navigation, Pagination} from "swiper";
 import {Swiper, SwiperSlide} from 'swiper/react';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';

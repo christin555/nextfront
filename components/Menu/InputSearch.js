@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import 'react-multi-carousel/lib/styles.css';
 import {inject, observer} from 'mobx-react';
 import styles from "./inputSearch.module.scss";
 import {InputBase} from "@mui/material";

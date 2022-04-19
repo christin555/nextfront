@@ -1,12 +1,7 @@
 import React, {useRef, useState} from 'react';
-import Carousel from 'react-bootstrap/Carousel'
 import Nophoto from "../../public/nophoto.png";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import s from './carousel.module.scss';
 import Image from 'next/image';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import {IconButton} from '@mui/material';
 import {A11y, Thumbs, EffectFade,FreeMode, Navigation, Pagination} from "swiper";
 import {Swiper, SwiperSlide, } from 'swiper/react';
 import 'swiper/css';

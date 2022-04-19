@@ -1,12 +1,9 @@
 import React from 'react';
-import Carousel from '../../components/Carousel';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Works.module.scss';
 import Callme from '../../components/Callme';
 import Card from "../../components/ServiceCard";
 import {inject, observer} from "mobx-react";
 import Hierarchy from "../../components/HierarchyNew";
-import Head from "next/head";
 import Meta from "../../components/HeadComponent";
 import Title from "../../components/Title";
 

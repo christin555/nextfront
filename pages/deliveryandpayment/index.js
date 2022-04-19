@@ -1,7 +1,5 @@
 import React from 'react';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Delivery.module.scss';
-import Head from "next/head";
 import {Typography} from "@mui/material";
 import StoreIcon from '@mui/icons-material/Store';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';

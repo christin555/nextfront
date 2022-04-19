@@ -1,10 +1,7 @@
 import React from 'react';
 import {inject} from 'mobx-react';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Articles.module.scss';
 import Cards from "../../NewsCards/Cards";
-import Head from "next/head";
-import Hierarchy from "../../HierarchyNew";
 import Meta from "../../HeadComponent";
 import Title from "../../Title";
 import AppsIcon from '@mui/icons-material/Apps';

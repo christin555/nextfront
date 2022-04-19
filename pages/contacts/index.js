@@ -1,14 +1,8 @@
 import React from 'react';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Contacts.module.scss';
-import Head from "next/head";
 import {Typography} from "@mui/material";
-import StoreIcon from '@mui/icons-material/Store';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Box from "@mui/material/Box";
-import PhoneIcon from '@mui/icons-material/Phone';
 import Hierarchy from '../../components/HierarchyNew';
-import ArticlesBlock from '../../components/ArticlesBlock'
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";

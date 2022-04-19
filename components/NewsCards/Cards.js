@@ -1,8 +1,5 @@
 import React from 'react';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import s from './Articles.module.scss';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import MovieIcon from '@mui/icons-material/Movie';
 import NextLink from 'next/link';

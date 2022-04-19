@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import 'react-multi-carousel/lib/styles.css';
 import {inject, observer} from 'mobx-react';
 import Select from "../../../Select";
 import {components} from "react-select";
