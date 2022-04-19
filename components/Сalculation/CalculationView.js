@@ -68,7 +68,7 @@ class Callme extends React.Component {
             listCalculates,
             setListCalculates
         } = this.props;
-        const headerTitle = 'Получить рассчет';
+        const headerTitle = 'Получить расчет';
 
         return (
             <React.Fragment>
@@ -96,7 +96,7 @@ class Callme extends React.Component {
                         </div>
                         <div className={s.content}>
               <span className={s.desc}>
-                Введите свой номер телефона и выберите способ связи. Через 10 минут ваш рассчет будет готов!
+                Введите свой номер телефона и выберите способ связи. Через 10 минут ваш расчет будет готов!
                   <span style={{color: 'gray'}}>*</span>
               </span>
                             <span style={{margin: '10px 0'}}>
@@ -168,7 +168,7 @@ class Callme extends React.Component {
                                 className={s.call}
                                 onClick={() => apply(product)}
                             >
-                                Получить рассчет
+                                Получить расчет
                             </Button>
                         </div>
                     </div>
