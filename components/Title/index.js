@@ -11,7 +11,7 @@ const Title = ({title, className, pathname}) => (
         {
             pathname &&
             <NextLink href={{pathname}} shallow={true}>
-                <ArrowBackIosNewIcon className={s.iconLast}/>
+                <ArrowBackIosNewIcon className={s.iconLast} style={{cursor: 'pointer'}}/>
             </NextLink> || null
         }
         <Typography
