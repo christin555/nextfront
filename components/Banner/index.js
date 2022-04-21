@@ -10,31 +10,44 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
-import {Box} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import React from 'react';
 import classNames from "classnames";
 import NextLink from 'next/link';
 
 const CarouselView = ({deviceType, className, items}) => {
 
+    const isMobile = deviceType === 'mobile';
+
     return (
         <div className={classNames(s.container, className)}>
             <Swiper
                 modules={[Navigation, Autoplay, Pagination, EffectFade, A11y]}
                 effect="fade"
-                spaceBetween={20}
+                spaceBetween={'20px'}
                 slidesPerView={1}
-                navigation={deviceType !== 'mobile'}
-                autoplay={{
-                    delay: 7500,
-                    disableOnInteraction: false,
-                }}
+                navigation={!isMobile}
+                // autoplay={{
+                //     delay: 7500,
+                //     disableOnInteraction: false,
+                // }}
                 pagination={{
                     clickable: true
                 }}
             >
                 {
-                    items.map(({img, text, title, reverse, background, link, textButton}, index) => {
+                    items.map(({
+                                   mobileBackground,
+                                   img,
+                                   text,
+                                   title,
+                                   reverse,
+                                   background,
+                                   link,
+                                   alignItems = 'center',
+                                   justifyContent = 'flex-end',
+                                   textButton
+                               }, index) => {
                         return <SwiperSlide key={index}>
                             <div className={classNames(s.slide, {[s.reverse]: reverse})}>
                                 {
@@ -43,11 +56,13 @@ const CarouselView = ({deviceType, className, items}) => {
                                     </div> || null
                                 }
                                 <div className={s.text}>
-                                    <div className={s.content}>
-                                        <h3 className={classNames({[s.alignCenter]: !img})}> {title} </h3>
-                                        <div className={classNames(s.desc, {[s.alignCenter]: !img})}>
+                                    <div className={s.content} style={{alignItems, justifyContent}}>
+                                        <Typography
+                                            variant={isMobile && 'h4' || 'h3'}> {title} </Typography>
+                                        <Typography className={s.desc}
+                                                    variant={isMobile && 'body2' || 'subtitle1'}>
                                             {text}
-                                        </div>
+                                        </Typography>
                                         {link ? <NextLink href={link}
                                                           passHref
                                                           shallow={true}
@@ -59,7 +74,7 @@ const CarouselView = ({deviceType, className, items}) => {
                                     </div>
 
                                     <div className={s.background}>
-                                        <img src={background}/>
+                                        <img src={isMobile && mobileBackground || background}/>
                                     </div>
                                 </div>
                             </div>
