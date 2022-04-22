@@ -70,6 +70,7 @@ const CarouselView = ({imgs}) => {
             </Swiper>
 
             <Swiper
+                className={s.thumbs}
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
                 slidesPerView={'auto'}

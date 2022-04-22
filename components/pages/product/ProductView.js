@@ -152,16 +152,16 @@ class Product extends React.Component {
                         "item":
                             {
                                 "@id": `https://master-pola.com/catalog/${this.categoryAlias}`,
-                                "name": hierarchy[hierarchy.length - 1]?.name
+                                "name": values.category
                             }
                     },
                     {
                         "@type": "ListItem",
-                        "position": 2,
+                        "position": 3,
                         "item":
                             {
                                 "@id": `https://master-pola.com/product/${this.props.alias}`,
-                                "name": `${values.brand} ${values.name}`
+                                "name": values.brand
                             }
                     }
                 ]
@@ -203,8 +203,8 @@ class Product extends React.Component {
         return (
             <>
                 <Meta
-                    desc={`Купить ${values.category} ${values.brand} ${values.collection} в Тюмени. Наши цены вам понравятся! `}
-                    title={`${values.category} ${values.name} от ${values.brand} - ${this.price} - Мастер Пола`}
+                    desc={`Купить ${values.category} ${values.brand} ${values.collection} в Тюмени по выгодной цене`}
+                    title={`${values.category} ${values.name} от ${values.brand} - ${values.price} - Мастер Пола`}
                     breadcumbs={this.breadcumbs}
                 />
 
