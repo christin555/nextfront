@@ -130,7 +130,7 @@ class Product extends React.Component {
     }
 
     get breadcumbs() {
-        const {values, hierarchy} = this.props;
+        const {values} = this.props;
 
         return {
             "@context": "http://schema.org",
@@ -203,6 +203,7 @@ class Product extends React.Component {
         return (
             <>
                 <Meta
+                    image={values?.imgs[0]}
                     desc={`Купить ${values.category} ${values.brand} ${values.collection} в Тюмени по выгодной цене`}
                     title={`${values.category} ${values.name} от ${values.brand} - ${values.price} - Мастер Пола`}
                     breadcumbs={this.breadcumbs}
