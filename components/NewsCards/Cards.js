@@ -29,7 +29,7 @@ class ArticlesView extends React.Component {
     render() {
         const {articles, mediaClass} = this.props;
 
-        return articles.map(({title, id, watchCount, imgPreview, alias, articleType}) => {
+        return articles.map(({title, id, watchCount, content, imgPreview, alias, articleType}) => {
 
             const icon = this.icons[articleType];
             return (
@@ -49,7 +49,8 @@ class ArticlesView extends React.Component {
                                 {icon}
                             </div>
                             <div className={s.hoverBlock}>
-                               <span>
+                                <p className={s.hide}> {content} </p>
+                                <span>
                                    <b>{title} </b>
                                    <p> Просмотры: {watchCount} </p>
                                </span>
