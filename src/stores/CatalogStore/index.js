@@ -2,6 +2,7 @@ import {observable, action, autorun, computed, makeObservable, reaction, toJS} f
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import Router from "next/router";
+import {alert} from "../Notifications";
 
 const isServer = typeof window === 'undefined';
 
@@ -11,7 +12,7 @@ class CatalogStore {
     @observable status = statusEnum.LOADING;
     @observable categories;
     @observable products;
-
+    @observable articles;
     @observable category;
 
     @observable hierarchy;
@@ -32,6 +33,7 @@ class CatalogStore {
             this.getCountProductsDisposer = autorun(this.getCountProducts);
             this.getHierarchyDisposer = autorun(this.getHierarchy);
             this.getCatalogDisposer = autorun(this.getCatalog);
+            this.getArticlesDisposer = autorun(this.getArticles);
         }
     }
 
@@ -80,6 +82,10 @@ class CatalogStore {
 
     @action setBody = (body) => {
         this.body = body;
+    };
+
+    @action setArticles = (articles) => {
+        this.articles = articles;
     };
 
     @action setCategories = (categories) => {
@@ -161,6 +167,16 @@ class CatalogStore {
         }
     }
 
+    getArticles = async () => {
+        try {
+            const articles = await api.post('articles/getArticles', {category: this.category});
+
+            console.log(articles);
+            this.setArticles(articles.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)));
+        } catch (e) {
+        }
+    }
+
     getCatalog = async () => {
         if (this.isHydrating) {
             return
@@ -193,6 +209,7 @@ class CatalogStore {
     closeStore() {
         this.getHierarchyDisposer();
         this.getCatalogDisposer();
+        this.getArticlesDisposer()
         this.getCountProductsDisposer();
     }
 }

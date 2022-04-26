@@ -7,6 +7,8 @@ import Categories from './Categories';
 import Products from './Products';
 import Filter from '../Filter';
 import Banner from "./Banner";
+import Blog from "./Blog";
+import Title from "../../../Title";
 
 @inject(({RootStore: {CatalogStore}}) => {
     return {
@@ -35,13 +37,15 @@ class Content extends React.Component {
 
         return (
             <div className={s.container}>
+                <Banner className={s.banner}/>
+                <Title title={this.props.headerTitle}/>
                 <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
-                <Banner className={s.banner} />
                 <Categories/>
                 <div className={s.content}>
                     <Filter category={category}/>
                     <Products/>
                 </div>
+                <Blog/>
             </div>
         );
     }

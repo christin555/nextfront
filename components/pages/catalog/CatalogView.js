@@ -73,9 +73,8 @@ class Catalog extends React.Component {
                     breadcumbs={this.breadcumbs}
                     canonical={canonical}
                 />
-                <Title title={this.headerTitle}/>
                 <div className={s.content}>
-                    <Content/>
+                    <Content headerTitle={this.headerTitle}/>
                 </div>
                 <DescriptionMain/>
             </>

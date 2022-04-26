@@ -289,32 +289,6 @@
         }
       }
     }
-
-    .blockArticles {
-      display: grid;
-      grid-template-columns:   repeat(2, minmax(100px, 350px));
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
-
-      .video {
-        border-radius: 4px;
-      }
-
-      .article {
-        display: flex;
-        flex-direction: column;
-
-        .titleArticle {
-          min-height: 40px;
-          margin-top: 10px;
-          font-size: 14px;
-        }
-
-        & > *:first-child {
-          flex-grow: 1;
-        }
-      }
-    }
   }
 }
 
