@@ -11,6 +11,7 @@ import classNames from "classnames";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Image from "next/image";
+import Skeleton from '@mui/material/Skeleton';
 
 @inject(({RootStore: {ArticlesStore}}) => {
     return {
@@ -77,18 +78,22 @@ class ArticlesView extends React.Component {
                 </div>
                 <Tabs
                     onChange={setFilter}
-                    TabIndicatorProps={{style: {background:'black', height: '1px'}}}
+                    TabIndicatorProps={{style: {background: 'black', height: '1px'}}}
                     variant="fullWidth" className={s.filter} value={filter}>
                     {this.filterItems.map(({value, Icon}) =>
                         <Tab label={
                             <Icon
                                 className={classNames(s.icon, ({[s.activeIcon]: value === filter}))}/>
                         }
-                             value={value} key={value} />)
+                             value={value} key={value}/>)
                     }
                 </Tabs>
                 <div className={s.cards}>
-                    <Cards articles={articles}/>
+                    {
+                        articles?.length && <Cards articles={articles}/>
+                        || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => <Skeleton key={i} variant="rectangular" width={300}
+                                                                              height={300}/>)
+                    }
                 </div>
             </React.Fragment>
         );
