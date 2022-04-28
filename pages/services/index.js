@@ -52,7 +52,7 @@ const _images = [
 ]
 
 const _video = [
-    'https://master-pola.com/static/video/kl_kv',
+    'https://master-pola.com/static/video/kl_kv.mp4',
     'https://master-pola.com/static/video/alsafloorlaminate.mp4',
     'https://master-pola.com/static/video/spm_otl.mp4',
     'https://master-pola.com/static/video/IMG_9469.mp4',

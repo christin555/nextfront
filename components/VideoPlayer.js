@@ -11,6 +11,7 @@ const App = ({src, classNameContainer, classNamePlayer, ...props}) => (
                 loop={true}
                 url={src}
                 controls
+                playsinline
                 config={{
                     youtube: {
                         width: '100%',
