@@ -1,9 +1,14 @@
 @import '../../styles/variables.module';
 
+
 .header {
   font-size: 24px;
   display: flex;
   flex-direction: row;
+
+  & > * {
+    flex: 1;
+  }
 
   .preview {
     padding: 20px 0 20px 80px;

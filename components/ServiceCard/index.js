@@ -36,34 +36,20 @@ class CardView extends React.Component {
         } = this.props;
 
         return (
-            // <Link href={{
-            //     pathname: '/service/[id]',
-            //     query: {id: alias}
-            // }}
-            //       as={`/service/${alias}`}
-            //       passHref
-            //       shallow={true}>
-            /*<a className={classNames(s.aComonent)}>*/
             <div>
-                <Card className={classNames(s.root, classNamesRoot)}>
-                    <CardActionArea className={s.area}>
-                        <CardMedia
-                            className={s.media}
-                        >
+                <div className={classNames(s.root, classNamesRoot)}>
                             <Image
                                 placeholder={'blur'}
                                 blurDataURL="/blur.png"
                                 alt={name}
-                                quality={45}
+                                quality={65}
                                 className={s.img}
                                 src={img}
                                 layout='fill'
                             />
-                        </CardMedia>
-                    </CardActionArea>
-                </Card>
+                </div>
                 <div className={s.content}>
-                    <p>{name}</p>
+                    <b>{name}</b>
                     {
                         price && (
                             <p className={s.price}>

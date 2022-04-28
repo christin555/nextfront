@@ -5,7 +5,6 @@ import React from 'react';
 const App = ({src, classNameContainer, classNamePlayer, ...props}) => (
         <div className={classNameContainer}>
             <ReactPlayer
-                {...props}
                 allow="autoplay"
                 className={classNamePlayer}
                 playing
@@ -28,7 +27,9 @@ const App = ({src, classNameContainer, classNamePlayer, ...props}) => (
                             controlsList: "nodownload noremoteplayback noplaybackrate"
                         }
                     }
-                }}/>
+                }}
+                {...props}
+            />
         </div>
     )
 ;

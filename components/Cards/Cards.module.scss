@@ -36,32 +36,6 @@
   width: 100%;
 }
 
-.media {
-  overflow: hidden;
-  position: relative;
-
-  .img {
-    display: block;
-    width: 100%;
-    object-fit: cover;
-    object-position: 0 90%;
-    height: 100%;
-    -moz-transition: all 0.5s ease-out;
-    -o-transition: all 0.5s ease-out;
-    -webkit-transition: all 0.5s ease-out;
-
-    &:hover {
-      -webkit-transform: scale(1.1);
-      -moz-transform: scale(1.1);
-      -o-transform: scale(1.1);
-    }
-  }
-
-  .isDoor {
-    object-position: 50% 90% !important;
-    object-fit: contain !important;
-  }
-}
 
 .labels {
   z-index: 20;

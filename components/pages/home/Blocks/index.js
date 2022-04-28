@@ -18,7 +18,6 @@ const Blocks = () => (
         <Contact/>
         <Blog/>
         <About/>
-        <Services/>
     </div>
 );
 
