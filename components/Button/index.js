@@ -20,7 +20,6 @@ const theme = createTheme({
                     height: 'min-content',
                     lineHeight: '24px',
                     letterSpacing: '.25px',
-                    textTransform: 'none',
                     boxSizing: 'border-box',
                     boxShadow: 'none',
                     minWidth: 0,
@@ -37,7 +36,10 @@ const theme = createTheme({
                     '&[class*="contained"]': {
                         padding: '8px 12px',
                         borderRadius: 0,
-                        color: 'white'
+                        color: 'white',
+                        '&:hover, &:active': {
+                            color: 'white !important'
+                        },
                     },
                     '&[class*="outlined"]': {
                         color: 'black',

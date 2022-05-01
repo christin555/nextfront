@@ -117,10 +117,26 @@ class RootStore {
         this.category = category;
     };
 
-    @action setCategoryMerge = async (category, fastfilter) => {
+    @action setSelection = async (selection, category) => {
+        this.CatalogStore.isHydrating = true;
+        console.log('setSelection', selection, category)
         this.setCategory(category);
 
-        if (this.ActiveFilterStore.category !== category && this.ActiveFilterStore.updateCategory) {
+        if (this.ActiveFilterStore.updateCategory) {
+            this.ActiveFilterStore?.updateCategory(category, {selection})
+        }
+        console.log('setSelection2')
+        this.RouterStore.router.query = {category, selection}
+        console.log('setSelection3')
+        this.CatalogStore.merge({category, ActiveFilterStore: this.ActiveFilterStore}, this)
+        console.log('setSelection4')
+    };
+
+    @action setCategoryMerge = async (category, fastfilter) => {
+        this.CatalogStore.isHydrating = true;
+        this.setCategory(category);
+
+        if (this.ActiveFilterStore.updateCategory) {
             this.ActiveFilterStore?.updateCategory(category)
         }
 

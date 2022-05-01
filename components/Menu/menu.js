@@ -14,9 +14,9 @@ import MobileHeader from "./MobileHeader";
 
 const menu = [
     {name: 'Каталог', important: true, link: '/catalog'},
+    {name: 'Мастер блог', important: false, link: '/blog'},
     {name: 'О компании', important: false, link: '/about'},
     {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
-    {name: 'Наш блог', important: false, link: '/blog'},
     {name: 'Услуги', important: true, link: '/services'},
     {name: 'Наши работы', important: true, link: '/works'},
     {name: 'Контакты', important: true, link: '/contacts'}
@@ -55,9 +55,8 @@ export default function Menu() {
                         <div className={styles.logoBlock}>
                             <div className={styles.logo}
                                  onClick={() => toPage('/')}>
-                                <Image
+                                <img
                                     className={styles.logo}
-                                    priority={true}
                                     src={'/logo.png'}
                                     alt={'logo'}
                                     width="64"

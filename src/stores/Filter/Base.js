@@ -1,4 +1,4 @@
-import {action, computed, makeObservable, observable, toJS} from 'mobx';
+import {action, computed, reaction, makeObservable, observable, toJS} from 'mobx';
 import api from '../../api';
 import {alert} from '../Notifications';
 import Router from 'next/router';
@@ -7,10 +7,11 @@ import formatPrice from "../../utils/formatPrice";
 export class BaseFilterStore {
     @observable values = {};
     @observable checked = {};
-    @observable chips = [];
+    @observable chips = new Map();
     @observable currentParams = {};
     @observable category;
     @observable disabled = {};
+    @observable selection = {};
 
     // Override in child;
     fieldsLabel = {};
@@ -26,26 +27,50 @@ export class BaseFilterStore {
         makeObservable(this);
     }
 
-    @action updateCategory = (category) =>{
+    @action updateCategory = (category, params = {}) => {
         this.category = category;
-        this.setCurrentParams({});
+        this.setCurrentParams(params);
         this.loadValues();
     }
 
     @action merge = ({values, category, checked, currentParams, chips}) => {
         this.values = values || [];
         this.category = category;
-        this.chips = chips;
+        console.log('merge', chips)
+        //  this.chips = chips;
         this.checked = checked;
         this.currentParams = currentParams;
     }
 
-    @action setCurrentParams = (_params) => {
+    @action setCurrentParams = async (_params) => {
         const params = {..._params};
         delete params.limit;
         delete params.page;
 
+        console.log(params, 'params')
+
         this.currentParams = params;
+
+        await this.setSelection(params.selection)
+    }
+
+    @action setSelection = async (selectionAlias) => {
+        if (!selectionAlias) {
+            this.selection = {}
+            return;
+        }
+
+       try {
+            this.selection = await api.post('selections/get', {alias: selectionAlias});
+
+            this.setChips('selection', {
+                fieldName: 'Подборка',
+                name: this.selection.title,
+                id: this.selection.alias
+            }, true);
+        } catch (e) {
+            this.selection = {}
+        }
     }
 
     @action setCategory(category) {
@@ -77,7 +102,10 @@ export class BaseFilterStore {
 
         checked['minPrice'] = price[0];
         checked['maxPrice'] = price[1];
-        const label = ` от ${formatPrice({price: price[0], isSquare: false})} до ${formatPrice({price: price[1], isSquare: false})}`;
+        const label = ` от ${formatPrice({price: price[0], isSquare: false})} до ${formatPrice({
+            price: price[1],
+            isSquare: false
+        })}`;
 
         chips.push({
             fieldName: this.fieldsLabel['price'],
@@ -132,7 +160,7 @@ export class BaseFilterStore {
     };
 
     @action initChecked() {
-        const _chips = []
+        const _chips = new Map();
         const _checked = {};
         Object.entries(this.currentParams).forEach(([key, value]) => {
             if (key !== 'category') {
@@ -143,7 +171,7 @@ export class BaseFilterStore {
                         _checked[`${key}-${val}`] = true;
 
                         const item = this.values[key]?.find(({id}) => Number(id) === Number(val));
-                        item && _chips.push({
+                        item && _chips.set(key, {
                             fieldName: this.fieldsLabel[key],
                             label: item.name,
                             key: key,
@@ -162,7 +190,7 @@ export class BaseFilterStore {
                         }
                     }
 
-                    _chips.push({
+                    _chips.set(key, {
                         fieldName: this.fieldsLabel[key],
                         label: item.name,
                         key: key,
@@ -223,7 +251,7 @@ export class BaseFilterStore {
     setPricePath = async (price, key) => {
         /// await this.resetPage();
 
-        console.log(price , 'erprice')
+        console.log(price, 'erprice')
         !this.checked['minPrice'] && this.setPrice('1000', 'minPrice');
         !this.checked['maxPrice'] && this.setPrice('20000', 'maxPrice');
 
@@ -234,7 +262,10 @@ export class BaseFilterStore {
         );
 
         const oldChip = this.chips.find(({key}) => key === 'price');
-        const label = ` от ${formatPrice({price: this.checked['minPrice'], isSquare: false})} до ${formatPrice({price: this.checked['maxPrice'], isSquare: false})}`;
+        const label = ` от ${formatPrice({
+            price: this.checked['minPrice'],
+            isSquare: false
+        })} до ${formatPrice({price: this.checked['maxPrice'], isSquare: false})}`;
 
         if (oldChip) {
             oldChip.label = label;
@@ -292,18 +323,14 @@ export class BaseFilterStore {
 
     @action setChips = (key, item, checked) => {
         if (checked) {
-            this.chips.push({
-                fieldName: this.fieldsLabel[key],
+            this.chips.set(key, {
+                fieldName: this.fieldsLabel[key] || item.fieldName,
                 label: item.name,
                 key,
                 val: item.id
             });
         } else {
-            const idx = this.chips.findIndex((chip) => {
-                return chip.key === key && chip.val === item.id;
-            });
-
-            this.chips.splice(idx, 1);
+            this.chips.delete(key);
         }
     };
 

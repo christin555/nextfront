@@ -46,7 +46,8 @@ export class DoorsStore extends BaseFilterStore {
         this.setToKey('checked', 'collectionId', false);
         this.setToKey('checked', 'finishingMaterial', false);
 
-        this.chips = this.chips.filter((chip) => ['collectionId', 'finishingMaterial'].includes(chip.key));
+        this.chips.delete('collectionId');
+        this.chips.delete('finishingMaterial');
     };
 
     @action disableFinishingByBrandId = (brandId, checked) => {

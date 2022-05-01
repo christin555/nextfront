@@ -9,14 +9,12 @@ import DescriptionMain from "./Description";
 import Banner from "../../Banner";
 
 
-@inject(({RootStore: {CatalogStore}}) => {
+@inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {
     return {
         hierarchy: CatalogStore.hierarchy,
-        status: CatalogStore.status,
         fastfilter: CatalogStore.fastfilter,
         alias: CatalogStore.category,
-        products: toJS(CatalogStore.products),
-        CatalogStore
+        selection: ActiveFilterStore.selection
     };
 }) @observer
 class Catalog extends React.Component {
@@ -50,7 +48,11 @@ class Catalog extends React.Component {
     }
 
     get headerTitle() {
-        const {hierarchy, fastfilter} = this.props;
+        const {hierarchy, fastfilter, selection} = this.props;
+
+        if (selection?.title) {
+            return selection.title;
+        }
 
         if (!hierarchy?.length && fastfilter) {
             return `Поиск`;

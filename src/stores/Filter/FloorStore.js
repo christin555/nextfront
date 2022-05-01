@@ -49,7 +49,7 @@ export class FloorStore extends BaseFilterStore {
         })
 
         this.setToKey('checked', colId, false);
-        this.chips = this.chips.filter((chip) => chip.key !== colId);
+        this.chips.delete(colId);
     };
 
     initDisabled(){

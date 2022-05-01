@@ -7,14 +7,13 @@ import Hierarchy from "../../components/HierarchyNew";
 import Meta from "../../components/HeadComponent";
 import Title from "../../components/Title";
 import Image from "next/image";
-import PlayerView from "../../components/VideoPlayer";
 import TitleBlock from "../../components/TitleBlock";
 import CardMedia from "@mui/material/CardMedia";
 import Description from "../../components/Footer/DescriptionPage";
 import Link from "next/link";
 import Warranty from "../../components/Icons/Warranty";
 import Reliable from "../../components/Icons/Reliable";
-
+import VideoBlock from '../../components/VideoBlock';
 
 const media = <Image
     placeholder={'blur'}
@@ -76,18 +75,6 @@ class Works extends React.Component {
                     image={img}
                 />
             </div>
-        )
-    }
-
-    get video() {
-        return _video.map(src =>
-            <PlayerView
-                key={src}
-                muted={'true'}
-                classNameContainer={s.verticalContainerPlayer}
-                classNamePlayer={s.verticalPlayer}
-                src={src}
-            />
         )
     }
 
@@ -201,9 +188,8 @@ class Works extends React.Component {
                                 <a> Все видео </a>
                             </Link>
                         </div>
-                        <div className={s.media}>
-                            {this.video}
-                        </div>
+                        <VideoBlock video={_video}/>
+
                     </div>
                     <div className={s.container}>
                         <TitleBlock title={'Услуги'}/>

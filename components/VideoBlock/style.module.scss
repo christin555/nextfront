@@ -1,0 +1,53 @@
+.media {
+  overflow-x: scroll;
+  display: flex;
+  gap: 14px;
+  padding-bottom: 20px;
+}
+
+.verticalPlayer {
+  border-radius: 10px;
+  position: unset;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: inherit !important;
+  width: auto !important;
+  max-width: 200px;
+}
+
+.verticalContainerPlayer {
+  min-width: 200px;
+  max-width: 200px;
+  width: max-content;
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  .verticalPlayer {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: auto !important;
+    min-width: 150px;
+  }
+
+  .verticalContainerPlayer {
+    min-width: 150px;
+    min-height: unset;
+    height: inherit;
+  }
+
+  .verticalContainerPlayer::after {
+    content: "";
+    display: block;
+    // padding-bottom: 100%;
+  }
+
+  .media {
+    gap: 5px;
+    overflow-x: scroll;
+  }
+}

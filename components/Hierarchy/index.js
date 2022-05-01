@@ -46,8 +46,7 @@ class Hierarchy extends React.Component {
                                 passHref
                                 shallow={true}>
                                 <a
-                                    onClick={() => index !== hierarchy.length - 1 && alias && this.routeChange(alias)}
-                                    className={index === hierarchy.length - 1 ? s.last : null}
+                                    onClick={() => alias && this.routeChange(alias)}
                                 >
                                     {name}
                                 </a>

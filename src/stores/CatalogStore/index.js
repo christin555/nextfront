@@ -12,7 +12,7 @@ class CatalogStore {
     @observable status = statusEnum.LOADING;
     @observable categories;
     @observable products;
-    @observable articles;
+    @observable articles = {};
     @observable category;
 
     @observable hierarchy;
@@ -60,6 +60,26 @@ class CatalogStore {
         return Router.router;
     }
 
+    @computed get imgPosts() {
+        return this.articles.filter(({articleType}) => {
+            if (articleType === 'img' || articleType === 'carousel') {
+
+            }
+        });
+    }
+
+    @computed get videoPosts() {
+        const video = [];
+
+        this.articles.forEach(({media, articleType}) => {
+            if (articleType === 'short' || articleType === 'video' && media[0]) {
+                media[0].type !== 'youtube' && video.push(media[0].src)
+            }
+        })
+
+        return video;
+    }
+
     @computed get productsAvailable() {
         return !!this.products?.length;
     }
@@ -84,7 +104,26 @@ class CatalogStore {
         this.body = body;
     };
 
-    @action setArticles = (articles) => {
+    @action setArticles = (_articles) => {
+        const articles = {
+            video: [],
+            static: []
+        };
+
+
+        _articles.forEach((post) => {
+            if (post.articleType === 'short' || post.articleType === 'video' && post.media[0]) {
+                if (post.media[0].type !== 'youtube') {
+                    articles['video'].push(post.media[0].src)
+                } else {
+                    articles['static'].push(post)
+                }
+            } else {
+                articles['static'].push(post)
+            }
+        })
+
+        console.log(articles,_articles )
         this.articles = articles;
     };
 
@@ -169,11 +208,11 @@ class CatalogStore {
 
     getArticles = async () => {
         try {
-            const articles = await api.post('articles/getArticles', {category: this.category});
-
-            console.log(articles);
-            this.setArticles(articles.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)));
+            const articles = await api.post('articles/getArticles', {category: this.category, withMedia: true});
+            console.log(articles)
+            this.setArticles(articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
         } catch (e) {
+            console.log(e)
         }
     }
 
@@ -187,6 +226,7 @@ class CatalogStore {
         const {category, filter, fastfilter} = this;
         const {offset, limit, order, optionsOrder} = this.PageStore;
 
+        console.log('getCatalog', filter, category)
         try {
             const body = {
                 searchParams: {

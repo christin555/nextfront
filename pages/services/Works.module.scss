@@ -47,20 +47,6 @@
 }
 
 
-.verticalPlayer {
-  position: unset;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height: inherit !important;
-  width: auto !important;
-}
-
-.verticalContainerPlayer {
-  min-width: 200px;
-  width: max-content;
-}
-
 .preview {
   font-family: museo-sans, sans-serif;
   display: flex;
@@ -227,27 +213,6 @@
     .videoContainer {
       max-width: 100%;
     }
-  }
-
-  .verticalPlayer {
-    position: unset;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: auto !important;
-    min-width: 150px;
-  }
-
-  .verticalContainerPlayer {
-    min-width: 150px;
-    min-height: unset;
-    height: inherit;
-  }
-
-  .verticalContainerPlayer::after {
-    content: "";
-    display: block;
-    // padding-bottom: 100%;
   }
 
   .cards {

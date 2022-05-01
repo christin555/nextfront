@@ -15,7 +15,7 @@ import React from 'react';
 import classNames from "classnames";
 import NextLink from 'next/link';
 
-const CarouselView = ({deviceType, className, items}) => {
+const CarouselView = ({deviceType, className, setSelection, items}) => {
 
     const isMobile = deviceType === 'mobile';
 
@@ -27,16 +27,17 @@ const CarouselView = ({deviceType, className, items}) => {
                 spaceBetween={'20px'}
                 slidesPerView={1}
                 navigation={!isMobile}
-                autoplay={{
-                    delay: 8500,
-                    disableOnInteraction: true,
-                }}
+                // autoplay={{
+                //     delay: 8500,
+                //     disableOnInteraction: true,
+                // }}
                 pagination={{
                     clickable: true
                 }}
             >
                 {
                     items.map(({
+                                   category,
                                    mobileBackground,
                                    img,
                                    text,
@@ -46,7 +47,10 @@ const CarouselView = ({deviceType, className, items}) => {
                                    link,
                                    alignItems = 'center',
                                    justifyContent = 'flex-end',
-                                   textButton
+                                   textButton,
+                                   selection,
+                                   mobAlignItems,
+                                   mobJustifyContent
                                }, index) => {
                         return <SwiperSlide key={index}>
                             <div className={classNames(s.slide, {[s.reverse]: reverse})}>
@@ -56,18 +60,29 @@ const CarouselView = ({deviceType, className, items}) => {
                                     </div> || null
                                 }
                                 <div className={s.text}>
-                                    <div className={s.content} style={{alignItems, justifyContent}}>
+                                    <div
+                                        className={s.content}
+                                         style={{
+                                             alignItems: isMobile && mobAlignItems || alignItems,
+                                             justifyContent: isMobile && mobJustifyContent || justifyContent
+                                         }}>
                                         <Typography
+                                            className={s.title}
                                             variant={isMobile && 'h4' || 'h3'}> {title} </Typography>
                                         <Typography className={s.desc}
-                                                    variant={isMobile && 'body2' || 'subtitle1'}>
+                                                    variant={isMobile && 'body2' || 'h6'}>
                                             {text}
                                         </Typography>
-                                        {link ? <NextLink href={link}
-                                                          passHref
-                                                          shallow={true}
+                                        {link ? <NextLink
+                                            href={link}
+                                            passHref
+                                            shallow={true}
                                         >
-                                            <Button variant={'contained'} color={'secondary'} className={s.button}>
+                                            <Button
+                                                onClick={() => selection && setSelection(selection, category) || null}
+                                                variant={'contained'}
+                                                color={'secondary'}
+                                                className={s.button}>
                                                 {textButton}
                                             </Button>
                                         </NextLink> : null}

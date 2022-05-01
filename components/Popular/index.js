@@ -5,7 +5,7 @@ import Card from '../Cards/Card';
 import {inject, observer} from 'mobx-react';
 import s from './styles.module.scss';
 import TitleBlock from '../TitleBlock';
-
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
 @inject(({RootStore: {PopularStore, deviceType}}) => {
     return {
@@ -46,7 +46,15 @@ class CardsView extends Component {
 
         return (
             <div className={s.container}>
-                <TitleBlock title={'Выбор покупателей'}/>
+                <TitleBlock title={
+                    <span style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                    }}>
+                    <FavoriteRoundedIcon className={s.favIcon}/>
+                    Мастер советует
+                </span>}/>
                 <div className={s.cards}>
                     <Carousel
                         swipeable={true}

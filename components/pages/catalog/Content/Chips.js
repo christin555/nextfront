@@ -6,33 +6,37 @@ import Chip from '../../../Chip';
 import {observable, toJS} from "mobx";
 
 @inject(({RootStore: {CatalogStore: {ActiveFilterStore}}}) => {
-  return {
-    chips: toJS(ActiveFilterStore.chips),
-    isFilterActive: ActiveFilterStore.isActive,
-    del: ActiveFilterStore.setValue
-  };
+    return {
+        chips: toJS(ActiveFilterStore.chips),
+        isFilterActive: ActiveFilterStore.isActive,
+        del: ActiveFilterStore.setValue
+    };
 }) @observer
 class Chips extends React.Component {
-  removeValue = (key, val) => () => this.props.del(key)(false, {id: val});
+    removeValue = (key, val) => () => this.props.del(key)(false, {id: val});
 
-  render() {
-    if (!this.props.isFilterActive) {
-      return <div/>;
+    render() {
+        if (!this.props.isFilterActive) {
+            return <div/>;
+        }
+
+        const chips = []
+
+        for (let {fieldName, label, key, val} of this.props.chips.values()) {
+            chips.push(<Chip
+                key={val}
+                label={`${fieldName} - ${label}`}
+                deleteIcon={<CloseIcon/>}
+                onDelete={this.removeValue(key, val)}
+            />)
+        }
+
+        return (
+            <div className={s.chips}>
+                {chips}
+            </div>
+        );
     }
-
-    return (
-      <div className={s.chips}>
-        {this.props.chips.map(({fieldName, label, key, val}) => (
-          <Chip
-            key={val}
-            label={`${fieldName} - ${label}`}
-            deleteIcon={<CloseIcon />}
-            onDelete={this.removeValue(key, val)}
-          />
-        ))}
-      </div>
-    );
-  }
 }
 
 export default Chips;

@@ -10,16 +10,25 @@ import Banner from "./Banner";
 import Blog from "./Blog";
 import Title from "../../../Title";
 
-@inject(({RootStore: {CatalogStore}}) => {
+@inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {
     return {
         hierarchy: CatalogStore.hierarchy || [],
-        status: CatalogStore.status,
-        productsAvailable: CatalogStore.productsAvailable,
         fastfilter: CatalogStore.fastfilter,
-        category: CatalogStore.category
+        category: CatalogStore.category,
+        selection: ActiveFilterStore.selection
     };
 }) @observer
 class Content extends React.Component {
+    get desc() {
+        const {selection} = this.props;
+
+        if (!selection?.desc) {
+            return <div/>
+        }
+
+        return <div dangerouslySetInnerHTML={{__html: selection.desc}} className={s.selectionDesc}/>
+    }
+
     render() {
         const {hierarchy, fastfilter, category} = this.props;
 
@@ -39,6 +48,7 @@ class Content extends React.Component {
             <div className={s.container}>
                 <Banner className={s.banner}/>
                 <Title title={this.props.headerTitle}/>
+                {this.desc}
                 <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
                 <Categories/>
                 <div className={s.content}>
