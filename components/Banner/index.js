@@ -27,10 +27,10 @@ const CarouselView = ({deviceType, className, setSelection, items}) => {
                 spaceBetween={'20px'}
                 slidesPerView={1}
                 navigation={!isMobile}
-                // autoplay={{
-                //     delay: 8500,
-                //     disableOnInteraction: true,
-                // }}
+                autoplay={{
+                    delay: 8500,
+                    disableOnInteraction: true,
+                }}
                 pagination={{
                     clickable: true
                 }}
