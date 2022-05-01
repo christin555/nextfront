@@ -11,7 +11,7 @@ const VideoBlock = ({video, className}) => {
             muted={'true'}
             classNameContainer={s.verticalContainerPlayer}
             classNamePlayer={s.verticalPlayer}
-            src={'https://master-pola.com/' + src}
+            src={src}
         />)
     return (
         <div className={classNames(s.media, className)}>
