@@ -13,11 +13,12 @@ export class PageStore {
         {value: 3, label: 'Цены: по убыванию', direction: 'desc', field: 'price'},
         {value: 4, label: 'Цены: по возрастанию', direction: 'asc', field: 'price'}
     ]
+
     constructor(RootStore) {
         makeObservable(this);
         this.RouterStore = RootStore.RouterStore;
 
-        this.limit =  Number(RootStore.RouterStore.router.query.limit) || 12;
+        this.limit = Number(RootStore.RouterStore.router.query.limit) || 12;
         this.page = Number(RootStore.RouterStore.router.query.page) || 1;
         this.order = Number(RootStore.RouterStore.router.query.order) || 1;
     }
@@ -26,15 +27,18 @@ export class PageStore {
         return (this.page - 1) * this.limit;
     }
 
-    @action setLimitWithoutSSR = async(limit) => {
+    @action setLimitWithoutSSR = async (limit) => {
         this.limit = limit;
     }
 
-    @action setPageWithoutSSR = async(page) => {
+    @action setPageWithoutSSR = async (page) => {
         this.page = page;
     }
 
-    @action setPage = async(page) => {
+    @action setPage = async (page) => {
+        if (!page) {
+            return
+        }
         this.page = page;
 
         await Router.router.push({
@@ -45,7 +49,7 @@ export class PageStore {
         }, undefined, {shallow: true});
     };
 
-    @action setOrder = async({value: order}) => {
+    @action setOrder = async ({value: order}) => {
         this.order = order;
 
         await Router.router.push({
@@ -56,7 +60,7 @@ export class PageStore {
         }, undefined, {shallow: true});
     };
 
-    @action setLimit = async({value: limit}) => {
+    @action setLimit = async ({value: limit}) => {
         this.limit = limit;
 
         await Router.router.push({
