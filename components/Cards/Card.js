@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Cards.module.scss';
-import {Card, Tooltip} from '@mui/material';
+import {Card} from '@mui/material';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -12,7 +12,6 @@ import formatPrice from '../../src/utils/formatPrice';
 import classNames from 'classnames';
 import Labels from './labels';
 import Image from 'next/image'
-import StarIcon from '@mui/icons-material/Star';
 import Box from "@mui/material/Box";
 
 const plural = require('plural-ru');

@@ -100,7 +100,11 @@
 
 .salePrice {
   color: $gray-100;
-  text-decoration: line-through $gray-100 1px !important;
+  text-decoration-line: line-through;
+  -webkit-text-decoration-line: line-through;
+  text-decoration-color: $gray-100;
+  -webkit-text-decoration-color: $gray-100;
+  text-decoration-thickness: 1px;
   font-weight: 400;
   font-size: 16px;
   margin-left: 10px;
