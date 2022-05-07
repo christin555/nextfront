@@ -209,6 +209,10 @@
   .preview {
     flex-direction: column-reverse;
 
+    .text {
+      max-width: unset;
+    }
+
     .videoContainer {
       max-width: 100%;
     }
