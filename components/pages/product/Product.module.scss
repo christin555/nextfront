@@ -277,6 +277,9 @@
 }
 
 @media only screen and (max-width: 930px) {
+  .hierarchy {
+    margin-top: 5px;
+  }
 
   .content > .card {
     display: flex;
