@@ -41,7 +41,7 @@ class CardView extends React.Component {
                 </span>;
 
         const oldPrice = salePrice && <span className={s.salePrice}>
-                        {formatPrice({price, withCurrency: false})}
+                        {formatPrice({price, isDoor})}
                     </span> || null
 
 
@@ -112,8 +112,8 @@ class CardView extends React.Component {
                   passHref
                   shallow={true}>
                 <a className={classNames(s.aComonent)}>
-                    <Card className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
-                        <CardActionArea className={s.area}>
+                    <div className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
+                        <div className={s.area}>
                             <Labels
                                 salePercent={salePercent}
                                 isBestPrice={isBestPrice}
@@ -154,8 +154,8 @@ class CardView extends React.Component {
                                 {this.priceRow}
                                 {this.colors}
                             </CardContent>
-                        </CardActionArea>
-                    </Card>
+                        </div>
+                    </div>
                 </a>
             </Link>
         );

@@ -46,15 +46,7 @@ class CardsView extends Component {
 
         return (
             <div className={s.container}>
-                <TitleBlock title={
-                    <span style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                    }}>
-                    <FavoriteRoundedIcon className={s.favIcon}/>
-                    Мастер советует
-                </span>}/>
+                <TitleBlock title={'Мастер советует'}/>
                 <div className={s.cards}>
                     <Carousel
                         swipeable={true}

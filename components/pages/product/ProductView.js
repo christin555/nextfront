@@ -188,7 +188,6 @@ class Product extends React.Component {
 
 
         return <Box
-            margin={'10px 0'}
             display={'flex'}
             alignItems={'center'}
         >
@@ -233,11 +232,9 @@ class Product extends React.Component {
                             <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
                             {
                                 values.price && (
-                                    <div className={s.price}>
-                                        <span className={s.value}>
-                                            <MonetizationOnIcon className={s.icon}/>
-                                            {this.priceRow}
-                                        </span>
+                                    <div className={s.priceBox}>
+                                        Цена:
+                                        {this.priceRow}
                                     </div>
                                 ) || null
                             }

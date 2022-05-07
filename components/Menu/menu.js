@@ -15,7 +15,7 @@ import MobileHeader from "./MobileHeader";
 const menu = [
     {name: 'Каталог', important: true, link: '/catalog'},
     {name: 'Мастер блог', important: false, link: '/blog'},
-    {name: 'О компании', important: false, link: '/about'},
+    //{name: 'О компании', important: false, link: '/about'},
     {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
     {name: 'Услуги', important: true, link: '/services'},
     {name: 'Наши работы', important: true, link: '/works'},
@@ -84,11 +84,11 @@ export default function Menu() {
                                     className={styles.phone}
                                     title='Позвонить'
                                 >
-                                    8 (982) 988-15-22
+                                    8 982 988-15-22
                                 </a>
                                 <Callme ButtonCall={
                                     <span className={styles.callme}>
-                                    Заказать звонок
+                                    перезвоните мне
                                 </span>
                                 }/>
                             </div>

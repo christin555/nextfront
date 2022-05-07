@@ -6,8 +6,8 @@ let theme = createTheme({
   palette: defaultPalette,
   typography: {
     'fontFamily': `"Roboto", "Arial", sans-serif`,
-    'fontSize': 16,
-    'fontWeightLight': 300,
+    'fontSize': 14,
+    'fontWeightLight': 400,
     'fontWeightRegular': 400,
     'fontWeightMedium': 500,
     fontWeightBold: 400,

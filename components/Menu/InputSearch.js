@@ -27,6 +27,7 @@ class InputSearch extends Component {
         return (
             <div className={cn(styles.search, className)}>
                 <InputBase
+                    onBlur={this.search}
                     sx={{ml: 1, flex: 1}}
                     placeholder={'Поиск'}
                     inputProps={{'aria-label': 'поиск'}}

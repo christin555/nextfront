@@ -3,13 +3,12 @@
 .swiper-button-next, .swiper-button-prev {
   color: white !important;
   border-radius: 50%;
-  width: 30px !important;
-  height: 30px!important;
+  width: 38px !important;
+  height: 38px!important;
   background: rgba(16, 16, 16, 0.62);
 
   &:after {
-    font-weight: bold;
-    font-size: 14px !important;
+    font-size: 16px !important;
   }
 }
 
@@ -60,9 +59,6 @@ h4 {
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-  color: #34373d;
-  font-weight: 400;
   scroll-behavior: smooth;
 }
 

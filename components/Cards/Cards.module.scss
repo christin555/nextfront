@@ -2,11 +2,20 @@
 
 .aComonent {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   height: 100%;
-  box-shadow: 0 6px 16px rgb(0 0 0 / 7%);
+  //box-shadow: 0 6px 16px rgb(0 0 0 / 7%);
+
+  &:hover, a:hover{
+    color: unset !important;
+
+    .name{
+      color: $main-blue;
+    }
+  }
 }
 
 .root {
@@ -99,16 +108,22 @@
 }
 
 .salePrice {
-  color: $gray-100;
-  text-decoration-line: line-through;
-  -webkit-text-decoration-line: line-through;
-  text-decoration-color: $gray-100;
-  -webkit-text-decoration-color: $gray-100;
-  text-decoration-thickness: 1px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 10px;
+  position: relative;
+
+  &:before{
+    border-bottom: 1px solid $secondary;
+    top: 10px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
 }
+
+
 
 .content {
   flex-grow: 1;
@@ -137,6 +152,7 @@
   }
 
   .price {
+    font-weight: 500;
     display: flex;
     font-size: 18px;
     color: $gray-500;
