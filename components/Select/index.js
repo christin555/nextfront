@@ -68,6 +68,7 @@ const customStyles = {
                 ...provided,
                 fontSize: '14px',
                 borderRadius: 0,
+                zIndex: 10
             };
         },
         option: (provided, state) => {
@@ -115,7 +116,8 @@ const customStyles = {
                 ...provided,
                 'padding': '0',
                 'minHeight': '20px',
-                'minWidth': '150px'
+                'minWidth': '150px',
+                zIndex: 10
             };
         },
         singleValue: (provided, state) => {
@@ -133,7 +135,8 @@ const customStyles = {
         menu: (provided) => {
             return {
                 ...provided,
-                fontSize: '14px'
+                fontSize: '14px',
+                zIndex: 10
             };
         },
         option: (provided, state) => {

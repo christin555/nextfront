@@ -1,13 +1,18 @@
 @import '../../styles/variables.module';
 
 @mixin label {
-  z-index: 20;
+  z-index: 5;
   position: absolute;
   padding: 4px 10px;
   border-radius: 2px;
   color: #ffffff;
   font-weight: 500;
   font-size: 14px;
+
+  @media only screen and (max-width: 480px) {
+      padding: 2px 8px;
+      font-size: 12px;
+  }
 }
 
 .sale {
@@ -51,10 +56,8 @@
 .isBestPrice {
   @include label;
 
-  border-radius: 4px;
   top: 10px;
   left: 14px;
-
   background-color: $main-blue;
 }
 
@@ -69,6 +72,11 @@
 }
 
 @media only screen and (max-width: 480px) {
+
+  .isBestPrice {
+    top: -4px;
+    left: -2px;
+  }
 
   .sale {
     top: 10px;
