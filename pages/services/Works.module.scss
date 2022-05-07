@@ -56,8 +56,6 @@
   background: $white-20;
 
   .videoContainer {
-    max-width: 45%;
-
     .video {
       height: 100%;
       width: 100%;
@@ -70,6 +68,7 @@
   }
 
   .text {
+    max-width: 50%;
     text-align: left;
     padding: 20px 0;
     @include paddingStandard;
