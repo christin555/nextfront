@@ -9,10 +9,10 @@
   height: 100%;
   //box-shadow: 0 6px 16px rgb(0 0 0 / 7%);
 
-  &:hover, a:hover{
+  &:hover, a:hover {
     color: unset !important;
 
-    .name{
+    .name {
       color: $main-blue;
     }
   }
@@ -113,7 +113,7 @@
   margin-left: 10px;
   position: relative;
 
-  &:before{
+  &:before {
     border-bottom: 1px solid $secondary;
     top: 10px;
     content: "";
@@ -124,10 +124,9 @@
 }
 
 
-
 .content {
   flex-grow: 1;
-  padding: 10px 8px !important;
+  padding: 10px 0 !important;
   justify-content: space-between;
   place-self: flex-start;
   display: flex;
@@ -174,12 +173,18 @@
 
   .content {
     font-size: 14px;
-    padding: 10px 8px !important;
-
+    padding: 0 6px !important;
 
     .price {
       font-size: 16px;
-      font-weight: 400;
+    }
+
+    .salePrice {
+      font-size: 12px;
+
+      &:before {
+        top: 8px;
+      }
     }
 
     .collection, .name {

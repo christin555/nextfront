@@ -1,9 +1,25 @@
 @import '../../../styles/variables.module';
 
 
-.hierarchy {
-  @include paddingStandard;
-  margin-top: 20px;
+.name {
+  margin: 20px 0;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 18px;
+  gap: 2px;
+
+  .brand, .collection {
+    font-weight: 400;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    font-size: 14px;
+    color: $gray-100
+  }
+
 }
 
 .charsBlock {
@@ -23,12 +39,13 @@
 }
 
 .sale {
-  position: static !important;
-  width: min-content;
+  top: 10px;
+  bottom: unset;
 }
 
 .btnBox {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -36,7 +53,7 @@
   color: $gray-100;
   font-weight: 400;
   font-size: 20px;
-  margin-left: 14px;
+  margin-left: 12px;
 
   text-decoration-line: line-through;
   -webkit-text-decoration-line: line-through;
@@ -53,19 +70,11 @@
 }
 
 .content {
-  min-height: 500px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+  @include paddingStandard;
 
-  .card {
-    @include paddingStandard;
-
-    display: grid;
-    grid-column-gap: 20px;
-    grid-template-columns: minmax(300px, 0.8fr) minmax(400px, 1fr);
-  }
 
   .slide {
     display: flex !important;
@@ -88,63 +97,26 @@
     }
   }
 
-  .product {
-    background: #ffffffd1;
-    margin-left: 50px;
+
+  .additional {
+    margin: 20px 0;
+    font-size: 18px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
 
-    @include paddingStandard;
-    padding-left: 20px !important;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    .additional {
-      margin: 20px 0;
-      font-size: 18px;
-      display: flex;
-      flex-wrap: wrap;
-
-      & > * {
-        background: #f3f3f5;
-        margin-top: 5px;
-        margin-right: 10px;
-      }
-    }
-
-
-    .brand {
-      font-weight: 400;
-      margin-top: 10px;
-      text-transform: uppercase;
-      align-items: center;
-      justify-content: space-between;
-      display: flex;
-    }
-
-    .name {
-      align-items: flex-start;
-      flex-direction: column;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 400;
-      font-size: 24px;
-      margin: 20px 0 20px;
-    }
-
-    .collection {
-      text-transform: uppercase;
-      font-weight: 400;
-      font-size: 14px;
-      color: $gray-200;
-    }
-
-    .desc {
-      text-align: justify;
-      margin-top: 10px;
-      font-size: 16px;
+    & > * {
+      background: #f3f3f5;
+      margin-top: 5px;
+      margin-right: 10px;
     }
   }
+}
+
+.desc {
+  @include paddingStandard;
+  text-align: justify;
+  margin-top: 10px;
+  font-size: 16px;
 }
 
 .priceBox {
@@ -154,19 +126,6 @@
   width: 100%;
   max-width: 300px;
   font-weight: 400;
-}
-
-.price {
-  font-size: 24px;
-  color: $secondary;
-
-  .unit {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: #7f7f7f;
-  }
 }
 
 .titleCharacteristic {
@@ -185,10 +144,9 @@
 .characteristic {
   @include paddingStandard;
 
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .chars {
@@ -280,42 +238,4 @@
   border-color: black;
   border-radius: 0;
   margin-top: 20px;
-}
-
-@media only screen and (max-width: 930px) {
-
-  .salePrice {
-    font-size: 16px;
-  }
-
-  .content > .card {
-    display: flex;
-    flex-direction: column;
-
-    &:not(.door) .product {
-      padding: 10px 0 !important;
-    }
-
-    .product {
-      margin-left: 0;
-
-      .brand {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-
-      .name {
-        font-size: 16px;
-
-        & > * {
-          margin-top: 8px;
-        }
-      }
-    }
-  }
-
-  .materials > .items {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  }
 }

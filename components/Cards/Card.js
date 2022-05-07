@@ -46,7 +46,6 @@ class CardView extends React.Component {
 
 
         return <Box
-            marginTop={'10px'}
             display={'flex'}
             alignItems={'center'}
         >
@@ -114,13 +113,13 @@ class CardView extends React.Component {
                 <a className={classNames(s.aComonent)}>
                     <div className={classNames(s.root, classNamesRoot)} onClick={() => this.routeChange(alias)}>
                         <div className={s.area}>
-                            <Labels
-                                salePercent={salePercent}
-                                isBestPrice={isBestPrice}
-                            />
                             <CardMedia
                                 className={s.media}
                             >
+                                <Labels
+                                    salePercent={salePercent}
+                                    isBestPrice={isBestPrice}
+                                />
                                 <Image
                                     placeholder={'blur'}
                                     blurDataURL="/blur.png"
@@ -132,9 +131,10 @@ class CardView extends React.Component {
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
                                     src={img || "/blur.png"}
                                 />
-                                <Buttons {...this.props} />
                             </CardMedia>
                             <CardContent className={s.content}>
+                                {this.priceRow}
+                                <Labels isPopular={isPopular}/>
                                 {
                                     withCategory ? <span className={s.categoryName}> {category} </span> : null
                                 }
@@ -150,8 +150,6 @@ class CardView extends React.Component {
                                         {name}
                                     </span>
                                 </div>
-                                <Labels isPopular={isPopular}/>
-                                {this.priceRow}
                                 {this.colors}
                             </CardContent>
                         </div>

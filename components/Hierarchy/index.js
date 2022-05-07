@@ -26,7 +26,7 @@ class Hierarchy extends React.Component {
                 >
                     <a style={{display: 'flex', cursor: 'pointer'}}><HomeIcon className={s.homeIcon}/></a>
                 </NextLink>
-                <span className={s.icon}> / </span>
+                <ArrowForwardIosIcon className={s.icon}/>
                 <NextLink
                     href={{
                         pathname: '/catalog',
@@ -39,7 +39,7 @@ class Hierarchy extends React.Component {
                 {
                     hierarchy.map(({name, alias}, index) => (
                         <React.Fragment key={index}>
-                            <span className={s.icon}> / </span>
+                            <ArrowForwardIosIcon className={s.icon}/>
                             <NextLink
                                 href={`/catalog/[category]`}
                                 as={`/catalog/${alias}`}

@@ -1,30 +1,24 @@
 import React from 'react';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Chip from '@mui/material/Chip';
 import Icons from '../../Icons';
 import {inject, observer} from 'mobx-react';
-import Hierarchy from '../../Hierarchy';
-import Carousel from '../../Carousel';
-import {Divider} from '@mui/material';
-import classNames from 'classnames';
 import s from './Product.module.scss';
-import Callme from '../../Callme';
 import {toJS} from 'mobx';
 import formatPrice from '../../../src/utils/formatPrice';
 import Typography from "@mui/material/Typography";
 import CheckIcon from '@mui/icons-material/Check';
-import FinishingMaterialBlock from './FinishingMaterialBlock';
 import Meta from "../../HeadComponent";
 import Box from "@mui/material/Box";
-import Labels from "../../Cards/labels";
-import Calculation from '../../Сalculation';
+import MobileView from './MobileView';
+import DesktopView from "./DesktopView";
 
-@inject(({RootStore: {ProductStore}}) => {
+@inject(({RootStore: {ProductStore, deviceType}}) => {
     return {
         values: toJS(ProductStore.values || {}),
         fields: ProductStore.fields || [],
         hierarchy: ProductStore.hierarchy || [],
-        alias: ProductStore.alias
+        alias: ProductStore.alias,
+        deviceType
     };
 }) @observer
 class Product extends React.Component {
@@ -183,7 +177,7 @@ class Product extends React.Component {
                 </span>;
 
         const oldPrice = salePrice && <span className={s.salePrice}>
-                        {formatPrice({price, withCurrency: false})}
+                        {formatPrice({price, isDoor})}
                     </span> || null
 
 
@@ -197,7 +191,8 @@ class Product extends React.Component {
     }
 
     render() {
-        const {values, hierarchy, fields} = this.props;
+        const {values, hierarchy, fields, deviceType} = this.props;
+        const isMobile = deviceType === 'mobile';
 
         return (
             <>
@@ -207,66 +202,27 @@ class Product extends React.Component {
                     title={`${values.category} ${values.name} от ${values.brand} - ${values.price} - Мастер Пола`}
                     breadcumbs={this.breadcumbs}
                 />
-
-                <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
-                <div className={s.content}>
-                    <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
-                        <Carousel
-                            imgs={values?.imgs || []}
-                            className={s.carousel}
-                        />
-                        <div className={s.product}>
-                            <span className={s.brand}>
-                                  {values.category} {values.brand}
-                                <Labels salePercent={values.salePercent} className={s.sale}/>
-                            </span>
-                            <Labels isPopular={values.isPopular}/>
-                            <div className={s.name}>
-                                {values.name}
-                                <span className={s.collection}>
-                                    {values.collection && `Коллекция ${values.collection}`}
-                                </span>
-                            </div>
-                            <Divider/>
-                            <description className={s.desc}> {values.description} </description>
-                            <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
-                            {
-                                values.price && (
-                                    <div className={s.priceBox}>
-                                        Цена:
-                                        {this.priceRow}
-                                    </div>
-                                ) || null
-                            }
-                            <div className={s.chars}>
-                                {this.mainFields}
-                            </div>
-                            <FinishingMaterialBlock fields={fields}/>
-                            <div className={s.additional}>
-                                {this.chipFields}
-                            </div>
-                            <Box display={'flex'} gap={'20px'}>
-                                <Calculation
-                                    product={values}
-                                    className={s.calculation}
-                                    buttonText={'Оставить заявку'}
-                                />
-                                <Callme
-                                    product={values}
-                                    className={s.call}
-                                    buttonText={'Оставить заявку'}
-                                />
-                            </Box>
-                        </div>
-                    </div>
-                    {this.chars}
-                    <div className={s.titleCharacteristic}>
-                        Характеристики товара
-                    </div>
-                    <div className={s.characteristic}>
-                        {this.allFields}
-                    </div>
-                </div>
+                {
+                    isMobile &&
+                    <MobileView
+                        values={values}
+                        fields={fields}
+                        hierarchy={hierarchy}
+                        priceRow={this.priceRow}
+                        mainFields={this.mainFields}
+                        allFields={this.allFields}
+                        chipFields={this.chipFields}
+                        chars={this.chars}/>
+                    || <DesktopView
+                        values={values}
+                        fields={fields}
+                        hierarchy={hierarchy}
+                        priceRow={this.priceRow}
+                        mainFields={this.mainFields}
+                        allFields={this.allFields}
+                        chipFields={this.chipFields}
+                        chars={this.chars}/>
+                }
             </>
         );
     }
