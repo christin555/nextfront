@@ -128,10 +128,10 @@
 .content {
   flex-grow: 1;
   padding: 10px 0 !important;
-  justify-content: space-between;
   place-self: flex-start;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start
   background: rgba(255, 255, 255, 0.56);
   min-height: 30px;
   font-weight: 400;
