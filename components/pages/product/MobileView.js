@@ -44,6 +44,7 @@ const Product = (props) => {
                     <span className={s.collection}>
                        {values.brand} {values.collection && `Коллекция ${values.collection}`}
                     </span>
+                    <Labels isBestPrice={values.isBestPrice} className={s.isBestPrice}/>
                 </div>
                 <Labels isPopular={values.isPopular} />
                 <Box position={'relative'} marginTop={'10px'}>
@@ -59,10 +60,7 @@ const Product = (props) => {
                     ) || null
                 }
 
-
                 <Divider/>
-                <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
-
                 <div className={s.chars}>
                     {mainFields}
                 </div>

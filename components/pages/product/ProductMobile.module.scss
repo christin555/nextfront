@@ -38,6 +38,15 @@
   }
 }
 
+.isBestPrice {
+  position: relative !important;
+  width: max-content;
+  font-size: 14px !important;
+  top: unset;
+  left: unset;
+  margin-top: 4px;
+}
+
 .sale {
   top: 10px;
   bottom: unset;

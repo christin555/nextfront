@@ -22,7 +22,7 @@ class Labels extends React.Component {
             blocks.push(<div className={classNames(s.sale, className)}>  {`-${salePercent}%`}</div>)
         }
         if (isBestPrice) {
-            blocks.push(<div className={s.isBestPrice}> Лучшая цена</div>)
+            blocks.push(<div  className={classNames(s.isBestPrice, className)}> Лучшая цена</div>)
         }
         if (isPopular) {
             blocks.push(
