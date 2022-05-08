@@ -39,16 +39,15 @@ const Product = (props) => {
         <>
             <div className={s.content}>
                 <Hierarchy hierarchy={[lastCategory]} className={s.hierarchy}/>
-                <Labels isPopular={values.isPopular}/>
                 <div className={s.name}>
                     {values.category} {values.name}
                     <span className={s.collection}>
                        {values.brand} {values.collection && `Коллекция ${values.collection}`}
                     </span>
                 </div>
-                <Labels salePercent={values.salePercent} className={s.sale}/>
-                <Box position={'relative'}>
-
+                <Labels isPopular={values.isPopular} />
+                <Box position={'relative'} marginTop={'10px'}>
+                    <Labels salePercent={values.salePercent} className={s.sale}/>
                     <Carousel
                         imgs={values?.imgs || []}
                         className={s.carousel}
