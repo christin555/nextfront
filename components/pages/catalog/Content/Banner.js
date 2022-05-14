@@ -38,16 +38,16 @@ const items = [
         category: 'laminate',
         mobJustifyContent: 'flex-end'
     },
-    {
-        background: 'https://master-pola.com/dashboard/uploads/BANNER_SAJT_a3be03ecd1.png',
-        mobileBackground: 'https://master-pola.com/dashboard/uploads/Mob_banner_0492b38f3a.png',
-        textButton: 'Смотреть дизайны',
-        selection: 'alpinefloor',
-        link: '/catalog/quartzvinyl?selection=alpinefloor',
-        category: 'quartzvinyl',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-end'
-    },
+    // {
+    //     background: 'https://master-pola.com/dashboard/uploads/BANNER_SAJT_a3be03ecd1.png',
+    //     mobileBackground: 'https://master-pola.com/dashboard/uploads/Mob_banner_0492b38f3a.png',
+    //     textButton: 'Смотреть дизайны',
+    //     selection: 'alpinefloor',
+    //     link: '/catalog/quartzvinyl?selection=alpinefloor',
+    //     category: 'quartzvinyl',
+    //     alignItems: 'flex-start',
+    //     justifyContent: 'flex-end'
+    // },
     {
         background: 'https://master-pola.com/dashboard/uploads/podplirtky_0740dc57f2.jpg',
         mobileBackground: 'https://master-pola.com/dashboard/uploads/podplirtky_mob_2f88a02ae8.jpg',

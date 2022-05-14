@@ -13,7 +13,7 @@ let theme = createTheme({
     fontWeightBold: 400,
     'body1': {
       'fontSize': 16,
-      fontWeight: 300
+      fontWeight: 400
     },
     'body2': {
       'fontSize': 14,
