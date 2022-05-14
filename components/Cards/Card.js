@@ -133,7 +133,6 @@ class CardView extends React.Component {
                                 />
                             </CardMedia>
                             <CardContent className={s.content}>
-                                {this.priceRow}
                                 {
                                     withCategory ? <span className={s.categoryName}> {category} </span> : null
                                 }
@@ -149,6 +148,7 @@ class CardView extends React.Component {
                                         {name}
                                     </span>
                                 </div>
+                                {this.priceRow}
                                 <Labels isPopular={isPopular}/>
                                 {this.colors}
                             </CardContent>
