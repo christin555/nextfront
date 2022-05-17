@@ -30,11 +30,12 @@ const items = [
         background: 'https://master-pola.com/dashboard/uploads/art_4842258ffb.png',
         mobileBackground: 'https://master-pola.com/dashboard/uploads/art_mob_aae1f7fd96.png',
         justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        mobAlignItems: 'flex-start',
         textButton: 'Смотреть коллекцию',
         selection: 'arteast_optima',
         link: '/catalog/quartzvinyl_zamkovay?selection=arteast_optima',
-        category: 'quartzvinyl_zamkovay',
-        mobJustifyContent: 'flex-start'
+        category: 'quartzvinyl_zamkovay'
     },
     {
         background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_3_a80280df16.jpg',
