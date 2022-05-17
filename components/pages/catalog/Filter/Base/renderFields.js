@@ -18,7 +18,9 @@ import {Skeleton} from "@mui/material";
         checked: toJS(ActiveFilterStore.checked),
         disabled: toJS(ActiveFilterStore.disabled),
 
-        hasKey: ActiveFilterStore.hasKey
+        hasKey: ActiveFilterStore.hasKey,
+
+        withUnit: ActiveFilterStore.withUnit
     };
 }) @observer
 class Fields extends Component {
@@ -33,7 +35,8 @@ class Fields extends Component {
             fieldsLabel,
             setPricePath,
             setPrice,
-            hasKey
+            hasKey,
+            withUnit
         } = this.props;
 
         if (!Object.keys(values).length) {
@@ -41,23 +44,21 @@ class Fields extends Component {
                 <Skeleton key={i} style={{marginTop: 20}}/>)
         }
 
-        const filterFields = fields({checked, setPricePath, setPrice, disabled, values, setValue});
+        const filterFields = fields({checked, withUnit, setPricePath, setPrice, disabled, values, setValue});
         const keys = [...addFields, ...Object.keys(values)]
 
 
-        return (
-            <React.Fragment>
-                {
-                    keys.map((key) => {
+        return keys.map((key) => {
                         return (
-                            <SimpleAccordion key={key} id={key} name={fieldsLabel[key]} active={hasKey(key)}>
+                            <SimpleAccordion
+                                key={key}
+                                id={key}
+                                name={fieldsLabel[key]}
+                                active={hasKey(key)}>
                                 {filterFields(key)}
                             </SimpleAccordion>
                         )
                     })
-                }
-            </React.Fragment>
-        );
     }
 }
 

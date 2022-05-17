@@ -15,6 +15,7 @@ export class BaseFilterStore {
 
     // Override in child;
     fieldsLabel = {};
+    withUnit = ['width', 'thickness', 'totalThickness', 'size']
 
     constructor(RootStore) {
         this.category = RootStore.category;

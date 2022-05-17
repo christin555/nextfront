@@ -3,29 +3,34 @@ import s from './Content.module.scss';
 import {inject, observer} from 'mobx-react';
 import CloseIcon from '@mui/icons-material/Close';
 import Chip from '../../../Chip';
-import {observable, toJS} from "mobx";
+import {toJS} from "mobx";
 
 @inject(({RootStore: {CatalogStore: {ActiveFilterStore}}}) => {
     return {
         chips: toJS(ActiveFilterStore.chips),
         isFilterActive: ActiveFilterStore.isActive,
-        del: ActiveFilterStore.setValue
+        del: ActiveFilterStore.setValue,
+        withUnit: ActiveFilterStore.withUnit
     };
 }) @observer
 class Chips extends React.Component {
     removeValue = (key, val) => () => this.props.del(key)(false, {id: val});
 
     render() {
-        if (!this.props.isFilterActive) {
+        const {isFilterActive, chips, withUnit} = this.props;
+        if (!isFilterActive) {
             return <div/>;
         }
 
-        const chips = []
+        const _chips = []
 
-        for (let {fieldName, label, key, val} of this.props.chips.values()) {
-            chips.push(<Chip
+        for (let {fieldName, label, key, val} of chips.values()) {
+            //ой жесть...вынести вместе c названиями полей в бд
+            const _label = withUnit.includes(key) ? `${label} мм` : label;
+
+            _chips.push(<Chip
                 key={val}
-                label={`${fieldName} - ${label}`}
+                label={`${fieldName} - ${_label}`}
                 deleteIcon={<CloseIcon/>}
                 onDelete={this.removeValue(key, val)}
             />)
@@ -33,7 +38,7 @@ class Chips extends React.Component {
 
         return (
             <div className={s.chips}>
-                {chips}
+                {_chips}
             </div>
         );
     }

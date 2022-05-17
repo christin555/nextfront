@@ -4,7 +4,7 @@ import {BaseFilterStore} from './Base';
 export class SportStore extends BaseFilterStore {
     fieldsLabel = {
         'colorFamily': 'Оттенок',
-        'totalThickness': 'Размер',
+        'totalThickness': 'Толщина',
         'collections': 'Коллекция',
         'bestseller': 'Хит продаж',
         'price': 'Цена',
