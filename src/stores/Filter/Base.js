@@ -80,7 +80,17 @@ export class BaseFilterStore {
     }
 
     @action _setValues(values) {
-        this.values = values;
+        //жесть ... вынести куда нибудь мм
+
+        this.values = Object.entries(values).reduce((res, [key, val]) => {
+            res[key] = val.sort((a,b) => a.name - b.name).map(({name, ...item}) =>{
+                const label = this.withUnit.includes(key) ? `${name} мм` : name;
+
+                return {...item, name: label}
+            });
+
+            return res
+        }, {});
     }
 
     @action resetTemps() {
@@ -170,11 +180,10 @@ export class BaseFilterStore {
                         _checked[_key] = true;
 
                         const item = this.values[key]?.find(({id}) => Number(id) === Number(val));
-                        const label = this.withUnit.includes(key) ? `${item.name} мм` : item.name;
 
                         item && _chips.set(_key, {
                             fieldName: this.fieldsLabel[key],
-                            label,
+                            label: item.name,
                             key: key,
                             val: item.id
                         });
@@ -195,7 +204,7 @@ export class BaseFilterStore {
                     const label = this.withUnit.includes(key) ? `${item.name} мм` : item.name;
                     _chips.set(_key, {
                         fieldName: this.fieldsLabel[key],
-                        label,
+                        label: item.name,
                         key: key,
                         val: item.id
                     });

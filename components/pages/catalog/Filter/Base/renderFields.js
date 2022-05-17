@@ -18,9 +18,7 @@ import {Skeleton} from "@mui/material";
         checked: toJS(ActiveFilterStore.checked),
         disabled: toJS(ActiveFilterStore.disabled),
 
-        hasKey: ActiveFilterStore.hasKey,
-
-        withUnit: ActiveFilterStore.withUnit
+        hasKey: ActiveFilterStore.hasKey
     };
 }) @observer
 class Fields extends Component {
@@ -35,8 +33,7 @@ class Fields extends Component {
             fieldsLabel,
             setPricePath,
             setPrice,
-            hasKey,
-            withUnit
+            hasKey
         } = this.props;
 
         if (!Object.keys(values).length) {
@@ -44,7 +41,7 @@ class Fields extends Component {
                 <Skeleton key={i} style={{marginTop: 20}}/>)
         }
 
-        const filterFields = fields({checked, withUnit, setPricePath, setPrice, disabled, values, setValue});
+        const filterFields = fields({checked, setPricePath, setPrice, disabled, values, setValue});
         const keys = [...addFields, ...Object.keys(values)]
 
 
