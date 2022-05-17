@@ -170,9 +170,11 @@ export class BaseFilterStore {
                         _checked[_key] = true;
 
                         const item = this.values[key]?.find(({id}) => Number(id) === Number(val));
+                        const label = this.withUnit.includes(key) ? `${item.name} мм` : item.name;
+
                         item && _chips.set(_key, {
                             fieldName: this.fieldsLabel[key],
-                            label: item.name,
+                            label,
                             key: key,
                             val: item.id
                         });
@@ -190,9 +192,10 @@ export class BaseFilterStore {
                         }
                     }
 
+                    const label = this.withUnit.includes(key) ? `${item.name} мм` : item.name;
                     _chips.set(_key, {
                         fieldName: this.fieldsLabel[key],
-                        label: item.name,
+                        label,
                         key: key,
                         val: item.id
                     });
