@@ -27,6 +27,16 @@ class BannerView extends Component {
 //mock
 const items = [
     {
+        background: 'https://master-pola.com/dashboard/uploads/art_4842258ffb.png',
+        mobileBackground: 'https://master-pola.com/dashboard/uploads/art_mob_aae1f7fd96.png',
+        justifyContent: 'flex-end',
+        textButton: 'Смотреть коллекцию',
+        selection: 'arteast_optima',
+        link: '/catalog/quartzvinyl_zamkovay?selection=arteast_optima',
+        category: 'quartzvinyl_zamkovay',
+        mobJustifyContent: 'flex-start'
+    },
+    {
         background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_3_a80280df16.jpg',
         title: 'Влагостойкий ламинат Alsafloor',
         mobileBackground: 'https://master-pola.com/dashboard/uploads/alsa_mob_35e62f9da8.jpg',

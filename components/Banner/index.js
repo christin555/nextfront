@@ -8,9 +8,8 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
-import {Box, Typography} from '@mui/material';
+import {Typography} from '@mui/material';
 import React from 'react';
 import classNames from "classnames";
 import NextLink from 'next/link';
@@ -22,18 +21,15 @@ const CarouselView = ({deviceType, className, setSelection, items}) => {
     return (
         <div className={classNames(s.container, className)}>
             <Swiper
-                modules={[Navigation, Autoplay, Pagination, EffectFade, A11y]}
-                effect="fade"
+                modules={[Navigation, Autoplay, Pagination, A11y]}
                 spaceBetween={'20px'}
                 slidesPerView={1}
                 navigation={!isMobile}
                 autoplay={{
-                    delay: 8500,
+                    delay: 8000,
                     disableOnInteraction: true,
                 }}
-                pagination={{
-                    clickable: true
-                }}
+                pagination={{clickable: true}}
             >
                 {
                     items.map(({
