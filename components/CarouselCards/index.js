@@ -1,19 +1,10 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component} from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from '../Cards/Card';
-import {inject, observer} from 'mobx-react';
 import s from './styles.module.scss';
 import TitleBlock from '../TitleBlock';
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
-@inject(({RootStore: {PopularStore, deviceType}}) => {
-    return {
-        popularProducts: PopularStore?.popularProducts || [],
-        deviceType: deviceType
-    };
-})
-@observer
 class CardsView extends Component {
     responsive = {
         desktop: {
@@ -34,9 +25,9 @@ class CardsView extends Component {
     };
 
     render() {
-        const {popularProducts, deviceType} = this.props;
+        const {products, deviceType, title} = this.props;
 
-        const Cards = popularProducts.map((item, index) => (
+        const Cards = products.map((item, index) => (
             <Card
                 withCategory={true}
                 key={index}
@@ -46,7 +37,7 @@ class CardsView extends Component {
 
         return (
             <div className={s.container}>
-                <TitleBlock title={'Мастер советует'}/>
+                <TitleBlock title={title}/>
                 <div className={s.cards}>
                     <Carousel
                         swipeable={true}

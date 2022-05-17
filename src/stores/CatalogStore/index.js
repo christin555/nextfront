@@ -15,6 +15,8 @@ class CatalogStore {
     @observable articles = {};
     @observable category;
 
+    @observable watchedProducts = [];
+
     @observable hierarchy;
     @observable fastFilter;
     @observable isLastLevel;
@@ -34,6 +36,12 @@ class CatalogStore {
             this.getHierarchyDisposer = autorun(this.getHierarchy);
             this.getCatalogDisposer = autorun(this.getCatalog);
             this.getArticlesDisposer = autorun(this.getArticles);
+
+            this.getWatchedReaction = reaction(
+                () => this.RouterStore.watched,
+                this.getWatched,
+                {fireImmediately: true}
+            )
         }
     }
 
@@ -88,6 +96,10 @@ class CatalogStore {
         this.ActiveFilterStore = ActiveFilterStore
     }
 
+    @action setWatchedProducts = (watchedProducts) => {
+        this.watchedProducts = watchedProducts.reverse();
+    }
+
     @action merge = (newProps) => {
         this.isHydrating = true;
         (['category', 'fastfilter', 'ActiveFilterStore']).forEach((key) => {
@@ -123,7 +135,6 @@ class CatalogStore {
             }
         })
 
-        console.log(articles,_articles )
         this.articles = articles;
     };
 
@@ -209,11 +220,18 @@ class CatalogStore {
     getArticles = async () => {
         try {
             const articles = await api.post('articles/getArticles', {category: this.category, withMedia: true});
-            console.log(articles)
             this.setArticles(articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
         } catch (e) {
             console.log(e)
         }
+    }
+
+    getWatched = async (ids) => {
+        try {
+            const products = await api.post('products/get', {filter: {ids}});
+
+            this.setWatchedProducts(products)
+        } catch (e) {}
     }
 
     getCatalog = async () => {
@@ -226,7 +244,6 @@ class CatalogStore {
         const {category, filter, fastfilter} = this;
         const {offset, limit, order, optionsOrder} = this.PageStore;
 
-        console.log('getCatalog', filter, category)
         try {
             const body = {
                 searchParams: {

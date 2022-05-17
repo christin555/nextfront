@@ -15,6 +15,7 @@ export class FloorStore extends BaseFilterStore {
         'size': 'Размеры',
         fixation: 'Тип соединения',
         texture: 'Дизайн',
+        'isSale': 'Со скидкой',
         isPopular: 'Хит продаж',
         'color': 'Оттенок',
         'resistanceClass': 'Класс нагрузки',

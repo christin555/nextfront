@@ -87,7 +87,7 @@
 }
 
 .blog {
-  margin-top: 40px;
+  margin: 40px 0;
   @include paddingStandard;
 
   ::-webkit-scrollbar, ::-webkit-scrollbar-track {

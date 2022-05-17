@@ -83,7 +83,8 @@ class ProductStore {
             this.setValues(values);
             this.setFields(fields);
 
-            this.setStatus(statusEnum.SUCCESS)
+            this.setStatus(statusEnum.SUCCESS);
+            this.RouterStore.addWatched(values.id);
         } catch (_) {
             this.setStatus(statusEnum.ERROR)
         }

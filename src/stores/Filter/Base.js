@@ -36,7 +36,6 @@ export class BaseFilterStore {
     @action merge = ({values, category, checked, currentParams, chips}) => {
         this.values = values || [];
         this.category = category;
-        console.log('merge', chips)
         //  this.chips = chips;
         this.checked = checked;
         this.currentParams = currentParams;
@@ -46,8 +45,6 @@ export class BaseFilterStore {
         const params = {..._params};
         delete params.limit;
         delete params.page;
-
-        console.log(params, 'params')
 
         this.currentParams = params;
 
@@ -60,7 +57,7 @@ export class BaseFilterStore {
             return;
         }
 
-       try {
+        try {
             this.selection = await api.post('selections/get', {alias: selectionAlias});
 
             this.setChips('selection', {
@@ -87,7 +84,7 @@ export class BaseFilterStore {
 
     @action resetTemps() {
         this.checked = {};
-        this.chips = [];
+        this.chips = new Map();
         this.currentParams = {}
         this.disabled = {};
     }
@@ -168,10 +165,11 @@ export class BaseFilterStore {
                     this.initPrice(value, _chips, _checked);
                 } else if (Array.isArray(value)) {
                     value.forEach((val) => {
-                        _checked[`${key}-${val}`] = true;
+                        const _key = this.getKey(key, val);
+                        _checked[_key] = true;
 
                         const item = this.values[key]?.find(({id}) => Number(id) === Number(val));
-                        item && _chips.set(key, {
+                        item && _chips.set(_key, {
                             fieldName: this.fieldsLabel[key],
                             label: item.name,
                             key: key,
@@ -179,7 +177,8 @@ export class BaseFilterStore {
                         });
                     })
                 } else if (this.fieldsLabel[key]) {
-                    _checked[`${key}-${value}`] = true;
+                    const _key = this.getKey(key, value);
+                    _checked[_key] = true;
 
                     let item = this.values[key]?.find(({id}) => Number(id) === Number(value));
 
@@ -190,7 +189,7 @@ export class BaseFilterStore {
                         }
                     }
 
-                    _chips.set(key, {
+                    _chips.set(_key, {
                         fieldName: this.fieldsLabel[key],
                         label: item.name,
                         key: key,
@@ -322,15 +321,16 @@ export class BaseFilterStore {
     };
 
     @action setChips = (key, item, checked) => {
+        const _key = this.getKey(key, item.id);
         if (checked) {
-            this.chips.set(key, {
+            this.chips.set(_key, {
                 fieldName: this.fieldsLabel[key] || item.fieldName,
                 label: item.name,
-                key,
+                key: key,
                 val: item.id
             });
         } else {
-            this.chips.delete(key);
+            this.chips.delete(_key);
         }
     };
 
@@ -346,6 +346,8 @@ export class BaseFilterStore {
 
         await this.pushRouter(urlSearch)
     }
+
+    getKey = (key, val) => `${key}-${val}`;
 
     pushRouter = async (urlSearch) => {
         await Router.push({

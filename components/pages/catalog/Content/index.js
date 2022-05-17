@@ -9,6 +9,7 @@ import Filter from '../Filter';
 import Banner from "./Banner";
 import Blog from "./Blog";
 import Title from "../../../Title";
+import Watched from "./Watched";
 
 @inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {
     return {
@@ -56,6 +57,7 @@ class Content extends React.Component {
                     <Products/>
                 </div>
                 <Blog/>
+                <Watched/>
             </div>
         );
     }

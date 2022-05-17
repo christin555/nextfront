@@ -6,7 +6,7 @@ import Content from './Content'
 import {toJS} from "mobx";
 import Meta from "../../HeadComponent";
 import DescriptionMain from "./Description";
-import Banner from "../../Banner";
+import Watched from "./Content/Watched";
 
 
 @inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {

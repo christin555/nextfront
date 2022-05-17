@@ -1,22 +1,42 @@
 import React from 'react';
 import FilterViewHOC from "./Base/StoreContainer";
 
+
 const filterFabric = (category) => {
+    if (!category) {
+        return null
+    }
+
+    let addFields = [];
+    let storeName = '';
+
     switch (category) {
         case 'doors':
-            return <FilterViewHOC storeName={'DoorsStore'} addFields={['isPopular']}/>;
+            storeName = 'DoorsStore';
+            addFields = ['isPopular']
+            break;
         case 'keramogranit':
-            return <FilterViewHOC storeName={'KeramogranitStore'} addFields={['price', 'isPopular']}/>;
+            storeName = 'KeramogranitStore';
+            addFields = ['price', 'isPopular'];
+            break;
         case 'quartzvinyl':
         case 'quartzvinyl_zamkovay':
         case 'quartzvinyl_kleevay':
+            storeName = 'FloorStore';
+            addFields = ['price', 'isPopular', 'isSale'];
+            break;
         case 'laminate':
         case 'probkovoe_pokrytie':
-            return <FilterViewHOC storeName={'FloorStore'} addFields={['price', 'isPopular']}/>;
+            storeName = 'FloorStore';
+            addFields = ['price', 'isPopular'];
+            break;
         case 'sport':
-            return <FilterViewHOC storeName={'SportStore'} addFields={['isPopular']}/>;
-        default:
-            return null;
+            storeName = 'SportStore';
+            addFields = ['isPopular']
+            break;
     }
+
+    return <FilterViewHOC storeName={storeName} addFields={addFields}/>;
 };
+
 export default filterFabric;

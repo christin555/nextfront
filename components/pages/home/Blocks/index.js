@@ -4,9 +4,8 @@ import Chars from './Chars';
 import Catalog from './Catalog';
 import About from './About';
 import Blog from './Blog';
-import Popular from '../../../Popular';
+import Popular from './Popular';
 import Works from './Works';
-import Services from './Services';
 import Contact from "./Contact";
 
 const Blocks = () => (

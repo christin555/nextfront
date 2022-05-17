@@ -7,6 +7,7 @@ class RouterStore {
     @observable searchValue = '';
     @observable fastfilter;
 
+    @observable watched =  new Set();
     @observable location = {};
     @observable match = {};
     @observable history = {};
@@ -19,6 +20,10 @@ class RouterStore {
 
         this.router = router;
         this.fastfilter = router.query.fastfilter || '';
+
+        if(!isServer){
+            this.watched = new Set(JSON.parse(localStorage.getItem('watched')) || []);
+        }
     }
 
     @computed get pathname() {
@@ -29,8 +34,22 @@ class RouterStore {
         return this.router.query;
     }
 
+    @action addWatched = (id) => {
+        if (this.watched.has(id)) {
+            return
+        }
+        const _watched = toJS(this.watched);
+        _watched.add(id)
+        localStorage.setItem('watched', JSON.stringify(Array.from(_watched)));
+        this.setWatched(_watched);
+    }
+
+    @action setWatched = (watched) => {
+        this.watched = watched;
+    }
+
     @action push = async (params) => {
-        await  this.router.push(params);
+        await this.router.push(params);
     }
 
     @action setValue = ({target: {value}}) => {
