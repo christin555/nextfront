@@ -22,7 +22,7 @@ const CarouselView = ({deviceType, className, setSelection, items}) => {
         <div className={classNames(s.container, className)}>
             <Swiper
                 modules={[Navigation, Autoplay, Pagination, A11y]}
-                spaceBetween={'20px'}
+                spaceBetween={20}
                 slidesPerView={1}
                 navigation={!isMobile}
                 autoplay={{
