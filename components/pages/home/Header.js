@@ -6,7 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 const Header = () => (
     <div className={s.wrapper}>
         <div className={s.videoContainer}>
-            <video className={s.video} src={'master.mp4'} autoPlay={true} muted={true} loop={true} playsInline={true}/>
+            <video className={s.video} src={'service.mp4'} autoPlay={true} muted={true} loop={true} playsInline={true}/>
         </div>
         <div className={s.overlay}>
             <div className={s.txtblocks}>
