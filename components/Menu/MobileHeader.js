@@ -15,7 +15,7 @@ export default function MobileHeader() {
                 title='Показать адрес в 2GIS'
             >
                 <LocationOnOutlinedIcon className={styles.icon}/>
-                Тюмень, Федюнинского 62 к1
+                Тюмень, Мельникайте 138а
             </a>
             <a
                 href={'tel:+79829881522'}

@@ -41,7 +41,7 @@ class Delivery extends React.Component {
                             <div>
                                 Вы можете заказать нужный вам товар, оплатить и указать дату доставки.
                                 После получения заказа к нам вы можете забрать товар в салоне по адресу
-                                <span className={s.address}> <nobr> ул. Федюнинского 62 к1 </nobr> </span>
+                                <span className={s.address}> <nobr> ул. Мельникайте 138а </nobr> </span>
                             </div>
                             <div>
                                 <Typography variant={'body2'}> Оплата </Typography>

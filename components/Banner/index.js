@@ -26,7 +26,7 @@ const CarouselView = ({deviceType, className, setSelection, items}) => {
                 slidesPerView={1}
                 navigation={!isMobile}
                 autoplay={{
-                    delay: 8000,
+                    delay: 5000,
                     disableOnInteraction: true,
                 }}
                 pagination={{clickable: true}}

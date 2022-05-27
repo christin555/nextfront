@@ -74,7 +74,7 @@ export default function Menu() {
                                 title='Показать адрес в 2GIS'
                             >
                                 <NearMeIcon className={styles.icon}/>
-                                Тюмень, Федюнинского 62 к1
+                                Тюмень, Мельникайте 138а
                             </a>
                         </div>
                         <div className={styles.left}>

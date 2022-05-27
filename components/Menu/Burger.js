@@ -133,8 +133,7 @@ export default function Burger({pathname, menu, toPage, search, setParams, setSe
                                 className={styles.infoText}
                                 href={'https://2gis.ru/tyumen/firm/70000001041302673?m=65.569066%2C57.099076%2F16'}
                             >
-                                Тюмень, ул. Федюнинского 62 к1, 1 этаж
-                                (ЖК Ново-Патрушево)
+                                Тюмень, ул. Мельникайте 138а
                             </a>
                             <div className={styles.infoText}>
                                 ежедневно с 10:00 до 19:00

@@ -47,7 +47,7 @@ class Delivery extends React.Component {
 
                             <div className={s.field}>
                                 <span className={s.titleField}>Адрес</span>
-                                <span>г. Тюмень, ул. Федюнинского 62 к1, 1 этаж </span>
+                                <span>г. Тюмень, ул. Мельникайте 138а </span>
                             </div>
 
                             <div className={s.field}>
