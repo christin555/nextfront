@@ -31,10 +31,11 @@ class Delivery extends React.Component {
 
                     <div className={s.card}>
                         <div className={s.image}>
-                            <iframe src="https://yandex.ru/map-widget/v1/-/CCUyzIeWcD"
+                            <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=197071784139"
                                     height={'600px'}
                                     className={s.iframe}
                                     allowFullScreen="true"
+                                    frameBorder={0}
                                     styles="position:relative;">
 
                             </iframe>
