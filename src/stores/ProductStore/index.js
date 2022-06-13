@@ -85,7 +85,7 @@ class ProductStore {
 
             this.setStatus(statusEnum.SUCCESS);
             this.RouterStore.addWatched(values.id);
-        } catch (_) {
+        } catch (err) {
             this.setStatus(statusEnum.ERROR)
         }
     }

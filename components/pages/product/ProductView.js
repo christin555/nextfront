@@ -21,7 +21,7 @@ import DesktopView from "./DesktopView";
         deviceType
     };
 }) @observer
-class Product extends React.Component {
+class ProductView extends React.Component {
     get mainFields() {
         const {values, fields} = this.props;
         const rows = [];
@@ -29,7 +29,7 @@ class Product extends React.Component {
         fields.filter(({type}) => type === 'isMain').forEach(({title, name}) => {
             if (values[name]) {
                 rows.push(
-                    <div className={s.row}>
+                    <div className={s.row} key={name}>
                         <div>
                             <span>
                                 {title}
@@ -81,7 +81,7 @@ class Product extends React.Component {
         fields.forEach(({title, name}) => {
             if (values[name] && title) {
                 rows.push(
-                    <div className={s.row}>
+                    <div className={s.row} key={name}>
                         <div>
                             <span>{title}</span> <span> {values[name]}</span>
                         </div>
@@ -228,4 +228,4 @@ class Product extends React.Component {
     }
 }
 
-export default Product;
+export default ProductView;

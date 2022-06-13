@@ -9,7 +9,7 @@ import FinishingMaterialBlock from './FinishingMaterialBlock';
 import Labels from "../../Cards/labels";
 import Calculation from '../../Сalculation';
 
-const Product = (props) => {
+const DesktopView = (props) => {
 
         const {
             values,
@@ -28,7 +28,8 @@ const Product = (props) => {
                 <div className={s.content}>
                     <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
                         <Carousel
-                            imgs={values?.imgs || []}
+                            name={`${values.brand} ${values.name}`}
+                            imgs={values?.imgs}
                             className={s.carousel}
                         />
                         <div className={s.product}>
@@ -44,7 +45,7 @@ const Product = (props) => {
                                 </span>
                             </div>
                             <Divider/>
-                            <description className={s.desc}> {values.description} </description>
+                            <div className={s.desc}> {values.description} </div>
                             <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
                             {
                                 values.price && (
@@ -87,4 +88,4 @@ const Product = (props) => {
         );
     }
 
-export default Product;
+export default DesktopView;

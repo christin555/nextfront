@@ -2,23 +2,35 @@ import React, {useRef, useState} from 'react';
 import Nophoto from "../../public/nophoto.png";
 import s from './carousel.module.scss';
 import Image from 'next/image';
-import {A11y, Thumbs, EffectFade,FreeMode, Navigation, Pagination} from "swiper";
-import {Swiper, SwiperSlide, } from 'swiper/react';
+import {A11y, Thumbs, EffectFade, FreeMode, Navigation, Pagination} from "swiper";
+import {Swiper, SwiperSlide,} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
 
-const CarouselView = ({imgs}) => {
-    const carouselRef = useRef(null);
+const CarouselView = ({imgs, name}) => {
     const carouselBlockRef = useRef(null);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     let images;
 
-    if (!imgs) {
-        images = [{original: Nophoto}];
+    if (!imgs ) {
+        return <SwiperSlide className={s.itemCarousel}>
+            <Image
+                placeholder={'blur'}
+                blurDataURL="/blur.png"
+                width="100%"
+                height="100%"
+                layout="responsive"
+                objectFit="contain"
+                alt={name || 'Слайд'}
+                src={Nophoto}
+                unoptimized={true}
+                loader={() => Nophoto}
+            />
+        </SwiperSlide>
     }
 
     images = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.itemCarousel}>
@@ -29,16 +41,18 @@ const CarouselView = ({imgs}) => {
                 height="100%"
                 layout="responsive"
                 objectFit="contain"
-                alt={'Слайд'}
+                alt={name || 'Слайд'}
                 src={src}
+                unoptimized={true}
                 loader={() => src}
             />
-    </SwiperSlide>
+        </SwiperSlide>
     );
 
 
-   const thumbs = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.thumbCarousel}>
+    const thumbs = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.thumbCarousel}>
             <Image
+                unoptimized={true}
                 quality={30}
                 placeholder={'blur'}
                 blurDataURL="/blur.png"
@@ -55,7 +69,7 @@ const CarouselView = ({imgs}) => {
     return (
         <div ref={carouselBlockRef}>
             <Swiper
-                thumbs={{ swiper: thumbsSwiper }}
+                thumbs={{swiper: thumbsSwiper}}
                 className={s.carouselHeight}
                 slidesPerView={1}
                 navigation={true}

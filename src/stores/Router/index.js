@@ -1,5 +1,4 @@
-import {observable, get, action, makeObservable, computed, toJS, reaction, autorun} from 'mobx';
-import Router from 'next/router'
+import {observable, action, makeObservable, computed, toJS} from 'mobx';
 
 const isServer = typeof window === 'undefined';
 
@@ -35,7 +34,7 @@ class RouterStore {
     }
 
     @action addWatched = (id) => {
-        if (this.watched.has(id)) {
+        if (this.watched.has(id) || isServer) {
             return
         }
         const _watched = toJS(this.watched);
