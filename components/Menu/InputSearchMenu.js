@@ -6,6 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import cn from "classnames";
 import classNames from "classnames";
 import CloseIcon from '@mui/icons-material/Close';
+import Button from "../Button";
 
 @inject(({RouterStore, RootStore}) => {
     return {
@@ -29,9 +30,18 @@ class InputSearch extends Component {
         this.setState({isOpen: true})
     }
 
+    pressHandler = (e) => {
+        if (e.key === 'Enter') {
+            this.search()
+        }
+    }
+
     search = () => {
         const {search, setCategoryMerge, searchValue, onClick} = this.props;
         onClick && onClick();
+        if (!searchValue) {
+            return
+        }
         setCategoryMerge(null, searchValue);
         search();
     }
@@ -61,9 +71,10 @@ class InputSearch extends Component {
                         placeholder={'Поиск'}
                         inputProps={{'aria-label': 'поиск'}}
                         onChange={setValue}
-                        //onKeyPress={this.search}
+                        onKeyPress={this.pressHandler}
                         value={searchValue}
                     />
+                    <Button onClick={this.search}> Найти </Button>
                     <CloseIcon onClick={this.closeSearch}/>
                 </div>
             </div>
