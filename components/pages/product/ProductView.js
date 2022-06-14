@@ -197,7 +197,7 @@ class ProductView extends React.Component {
         return (
             <>
                 <Meta
-                    image={values?.imgs[0].src}
+                    image={values?.imgs?.[0].src}
                     desc={`Купить ${values.category} ${values.brand} ${values.collection} в Тюмени по выгодной цене`}
                     title={`${values.category} ${values.name} от ${values.brand} - ${values.price} - Мастер Пола`}
                     breadcumbs={this.breadcumbs}

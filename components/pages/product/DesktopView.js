@@ -43,6 +43,9 @@ const DesktopView = (props) => {
                                 <span className={s.collection}>
                                     {values.collection && `Коллекция ${values.collection}`}
                                 </span>
+                                <span className={s.id}>
+                                       {values.id && `артикул ${values.id}`}
+                                </span>
                             </div>
                             <Divider/>
                             <div className={s.desc}> {values.description} </div>

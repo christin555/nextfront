@@ -6,19 +6,12 @@ import {inject, observer} from 'mobx-react';
 import Hierarchy from '../../Hierarchy';
 import Carousel from '../../Carousel';
 import {Divider} from '@mui/material';
-import classNames from 'classnames';
 import s from './ProductMobile.module.scss';
 import Callme from '../../Callme';
-import {toJS} from 'mobx';
-import formatPrice from '../../../src/utils/formatPrice';
-import Typography from "@mui/material/Typography";
-import CheckIcon from '@mui/icons-material/Check';
 import FinishingMaterialBlock from './FinishingMaterialBlock';
-import Meta from "../../HeadComponent";
 import Box from "@mui/material/Box";
 import Labels from "../../Cards/labels";
 import Calculation from '../../Сalculation';
-import Title from "../../Title";
 
 
 const Product = (props) => {
@@ -44,9 +37,12 @@ const Product = (props) => {
                     <span className={s.collection}>
                        {values.brand} {values.collection && `Коллекция ${values.collection}`}
                     </span>
+                    <span className={s.id}>
+                        {values.id && `артикул ${values.id}`}
+                    </span>
                     <Labels isBestPrice={values.isBestPrice} className={s.isBestPrice}/>
                 </div>
-                <Labels isPopular={values.isPopular} />
+                <Labels isPopular={values.isPopular}/>
                 <Box position={'relative'} marginTop={'10px'}>
                     <Labels salePercent={values.salePercent} className={s.sale}/>
                     <Carousel
