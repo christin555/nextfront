@@ -2,7 +2,7 @@ import React from 'react';
 import Hierarchy from "../../components/HierarchyNew";
 import Meta from "../../components/HeadComponent";
 import Title from "../../components/Title";
-import Content from "./Content";
+import Content from "./content";
 
 class Services extends React.Component {
     render() {
