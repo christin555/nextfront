@@ -159,43 +159,44 @@ class Content extends React.Component {
         const {article} = this.props;
         const {title, place, content, createdAt, mediaPosition, watchCount, media = []} = article;
 
-        return (
-            <div className={s[this.mediaPositionClass[mediaPosition]]}>
-                {this.media}
-                <div>
-                    <Box padding={'0 20px'}>
-                        <Typography variant="h5" component="h2" className={s.title}>
-                            {title}
-                        </Typography>
-                        {
-                            place && <Typography variant={'overline'} display={'flex'} alignItems={'center'}>
-                                <PlaceIcon className={s.icon}/>
-                                {place}
-                            </Typography> || null
-                        }
-                    </Box>
-                   {/*<div className={s.divider}/>*/}
-                    <Box padding={'0 20px 50px'}>
-                        <div className={s.contentText}>
-                            <div className={s.articleContent}>
-                                {(content || '')
-                                    .split('\n')
-                                    .map((item, index) =>
-                                        <span key={index}>{item.replace(/\\n/g, '')}</span>)}
+        return (<React.Fragment>
+                <div className={s[this.mediaPositionClass[mediaPosition]]}>
+                    {this.media}
+                    <div>
+                        <Box padding={'0 20px'}>
+                            <Typography variant="h5" component="h2" className={s.title}>
+                                {title}
+                            </Typography>
+                            {
+                                place && <Typography variant={'overline'} display={'flex'} alignItems={'center'}>
+                                    <PlaceIcon className={s.icon}/>
+                                    {place}
+                                </Typography> || null
+                            }
+                        </Box>
+                        <div className={s.divider}/>
+                        <Box padding={'0 20px'}>
+                            <div className={s.contentText}>
+                                <div className={s.articleContent}>
+                                    {(content || '')
+                                        .split('\n')
+                                        .map((item, index) =>
+                                            <span key={index}>{item.replace(/\\n/g, '')}</span>)}
 
+                                </div>
                             </div>
-                        </div>
-                        <span className={s.count}> Просмотры: {watchCount} </span>
-                        <span className={s.date}>
+                            <span className={s.count}> Просмотры: {watchCount} </span>
+                            <span className={s.date}>
                             {createdAt && dayjs(createdAt).format('D MMMM YYYY')}
                         </span>
-                    </Box>
+                        </Box>
+                    </div>
+                </div>
+                <Box margin={'20px 0'}>
                     {this.services}
                     {this.products}
-                </div>
-
-
-            </div>
+                </Box>
+            </React.Fragment>
         );
     }
 }
