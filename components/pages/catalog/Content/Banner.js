@@ -27,16 +27,14 @@ class BannerView extends Component {
 //mock
 const items = [
     {
-        background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_3_a80280df16.jpg',
-        title: 'Влагостойкий ламинат Alsafloor',
-        mobileBackground: 'https://master-pola.com/dashboard/uploads/alsa_mob_35e62f9da8.jpg',
-        text: 'Французские стандарты качества - влагостойкость 24 часа',
-        justifyContent: 'center',
-        textButton: 'Смотреть все дизайны',
-        selection: 'alsafloor',
-        link: '/catalog/laminate?selection=alsafloor',
-        category: 'laminate',
-        mobJustifyContent: 'flex-end'
+        background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5_93ac65f165.png',
+        mobileBackground: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5mob_d61f14260e.png',
+        textButton: 'Смотреть дизайны',
+        selection: 'alpinefloor',
+        link: '/catalog/quartzvinyl?selection=alpinefloor',
+        category: 'quartzvinyl',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-end'
     },
     {
         background: 'https://master-pola.com/dashboard/uploads/art_4842258ffb.png',
@@ -50,14 +48,16 @@ const items = [
         category: 'quartzvinyl_zamkovay'
     },
     {
-        background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5_93ac65f165.png',
-        mobileBackground: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5mob_d61f14260e.png',
-        textButton: 'Смотреть дизайны',
-        selection: 'alpinefloor',
-        link: '/catalog/quartzvinyl?selection=alpinefloor',
-        category: 'quartzvinyl',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-end'
+        background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_3_a80280df16.jpg',
+        title: 'Влагостойкий ламинат Alsafloor',
+        mobileBackground: 'https://master-pola.com/dashboard/uploads/alsa_mob_35e62f9da8.jpg',
+        text: 'Французские стандарты качества - влагостойкость 24 часа',
+        justifyContent: 'center',
+        textButton: 'Смотреть все дизайны',
+        selection: 'alsafloor',
+        link: '/catalog/laminate?selection=alsafloor',
+        category: 'laminate',
+        mobJustifyContent: 'flex-end'
     },
     {
         background: 'https://master-pola.com/dashboard/uploads/podplirtky_0740dc57f2.jpg',
