@@ -1,4 +1,4 @@
-import ArticleView from '../../../components/pages/blog/article/ArticleView'
+import ArticleView from '../../../components/pages/blog/article'
 import {inject, observer} from "mobx-react";
 import {Component} from "react";
 

@@ -7,6 +7,8 @@ const isServer = typeof window === 'undefined';
 
 class ArticlesStore {
     @observable status = statusEnum.LOADING;
+    @observable statusArticle = statusEnum.LOADING;
+
     @observable articles = [];
     @observable article;
     @observable alias;
@@ -49,6 +51,10 @@ class ArticlesStore {
         this.filter = value
     }
 
+    @action setStatusArticle = (status) => {
+        this.statusArticle = status;
+    }
+
     @action setStatus = (status) => {
         this.status = status;
     }
@@ -71,11 +77,15 @@ class ArticlesStore {
         }
 
         try {
+            this.setStatusArticle(statusEnum.LOADING);
             const alias = this.alias;
             const article = await api.post('article/get', {alias});
-
             this.setArticle(article);
+            console.log('article');
+            this.setStatusArticle(statusEnum.SUCCESS);
         } catch (err) {
+            console.log('err');
+            this.setStatusArticle(statusEnum.ERROR);
             console.log(err);
         }
     }
@@ -88,6 +98,7 @@ class ArticlesStore {
             this.setArticles(articles.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)));
             this.setStatus(statusEnum.SUCCESS);
         } catch (e) {
+            console.log(e);
             this.setStatus(statusEnum.ERROR);
             alert({type: 'error', title: 'Ошибка при получении статей'});
         }
