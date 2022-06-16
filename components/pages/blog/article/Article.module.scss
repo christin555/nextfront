@@ -175,13 +175,12 @@
 
 .verticalContainerPlayer {
   min-width: 290px;
-  max-height: 50vh;
   position: relative;
 }
 
 .verticalPlayer {
   max-height: inherit;
-  position: absolute;
+  position: relative;
 
   top: 0;
   left: 0;

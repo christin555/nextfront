@@ -7,7 +7,6 @@ import Image from 'next/image'
 
 export default function MultiActionAreaCard({onClick, id, title, imgPreview, amount}) {
 
-
     return (
         <Link href={{
             pathname: '/work/[id]',

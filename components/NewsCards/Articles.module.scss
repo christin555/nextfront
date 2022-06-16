@@ -15,11 +15,11 @@
   height: inherit;
 }
 
-.cardContainer::after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
+//.cardContainer::after {
+//  content: "";
+//  display: block;
+//  padding-bottom: 100%;
+//}
 
 .date {
   color: $gray-200;

@@ -8,6 +8,8 @@ import dayjs from 'dayjs';
 import classNames from "classnames";
 import PlayArrowIcon from '@mui/icons-material/PlayArrowRounded';
 import CollectionsIcon from '@mui/icons-material/Collections';
+import Image from "next/image";
+import cn from "classnames";
 
 require('dayjs/locale/ru');
 
@@ -55,10 +57,17 @@ class ArticlesView extends React.Component {
                                    <p> Просмотры: {watchCount} </p>
                                </span>
                             </div>
-                            <CardMedia
-                                alt={title}
+                            <Image
+                                placeholder={'blur'}
+                                blurDataURL="/blur.png"
+                                width="100%"
+                                height="100%"
+                                layout="responsive"
+                                alt={`${title} в Тюмени`}
+                                loader={() => imgPreview || "/blur.png"}
+                                quality={80}
                                 className={classNames(s.media, mediaClass)}
-                                image={imgPreview}
+                                src={imgPreview || "/blur.png"}
                             />
                         </div>
                     </a>
