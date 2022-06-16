@@ -48,11 +48,11 @@ class Content extends React.Component {
         if (!services?.length) {
             return <div/>
         }
-        return <div className={s.details}>
+        return <div>
             <Typography variant={'overline'}>
                 {'УСЛУГИ'}
             </Typography>
-            <div className={s.cards}>
+            <div className={s.detailsCards}>
                 {this.cardsServices}
             </div>
         </div>
@@ -64,11 +64,11 @@ class Content extends React.Component {
         if (!products.length) {
             return <div/>
         }
-        return <div className={s.details}>
+        return <div>
             <Typography variant={'overline'}>
                 {'ТОВАРЫ'}
             </Typography>
-            <div className={s.cards}>
+            <div className={s.detailsCards}>
                 {this.cardsProducts}
             </div>
         </div>
@@ -159,7 +159,8 @@ class Content extends React.Component {
         const {article} = this.props;
         const {title, place, content, createdAt, mediaPosition, watchCount, media = []} = article;
 
-        return (<React.Fragment>
+        return (
+            <Box display={'flex'} flexDirection={'column'}>
                 <div className={s[this.mediaPositionClass[mediaPosition]]}>
                     {this.media}
                     <div>
@@ -196,7 +197,7 @@ class Content extends React.Component {
                     {this.services}
                     {this.products}
                 </Box>
-            </React.Fragment>
+            </Box>
         );
     }
 }
