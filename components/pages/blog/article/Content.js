@@ -15,6 +15,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
+import PlaceIcon from "@mui/icons-material/Place";
+import CardProduct from "../../../Cards/Card";
+import CardService from "../../../ServiceCard";
 
 require('dayjs/locale/ru');
 
@@ -26,6 +29,50 @@ dayjs.locale('ru')
     };
 })
 class Content extends React.Component {
+    get cardsProducts() {
+        const {products} = this.props.article?.relations;
+
+        return products.map((item) => (<CardProduct key={item.id} {...item}/>));
+    }
+
+    get cardsServices() {
+        const {services} = this.props.article?.relations;
+
+        return services.map((item) => (<CardService key={item.id} {...item}/>));
+    }
+
+
+    get services() {
+        const {services} = this.props.article?.relations;
+
+        if (!services?.length) {
+            return <div/>
+        }
+        return <div className={s.details}>
+            <Typography variant={'overline'}>
+                {'УСЛУГИ'}
+            </Typography>
+            <div className={s.cards}>
+                {this.cardsServices}
+            </div>
+        </div>
+    }
+
+    get products() {
+        const {products} = this.props.article?.relations;
+
+        if (!products.length) {
+            return <div/>
+        }
+        return <div className={s.details}>
+            <Typography variant={'overline'}>
+                {'ТОВАРЫ'}
+            </Typography>
+            <div className={s.cards}>
+                {this.cardsProducts}
+            </div>
+        </div>
+    }
 
     get media() {
         const {article} = this.props;
@@ -85,9 +132,9 @@ class Content extends React.Component {
 
         switch (category) {
             case 1:
-                return <span className={s.categoryLabel}> Полезные статьи</span>;
+                return <span className={s.categoryLabel}> Работы </span>;
             case 2:
-                return <span className={s.categoryLabel}> Новости</span>;
+                return <span className={s.categoryLabel}> Товары </span>;
         }
 
         return null;
@@ -110,8 +157,7 @@ class Content extends React.Component {
 
     render() {
         const {article} = this.props;
-        const {title, content, createdAt, mediaPosition, watchCount, media = []} = article;
-        console.log(media)
+        const {title, place, content, createdAt, mediaPosition, watchCount, media = []} = article;
 
         return (
             <div className={s[this.mediaPositionClass[mediaPosition]]}>
@@ -121,24 +167,16 @@ class Content extends React.Component {
                         <Typography variant="h5" component="h2" className={s.title}>
                             {title}
                         </Typography>
-
-                        <Box margin={'8px 0'}>
-                            {this.category}
-                        </Box>
+                        {
+                            place && <Typography variant={'overline'} display={'flex'} alignItems={'center'}>
+                                <PlaceIcon className={s.icon}/>
+                                {place}
+                            </Typography> || null
+                        }
                     </Box>
-
-                    <div className={s.divider}/>
-                    <Box padding={'0 20px'}>
-                        <span className={s.count}> Просмотры: {watchCount} </span>
+                   {/*<div className={s.divider}/>*/}
+                    <Box padding={'0 20px 50px'}>
                         <div className={s.contentText}>
-                            <div className={s.logo}>
-                                <Image
-                                    quality={100}
-                                    width={45}
-                                    height={45}
-                                    src={'/logoCircle.jpg'}
-                                />
-                            </div>
                             <div className={s.articleContent}>
                                 {(content || '')
                                     .split('\n')
@@ -147,11 +185,16 @@ class Content extends React.Component {
 
                             </div>
                         </div>
+                        <span className={s.count}> Просмотры: {watchCount} </span>
                         <span className={s.date}>
                             {createdAt && dayjs(createdAt).format('D MMMM YYYY')}
                         </span>
                     </Box>
+                    {this.services}
+                    {this.products}
                 </div>
+
+
             </div>
         );
     }

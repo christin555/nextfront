@@ -6,12 +6,9 @@ import PopularStore from "./PopularStore";
 import {PageStore} from "./CatalogStore/PageStore";
 import {ProductStore} from "./ProductStore";
 import {ArticlesStore} from "./ArticlesStore";
-import Router from "next/router";
 import {KeramogranitStore} from "./Filter/KeramogranitStore";
 import {SportStore} from "./Filter/SportStore";
 import {HomeStore} from "./HomeStore";
-import WorksStore from "./WorksStore";
-import {BlocksStore} from "./BlocksStore";
 import ServicesStore from "./ServicesStore";
 import React from "react";
 
@@ -57,15 +54,6 @@ class RootStore {
 
 
         return this.stores[name] || {};
-    }
-
-
-    get WorksStore() {
-        return this.getStore('WorksStore', WorksStore)
-    }
-
-    get BlocksStore() {
-        return this.getStore('BlocksStore', BlocksStore)
     }
 
 
@@ -149,11 +137,9 @@ class RootStore {
                 } else if (key === 'category') {
                     this.category = stores.category;
                 } else {
-
                     if (!this.stores[key]) {
                         this.stores[key] = this[key]
                     }
-
                     this.stores[key] && this.stores[key]?.merge && this.stores[key].merge(stores[key], this);
                 }
             }

@@ -18,7 +18,6 @@ const Price = (props) => {
     const onBlur = (val, type) => {
         let _val = parseInt(val.replace(/\s+/g, ''), 10);
 
-        console.log('oblur', _val)
         if (type === 'minPrice') {
             setMinPrice(_val)
         }

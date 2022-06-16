@@ -1,6 +1,13 @@
 @import '../../../styles/variables.module';
 
 
+.flexItems {
+  & > * {
+    display: flex;
+    gap: 10px;
+  }
+}
+
 .cards {
   margin-top: 20px;
   @include paddingStandard;
@@ -117,7 +124,7 @@
     }
   }
 
-  .filter{
+  .filter {
     padding: 0;
   }
 

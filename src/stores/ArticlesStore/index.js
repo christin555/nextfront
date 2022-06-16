@@ -7,10 +7,10 @@ const isServer = typeof window === 'undefined';
 
 class ArticlesStore {
     @observable status = statusEnum.LOADING;
-    @observable articles;
+    @observable articles = [];
     @observable article;
     @observable alias;
-    @observable  filter = 'all';
+    @observable filter = 'all';
 
     constructor(RootStore) {
         makeObservable(this);
@@ -23,10 +23,11 @@ class ArticlesStore {
     }
 
     hydrate(RootStore) {
-        const {ArticlesStore = {}} = RootStore.initialData.stores || {};
+        const {ArticlesStore = {}} = RootStore.initialData || {};
         this.alias = ArticlesStore.alias;
-        this.articles = ArticlesStore.articles;
+        this.articles = ArticlesStore.articles ||  this.articles;
         this.article = ArticlesStore.article;
+        this.filter = ArticlesStore.filter || this.filter;
     }
 
     @computed get articlesFiltered() {
@@ -35,7 +36,7 @@ class ArticlesStore {
             return this.articles
         }
 
-        return this.articles.filter(({articleType}) => articleType === this.filter)
+        return this.articles.filter(({type}) => type === this.filter)
     }
 
     @action merge = ({article, alias, articles}) => {
@@ -43,6 +44,7 @@ class ArticlesStore {
         this.articles = articles;
         this.alias = alias;
     }
+
     @action setFilter = (_, value) => {
         this.filter = value
     }

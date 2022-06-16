@@ -2,16 +2,17 @@ import React from 'react';
 import {inject} from 'mobx-react';
 import s from './Articles.module.scss';
 import Cards from "../../NewsCards/Cards";
-import Meta from "../../HeadComponent";
-import Title from "../../Title";
 import AppsIcon from '@mui/icons-material/Apps';
-import PlayArrowIcon from '@mui/icons-material/PlayArrowRounded';
-import MovieIcon from '@mui/icons-material/Movie';
+import Worker from '../../Icons/Worker';
 import classNames from "classnames";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Image from "next/image";
 import Skeleton from '@mui/material/Skeleton';
+import {posts} from "../../../src/enums";
+import StoreIcon from '@mui/icons-material/Store';
+import {Box} from '@mui/material';
+import DoneIcon from '@mui/icons-material/Done';
 
 @inject(({RootStore: {ArticlesStore}}) => {
     return {
@@ -21,29 +22,10 @@ import Skeleton from '@mui/material/Skeleton';
     };
 })
 class ArticlesView extends React.Component {
-    get breadcumbs() {
-        return {
-            "@context": "http://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement":
-                [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "item":
-                            {
-                                "@id": "https://master-pola.com/blog",
-                                "name": "Блог"
-                            }
-                    }
-                ]
-        }
-    }
-
     filterItems = [
         {value: 'all', Icon: AppsIcon},
-        {value: 'short', Icon: MovieIcon},
-        {value: 'video', Icon: PlayArrowIcon},
+        {value: posts.WORKS, Icon: Worker},
+        {value: posts.PRODUCT, Icon: StoreIcon},
     ]
 
     render() {
@@ -51,12 +33,6 @@ class ArticlesView extends React.Component {
 
         return (
             <React.Fragment>
-                <Meta
-                    desc={'Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады поделиться своими знаниями! Рассказываем как укладывать и выбрать напольное покрытие'}
-                    title={'Наш блог - советы, новости и полезные статьти - Мастер Пола'}
-                    breadcumbs={this.breadcumbs}
-                />
-                <Title title={'Наш блог'}/>
                 <div className={s.desc}>
                     <div className={s.logo}>
                         <Image
@@ -64,16 +40,17 @@ class ArticlesView extends React.Component {
                             width={45}
                             height={45}
                             layout='responsive'
-                            src={'/logoCircle.jpg'}
+                            src={'/emoji.png'}
                         />
                     </div>
                     <div>
-                        <b>САЛОН НАПОЛЬНЫХ ПОКРЫТИЙ И ДВЕРЕЙ</b>
-                        <p> Уложено более 80 000 м²</p>
-                        <p> Лучшие цены в городе</p>
-                        <p>{'Продаём по всей России'}</p>
-                        <p> Для тех, кто ценит качество</p>
-                        <b> <a href={'vk.com/masterpola'}> vk.com/masterpola</a></b>
+                        <p><b> Хочешь сделать что-то хорошо - сделай сам!</b></p>
+                        <p><b> Хочешь идеальные полы - обратись к Мастер Пола!</b></p>
+                        <Box marginTop={'10px'} className={s.flexItems}>
+                            <p><DoneIcon/> Уложено более 80 000 м²</p>
+                            <p><DoneIcon/> Лучшие цены в городе</p>
+                            <p><DoneIcon/> Для тех, кто ценит качество</p>
+                        </Box>
                     </div>
                 </div>
                 <Tabs

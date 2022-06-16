@@ -1,74 +1,46 @@
+import ArticlesView from "../../components/pages/blog/ArticlesView";
 import React from 'react';
-import s from './Works.module.scss';
-import Callme from '../../components/Callme';
-import Card from "../../components/WorkCard";
-import {inject, observer} from "mobx-react";
-import Hierarchy from "../../components/HierarchyNew";
 import Meta from "../../components/HeadComponent";
 import Title from "../../components/Title";
+import {posts} from "../../src/enums";
 
-
-@inject(({RootStore: {WorksStore}}) => {
-    return {
-        works: WorksStore.works || [],
-        setId: WorksStore.setId
-    };
-})
-@observer
-class Works extends React.Component {
-
-    get cards() {
-        const {works} = this.props;
-
-        return works.map((item) => (<Card key={item.id} onClick={this.onClick} {...item}/>));
-    }
-
-
-    render() {
-        const hierarchy = [{pathname: '/works', name: 'Работы'}]
-
-        return (
-            <React.Fragment>
-                <Meta
-                    desc={'Наши клиенты доверяют нам свой ремонт. Наши специалисты имеют многолетний опыт. На все выполненные работы предоставлется гарантия'}
-                    title={'Выполненные работы Мастер Пола'}
-                />
-                <Title title={'Наши работы'}/>
-                <Hierarchy hierarchy={hierarchy}/>
-                <div className={s.content}>
-                    <div className={s.preview}>
-                        <div className={s.text}>
-                            <h1>
-                                Команда, которой можно доверить ремонт
-                            </h1>
-                            <p>
-                                Неважно, хотите ли вы отремонтировать ваш дом,
-                                построить новый с нуля или вам нужны только небольшие косметические работы, - мы сможем
-                                помочь вам
-                            </p>
-                            <p>
-                                Наши клиенты доверяют нам и полагаются на наши товары и услуги.
-                                Специалисты, которые работают у нас, обладают высокой профессиональной
-                                компетенцией и всегда готовы помочь советом и делом
-                            </p>
-                            <Callme className={s.button} buttonText={'Рассчитайте стоимость монтажа в вашем доме'}/>
-                        </div>
-                    </div>
-
-                    <div className={s.cards}>
-                        {this.cards}
-                    </div>
-                </div>
-            </React.Fragment>
-        );
-    }
+const breadcrumbs = {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement":
+        [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item":
+                    {
+                        "@id": "https://master-pola.com/works",
+                        "name": "Работы Мастера"
+                    }
+            }
+        ]
 }
 
+
+const Works = () => <React.Fragment>
+    <Meta
+        desc={'Проффесионально предоставляем услуги монтажа и укладки ламината, керамогранита, кварцвинила,' +
+        ' ПВХ плитки и дверей. Наши специалисты имеют многолетний опыт. ' +
+        'На все выполненные работы предоставлется гарантия'}
+        title={'Работы Мастера - монтаж и укладка напольных покрытий в Тюмени - Мастер Пола'}
+        breadcumbs={breadcrumbs}
+    />
+    <Title title={'Работы Мастера'}/>
+    <ArticlesView/>
+</React.Fragment>
+
 Works.getInitialProps = async ({MobxStore}) => {
-    await MobxStore.RootStore.WorksStore.getWorks();
+    await MobxStore.RootStore.ArticlesStore.getArticles();
+
+    MobxStore.RootStore.ArticlesStore.setFilter(null,posts.WORKS);
 
     return {MobxStore};
 }
 
-
 export default Works;
+

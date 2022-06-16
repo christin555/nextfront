@@ -21,9 +21,10 @@ dayjs.locale('ru')
     };
 })
 class ArticlesView extends React.Component {
+
     render() {
         const {article, articles, alias} = this.props;
-        const {title, content, createdAt} = article;
+        const {title, content} = article;
 
         return (
             <React.Fragment>
@@ -65,11 +66,11 @@ class ArticlesView extends React.Component {
                             }}
                     ></script>
                 </Head>
-                <Title title={'Наш блог'} pathname={'/blog'}/>
+                <Title title={'Блог Мастера'} pathname={'/blog'}/>
                 <div className={s.content}>
                     <div className={s.sidebar}>
                         <Typography color='h4' fontWeight={400}>
-                            Читaйтe тaкжe
+                            Это тоже стоит увидеть...
                         </Typography>
                         <div className={s.cards}>
                             <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(0, 2)}/>
@@ -82,7 +83,7 @@ class ArticlesView extends React.Component {
                             passHref
                             shallow={true}
                         >
-                            <Button color={'secondary'}> ВCЕ СТАТЬИ </Button>
+                            <Button color={'secondary'}> ВCЕ ПОСТЫ </Button>
                         </NextLink>
                     </div>
                 <ArticleContent/>

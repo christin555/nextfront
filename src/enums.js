@@ -10,8 +10,14 @@ const finishing = {
   PHOTO: 3
 };
 
+const posts = {
+  WORKS: 1,
+  PRODUCT: 2,
+  OTHER: 3
+};
 
 module.exports = {
   status,
-  finishing
+  finishing,
+  posts
 };

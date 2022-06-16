@@ -262,8 +262,6 @@ export class BaseFilterStore {
 
     setPricePath = async (price, key) => {
         /// await this.resetPage();
-
-        console.log(price, 'erprice')
         !this.checked['minPrice'] && this.setPrice('1000', 'minPrice');
         !this.checked['maxPrice'] && this.setPrice('20000', 'maxPrice');
 
