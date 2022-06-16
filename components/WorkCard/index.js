@@ -5,7 +5,7 @@ import formatPrice from "../../src/utils/formatPrice";
 import Link from 'next/link';
 import Image from 'next/image'
 
-export default function MultiActionAreaCard({onClick, id, name, img, amount, price}) {
+export default function MultiActionAreaCard({onClick, id, title, imgPreview, amount}) {
 
 
     return (
@@ -21,26 +21,19 @@ export default function MultiActionAreaCard({onClick, id, name, img, amount, pri
                         quality={75}
                         width={300}
                         height={200}
-                        alt={name}
-                        src={img}
+                        alt={title}
+                        src={imgPreview}
                     />
                 </div>
                 <div className={s.workName}>
                     <div>
-                        {name}
+                        {title}
                         <Typography variant={'body2'} className={s.amount}>
                             {amount}
                         </Typography>
-                        {
-                            price ? <Typography variant={'body2'}>
-                                    {formatPrice({price, withCurrency: true, isSquare: false})}
-                                </Typography> :
-                                <span/>
-                        }
                     </div>
                     <a className={s.button} onClick={() => onClick && onClick(id)}> Подробнее </a>
                 </div>
-
             </div>
         </Link>
     );
