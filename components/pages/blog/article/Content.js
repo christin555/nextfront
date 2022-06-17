@@ -164,7 +164,7 @@ class Content extends React.Component {
                 <div className={s[this.mediaPositionClass[mediaPosition]]}>
                     {this.media}
                     <div>
-                        <Box padding={'0 20px'}>
+                        <Box padding={'10px 20px'}>
                             <Typography variant="h5" component="h2" className={s.title}>
                                 {title}
                             </Typography>
@@ -193,7 +193,7 @@ class Content extends React.Component {
                         </Box>
                     </div>
                 </div>
-                <Box margin={'20px 0'}>
+                <Box margin={'20px 0'} className={s.details}>
                     {this.services}
                     {this.products}
                 </Box>

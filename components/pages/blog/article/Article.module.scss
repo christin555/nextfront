@@ -210,6 +210,10 @@
 
 @media only screen and (max-width: 930px) {
 
+  .details {
+    @include paddingStandard;
+  }
+
   .verticalPlayer {
     position: unset;
     display: flex;
@@ -262,6 +266,8 @@
     width: 100%;
     margin-right: 0;
     max-width: unset;
+    grid-template-columns: repeat(2, minmax(40px, 200px));
+    gap: 20px;
   }
 
   .header, .content {
@@ -273,7 +279,7 @@
 
     .sidebar {
       width: 100%;
-      margin-top: 40px;
+      margin-top: 20px;
       @include paddingStandard;
       margin-right: 0;
     }
