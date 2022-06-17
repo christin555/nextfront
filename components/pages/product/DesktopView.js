@@ -11,84 +11,80 @@ import Calculation from '../../Сalculation';
 
 const DesktopView = (props) => {
 
-        const {
-            values,
-            fields,
-            priceRow,
-            mainFields,
-            allFields,
-            chipFields,
-            chars,
-            hierarchy
-        } = props;
+    const {
+        values,
+        fields,
+        priceRow,
+        mainFields,
+        allFields,
+        chipFields,
+        chars,
+        hierarchy
+    } = props;
 
-        return (
-            <>
-                <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
-                <div className={s.content}>
-                    <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
-                        <Carousel
-                            name={`${values.brand} ${values.name}`}
-                            imgs={values?.imgs}
-                            className={s.carousel}
-                        />
-                        <div className={s.product}>
-                            <span className={s.brand}>
-                                  {values.category} {values.brand}
-                                <Labels salePercent={values.salePercent} className={s.sale}/>
-                            </span>
-                            <Labels isPopular={values.isPopular}/>
-                            <div className={s.name}>
-                                {values.name}
-                                <span className={s.collection}>
-                                    {values.collection && `Коллекция ${values.collection}`}
-                                </span>
-                                <span className={s.id}>
-                                       {values.id && `артикул ${values.id}`}
-                                </span>
-                            </div>
-                            <Divider/>
-                            <div className={s.desc}> {values.description} </div>
-                            <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
-                            {
-                                values.price && (
-                                    <div className={s.priceBox}>
-                                        Цена:
-                                        {priceRow}
-                                    </div>
-                                ) || null
-                            }
-                            <div className={s.chars}>
-                                {mainFields}
-                            </div>
-                            <FinishingMaterialBlock fields={fields}/>
-                            <div className={s.additional}>
-                                {chipFields}
-                            </div>
-                            <div className={s.btnBox}>
-                                <Calculation
-                                    product={values}
-                                    className={s.calculation}
-                                    buttonText={'Оставить заявку'}
-                                />
-                                <Callme
-                                    product={values}
-                                    className={s.call}
-                                    buttonText={'Оставить заявку'}
-                                />
-                            </div>
-                        </div>
+    return (
+        <>
+            <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
+            <div className={s.content}>
+                <div className={s.header}>
+                    <div className={s.name}>
+                        {values.category} {values.brand} {values.collection} {values.name}
                     </div>
-                    {chars}
-                    <div className={s.titleCharacteristic}>
-                        Характеристики товара
-                    </div>
-                    <div className={s.characteristic}>
-                        {allFields}
+                    <div className={s.labels}>
+                        <span>{values.id && `артикул ${values.id}`}</span>
+                        <Labels salePercent={values.salePercent} className={s.sale}/>
+                        <Labels isPopular={values.isPopular}/>
                     </div>
                 </div>
-            </>
-        );
-    }
+                <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
+                    <Carousel
+                        name={`${values.brand} ${values.name}`}
+                        imgs={values?.imgs}
+                        className={s.carousel}
+                    />
+                    <div className={s.product}>
+
+                        <Divider/>
+                        <div className={s.desc}> {values.description} </div>
+                        <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
+                        {
+                            values.price && (
+                                <div className={s.priceBox}>
+                                    {priceRow}
+                                </div>
+                            ) || null
+                        }
+                        <div className={s.chars}>
+                            {mainFields}
+                        </div>
+                        <FinishingMaterialBlock fields={fields}/>
+                        <div className={s.additional}>
+                            {chipFields}
+                        </div>
+                        <div className={s.btnBox}>
+                            <Calculation
+                                product={values}
+                                className={s.calculation}
+                                buttonText={'Оставить заявку'}
+                            />
+                            <Callme
+                                product={values}
+                                className={s.call}
+                                buttonText={'Быстрый заказ'}
+                            />
+                        </div>
+                    </div>
+                </div>
+                {chars}
+                <div className={s.titleCharacteristic}>
+                    Характеристики товара
+                </div>
+                <div className={s.characteristic}>
+                    {allFields}
+                </div>
+            </div>
+        </>
+    );
+}
 
 export default DesktopView;

@@ -6,6 +6,8 @@ import NextLink from "next/link";
 import {Typography} from "@mui/material";
 import Cards from "../../../NewsCards/Cards";
 import {inject, observer} from "mobx-react";
+import Link from "next/link";
+import Box from "@mui/material/Box";
 
 const mock = [
     {
@@ -36,27 +38,29 @@ class Blog extends Component {
             <div className={s.blog}>
                 <div className={s.mainBlog}>
                     <div className={s.desc}>
-                        <TitleBlock title={'Помогаем выбрать лучшее'}/>
+                        <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+                            <TitleBlock title={'Помогаем выбрать лучшее'}/>
+                            <Link href={{
+                                pathname: '/blog',
+                            }}
+                                  as={`/blog`}
+                                  passHref
+                                  shallow={true}>
+
+                                <a> Все посты </a>
+                            </Link>
+                        </Box>
                         <p>
                             Наши специалисты имеют многолетний опыт в укладке напольных покрытий и всегда рады
                             поделиться своими знаниями!
                         </p>
-                        <NextLink href={`/blog`} passHref>
-                            <Button
-                                className={s.buttonArt}
-                                variant={'outlined'}
-                                to='/gallery'
-                            >
-                                {'ВСЕ СТАТЬИ'}
-                            </Button>
-                        </NextLink>
                     </div>
                 </div>
                 <div className={s.popularBlock}>
                     <Typography variant={'subtitle2'}> Популярное в блоге</Typography>
-                     <div className={s.popularNews}>
-                         <Cards articles={articles}/>
-                     </div>
+                    <div className={s.popularNews}>
+                        <Cards articles={articles}/>
+                    </div>
                 </div>
             </div>
         )

@@ -6,6 +6,25 @@
   margin-top: 20px;
 }
 
+.header {
+  @include paddingStandard;
+  margin-bottom: 20px;
+
+  .name {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .labels {
+    font-size: 14px;
+    color: $gray-100;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
 .charsBlock {
   margin: 20px 0 10px 0;
   display: flex;
@@ -122,25 +141,11 @@
       display: flex;
     }
 
-    .name {
-      align-items: flex-start;
-      flex-direction: column;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 400;
-      font-size: 24px;
-      margin: 20px 0 20px;
-    }
-
     .collection {
       text-transform: uppercase;
       font-weight: 400;
       font-size: 14px;
       color: $gray-200;
-    }
-
-    .id {
-      font-size: 14px
     }
 
     .desc {
@@ -153,17 +158,12 @@
 
 .priceBox {
   margin: 10px 0;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  max-width: 300px;
-  font-weight: 400;
 }
 
 .price {
   font-size: 24px;
-  color: $secondary;
-
+  font-weight: 500;
   .unit {
     margin-top: 5px;
     display: flex;
