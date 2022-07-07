@@ -127,7 +127,7 @@ class CardView extends React.Component {
                                     width={260}
                                     alt={`${category} в Тюмени - ${name}`}
                                     loader={() => img || "/blur.png"}
-                                    quality={50}
+                                    quality={80}
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
                                     src={img || "/blur.png"}
                                 />
