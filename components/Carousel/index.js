@@ -37,6 +37,7 @@ const CarouselView = ({imgs, name}) => {
             <Image
                 placeholder={'blur'}
                 blurDataURL="/blur.png"
+                quality={90}
                 width="100%"
                 height="100%"
                 layout="responsive"
