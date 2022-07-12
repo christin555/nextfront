@@ -9,19 +9,6 @@ import {inject, observer} from "mobx-react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 
-const mock = [
-    {
-        title: 'Плитка ПВХ? в чем разница между клеевой и замковой? ',
-        src: 'FcP7cev5Hl8',
-        type: 'youtube'
-    },
-    {
-        title: 'Ищите интересное и практичное решение для ремонта квартиры?',
-        src: 'A8YKSOwEFFE',
-        type: 'youtube'
-    }
-];
-
 
 @inject(({RootStore: {HomeStore}}) => {
     return {

@@ -1,14 +1,14 @@
 @import '../../styles/variables.module';
 
 .title {
-  margin-bottom: 20px !important;
+  margin-bottom: 10px !important;
 
-  &:after {
-    content: "";
-    display: block;
-    margin-top: 8px;
-    height: 2px;
-    width: 40px;
-    background: #c41414;
-  }
+  //&:after {
+  //  content: "";
+  //  display: block;
+  //  margin-top: 8px;
+  //  height: 2px;
+  //  width: 40px;
+  //  background: #c41414;
+  //}
 }

@@ -41,7 +41,7 @@ class CatalogStore {
                 () => this.RouterStore.watched,
                 this.getWatched,
                 {fireImmediately: true}
-            )
+            );
         }
     }
 
@@ -81,9 +81,9 @@ class CatalogStore {
 
         this.articles.forEach(({media, articleType}) => {
             if (articleType === 'short' || articleType === 'video' && media[0]) {
-                media[0].type !== 'youtube' && video.push(media[0].src)
+                media[0].type !== 'youtube' && video.push(media[0].src);
             }
-        })
+        });
 
         return video;
     }
@@ -93,20 +93,20 @@ class CatalogStore {
     }
 
     @action setActiveFilterStore(ActiveFilterStore) {
-        this.ActiveFilterStore = ActiveFilterStore
+        this.ActiveFilterStore = ActiveFilterStore;
     }
 
     @action setWatchedProducts = (watchedProducts) => {
         this.watchedProducts = watchedProducts.reverse();
-    }
+    };
 
     @action merge = (newProps) => {
         this.isHydrating = true;
         (['category', 'fastfilter', 'ActiveFilterStore']).forEach((key) => {
             if (newProps[key] !== this[key]) {
-                this[key] = newProps[key]
+                this[key] = newProps[key];
             }
-        })
+        });
 
         this.PageStore.setPageWithoutSSR(1);
         this.isHydrating = false;
@@ -125,15 +125,15 @@ class CatalogStore {
 
         _articles.forEach((post) => {
             if (post.articleType === 'short' || post.articleType === 'video' && post.media[0]) {
-                if (post.media[0].type !== 'youtube') {
-                    articles['video'].push(post.media[0].src)
-                } else {
-                    articles['static'].push(post)
+                if (post.media[0].type !== 'youtube' && articles['video'].length < 3) {
+                    articles['video'].push(post.media[0].src);
+                } else if (articles['static'].length < 6) {
+                    articles['static'].push(post);
                 }
-            } else {
-                articles['static'].push(post)
+            } else if (articles['static'].length < 6) {
+                articles['static'].push(post);
             }
-        })
+        });
 
         this.articles = articles;
     };
@@ -164,7 +164,7 @@ class CatalogStore {
 
     getHierarchy = async () => {
         if (this.isHydrating) {
-            return
+            return;
         }
 
         try {
@@ -180,7 +180,7 @@ class CatalogStore {
 
     getCountProducts = async () => {
         if (this.isHydrating) {
-            return
+            return;
         }
 
         const {category, filter, fastfilter, isLastLevel} = this;
@@ -192,7 +192,7 @@ class CatalogStore {
         try {
             const body = {searchParams: {category, filter: {...filter, fastfilter},}};
             const count = await api.post('catalog/countProducts ', body);
-            this.checkPageStore(count)
+            this.checkPageStore(count);
             this.setCount(count);
         } catch (_) {
             // do nothing
@@ -208,35 +208,37 @@ class CatalogStore {
 
         if (limit > 36) {
             this.PageStore.setLimitWithoutSSR(36);
-            return true
+            return true;
         }
 
         if (offset > count) {
-            this.PageStore.setPageWithoutSSR(1)
-            return true
+            this.PageStore.setPageWithoutSSR(1);
+            return true;
         }
-    }
+    };
 
     getArticles = async () => {
         try {
-            const articles = await api.post('articles/getArticles', {category: this.category, withMedia: true});
+            const articles = await api.post('articles/getArticles',
+                {category: this.category, withMedia: true});
             this.setArticles(articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
-    }
+    };
 
     getWatched = async (ids) => {
         try {
             const products = await api.post('products/get', {filter: {ids}});
 
-            this.setWatchedProducts(products)
-        } catch (e) {}
-    }
+            this.setWatchedProducts(products);
+        } catch (e) {
+        }
+    };
 
     getCatalog = async () => {
         if (this.isHydrating) {
-            return
+            return;
         }
 
         this.setStatus(statusEnum.LOADING);
@@ -266,7 +268,7 @@ class CatalogStore {
     closeStore() {
         this.getHierarchyDisposer();
         this.getCatalogDisposer();
-        this.getArticlesDisposer()
+        this.getArticlesDisposer();
         this.getCountProductsDisposer();
     }
 }

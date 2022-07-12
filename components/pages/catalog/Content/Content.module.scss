@@ -1,6 +1,7 @@
 @import '../../../../styles/variables.module';
 
 .hierarchy {
+  margin: 6px 0;
   @include paddingStandard;
 }
 
@@ -107,12 +108,10 @@
 
 .popularNews {
   flex: 1;
-  overflow-x: scroll;
   padding-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 170px);
   gap: 14px;
-  max-height: 355px;
 
   & > * {
     width: 100%;

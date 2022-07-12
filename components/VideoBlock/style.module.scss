@@ -1,5 +1,6 @@
 .media {
-  overflow-x: scroll;
+ // overflow-x: scroll;
+  overflow: hidden;
   display: flex;
   gap: 14px;
   padding-bottom: 20px;

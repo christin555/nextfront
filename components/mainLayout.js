@@ -10,7 +10,7 @@ export default function mainLayout({router, children}) {
             <Menu pathname={router.pathname}/>
             <main className={styles.content}>
                 {children}
-                <IconButton size={'large'} className={styles.upButton} onClick={() => window.scrollTo(0, 0)}>
+                <IconButton size={'medium'} className={styles.upButton} onClick={() => window.scrollTo(0, 0)}>
                     <ArrowUpwardIcon className={styles.upIcon} />
                 </IconButton>
             </main>

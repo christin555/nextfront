@@ -64,7 +64,11 @@ class Content extends React.Component {
     }
 
     setPage = (_, count) => {
-        const {setPage} = this.props;
+        const {setPage, contentRef} = this.props;
+
+        console.log(contentRef);
+
+        window.scrollTo(0, contentRef.current.offsetTop - 50);
 
         setPage(count);
     }

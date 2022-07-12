@@ -121,8 +121,7 @@
   padding: 40px 0;
   @include paddingStandard;
   display: flex;
-  letter-spacing: 1.5px;
-  place-self: flex-start;
+  align-items: flex-end;
   color: white;
 
   .logo {

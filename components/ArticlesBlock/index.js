@@ -5,9 +5,9 @@ import NextLink from "next/link";
 import Cards from "../NewsCards/Cards";
 import {inject, observer} from "mobx-react";
 
-@inject(({RootStore: {BlocksStore}}) => {
+@inject(({RootStore: {ArticlesStore}}) => {
     return {
-        articles: BlocksStore.articles || []
+        articles: ArticlesStore.articles || []
     };
 })
 @observer

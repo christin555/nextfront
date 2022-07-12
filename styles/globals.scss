@@ -1,10 +1,26 @@
 @import './variables.module';
 
+.react-multiple-carousel__arrow {
+  min-height: 36px !important;
+  min-width: 36px !important;
+}
+.react-multiple-carousel__arrow::before {
+  font-size: 18px !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(2% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(2% + 1px) !important;
+}
+
 .swiper-button-next, .swiper-button-prev {
   color: white !important;
   border-radius: 50%;
-  width: 38px !important;
-  height: 38px!important;
+  width: 36px !important;
+  height: 36px !important;
   background: rgba(16, 16, 16, 0.62);
 
   &:after {
@@ -12,7 +28,7 @@
   }
 }
 
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   background: $secondary !important;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Hierarchy from '../../Hierarchy';
 import Carousel from '../../Carousel';
-import {Divider} from '@mui/material';
+import {Divider, Typography} from '@mui/material';
 import classNames from 'classnames';
 import s from './Product.module.scss';
 import Callme from '../../Callme';
@@ -27,13 +27,14 @@ const DesktopView = (props) => {
             <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
             <div className={s.content}>
                 <div className={s.header}>
-                    <div className={s.name}>
-                        {values.category} {values.brand} {values.collection} {values.name}
-                    </div>
+                    <Typography  component={'h1'} className={s.name}>
+                        {values.fullName}
+                    </Typography>
                     <div className={s.labels}>
-                        <span>{values.id && `артикул ${values.id}`}</span>
+                        <span>{values.id && `Арт. ${values.id}`}</span>
                         <Labels salePercent={values.salePercent} className={s.sale}/>
                         <Labels isPopular={values.isPopular}/>
+                        <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
                     </div>
                 </div>
                 <div className={classNames(s.card, {[s.door]: !!values.finishingMaterial})}>
@@ -43,10 +44,8 @@ const DesktopView = (props) => {
                         className={s.carousel}
                     />
                     <div className={s.product}>
-
-                        <Divider/>
+                        <Typography variant={'body1'} fontWeight={'bold'} component={'h3'}> Коллекция {values.collection}</Typography>
                         <div className={s.desc}> {values.description} </div>
-                        <Labels isBestPrice={values.isBestPrice} className={s.sale}/>
                         {
                             values.price && (
                                 <div className={s.priceBox}>
@@ -85,6 +84,6 @@ const DesktopView = (props) => {
             </div>
         </>
     );
-}
+};
 
 export default DesktopView;

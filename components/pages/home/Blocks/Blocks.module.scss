@@ -5,8 +5,8 @@
   flex-direction: column;
   margin-bottom: 20px;
 
-  & > * {
-    margin-top: 40px;
+  & > * + * {
+    margin: 20px 0 ;
   }
 }
 
@@ -15,7 +15,6 @@
 }
 
 .catalogBlock {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   @include paddingStandard;

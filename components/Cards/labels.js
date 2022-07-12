@@ -19,7 +19,7 @@ class Labels extends React.Component {
         const blocks = [];
 
         if (salePercent) {
-            blocks.push(<div className={classNames(s.sale, className)}>  {`-${salePercent}%`}</div>)
+            blocks.push(<div className={classNames(s.sale, className)}>  {`- ${salePercent}%`}</div>)
         }
         if (isBestPrice) {
             blocks.push(<div  className={classNames(s.isBestPrice, className)}> Лучшая цена</div>)
@@ -28,8 +28,7 @@ class Labels extends React.Component {
             blocks.push(
                 <span className={s.popular}>
                                      <StarIcon className={s.starIcon}/>
-                <span className={s.mark}> 5.0 </span>
-                хит продаж
+                    хит продаж
             </span>)
         }
 

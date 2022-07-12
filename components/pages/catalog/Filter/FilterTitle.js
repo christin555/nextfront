@@ -20,7 +20,6 @@ class FilterTitle extends React.Component {
 
     return (
       <div className={s.title}>
-        <span>{'Фильтр'}</span>
         {
           isActive && (
             <Button
@@ -29,7 +28,7 @@ class FilterTitle extends React.Component {
               size={'small'}
               endIcon={<CloseIcon />}
             >
-              {'Очистить'}
+              {'Сбросить все'}
             </Button>
           ) || null
         }

@@ -4,16 +4,17 @@
   padding: 15px 0;
   width: 100%;
 }
-.title {
-  &:after {
-    content: "";
-    display: block;
-    margin-top: 8px;
-    height: 2px;
-    width: 40px;
-    background: $secondary;
-  }
-}
+
+//.title {
+//  &:after {
+//    content: "";
+//    display: block;
+//    margin-top: 8px;
+//    height: 2px;
+//    width: 40px;
+//    background: $secondary;
+//  }
+//}
 
 .iconLast {
   font-size: 18px !important;

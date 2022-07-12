@@ -3,11 +3,11 @@
 @mixin label {
   z-index: 5;
   position: absolute;
-  padding: 4px 10px;
+  padding: 2px 6px;
   border-radius: 2px;
   color: #ffffff;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 12px;
 
   @media only screen and (max-width: 480px) {
       padding: 2px 8px;
@@ -34,12 +34,7 @@
   align-items: center;
   color: $gray-100;
   font-weight: 400;
-
-  .mark {
-    color: $red;
-    font-weight: 500;
-    margin-right: 8px;
-  }
+  font-size: 14px;
 
   .starIcon {
     font-size: 16px;
@@ -50,10 +45,12 @@
 
 .isBestPrice {
   @include label;
+  border-radius: 10px;
 
+  color: $black;
   top: 10px;
   left: 10px;
-  background-color: $main-blue;
+  background-color: $main-yellow;
 }
 
 .isNew {

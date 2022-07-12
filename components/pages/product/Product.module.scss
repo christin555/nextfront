@@ -83,7 +83,7 @@
 
     display: grid;
     grid-column-gap: 20px;
-    grid-template-columns: minmax(300px, 0.8fr) minmax(400px, 1fr);
+    grid-template-columns: minmax(300px, 0.9fr) minmax(400px, 1fr);
   }
 
   .slide {
@@ -102,21 +102,17 @@
     }
 
     img {
-      max-height: 500px;
+      max-height: 600px;
       //width: initial !important;
     }
   }
 
   .product {
     background: #ffffffd1;
-    margin-left: 50px;
     display: flex;
     flex-direction: column;
 
-    @include paddingStandard;
     padding-left: 20px !important;
-    padding-top: 20px;
-    padding-bottom: 20px;
 
     .additional {
       margin: 20px 0;

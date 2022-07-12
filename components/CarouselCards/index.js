@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Card from '../Cards/Card';
 import s from './styles.module.scss';
 import TitleBlock from '../TitleBlock';
+import classNames from "classnames";
 
 class CardsView extends Component {
     responsive = {
@@ -25,7 +26,7 @@ class CardsView extends Component {
     };
 
     render() {
-        const {products, deviceType, title} = this.props;
+        const {products, deviceType, title, className} = this.props;
 
         const Cards = products.map((item, index) => (
             <Card
@@ -36,7 +37,7 @@ class CardsView extends Component {
         ));
 
         return (
-            <div className={s.container}>
+            <div className={classNames(s.container, className)}>
                 <TitleBlock title={title}/>
                 <div className={s.cards}>
                     <Carousel

@@ -20,6 +20,11 @@ import Watched from "./Watched";
     };
 }) @observer
 class Content extends React.Component {
+    constructor(props) {
+        super(props);
+        this.contentRef = React.createRef();
+    }
+
     get desc() {
         const {selection} = this.props;
 
@@ -48,13 +53,13 @@ class Content extends React.Component {
         return (
             <div className={s.container}>
                 <Banner className={s.banner}/>
+                <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
                 <Title title={this.props.headerTitle}/>
                 {this.desc}
-                <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
                 <Categories/>
-                <div className={s.content}>
+                <div className={s.content} ref={this.contentRef}>
                     <Filter category={category}/>
-                    <Products/>
+                    <Products contentRef ={this.contentRef}/>
                 </div>
                 <Blog/>
                 <Watched/>

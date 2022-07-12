@@ -28,7 +28,6 @@ class Delivery extends React.Component {
                             Салон напольных покрытий и дверей «Мастер Пола»
                         </Typography>
                     </Box>
-
                     <div className={s.card}>
                         <div className={s.image}>
                             <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=197071784139"

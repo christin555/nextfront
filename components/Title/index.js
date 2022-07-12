@@ -16,7 +16,7 @@ const Title = ({title, className, pathname}) => (
         }
         <Typography
             component={'h1'}
-            variant={'h5'}
+            variant={'h4'}
             className={classNames(s.title, className)}>
             {title}
         </Typography>

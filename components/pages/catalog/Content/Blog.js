@@ -25,7 +25,8 @@ class Blog extends Component {
                 <span style={{display: 'none'}}> Видео, фото и статьи от наших специалистов, чтобы сделать ваш выбор лучшим </span>
 
                 <div className={s.mediaContainer}>
-                    {articles['video'].length && <VideoBlock className={s.video} video={articles['video']}/> || null}
+                    {articles['video'].length &&
+                    <VideoBlock className={s.video} video={articles['video']}/> || null}
                     <div className={s.popularNews}>
                         <Cards articles={articles['static']}/>
                     </div>

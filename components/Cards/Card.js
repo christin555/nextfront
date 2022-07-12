@@ -92,13 +92,10 @@ class CardView extends React.Component {
             alias,
             isDoor,
             img,
-            name,
-            brand,
+            fullName,
             isPopular,
             isBestPrice,
             salePercent,
-            withCategory = false,
-            category,
             classNamesRoot
         } = this.props;
 
@@ -125,7 +122,7 @@ class CardView extends React.Component {
                                     blurDataURL="/blur.png"
                                     height={180}
                                     width={260}
-                                    alt={`${category} в Тюмени - ${name}`}
+                                    alt={`${fullName} в Тюмени`}
                                     loader={() => img || "/blur.png"}
                                     quality={80}
                                     className={cn(s.img, {[s.isDoor]: isDoor})}
@@ -133,19 +130,9 @@ class CardView extends React.Component {
                                 />
                             </CardMedia>
                             <CardContent className={s.content}>
-                                {
-                                    withCategory ? <span className={s.categoryName}> {category} </span> : null
-                                }
-                                <div className={s.header}>  {
-                                    brand && (
-                                        <span className={s.brand}>
-                                            {brand}
-                                            {this.collectionLabel}
-                                        </span>
-                                    )
-                                }
+                                <div className={s.header}>
                                     <span className={s.name}>
-                                        {name}
+                                        {fullName}
                                     </span>
                                 </div>
                                 {this.priceRow}

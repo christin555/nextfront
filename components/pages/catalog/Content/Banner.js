@@ -27,6 +27,14 @@ class BannerView extends Component {
 //mock
 const items = [
     {
+        background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_1_d4aba3bbd5.png',
+        mobileBackground: 'https://master-pola.com/dashboard/uploads/Bez_imeni_1_mob_3402fd1ca4.png',
+        link: '/blog/article/laminat_za_tysuachy',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        textButton: 'Подробнее'
+    },
+    {
         background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5_93ac65f165.png',
         mobileBackground: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5mob_d61f14260e.png',
         textButton: 'Смотреть дизайны',
@@ -82,14 +90,6 @@ const items = [
         justifyContent: 'flex-end',
         mobAlignItems: 'flex-start',
         mobJustifyContent: 'flex-end'
-    },
-    {
-        background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_1_d4aba3bbd5.png',
-        mobileBackground: 'https://master-pola.com/dashboard/uploads/Bez_imeni_1_mob_3402fd1ca4.png',
-        link: '/blog/article/laminat_za_tysuachy',
-        alignItems: 'flex-end',
-        justifyContent: 'flex-end',
-        textButton: 'Подробнее'
     },
 
     // {
