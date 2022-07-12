@@ -56,6 +56,10 @@ const items = [
         category: 'quartzvinyl_zamkovay'
     },
     {
+        background: 'https://master-pola.com/dashboard/uploads/dveri_49c3404d58.png',
+        mobileBackground: 'https://master-pola.com/dashboard/uploads/mob_dveri_f4720179dd.png',
+    },
+    {
         background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_3_a80280df16.jpg',
         title: 'Влагостойкий ламинат Alsafloor',
         mobileBackground: 'https://master-pola.com/dashboard/uploads/alsa_mob_35e62f9da8.jpg',
