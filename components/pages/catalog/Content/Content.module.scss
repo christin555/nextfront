@@ -108,10 +108,10 @@
 
 .popularNews {
   flex: 1;
-  padding-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 170px);
   gap: 14px;
+  height: min-content;
 
   & > * {
     width: 100%;
