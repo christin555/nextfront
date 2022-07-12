@@ -38,7 +38,7 @@ const Product = (props) => {
                        {values.brand} {values.collection && `Коллекция ${values.collection}`}
                     </span>
                     <span className={s.id}>
-                        {values.id && `артикул ${values.id}`}
+                        {values.id && `Арт. ${values.id}`}
                     </span>
                     <Labels isBestPrice={values.isBestPrice} className={s.isBestPrice}/>
                 </div>
