@@ -20,10 +20,14 @@ const filterFabric = (category) => {
             useFilter = true;
             break;
         case 'quartzvinyl':
-        case 'quartzvinyl_zamkovay':
         case 'quartzvinyl_kleevay':
             storeName = 'FloorStore';
             addFields = ['price', 'isPopular', 'isSale'];
+            useFilter = true;
+            break;
+        case 'quartzvinyl_zamkovay':
+            storeName = 'FloorStore';
+            addFields = ['price', 'isPopular', 'isSale', 'substrateThickness'];
             useFilter = true;
             break;
         case 'laminate':

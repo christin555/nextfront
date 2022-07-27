@@ -17,16 +17,7 @@ const Fields = ({checked, disabled, values, setValue, setPrice, setPricePath}) =
         />
     }
 
-    if (key === 'isSale') {
-        return <FormCheckbox
-            checked={isChecked(checked, key, 1)}
-            name={'Да'}
-            id={1}
-            onChange={setValue(key)}
-        />
-    }
-
-    if (key === 'isPopular') {
+    if ( ['isSale', 'substrateThickness', 'isPopular'].includes(key)) {
         return <FormCheckbox
             checked={isChecked(checked, key, 1)}
             name={'Да'}

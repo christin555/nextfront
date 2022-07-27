@@ -10,8 +10,8 @@ export class PageStore {
 
     optionsOrder = [
         {value: 1, label: 'Исходная сортировка', direction: 'asc', field: null},
-        {value: 3, label: 'Цены: по убыванию', direction: 'desc', field: 'price'},
-        {value: 4, label: 'Цены: по возрастанию', direction: 'asc', field: 'price'}
+        {value: 3, label: 'Цены: по убыванию', direction: 'desc', field: 'orderPrice'},
+        {value: 4, label: 'Цены: по возрастанию', direction: 'asc', field: 'orderPrice'}
     ]
 
     constructor(RootStore) {
