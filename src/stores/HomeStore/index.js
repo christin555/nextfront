@@ -1,5 +1,4 @@
-import {observable, get, action, computed, makeObservable} from 'mobx';
-import {status as statusEnum} from '../../enums';
+import {observable, get, action, makeObservable} from 'mobx';;
 import api from 'api';
 import {alert} from '../Notifications';
 

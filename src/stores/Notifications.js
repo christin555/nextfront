@@ -2,9 +2,10 @@ import {store} from 'react-notifications-component';
 
 const alertQueue = {};
 const DELAY = 3000;
+const isServer = typeof window === 'undefined';
 
 export const alert = ({type, title = ' ', message = ' '}) => {
-  if (alertQueue[title] === type) {
+  if (alertQueue[title] === type || isServer) {
     return;
   }
 

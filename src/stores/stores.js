@@ -1,9 +1,6 @@
 import {useStaticRendering} from 'mobx-react';
-import PopularStore from "./PopularStore";
 import RootStore from "./RootStore";
-import {PageStore} from "./CatalogStore/PageStore";
 import RouterStore from "./Router";
-import {CatalogStore} from "./CatalogStore";
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
