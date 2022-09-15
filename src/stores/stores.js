@@ -3,7 +3,7 @@ import RootStore from "./RootStore";
 import RouterStore from "./Router";
 
 const isServer = typeof window === 'undefined';
-useStaticRendering(isServer);
+//useStaticRendering(isServer);
 
 let store = null;
 

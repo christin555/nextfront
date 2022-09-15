@@ -2,7 +2,6 @@ import {observable, action, autorun, computed, makeObservable, reaction, toJS} f
 import {status as statusEnum} from '../../enums';
 import api from 'api';
 import Router from "next/router";
-import {alert} from "../Notifications";
 
 const isServer = typeof window === 'undefined';
 
