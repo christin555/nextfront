@@ -1,5 +1,6 @@
 import {computed, makeObservable} from 'mobx';
 import {BaseFilterStore} from './Base';
+import {priceUnit} from "../../enums";
 
 export class KeramogranitStore extends BaseFilterStore {
     fieldsLabel = {
@@ -15,6 +16,7 @@ export class KeramogranitStore extends BaseFilterStore {
 
     constructor(RootStore) {
         super(RootStore);
+        this.unitPrice = priceUnit.METRKV;
         makeObservable(this);
     }
 

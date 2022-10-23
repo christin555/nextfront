@@ -1,10 +1,12 @@
 import {action, computed, makeObservable, toJS} from 'mobx';
 import {BaseFilterStore} from './Base';
 import Router from "next/router";
+import {priceUnit} from "../../enums";
 
 export class DoorsStore extends BaseFilterStore {
     constructor(RootStore) {
         super(RootStore);
+        this.unitPrice = priceUnit.RUBLE;
 
         makeObservable(this);
     }

@@ -4,6 +4,14 @@ const status = {
   ERROR: 3
 };
 
+const priceUnit = {
+  RUBLE: 1,
+  METRKV: 2,
+  SHT: 3,
+  KOMPLEKT: 4,
+  POLOTNO: 5
+};
+
 const finishing = {
   MATERIAL: 1,
   WINDOW: 2,
@@ -19,5 +27,6 @@ const posts = {
 module.exports = {
   status,
   finishing,
-  posts
+  posts,
+  priceUnit
 };

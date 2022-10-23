@@ -32,7 +32,8 @@ class CardView extends React.Component {
             img,
             name,
             price,
-            classNamesRoot
+            classNamesRoot,
+            unit
         } = this.props;
 
         return (
@@ -53,8 +54,8 @@ class CardView extends React.Component {
                     {
                         price && (
                             <p className={s.price}>
-                                            {formatPrice({price})}
-                                        </p>
+                               {formatPrice({price, unit})}
+                            </p>
                         ) || null
                     }
                 </div>

@@ -3,6 +3,7 @@ import api from '../../api';
 import {alert} from '../Notifications';
 import Router from 'next/router';
 import formatPrice from "../../utils/formatPrice";
+import {priceUnit} from "../../enums";
 
 export class BaseFilterStore {
     @observable values = {};
@@ -12,6 +13,7 @@ export class BaseFilterStore {
     @observable category;
     @observable disabled = {};
     @observable selection = {};
+    @observable unitPrice = priceUnit.RUBLE;
 
     // Override in child;
     fieldsLabel = {};
@@ -110,12 +112,12 @@ export class BaseFilterStore {
 
         checked['minPrice'] = price[0];
         checked['maxPrice'] = price[1];
-        const label = ` от ${formatPrice({price: price[0], isSquare: false})} до ${formatPrice({
+        const label = ` от ${formatPrice({price: price[0], unit: this.unitPrice})} до ${formatPrice({
             price: price[1],
-            isSquare: false
+            unit: this.unitPrice
         })}`;
 
-        chips.push({
+        chips.set('price', {
             fieldName: this.fieldsLabel['price'],
             label: label,
             key: 'price',
@@ -271,11 +273,14 @@ export class BaseFilterStore {
             true
         );
 
-        const oldChip = this.chips.find(({key}) => key === 'price');
-        const label = ` от ${formatPrice({
-            price: this.checked['minPrice'],
-            isSquare: false
-        })} до ${formatPrice({price: this.checked['maxPrice'], isSquare: false})}`;
+        const oldChip = this.chips.get('price');
+        const label = ` от ${formatPrice(
+            {
+                price: this.checked['minPrice'], 
+                unit: this.unitPrice
+            })} до ${formatPrice({
+            price: this.checked['maxPrice'],
+            unit: this.unitPrice})}`;
 
         if (oldChip) {
             oldChip.label = label;
@@ -305,9 +310,14 @@ export class BaseFilterStore {
 
     hasValue = (key, id) => this.checked[`${key} -${id}`];
 
-    hasKey = (key) => Object
-        .keys(this.checked)
-        .filter((checkedKey) => checkedKey.indexOf(key) > -1 && this.checked[checkedKey] === true).length > 0;
+    hasKey = (key) => {
+        if(key === 'price') {
+            return this.checked['minPrice'] || this.checked['maxPrice']
+        }
+       return Object
+            .keys(this.checked)
+            .filter((checkedKey) => checkedKey.indexOf(key) > -1 && this.checked[checkedKey] === true).length > 0;
+    }
 
     resetPage = () => {
         //this.PageStore.setPage(1);

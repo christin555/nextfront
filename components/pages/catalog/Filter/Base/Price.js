@@ -11,9 +11,13 @@ const MAX = 4200;
 const MIN = 1000;
 
 const Price = (props) => {
-    const {checked, onSave, onChange, name, id, disabled} = props;
-    let [minPrice, setMinPrice] = useState(checked['minPrice']);
-    let [maxPrice, setMaxPrice] = useState(checked['maxPrice']);
+    const {checked, onSave, onChange, unit} = props;
+
+    let [minPrice, _setMinPrice] = useState(formatPrice({price: checked['minPrice'], unit}));
+    let [maxPrice, _setMaxPrice] = useState(formatPrice({price: checked['maxPrice'], unit}));
+
+    const setMinPrice = (price) => _setMinPrice(formatPrice({price, unit}));
+    const setMaxPrice = (price) => _setMaxPrice(formatPrice({price, unit}));
 
     const onBlur = (val, type) => {
         let _val = parseInt(val.replace(/\s+/g, ''), 10);
@@ -29,10 +33,6 @@ const Price = (props) => {
         onChange(_val, type);
         onSave(_val, type);
     }
-
-
-    minPrice = formatPrice({price: minPrice, isSquare: false});
-    maxPrice = formatPrice({price: maxPrice, isSquare: false});
 
     return (
         <div className={s.price}>

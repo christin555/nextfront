@@ -1,0 +1,37 @@
+.galleryContainer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+  background: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  padding: 20px;
+ // display: flex;
+ // flex-direction: column;
+
+  .close{
+    position: absolute;
+    right: 20px;
+    top:  10px;
+    background: #1f1f1f;
+    color: #f9f9fd;
+    z-index: 3;
+  }
+
+  .active{
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    & > * {
+      position: initial !important;
+    }
+    img{
+     max-height: 95vh;
+
+      &:hover {cursor: zoom-in;}
+    }
+  }
+}

@@ -29,7 +29,7 @@ class CardView extends React.Component {
     }
 
     get priceRow() {
-        const {price, salePrice, isDoor} = this.props;
+        const {price, salePrice, unit} = this.props;
         const currentPrice = salePrice || price;
 
         if (!currentPrice) {
@@ -37,11 +37,11 @@ class CardView extends React.Component {
         }
 
         const priceBlock = <span className={s.price}>
-                {formatPrice({price: currentPrice, isDoor})}
+                {formatPrice({price: currentPrice, unit})}
                 </span>;
 
         const oldPrice = salePrice && <span className={s.salePrice}>
-                        {formatPrice({price, isDoor})}
+                        {formatPrice({price, unit})}
                     </span> || null
 
 
@@ -75,6 +75,16 @@ class CardView extends React.Component {
         );
     }
 
+    get collection(){
+        const {collection} = this.props;
+        if(!collection){
+            return null
+        }
+       return  <span className={s.collection}>
+           коллекция {collection}
+        </span>
+    }
+
     routeChange = (alias) => {
         const pathname = `/product/${alias}`;
 
@@ -96,7 +106,8 @@ class CardView extends React.Component {
             isPopular,
             isBestPrice,
             salePercent,
-            classNamesRoot
+            classNamesRoot,
+            collection
         } = this.props;
 
         return (
@@ -130,14 +141,15 @@ class CardView extends React.Component {
                                 />
                             </CardMedia>
                             <CardContent className={s.content}>
+                                {this.priceRow}
                                 <div className={s.header}>
                                     <span className={s.name}>
                                         {fullName}
                                     </span>
+                                    {this.collection}
+                                    {this.colors}
+                                    <Labels isPopular={isPopular}/>
                                 </div>
-                                {this.priceRow}
-                                <Labels isPopular={isPopular}/>
-                                {this.colors}
                             </CardContent>
                         </div>
                     </div>

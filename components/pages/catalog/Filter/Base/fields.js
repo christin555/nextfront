@@ -6,14 +6,14 @@ const isChecked = (checked, key, value) => !!checked[`${key}-${value}`];
 const isDisabled = (disabled, key, value) => disabled[`${key}-${value}`];
 
 // eslint-disable-next-line react/display-name
-const Fields = ({checked, disabled, values, setValue, setPrice, setPricePath}) => (key) => {
+const Fields = ({checked, unit, disabled, values, setValue, setPrice, setPricePath}) => (key) => {
+    console.log(key, checked)
     if (key === 'price') {
         return <Price
-            minPrice={checked?.minPrice}
-            maxPrice={checked?.maxPrice}
             checked={checked}
             onChange={setPrice}
             onSave={setPricePath}
+            unit={unit}
         />
     }
 

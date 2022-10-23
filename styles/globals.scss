@@ -16,6 +16,13 @@
   left: calc(2% + 1px) !important;
 }
 
+.swiper-slide-zoomed{
+  img{
+    &:hover {
+      cursor: zoom-out !important;
+    };
+  }
+}
 .swiper-button-next, .swiper-button-prev {
   color: white !important;
   border-radius: 50%;

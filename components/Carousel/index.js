@@ -3,20 +3,23 @@ import Nophoto from "../../public/nophoto.png";
 import s from './carousel.module.scss';
 import Image from 'next/image';
 import {A11y, Thumbs, EffectFade, FreeMode, Navigation, Pagination} from "swiper";
-import {Swiper, SwiperSlide,} from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
+import "swiper/css/zoom";
+import Gallery from "./gallery";
 
 const CarouselView = ({imgs, name}) => {
     const carouselBlockRef = useRef(null);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const [isOpenGallery, setIsOpenGallery] = useState(false);
 
     let images;
 
-    if (!imgs ) {
+    if (!imgs) {
         return <SwiperSlide className={s.itemCarousel}>
             <Image
                 placeholder={'blur'}
@@ -33,7 +36,10 @@ const CarouselView = ({imgs, name}) => {
         </SwiperSlide>
     }
 
-    images = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.itemCarousel}>
+    images = imgs.map(({src}, index) => <SwiperSlide
+        onClick={()=>setIsOpenGallery(true)}
+        key={index}
+        className={s.itemCarousel}>
             <Image
                 placeholder={'blur'}
                 blurDataURL="/blur.png"
@@ -47,10 +53,7 @@ const CarouselView = ({imgs, name}) => {
                 unoptimized={true}
                 loader={() => src}
             />
-        </SwiperSlide>
-    );
-
-
+        </SwiperSlide>);
     const thumbs = imgs.map(({src}, index) => <SwiperSlide key={index} className={s.thumbCarousel}>
             <Image
                 unoptimized={true}
@@ -64,8 +67,7 @@ const CarouselView = ({imgs, name}) => {
                 src={src}
                 loader={() => src}
             />
-        </SwiperSlide>
-    );
+        </SwiperSlide>);
 
     return (
         <div ref={carouselBlockRef}>
@@ -83,7 +85,6 @@ const CarouselView = ({imgs, name}) => {
             >
                 {images}
             </Swiper>
-
             <Swiper
                 className={s.thumbs}
                 onSwiper={setThumbsSwiper}
@@ -95,6 +96,11 @@ const CarouselView = ({imgs, name}) => {
             >
                 {thumbs}
             </Swiper>
+            <Gallery
+                imgs={imgs}
+                isOpen={isOpenGallery}
+                setIsOpenGallery={setIsOpenGallery}
+            />
         </div>
     )
 }

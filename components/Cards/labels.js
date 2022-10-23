@@ -37,7 +37,7 @@ class Labels extends React.Component {
         }
 
         if (!blocks.length) {
-            return <div/>
+            return null
         }
 
         return blocks

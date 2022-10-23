@@ -1,8 +1,4 @@
 import React from 'react';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import Chip from '@mui/material/Chip';
-import Icons from '../../Icons';
-import {inject, observer} from 'mobx-react';
 import Hierarchy from '../../Hierarchy';
 import Carousel from '../../Carousel';
 import {Divider} from '@mui/material';

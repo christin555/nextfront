@@ -1,6 +1,7 @@
 import {makeObservable, action, toJS, computed} from 'mobx';
 import {BaseFilterStore} from './Base';
 import Router from "next/router";
+import {priceUnit} from "../../enums";
 
 export class FloorStore extends BaseFilterStore {
     fieldsLabel = {
@@ -27,7 +28,7 @@ export class FloorStore extends BaseFilterStore {
 
     constructor(RootStore) {
         super(RootStore);
-
+        this.unitPrice = priceUnit.METRKV;
         makeObservable(this);
     }
 

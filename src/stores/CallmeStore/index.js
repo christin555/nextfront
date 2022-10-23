@@ -55,6 +55,7 @@ class CallmeStore {
     checkFields = () => this.phone && this.name
 
     apply = (product) => {
+        console.log('apply')
         const isreq = this.checkFields();
 
         if (!isreq) {
@@ -62,6 +63,7 @@ class CallmeStore {
 
             return;
         }
+
         this.sendEmail(product);
         this.toggleShow();
     }
@@ -88,9 +90,13 @@ class CallmeStore {
     }
 
     sendEmail = async (_product) => {
+        console.log('sendEmail')
+
         const {phone, name, channel, square, listCalculates} = this;
         const product = this.getProduct(_product);
         const address = await this.getLocation();
+
+        console.log('sendEmail')
 
         try {
             const body = {phone, name, product, address, channel, square, listCalculates};

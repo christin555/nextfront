@@ -121,7 +121,6 @@
   flex-grow: 1;
   padding: 0 !important;
   place-self: flex-start;
-  gap: 6px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -130,13 +129,9 @@
   font-weight: 400;
   font-size: 14px;
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  letter-spacing: 0.5px;
 
-  .brand {
-    font-size: 12px;
+  .collection {
     color: $gray-100;
-    margin-top: 6px;
-    text-transform: uppercase;
   }
 
   .name {
@@ -146,7 +141,7 @@
   .price {
     font-weight: 500;
     display: flex;
-    font-size: 18px;
+    font-size: 16px;
     color: $gray-500;
     justify-content: space-between;
 
@@ -163,7 +158,6 @@
 }
 
 @media only screen and (max-width: 480px) {
-
   .content {
     font-size: 14px;
 
@@ -179,7 +173,7 @@
       }
     }
 
-    .collection, .name {
+    .name {
       font-size: 14px;
     }
   }

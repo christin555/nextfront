@@ -88,7 +88,7 @@ export default function Menu() {
                                 </a>
                                 <Callme ButtonCall={
                                     <span className={styles.callme}>
-                                    перезвоните мне
+                                    перезвоните нам
                                 </span>
                                 }/>
                             </div>

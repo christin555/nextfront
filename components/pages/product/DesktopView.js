@@ -10,7 +10,6 @@ import Labels from "../../Cards/labels";
 import Calculation from '../../Сalculation';
 
 const DesktopView = (props) => {
-
     const {
         values,
         fields,

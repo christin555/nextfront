@@ -164,20 +164,19 @@ class ProductView extends React.Component {
 
 
     get priceRow() {
-        const {price, salePrice, category} = this.props.values;
+        const {price, salePrice, unit} = this.props.values;
         const currentPrice = salePrice || price;
-        const isDoor = category?.toLowerCase() === 'двери';
 
         if (!currentPrice) {
             return null
         }
 
         const priceBlock = <span className={s.price}>
-                {formatPrice({price: currentPrice, isDoor})}
+                {formatPrice({price: currentPrice, unit})}
                 </span>;
 
         const oldPrice = salePrice && <span className={s.salePrice}>
-                        {formatPrice({price, isDoor})}
+                        {formatPrice({price, unit})}
                     </span> || null
 
 
