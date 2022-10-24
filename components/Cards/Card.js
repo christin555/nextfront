@@ -107,7 +107,8 @@ class CardView extends React.Component {
             isBestPrice,
             salePercent,
             classNamesRoot,
-            collection
+            collection,
+            category
         } = this.props;
 
         return (
@@ -136,7 +137,8 @@ class CardView extends React.Component {
                                     alt={`${fullName} в Тюмени`}
                                     loader={() => img || "/blur.png"}
                                     quality={80}
-                                    className={cn(s.img, {[s.isDoor]: isDoor})}
+                                    className={cn(s.img, {[s.isDoor]: isDoor || category === 'Двери'})}
+                                    //потом поправлю
                                     src={img || "/blur.png"}
                                 />
                             </CardMedia>
