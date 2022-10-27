@@ -14,7 +14,7 @@ const formatPrice = ({price, withCurrency = true, unit = priceUnit.RUBLE}) => {
 const labelsUnit = {
     [priceUnit.RUBLE]: '₽',
     [priceUnit.METRKV]: '₽/м²',
-    [priceUnit.SHT]: '₽/шт',
+    [priceUnit.METRPOG]: '₽/м.п',
     [priceUnit.KOMPLEKT]: '₽/комплект',
     [priceUnit.POLOTNO]: '₽/полотно'
 };

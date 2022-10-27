@@ -7,7 +7,7 @@ const status = {
 const priceUnit = {
   RUBLE: 1,
   METRKV: 2,
-  SHT: 3,
+  METRPOG: 3,
   KOMPLEKT: 4,
   POLOTNO: 5
 };
