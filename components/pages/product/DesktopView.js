@@ -44,7 +44,10 @@ const DesktopView = (props) => {
                     />
                     <div className={s.product}>
                         <Typography variant={'body1'} fontWeight={'bold'} component={'h3'}> Коллекция {values.collection}</Typography>
-                        <div className={s.desc}> {values.description} </div>
+                        <div
+                            className={s.desc}
+                            dangerouslySetInnerHTML={{__html: values.description}}
+                        />
                         {
                             values.price && (
                                 <div className={s.priceBox}>

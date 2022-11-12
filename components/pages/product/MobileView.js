@@ -76,7 +76,10 @@ const Product = (props) => {
             <div className={s.titleCharacteristic}>
                 О товаре
             </div>
-            <div className={s.desc}> {values.description} </div>
+            <div
+                className={s.desc}
+                dangerouslySetInnerHTML={{__html: values.description}}
+            />
             {chars}
             <div className={s.titleCharacteristic}>
                 Характеристики товара

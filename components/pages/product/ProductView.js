@@ -108,7 +108,7 @@ class ProductView extends React.Component {
             <div className={s.charsBlock}>
                 {chars.map(({key, value}) => {
                     return <div key={key}>
-                        <Typography variant="button" component="h6">
+                        <Typography variant="button" component="h6" display={'flex'}>
                             <CheckIcon className={s.charIcon}/> {key}
                         </Typography>
                         <span> {value} </span>
@@ -212,7 +212,7 @@ class ProductView extends React.Component {
                         allFields={this.allFields}
                         chipFields={this.chipFields}
                         chars={this.chars}/>
-                    || <DesktopView
+                    || <DesktopcharsView
                         values={values}
                         fields={fields}
                         hierarchy={hierarchy}
