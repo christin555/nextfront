@@ -8,6 +8,7 @@ import Callme from '../../Callme';
 import FinishingMaterialBlock from './FinishingMaterialBlock';
 import Labels from "../../Cards/labels";
 import Calculation from '../../Сalculation';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const DesktopView = (props) => {
     const {
@@ -18,7 +19,8 @@ const DesktopView = (props) => {
         allFields,
         chipFields,
         chars,
-        hierarchy
+        hierarchy,
+        linkInterBlock
     } = props;
 
     return (
@@ -48,6 +50,7 @@ const DesktopView = (props) => {
                             className={s.desc}
                             dangerouslySetInnerHTML={{__html: values.description}}
                         />
+                        {linkInterBlock}
                         {
                             values.price && (
                                 <div className={s.priceBox}>

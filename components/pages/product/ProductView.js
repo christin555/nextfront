@@ -11,6 +11,7 @@ import Meta from "../../HeadComponent";
 import Box from "@mui/material/Box";
 import MobileView from './MobileView';
 import DesktopView from "./DesktopView";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 @inject(({RootStore: {ProductStore, deviceType}}) => {
     return {
@@ -163,6 +164,23 @@ class ProductView extends React.Component {
     }
 
 
+    get linkInterBlock(){
+        const {linkInterior} = this.props.values;
+
+        if(!linkInterior){
+            return null
+        }
+        return <div className={s.linkInterirerBlock}>
+            <a target={'_blank'}
+               rel='noopener noreferrer'
+               href= {linkInterior}
+               title='Посмотреть в интерьере'
+            >
+                Посмотреть в интерьере <ArrowRightAltIcon/>
+            </a>
+        </div>
+    }
+
     get priceRow() {
         const {price, salePrice, unit} = this.props.values;
         const currentPrice = salePrice || price;
@@ -211,8 +229,10 @@ class ProductView extends React.Component {
                         mainFields={this.mainFields}
                         allFields={this.allFields}
                         chipFields={this.chipFields}
-                        chars={this.chars}/>
-                    || <DesktopcharsView
+                        linkInterBlock={this.linkInterBlock}
+                        chars={this.chars}
+                    />
+                    || <DesktopView
                         values={values}
                         fields={fields}
                         hierarchy={hierarchy}
@@ -220,7 +240,9 @@ class ProductView extends React.Component {
                         mainFields={this.mainFields}
                         allFields={this.allFields}
                         chipFields={this.chipFields}
-                        chars={this.chars}/>
+                        linkInterBlock={this.linkInterBlock}
+                        chars={this.chars}
+                    />
                 }
             </>
         );

@@ -19,7 +19,8 @@ const Product = (props) => {
         allFields,
         chipFields,
         chars,
-        hierarchy
+        hierarchy,
+        linkInterBlock
     } = props;
 
     const lastCategory = hierarchy[hierarchy.length - 2];
@@ -46,6 +47,7 @@ const Product = (props) => {
                         className={s.carousel}
                     />
                 </Box>
+                {linkInterBlock}
                 {
                     values.price && (
                         <div className={s.priceBox}>{priceRow}</div>
