@@ -11,6 +11,7 @@ import {SportStore} from "./Filter/SportStore";
 import {HomeStore} from "./HomeStore";
 import ServicesStore from "./ServicesStore";
 import React from "react";
+import {DefaultStore} from './Filter/DefaultStore';
 
 class RootStore {
     @observable stores = {};
@@ -40,6 +41,8 @@ class RootStore {
                 return this.FloorStore;
             case 'sport':
                 return this.SportStore;
+            case 'kley':
+                return this.DefaultStore;
             default:
                 return {};
         }
@@ -79,6 +82,10 @@ class RootStore {
 
     get SportStore() {
         return this.getStore('SportStore', SportStore)
+    }
+
+    get DefaultStore() {
+        return this.getStore('DefaultStore', DefaultStore)
     }
 
     get KeramogranitStore() {

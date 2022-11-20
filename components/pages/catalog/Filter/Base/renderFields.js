@@ -46,6 +46,7 @@ class Fields extends Component {
         const keys = [...addFields, ...Object.keys(values)]
 
 
+        console.log(fieldsLabel, keys)
         return keys.map((key) => {
                         return (
                             <SimpleAccordion

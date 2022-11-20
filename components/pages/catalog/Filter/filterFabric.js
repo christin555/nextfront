@@ -41,6 +41,11 @@ const filterFabric = (category) => {
             addFields = ['isPopular']
             useFilter = true;
             break;
+        case 'kley':
+            storeName = 'DefaultStore';
+            addFields = ['isPopular']
+            useFilter = true;
+            break;
     }
 
     if (!useFilter) {

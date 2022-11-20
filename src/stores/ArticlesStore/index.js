@@ -81,12 +81,9 @@ class ArticlesStore {
             const alias = this.alias;
             const article = await api.post('article/get', {alias});
             this.setArticle(article);
-            console.log('article');
             this.setStatusArticle(statusEnum.SUCCESS);
         } catch (err) {
-            console.log('err');
             this.setStatusArticle(statusEnum.ERROR);
-            console.log(err);
         }
     }
 

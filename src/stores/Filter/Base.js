@@ -390,7 +390,8 @@ export class BaseFilterStore {
         const urlSearch = toJS({...Router.router.query || {}});
 
         if (checked) {
-            urlSearch[key] = [id].concat(...(urlSearch[key] || []))
+            const val = urlSearch[key] ? [id].concat(urlSearch[key]) :[id]
+            urlSearch[key] = val
         } else {
             if (Array.isArray(urlSearch[key])) {
                 urlSearch[key] = urlSearch[key].filter((val) => Number(val) !== Number(id))
