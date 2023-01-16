@@ -42,8 +42,8 @@ class Content extends React.Component {
             return (
                 <div className={s.container}>
                     {this.InformBlock}
-                    <div className={classNames(s.content, s.buttomMargin)}>
-                        <Products/>
+                    <div className={classNames(s.content, s.buttomMargin)} ref={this.contentRef}>
+                        <Products contentRef ={this.contentRef}/>
                     </div>
                     <Categories/>
                 </div>
