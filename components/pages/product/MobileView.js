@@ -65,8 +65,8 @@ const Product = (props) => {
                 <div className={s.btnBox}>
                     <Calculation
                         product={values}
+                        category={values.group}
                         className={s.calculation}
-                        buttonText={'Оставить заявку'}
                     />
                     <Callme
                         product={values}

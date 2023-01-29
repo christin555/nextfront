@@ -12,7 +12,7 @@ class ProductStore {
     @observable hierarchy;
     @observable values;
     @observable fields;
-    @observable  alias;
+    @observable alias;
 
     constructor(RootStore) {
         this.hydrate(RootStore);
@@ -63,11 +63,11 @@ class ProductStore {
 
     getHierarchy = async () => {
         if (!this.alias) {
-            return
+           return
         }
         try {
-            const body = {product: this.alias};
-            const {hierarchy} = await api.post('catalog/getHierarchy', body);
+          const body = {product: this.alias};
+          const {hierarchy} = await api.post('catalog/getHierarchy', body);
 
             this.setHierarchy(hierarchy);
         } catch (_) {}

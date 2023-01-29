@@ -1,4 +1,4 @@
-import {observable, action, makeObservable, toJS} from 'mobx';
+import {observable, action, makeObservable, computed, toJS} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from '../../api';
 import {alert} from '../Notifications';
@@ -13,9 +13,26 @@ class CallmeStore {
     @observable square
     @observable channel = 'телефон';
     @observable listCalculates = [];
+    @observable category = 'floors';
+    @observable values = {};
 
-    constructor() {
+    constructor(category) {
         makeObservable(this);
+
+        this.category = category;
+    }
+
+    @computed get type(){
+        switch (this.category.toLowerCase()){
+            case "doors":
+                return 'doors'
+            case "plintus":
+                return 'plintus';
+            case "floor":
+                return 'floor'
+            default:
+                return 'other'
+        }
     }
 
 
@@ -25,6 +42,10 @@ class CallmeStore {
         } else if (checked) {
              this.listCalculates = [...this.listCalculates, value];
         }
+    }
+
+    @action setValue =  (key, value) => {
+        this.values[key] = value;
     }
 
     @action setChannel = (_, value) => {
@@ -48,8 +69,8 @@ class CallmeStore {
     }
 
     @action clear = () => {
-        this.phone = '';
-        this.name = '';
+        this.phone = null;
+        this.name = null;
     }
 
     checkFields = () => this.phone && this.name
@@ -89,12 +110,12 @@ class CallmeStore {
     }
 
     sendEmail = async (_product) => {
-        const {phone, name, channel, square, listCalculates} = this;
+        const {phone, name, channel, square, listCalculates, values} = this;
         const product = this.getProduct(_product);
         const address = await this.getLocation();
 
         try {
-            const body = {phone, name, product, address, channel, square, listCalculates};
+            const body = {phone, name, product, address, channel, square, listCalculates, ...values};
 
             await api.post('send/callme ', body);
 

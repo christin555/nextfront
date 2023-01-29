@@ -7,7 +7,8 @@ class Calculation extends React.Component {
   constructor(props) {
     super(props);
 
-    this.CallmeStore = new CallmeStore();
+    const {category} = this.props;
+    this.CallmeStore = new CallmeStore(category);
   }
 
   render() {

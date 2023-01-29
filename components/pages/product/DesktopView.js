@@ -67,9 +67,9 @@ const DesktopView = (props) => {
                         </div>
                         <div className={s.btnBox}>
                             <Calculation
+                                category={values.group}
                                 product={values}
                                 className={s.calculation}
-                                buttonText={'Оставить заявку'}
                             />
                             <Callme
                                 product={values}

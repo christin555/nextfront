@@ -7,7 +7,6 @@ const isDisabled = (disabled, key, value) => disabled[`${key}-${value}`];
 
 // eslint-disable-next-line react/display-name
 const Fields = ({checked, unit, disabled, values, setValue, setPrice, setPricePath}) => (key) => {
-    console.log(key, checked)
     if (key === 'price') {
         return <Price
             checked={checked}

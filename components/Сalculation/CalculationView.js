@@ -30,6 +30,9 @@ import FormGroup from '@mui/material/FormGroup';
         channel: CallmeStore.channel,
         listCalculates: CallmeStore.listCalculates,
         setListCalculates: CallmeStore.setListCalculates,
+      setValue: CallmeStore.setValue,
+      values: CallmeStore.values,
+      type: CallmeStore.type
     };
 })
 class Callme extends React.Component {
@@ -49,6 +52,82 @@ class Callme extends React.Component {
         );
     }
 
+    get fields(){
+      const {
+        listCalculates,
+        setListCalculates,
+        setValue,
+        values,
+        type,
+        setSquare,
+        square
+      } = this.props;
+
+
+      if(type === 'doors'){
+       return   <>
+         <FormControl>
+           <FormLabel id="hinges">Петли</FormLabel>
+           <RadioGroup
+             row
+             aria-labelledby="hinges"
+             name="hinges"
+             onChange={({target}) => setValue('hinges', target.value)}
+           >
+             <FormControlLabel value="наружные" control={<Radio />} label="Наружные" />
+             <FormControlLabel value="скрытые" control={<Radio />} label="Скрытые" />
+         </RadioGroup>
+         </FormControl>
+         <FormGroup>
+         <FormLabel >Включить в расчет </FormLabel>
+         <FormControlLabel onChange={({target}) => setValue('furniture', target.checked)}
+                          checked={values['фурнитура']}
+                          control={<Checkbox size="small"/>}
+                          label={'Фурнитура'}    />
+         <FormControlLabel onChange={({target}) => setValue('work', target.checked)}
+                           checked={values['установка']}
+                           control={<Checkbox size="small"/>}
+                           label={'Установка'}
+         />
+         </FormGroup>
+         </>
+      }
+      if(type === 'floor'){
+        return  (
+          <React.Fragment>
+            <TextField
+              onChange={setSquare}
+              label={'Ваша площадь'}
+              value={square}
+              variant="standard"
+            />
+            <FormGroup>
+              <FormControlLabel onChange={({target}) => setListCalculates('Учесть сопутствующие товары', target.checked)}
+                            checked={listCalculates.includes('Учесть сопутствующие товары')}
+                            control={<Checkbox size="small"/>}
+                            label={'Учесть сопутствующие товары'}
+              />
+              <FormControlLabel onChange={({target}) => setListCalculates('Учесть работы',  target.checked)}
+                            checked={listCalculates.includes('Учесть работы')}
+                            control={<Checkbox size="small"/>}
+                            label={'Учесть работы'}/>
+              <FormControlLabel onChange={({target}) => setListCalculates('Нужна заливка',  target.checked)}
+                            checked={listCalculates.includes('Нужна заливка')}
+                            control={<Checkbox size="small"/>}
+                            label={'Нужна заливка'}/>
+            </FormGroup>
+        </React.Fragment>
+        )
+      }
+
+      return <TextField
+        onChange={setSquare}
+        label={'Ваша площадь'}
+        value={square}
+        variant="standard"
+      />
+    }
+
     render() {
         const {
             className,
@@ -61,12 +140,8 @@ class Callme extends React.Component {
             setName,
             apply,
             buttonProps,
-            setSquare,
-            square,
             setChannel,
-            channel,
-            listCalculates,
-            setListCalculates
+            channel
         } = this.props;
         const headerTitle = 'Получить расчет';
 
@@ -89,15 +164,14 @@ class Callme extends React.Component {
                 >
                     <div className={s.wrapper}>
                         <div className={s.header}>
-                            <span className={s.title}>  {headerTitle} </span>
+                            <span className={s.title}>  {headerTitle}  <span style={{color: 'gray'}}>*</span> </span>
                             <IconButton onClick={toggleShow} className={s.closeButton}>
                                 <CloseIcon/>
                             </IconButton>
                         </div>
                         <div className={s.content}>
               <span className={s.desc}>
-                Введите свой номер телефона и выберите способ связи. Через 10 минут ваш расчет будет готов!
-                  <span style={{color: 'gray'}}>*</span>
+                Введите свой номер телефона и выберите способ связи
               </span>
                             <span style={{margin: '10px 0'}}>
                                 <b> Товар - {`${product.category} ${product.brand} ${product.name}`} </b>
@@ -116,27 +190,8 @@ class Callme extends React.Component {
                                     InputProps={{inputComponent: this.textMaskCustom}}
                                     variant="standard"
                                 />
-                                <TextField
-                                    onChange={setSquare}
-                                    label={'Ваша площадь'}
-                                    value={square}
-                                    variant="standard"
-                                />
-                                <FormGroup>
-                                    <FormControlLabel onChange={({target}) => setListCalculates('Учесть сопутствующие товары', target.checked)}
-                                                      checked={listCalculates.includes('Учесть сопутствующие товары')}
-                                                      control={<Checkbox size="small"/>}
-                                                      label={'Учесть сопутствующие товары'}
-                                    />
-                                    <FormControlLabel onChange={({target}) => setListCalculates('Учесть работы',  target.checked)}
-                                                      checked={listCalculates.includes('Учесть работы')}
-                                                      control={<Checkbox size="small"/>}
-                                                      label={'Учесть работы'}/>
-                                    <FormControlLabel onChange={({target}) => setListCalculates('Нужна заливка',  target.checked)}
-                                                      checked={listCalculates.includes('Нужна заливка')}
-                                                      control={<Checkbox size="small"/>}
-                                                      label={'Нужна заливка'}/>
-                                </FormGroup>
+
+                              {this.fields}
 
                                 <FormControl>
                                     <FormLabel id="radio-buttons-group-label">Способ связи</FormLabel>
