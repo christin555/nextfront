@@ -207,6 +207,27 @@ class ProductView extends React.Component {
         </Box>
     }
 
+    get desc(){
+        const {category = '', brand = '', collection = ''} = this.props.values;
+
+        return `Купить ${category} ${brand} ${collection} в Тюмени по выгодной цене`
+    }
+    get title(){
+        const {category, brand, name, price, salePrice, unit} = this.props.values;
+
+        let title = `${category} ${brand} ${name}`
+
+          if(price){
+              const currentPrice = salePrice || price;
+
+              title +=  ` ${formatPrice({price: currentPrice, unit})}`;
+         }
+
+        title += ' - Мастер Пола';
+
+        return title;
+    }
+
     render() {
         const {values, hierarchy, fields, deviceType} = this.props;
         const isMobile = deviceType === 'mobile';
@@ -215,8 +236,8 @@ class ProductView extends React.Component {
             <>
                 <Meta
                     image={values?.imgs?.[0].src}
-                    desc={`Купить ${values.category} ${values.brand} ${values.collection} в Тюмени по выгодной цене`}
-                    title={`${values.category} ${values.name} от ${values.brand} - ${values.price} - Мастер Пола`}
+                    desc={this.desc}
+                    title={this.title}
                     breadcumbs={this.breadcumbs}
                 />
                 {
