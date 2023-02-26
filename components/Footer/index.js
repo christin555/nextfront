@@ -16,7 +16,7 @@ const Footer = () => (
           <Social />
       </div>
       <span className={s.policy}>
-          ©2019 - 2022, «Мастер Пола»
+          ©2019 - 2023, «Мастер Пола»
       </span>
       <Copy />
     </footer>
