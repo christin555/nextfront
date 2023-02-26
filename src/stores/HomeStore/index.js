@@ -50,7 +50,10 @@ class HomeStore {
 
     getArticles = async() => {
         try {
-            const articles = await api.post('articles/getArticles', {limit: 5, isPopular: true});
+            const articles = await api.post('articles/getArticles', {
+                limit: 5,
+                showOnMainPage: true
+            });
 
             this.setArticles(articles);
         } catch(e) {
