@@ -33,7 +33,10 @@ class HomeStore {
 
     getWorks = async () => {
         try {
-            const works = await api.post(`works/get`, {limit: 4});
+            const works = await api.post(`works/get`, {
+                showOnMainPage: true,
+                limit: 4
+            });
             this.setWorks(works);
         } catch (_) {
         }
@@ -52,7 +55,7 @@ class HomeStore {
         try {
             const articles = await api.post('articles/getArticles', {
                 limit: 5,
-                showOnMainPage: true
+                isPopular: true
             });
 
             this.setArticles(articles);
