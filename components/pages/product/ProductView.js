@@ -84,7 +84,8 @@ class ProductView extends React.Component {
                 rows.push(
                     <div className={s.row} key={name}>
                         <div>
-                            <span>{title}</span> <span> {values[name]}</span>
+                            <span className={s.key}>{title}</span>
+                            <span> {values[name]}</span>
                         </div>
                     </div>
                 );

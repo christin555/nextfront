@@ -222,6 +222,10 @@
   flex-direction: column;
   margin: 5px -5px;
 
+  .key {
+    color:  $gray-100;
+  }
+
   &::after {
     content: "";
     margin-top: -5px;
