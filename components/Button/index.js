@@ -35,7 +35,7 @@ const theme = createTheme({
                     },
                     '&[class*="contained"]': {
                         padding: '8px 12px',
-                        borderRadius: 0,
+                        //borderRadius: 0,
                         color: 'white',
                         '&:hover, &:active': {
                             color: 'white !important'
@@ -44,7 +44,7 @@ const theme = createTheme({
                     '&[class*="outlined"]': {
                         color: 'black',
                         border: `black 1px solid`,
-                        borderRadius: 0,
+                       // borderRadius: 0,
                         backgroundColor: 'inherit',
                         padding: '8px 12px',
                         '&[class*="active"]': {
