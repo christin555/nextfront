@@ -22,7 +22,7 @@ export default function Meta(props) {
         }
        {
            props.keywords &&
-           <meta name="Keywords" content={props.keywords} />
+           <meta name="keywords" content={props.keywords} />
        }
     </Head>
 }
