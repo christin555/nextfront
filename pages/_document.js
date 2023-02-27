@@ -22,23 +22,46 @@ export default class MyDocument extends Document {
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet"/>
 
-
-                  {/*  <!-- Vk pixel --> */}
-                    <script defer type="text/javascript" dangerouslySetInnerHTML={{
-                        __html: `!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("VK-RTRG-1240897-fKHEb"),VK.Retargeting.Hit()},document.head.appendChild(t)}();`
-                    }}>
-                    </script>
-                    <noscript>
-                        <img src="https://vk.com/rtrg?p=VK-RTRG-1240897-fKHEb" styles="position:fixed; left:-999px;" alt=""/>
-                    </noscript>
-
                     {/*   <!-- Yandex.Metrika counter --> */}
                     <script defer type="text/javascript" dangerouslySetInnerHTML={{
                         __html: `
+                        ( function () {
+
+                            var loadedMetrica = false,
+                            timerId;
+                            if ( navigator.userAgent.indexOf( 'YandexMetrika' ) > -1 ) {
+                                loadMetrica();
+                            } else {
+                                window.addEventListener( 'scroll', loadMetrica, {passive: true} );
+                                window.addEventListener( 'touchstart', loadMetrica );
+                                document.addEventListener( 'mouseenter', loadMetrica );
+                                document.addEventListener( 'click', loadMetrica );
+                                document.addEventListener( 'DOMContentLoaded', loadFallback );
+                            }
+             
+                            function loadFallback() {
+                                timerId = setTimeout( loadMetrica, 1000 );
+                            }
+             
+                            function loadMetrica( e ) {
+                                if ( e && e.type ) {
+                                    console.log( e.type );
+                                } else {
+                                    console.log( 'DOMContentLoaded' );
+                                }
+             
+                                if ( loadedMetrica ) {
+                                    return;
+                                }
              
                                 (function (m,e,t,r,i,k,a) {
                                     m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-                        m[i].l = 1 * new Date(); k = e.createElement(t),a = e.getElementsByTagName(t)[0],k.async = 1,k.src = r,a.parentNode.insertBefore(k,a)
+                                    m[i].l = 1 * new Date(); 
+                                    k = e.createElement(t),
+                                    a = e.getElementsByTagName(t)[0],
+                                    k.async = 1,
+                                    k.src = r,
+                                    a.parentNode.insertBefore(k,a)
                                 })
                                     (window,document,"script","/static/scripts/metrika.js","ym");
             
@@ -47,7 +70,29 @@ export default class MyDocument extends Document {
                                     trackLinks: true,
                                     accurateTrackBounce: true,
                                     webvisor: true
-                    });`
+                                });
+
+                                                   
+                                !function(){var t=document.createElement("script");
+                                t.type="text/javascript",
+                                t.async=!0,
+                                t.src='https://vk.com/js/api/openapi.js?169',
+                                t.pagehide = function(){
+                                    VK.Retargeting.Init("VK-RTRG-1240897-fKHEb"),VK.Retargeting.Hit()
+                                }, document.head.appendChild(t)}();
+             
+
+                                loadedMetrica = true;
+
+                                clearTimeout( timerId );
+
+                                window.removeEventListener( 'scroll', loadMetrica );
+                                window.removeEventListener( 'touchstart', loadMetrica );
+                                document.removeEventListener( 'mouseenter', loadMetrica );
+                                document.removeEventListener( 'click', loadMetrica );
+                                document.removeEventListener( 'DOMContentLoaded', loadFallback );
+                            }
+                        } )()`
                     }}>
                     </script>
                     <noscript>
@@ -57,8 +102,13 @@ export default class MyDocument extends Document {
                                  alt=""/>
                         </div>
                     </noscript>
-               
 
+                    <noscript>
+                        <img src="https://vk.com/rtrg?p=VK-RTRG-1240897-fKHEb" styles="position:fixed; left:-999px;" alt=""/>
+                    </noscript>
+
+
+                    {/*<meta name="facebook-domain-verification" content="vnlq6fu1lmnh8pdtmfxokzw7lrzqlh"/>*/}
                     {/* <!-- Global site tag (gtag.js) - Google Analytics -->*/}
                     <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-207713666-1"> </script>
                     <script defer dangerouslySetInnerHTML={{
