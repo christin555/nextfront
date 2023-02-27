@@ -95,6 +95,7 @@ export default class MyDocument extends Document {
                         } )()`
                     }}>
                     </script>
+
                     <noscript>
                         <div>
                             <img src="https://mc.yandex.ru/watch/85534450"
@@ -119,7 +120,6 @@ export default class MyDocument extends Document {
                         gtag('config', 'UA-207713666-1');`
                     }}>
                     </script>
-
 
                     <meta name="facebook-domain-verification" content="vnlq6fu1lmnh8pdtmfxokzw7lrzqlh"/>
                 </Head>
