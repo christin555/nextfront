@@ -9,7 +9,6 @@
     "prodstart": "pm2 start --name front npm -- start",
     "postbuild": "next-sitemap"
   },
-  "proxy": "http://localhost:8800",
   "dependencies": {
     "@brainhubeu/react-carousel": "^2.0.4",
     "@emotion/cache": "^11.6.0",
