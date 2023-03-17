@@ -23,6 +23,7 @@
   }
 
   img:hover .but {
+    border-radius: unset;
     border: 1px solid white;
   }
 
@@ -39,14 +40,12 @@
       border-bottom: 1px solid white;
       color: white;
       text-transform: uppercase;
+      border-radius: 0;
 
-      -webkit-transition: border-color 1s ease;
-      -moz-transition: border-color 1s ease;
-      -o-transition: border-color 1s ease;
-      -ms-transition: border-color 1s ease;
       transition: border-color 1s ease;
 
       &:hover {
+        border-radius: 4px;
         color: inherit;
         background: none;
         border: 1px solid white !important;

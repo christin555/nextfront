@@ -6,18 +6,18 @@ import About from './About';
 import Blog from './Blog';
 import Popular from './Popular';
 import Works from './Works';
-import Contact from "./Contact";
+import Contact from './Contact';
 
 const Blocks = () => (
-    <div className={s.homeBlocks}>
-        <Chars/>
-        <Catalog/>
-        <Popular/>
-        <Works/>
-        <Contact/>
-        <Blog/>
-        <About/>
-    </div>
+  <div className={s.homeBlocks}>
+    <Chars />
+    <Catalog />
+    <Popular />
+    <Works />
+    <Contact />
+    <Blog />
+    <About />
+  </div>
 );
 
 export default Blocks;

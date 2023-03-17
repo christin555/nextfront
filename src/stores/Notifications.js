@@ -17,22 +17,24 @@ export const alert = ({type, title = ' ', message = ' '}) => {
     container: 'top-right',
     dismiss: {
       duration: DELAY,
-      onScreen: true
+      onScreen: false
     },
-    showIcon: true
+    showIcon: true,
+    message,
+    title
   };
 
   switch (type) {
     case 'info':
-      store.addNotification({title, message, type, ...opt});
+      store.addNotification({type, ...opt});
       break;
     case 'success':
-      store.addNotification({title, message, type, ...opt});
+      store.addNotification({type, ...opt});
       break;
     case 'warning':
-      store.addNotification({title, message, type, ...opt});
+      store.addNotification({type, ...opt});
       break;
     case 'error':
-      store.addNotification({title, message, type: 'danger', ...opt});
+      store.addNotification({type: 'danger', ...opt});
   }
 };

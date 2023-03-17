@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ButtonUi from '@mui/material/Button';
 import cn from 'classnames';
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {Bed} from "@mui/icons-material";
 
 const theme = createTheme({
     palette: {

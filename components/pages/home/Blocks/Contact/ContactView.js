@@ -1,45 +1,24 @@
 import React from 'react';
 import s from './Style.module.scss';
-import styles from "../../../../Menu/menu.module.scss";
 import TextField from "../../../../TextField";
 import {inject} from "mobx-react";
-import MaskedInput from "react-text-mask";
 import Button from "../../../../Button";
-import cn from "classnames";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import PhoneInput from '../../../../Callme/PhoneInput';
 
 @inject(({CallmeStore}) => {
     return {
-        name: CallmeStore.name,
-        setName: CallmeStore.setName,
-        phone: CallmeStore.phone,
-        setPhone: CallmeStore.setPhone,
-        apply: CallmeStore.apply
+      name: CallmeStore.name,
+      setName: CallmeStore.setName,
+      apply: CallmeStore.apply
     };
 })
 class Contact extends React.Component {
-    textMaskCustom = (props) => {
-        const {inputRef, ...other} = props;
-
-        return (
-            <MaskedInput
-                {...other}
-                // ref={(ref) => {
-                //   inputRef(ref ? ref.inputElement : null);
-                // }}
-                mask={['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-                placeholderChar={'_'}
-                showMask={true}
-            />
-        );
-    }
 
     render() {
         const {
             name,
-            phone,
-            setPhone,
             setName,
             apply
         } = this.props;
@@ -54,9 +33,11 @@ class Contact extends React.Component {
                     а также вы всегда можете попросить его сделать  бесплатный расчет и фотографии товара в салоне
                 </p>
                 <span> Оставьте заявку на консультацию или звоните нам по телефону:
-                <a href={'tel:+79829881522'} className={s.phone}>
-                    {`  +7 (982) 988-15-22`}
-                        </a>
+                <a
+                  href={'tel:+79829881522'}
+                  className={s.phone}>
+                    {` +7 (982) 988-15-22`}
+                </a>
             </span>
                 <div className={s.inputs}>
                     <TextField
@@ -65,12 +46,9 @@ class Contact extends React.Component {
                         value={name}
                         variant="outlined"
                     />
-                    <TextField
-                        onChange={setPhone}
-                        value={phone}
-                        // label={'Номер'}
-                        InputProps={{inputComponent: this.textMaskCustom}}
-                        variant="outlined"
+                    <PhoneInput
+                      placeholder={'Телефон'}
+                      variant={'outlined'}
                     />
                     <Button
                         variant={'contained'}

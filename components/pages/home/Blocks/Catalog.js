@@ -2,8 +2,8 @@ import s from './Blocks.module.scss';
 import doors from '../../../../public/doors.jpg';
 import CatalogCard from '../../../CatalogCard';
 import Button from '../../../Button';
-import NextLink from "next/link";
-import React from "react";
+import NextLink from 'next/link';
+import React from 'react';
 
 //заменить на получение с бк
 const items = [
@@ -49,8 +49,8 @@ const items = [
   }
 ];
 
-function Blocks( ) {
- const blocksCatalog = items.map(({name, img, alias}, index) => (
+function Blocks() {
+  const blocksCatalog = items.map(({name, img, alias}, index) => (
     <CatalogCard key={index} name={name} img={img} alias={alias} />
   ));
 
@@ -58,12 +58,12 @@ function Blocks( ) {
     <div className={s.catalogBlock}>
       <div className={s.catalogItems}>
         <div className={s.mainBlock}>
-          <div className={s.back}>МАСТЕР <br/> ПОЛА </div>
+          <div className={s.back}>МАСТЕР <br /> ПОЛА </div>
           <div className={s.buttonContainer}>
-            <NextLink href={`/catalog`} passHref>
+            <NextLink href={`/catalog`} passHref={true}>
               <Button
-                  className={s.but}
-                  variant={'outlined'}
+                className={s.but}
+                variant={'outlined'}
               >
                 {'Смотреть весь каталог'}
               </Button>
@@ -74,6 +74,6 @@ function Blocks( ) {
       </div>
     </div>
   );
-};
+}
 
 export default Blocks;

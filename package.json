@@ -31,6 +31,10 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
+    "react-imask": "^6.4.3",
+    "react-multi-carousel": "^2.6.5",
+    "react-notifications-component": "^3.1.0",
+    "react-player": "^2.10.0",
     "react-responsive-carousel": "^3.2.22",
     "react-select": "^5.2.1",
     "react-text-mask": "^5.4.3",
@@ -40,6 +44,7 @@
     "swiper": "^8.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "@babel/core": "7.14.5",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.0",
@@ -53,9 +58,6 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.4.3",
     "prop-types": "^15.7.2",
-    "react-multi-carousel": "^2.6.5",
-    "react-notifications-component": "^3.1.0",
-    "react-player": "^2.10.0",
     "react-router-dom": "^6.2.1"
   }
 }

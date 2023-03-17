@@ -1,6 +1,6 @@
 import React from 'react';
 import TextFieldUi from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 const theme = createTheme({
     components: {
@@ -26,7 +26,7 @@ const theme = createTheme({
                         }
                     },
                     '& [class*="MuiInputBase-input"]': {
-                        'padding': '2px 5px',
+                        'padding': '4px 6px',
                         'minHeight': '20px',
                         '&:disabled': {
                             opacity: 0.5
@@ -76,10 +76,9 @@ const theme = createTheme({
 
 
 const TextField = (props) => (
- <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
      <TextFieldUi {...props} />
  </ThemeProvider>
-
 );
 
 export default TextField;

@@ -1,5 +1,9 @@
 @import './variables.module';
 
+.notification__title {
+  font-weight: 400 !important;
+}
+
 .react-multiple-carousel__arrow {
   min-height: 36px !important;
   min-width: 36px !important;

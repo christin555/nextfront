@@ -2,14 +2,14 @@ import {observable, action, makeObservable, computed, toJS} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from '../../api';
 import {alert} from '../Notifications';
-import axios from "axios";
+import axios from 'axios';
 
 class CallmeStore {
 
     @observable isShow;
     @observable status = statusEnum.LOADING;
-    @observable name;
-    @observable phone;
+    @observable name = '';
+    @observable phone = '';
     @observable square
     @observable channel = 'телефон';
     @observable listCalculates = [];
@@ -17,119 +17,122 @@ class CallmeStore {
     @observable values = {};
 
     constructor(category) {
-        makeObservable(this);
+      makeObservable(this);
 
-        this.category = category;
+      this.category = category;
     }
 
-    @computed get type(){
-        switch (this.category.toLowerCase()){
-            case "doors":
-                return 'doors'
-            case "plintus":
-                return 'plintus';
-            case "floor":
-                return 'floor'
-            default:
-                return 'other'
-        }
+    @computed get type() {
+      switch (this.category.toLowerCase()) {
+        case 'doors':
+          return 'doors';
+        case 'plintus':
+          return 'plintus';
+        case 'floor':
+          return 'floor';
+        default:
+          return 'other';
+      }
     }
-
 
     @action setListCalculates = (value, checked) => {
-        if (this.listCalculates.includes(value) && checked === false) {
-            this.listCalculates = toJS(this.listCalculates).filter(val => val !== value);
-        } else if (checked) {
-             this.listCalculates = [...this.listCalculates, value];
-        }
+      if (this.listCalculates.includes(value) && checked === false) {
+        this.listCalculates = toJS(this.listCalculates).filter((val) => val !== value);
+      } else if (checked) {
+        this.listCalculates = [...this.listCalculates, value];
+      }
     }
 
-    @action setValue =  (key, value) => {
-        this.values[key] = value;
+    @action setValue = (key, value) => {
+      this.values[key] = value;
     }
 
     @action setChannel = (_, value) => {
-        this.channel = value;
+      this.channel = value;
     }
 
     @action setSquare = ({target: {value}}) => {
-        this.square = value;
+      this.square = value;
     }
 
     @action toggleShow = () => {
-        this.isShow = !this.isShow;
+      this.isShow = !this.isShow;
     }
 
     @action setName = ({target: {value}}) => {
-        this.name = value;
+      this.name = value;
+    }
+
+    @action setClearPhone = (value) => {
+      this.phone = value;
     }
 
     @action setPhone = ({target: {value}}) => {
-        this.phone = value;
+      this.phone = value;
     }
 
     @action clear = () => {
-        this.phone = null;
-        this.name = null;
+      this.phone = null;
+      this.name = null;
     }
 
     checkFields = () => this.phone && this.name
 
     apply = (product) => {
-        const isreq = this.checkFields();
+      const isreq = this.checkFields();
 
-        if (!isreq) {
-            alert({type: 'warning', title: 'Заполните контактную информацию!'});
+      if (!isreq) {
+        alert({type: 'warning', title: 'Заполните контактную информацию!'});
 
-            return;
-        }
+        return;
+      }
 
-        this.sendEmail(product);
-        this.toggleShow();
+      this.sendEmail(product);
+      this.toggleShow();
     }
 
-    getLocation = async () => {
-        try {
-            const address = await axios.get('https://geolocation-db.com/json/').then(({data}) => data);
-            return address
-        } catch (e) {
-            return null
-        }
+    getLocation = async() => {
+      try {
+        const address = await axios.get('https://geolocation-db.com/json/').then(({data}) => data);
+
+        return address;
+      } catch(e) {
+        return null;
+      }
     }
 
     getProduct = (product) => {
-        if (!product) {
-            return null;
-        }
+      if (!product) {
+        return null;
+      }
 
-        return {
-            alias: product.alias,
-            name: product.name,
-            img: product.imgs && product.imgs[0]?.src
-        };
+      return {
+        alias: product.alias,
+        name: product.name,
+        img: product.imgs && product.imgs[0]?.src
+      };
     }
 
-    sendEmail = async (_product) => {
-        const {phone, name, channel, square, listCalculates, values} = this;
-        const product = this.getProduct(_product);
-        const address = await this.getLocation();
+    sendEmail = async(_product) => {
+      const {phone, name, channel, square, listCalculates, values} = this;
+      const product = this.getProduct(_product);
+      const address = await this.getLocation();
 
-        try {
-            const body = {phone, name, product, address, channel, square, listCalculates, ...values};
+      try {
+        const body = {phone, name, product, address, channel, square, listCalculates, ...values};
 
-            await api.post('send/callme ', body);
+        await api.post('send/callme ', body);
 
-            alert({
-                type: 'success',
-                title: 'Ваша заявка принята! Наш специалист свяжется с вами в ближайщее время'
-            });
+        alert({
+          type: 'success',
+          title: 'Ваша заявка принята! Наш специалист свяжется с вами в ближайшее время'
+        });
 
-            this.clear();
+        this.clear();
 
-        } catch (e) {
-            console.log(e);
-            alert({type: 'error', title: 'Извините, произошла ошибка при создании заявки'});
-        }
+      } catch(e) {
+        alert({type: 'error', title: 'Извините, произошла ошибка при создании заявки'});
+      }
     }
 }
 
