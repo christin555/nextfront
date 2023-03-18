@@ -327,7 +327,14 @@ export class BaseFilterStore {
         await this.beforeValueCheck(key, item, checked);
 
         await this.setPath(key, id, checked);
-        this.setChecked(key, id, checked);
+
+        if(key === 'price' && !checked) {
+            this.setPrice(null, 'minPrice');
+            this.setPrice(null, 'maxPrice');
+        } else {
+            this.setChecked(key, id, checked);
+        }
+
         this.setChips(key, item, checked);
 
         await this.afterValueCheck(key, item, checked);
@@ -376,7 +383,9 @@ export class BaseFilterStore {
                 val: item.id
             });
         } else {
-            this.chips.delete(_key);
+            this.chips.has(_key) ?
+              this.chips.delete(_key) :
+              this.chips.has(key) ? this.chips.delete(key) : null;
         }
     };
 

@@ -9,6 +9,13 @@ const Price = (props) => {
   const [minPrice, _setMinPrice] = useState(formatPrice({price: checked.minPrice, unit}));
   const [maxPrice, _setMaxPrice] = useState(formatPrice({price: checked.maxPrice, unit}));
 
+  React.useEffect(() => {
+    _setMinPrice(formatPrice({price: checked.minPrice, unit}));
+  }, [checked.minPrice]);
+  React.useEffect(() => {
+    _setMaxPrice(formatPrice({price: checked.maxPrice, unit}));
+  }, [checked.maxPrice]);
+
   const setMinPrice = (price) => _setMinPrice(formatPrice({price, unit}));
   const setMaxPrice = (price) => _setMaxPrice(formatPrice({price, unit}));
 
