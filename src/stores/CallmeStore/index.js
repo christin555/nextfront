@@ -74,8 +74,8 @@ class CallmeStore {
     }
 
     @action clear = () => {
-      this.phone = null;
-      this.name = null;
+      this.phone = '';
+      this.name = '';
       this.failed = false;
     }
 
@@ -84,7 +84,7 @@ class CallmeStore {
     }
 
     @computed get isNumberValid() {
-      return this.phone.replace(/[^0-9]/g, '').length === 11;
+      return this.phone?.replace(/[^0-9]/g, '').length === 11;
     }
 
     checkFields = () => this.phone && this.name;
