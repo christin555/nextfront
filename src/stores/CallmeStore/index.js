@@ -16,6 +16,8 @@ class CallmeStore {
     @observable category = 'floors';
     @observable values = {};
 
+    @observable failed = false;
+
     constructor(category) {
       makeObservable(this);
 
@@ -74,21 +76,39 @@ class CallmeStore {
     @action clear = () => {
       this.phone = null;
       this.name = null;
+      this.failed = false;
     }
 
-    checkFields = () => this.phone && this.name
+    @action setFail = (failed) => {
+      this.failed = failed;
+    }
+
+    @computed get isNumberValid() {
+      return this.phone.replace(/[^0-9]/g, '').length === 11;
+    }
+
+    checkFields = () => this.phone && this.name;
 
     apply = (product) => {
       const isreq = this.checkFields();
 
       if (!isreq) {
-        alert({type: 'warning', title: 'Заполните контактную информацию!'});
+        alert({type: 'warning', title: 'Заполните контактную информацию'});
+        this.setFail(true);
+
+        return;
+      }
+
+      if (!this.isNumberValid) {
+        alert({type: 'error', title: 'Некорректный номер телефона'});
+        this.setFail(true);
 
         return;
       }
 
       this.sendEmail(product);
       this.toggleShow();
+      this.clear();
     }
 
     getLocation = async() => {

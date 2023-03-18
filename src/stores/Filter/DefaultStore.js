@@ -17,7 +17,7 @@ export class DefaultStore extends BaseFilterStore {
 
     constructor(RootStore) {
         super(RootStore);
-        this.unitPrice = priceUnit.RUBLE;
+        this.unitPrice = '₽';
         makeObservable(this);
     }
 

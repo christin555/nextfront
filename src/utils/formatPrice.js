@@ -1,22 +1,12 @@
-import {priceUnit} from '../enums'
-
-const formatPrice = ({price, withCurrency = true, unit = priceUnit.RUBLE}) => {
-    if (!price) {
-        return '';
-    }
-    const clearPrice =
+const formatPrice = ({price, unit = ''}) => {
+  if (!price) {
+    return '';
+  }
+  const clearPrice =
         typeof price === 'string' ? price.replace(/\D+/g, '') : price;
 
-    return `${new Intl.NumberFormat('ru-RU')
-        .format(clearPrice)} ${withCurrency ? labelsUnit[unit] : ''}`;
-};
-
-const labelsUnit = {
-    [priceUnit.RUBLE]: '₽',
-    [priceUnit.METRKV]: '₽/м²',
-    [priceUnit.METRPOG]: '₽/м.п',
-    [priceUnit.KOMPLEKT]: '₽/комплект',
-    [priceUnit.POLOTNO]: '₽/полотно'
+  return `${new Intl.NumberFormat('ru-RU')
+    .format(clearPrice)} ${unit}`;
 };
 
 export default formatPrice;

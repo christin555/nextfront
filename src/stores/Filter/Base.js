@@ -13,7 +13,7 @@ export class BaseFilterStore {
     @observable category;
     @observable disabled = {};
     @observable selection = {};
-    @observable unitPrice = priceUnit.RUBLE;
+    @observable unitPrice = '₽';
 
     // Override in child;
     fieldsLabel = {};

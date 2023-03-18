@@ -6,7 +6,7 @@ import {priceUnit} from "../../enums";
 export class DoorsStore extends BaseFilterStore {
     constructor(RootStore) {
         super(RootStore);
-        this.unitPrice = priceUnit.RUBLE;
+        this.unitPrice = '₽';
 
         makeObservable(this);
     }

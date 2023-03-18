@@ -7,7 +7,9 @@ import TextField from '../TextField';
   return {
     phone: CallmeStore.phone,
     setPhone: CallmeStore.setPhone,
-    setClearPhone: CallmeStore.setClearPhone
+    setClearPhone: CallmeStore.setClearPhone,
+    isNumberValid: CallmeStore.isNumberValid,
+    failed: CallmeStore.failed
   };
 })
 
@@ -24,11 +26,19 @@ class PhoneInput extends React.Component {
     this.props.setClearPhone(val);
   }
 
+  onPaste = (event) => {
+    const val = event.clipboardData.getData('text');
+
+    this.props.setClearPhone(val);
+  }
+
   onBlur = ({target}) => {
     const val = target.value;
 
     if (!val || val === '+7' || val === '+7 (') {
       this.props.setClearPhone('');
+    } else {
+      this.props.setClearPhone(val);
     }
   }
 
@@ -59,11 +69,16 @@ class PhoneInput extends React.Component {
       label,
       phone,
       variant,
-      placeholder
+      placeholder,
+      isNumberValid,
+      failed
     } = this.props;
 
     return (
       <TextField
+        color={'error'}
+        error={true || failed && !isNumberValid}
+        onPaste={this.onPaste}
         onBlur={this.onBlur}
         onFocus={this.focusOn}
         value={phone}

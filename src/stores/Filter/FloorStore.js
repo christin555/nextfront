@@ -28,7 +28,7 @@ export class FloorStore extends BaseFilterStore {
 
     constructor(RootStore) {
         super(RootStore);
-        this.unitPrice = priceUnit.METRKV;
+        this.unitPrice = '₽/м²';
         makeObservable(this);
     }
 

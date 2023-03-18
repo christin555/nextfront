@@ -62,7 +62,7 @@ const theme = createTheme({
                             borderColor: 'rgba(109,109,109,0.99)'
                         },
                         '&:focus, &:focus-within': {
-                            border: `1px solid ${'rgba(68,67,67,0.83)'}`
+                            borderColor: 'rgba(68,67,67,0.83)'
                         },
                         '& svg': {
                             fontSize: '20px'
@@ -74,11 +74,10 @@ const theme = createTheme({
     },
 });
 
-
 const TextField = (props) => (
   <ThemeProvider theme={theme}>
-     <TextFieldUi {...props} />
- </ThemeProvider>
+    <TextFieldUi {...props} />
+  </ThemeProvider>
 );
 
 export default TextField;

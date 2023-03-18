@@ -15,7 +15,8 @@ import PhoneInput from './PhoneInput';
     toggleShow: CallmeStore.toggleShow,
     name: CallmeStore.name,
     setName: CallmeStore.setName,
-    apply: CallmeStore.apply
+    apply: CallmeStore.apply,
+    failed: CallmeStore.failed
   };
 })
 class Callme extends React.Component {
@@ -31,7 +32,8 @@ class Callme extends React.Component {
       buttonText,
       buttonProps,
       isShowButText = true,
-      ButtonCall
+      ButtonCall,
+      failed
     } = this.props;
     const headerTitle = product && 'Оставить заявку на товар' || 'Заказать звонок';
 
@@ -78,6 +80,7 @@ class Callme extends React.Component {
               }
               <div className={s.inputs}>
                 <TextField
+                  error={failed && !name}
                   inputProps={{onChange: setName}}
                   label={'Имя'}
                   value={name}

@@ -48,7 +48,7 @@ class Delivery extends React.Component {
                                 <ul className="list">
                                     <li className="list-item">наличные</li>
                                     <li className="list-item">банковской картой</li>
-                                    <li className="list-item">выставление счета(для юридических лиц)</li>
+                                    <li className="list-item">выставление счета (для юридических лиц)</li>
                                 </ul>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ class Delivery extends React.Component {
                                 <ul className="list">
                                     <li className="list-item">наличные</li>
                                     <li className="list-item">банковской картой</li>
-                                    <li className="list-item">выставление счета(для юридических лиц)</li>
+                                    <li className="list-item">выставление счета (для юридических лиц)</li>
                                 </ul>
                             </div>
                         </div>

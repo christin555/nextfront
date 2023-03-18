@@ -1,28 +1,28 @@
 import {computed, makeObservable} from 'mobx';
 import {BaseFilterStore} from './Base';
-import {priceUnit} from "../../enums";
+import {priceUnit} from '../../enums';
 
 export class SportStore extends BaseFilterStore {
     fieldsLabel = {
-        'colorFamily': 'Оттенок',
-        'totalThickness': 'Толщина',
-        'collections': 'Коллекция',
-        'bestseller': 'Хит продаж',
-        'price': 'Цена',
-        isPopular: 'Хит продаж'
+      'colorFamily': 'Оттенок',
+      'totalThickness': 'Толщина',
+      'collections': 'Коллекция',
+      'bestseller': 'Хит продаж',
+      'price': 'Цена',
+      isPopular: 'Хит продаж'
     };
 
     constructor(RootStore) {
-        super(RootStore);
-        this.unitPrice = priceUnit.METRKV;
-        makeObservable(this);
+      super(RootStore);
+      this.unitPrice = '₽/м²';
+      makeObservable(this);
     }
 
     @computed get collections() {
-        return this.values.collections;
+      return this.values.collections;
     }
 
     @computed get brands() {
-        return this.values.brands;
+      return this.values.brands;
     }
 }
