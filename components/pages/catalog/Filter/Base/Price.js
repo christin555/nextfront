@@ -1,14 +1,7 @@
 import React, {useState} from 'react';
-import {FormControlLabel} from '@mui/material';
 import s from '../Filter.module.scss';
-import Checkbox from '@mui/material/Checkbox';
-import PropTypes from 'prop-types';
 import TextField from '../../../../TextField';
 import formatPrice from '../../../../../src/utils/formatPrice';
-//import TextField from '@mui/material/TextField';
-
-const MAX = 4200;
-const MIN = 1000;
 
 const Price = (props) => {
   const {checked, onSave, onChange, unit} = props;
@@ -42,7 +35,7 @@ const Price = (props) => {
         onChange={({target: {value}}) => setMinPrice(value)}
         id='outlined-basic'
         variant='outlined'
-        placeholder={'1 000'}
+        placeholder={'0'}
       />
       <div className={s.rangeSeparator} />
       <TextField
@@ -51,7 +44,7 @@ const Price = (props) => {
         onChange={({target: {value}}) => setMaxPrice(value)}
         id='outlined-basic'
         variant='outlined'
-        placeholder={'4 200'}
+        placeholder={'4 500'}
       />
     </div>
   );

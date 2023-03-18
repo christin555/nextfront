@@ -112,10 +112,19 @@ export class BaseFilterStore {
 
         checked['minPrice'] = price[0];
         checked['maxPrice'] = price[1];
-        const label = ` от ${formatPrice({price: price[0], unit: this.unitPrice})} до ${formatPrice({
-            price: price[1],
+
+        console.log(price[0])
+        const min = price[0] > 0 ? `от ${formatPrice({
+              price: price[0],
+              unit: this.unitPrice
+          })} ` : '';
+
+        const max =  price[1] > 0 ? `до ${formatPrice({
+            price:  price[1],
             unit: this.unitPrice
-        })}`;
+        })}` : ''
+
+        const label = `${min} ${max}`.trim();
 
         chips.set('price', {
             fieldName: this.fieldsLabel['price'],
@@ -263,24 +272,40 @@ export class BaseFilterStore {
     }
 
     setPricePath = async (price, key) => {
-        /// await this.resetPage();
-        !this.checked['minPrice'] && this.setPrice('1000', 'minPrice');
-        !this.checked['maxPrice'] && this.setPrice('20000', 'maxPrice');
+        console.log('setPricePath', typeof this.checked['minPrice'], !this.checked['maxPrice'], !this.checked['minPrice'] && !this.checked['maxPrice']);
+
+        if(!Number(this.checked['minPrice']) && !Number(this.checked['maxPrice'])){
+            this.setPrice(null, 'minPrice');
+            this.setPrice(null, 'maxPrice');
+
+            await this.setPathPrice(null, true);
+
+            return;
+        }
 
         // await this.resetPage();
-        await this.setPathPrice(
-            `${this.checked['minPrice']}-${this.checked['maxPrice']}`.replace(/\s/g, ''),
-            true
-        );
+        !this.checked['minPrice'] && this.setPrice('0', 'minPrice');
+        // !this.checked['maxPrice'] && this.setPrice('20000', 'maxPrice');
+        // await this.resetPage();
+
+        let pathString = this.checked['maxPrice'] > 0 ?
+          `${this.checked['minPrice']}-${this.checked['maxPrice']}` :
+          `${this.checked['minPrice']}`;
+
+        await this.setPathPrice(pathString.replace(/\s/g, ''), true);
 
         const oldChip = this.chips.get('price');
-        const label = ` от ${formatPrice(
+        const min = this.checked['minPrice'] > 0 ? `от ${formatPrice(
             {
-                price: this.checked['minPrice'], 
+                price: this.checked['minPrice'],
                 unit: this.unitPrice
-            })} до ${formatPrice({
+            })} ` : '';
+
+        const max = this.checked['maxPrice'] > 0 ? `до ${formatPrice({
             price: this.checked['maxPrice'],
-            unit: this.unitPrice})}`;
+            unit: this.unitPrice})}` : '';
+
+        const label = `${min} ${max}`.trim();
 
         if (oldChip) {
             oldChip.label = label;
