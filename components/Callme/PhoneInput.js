@@ -76,8 +76,7 @@ class PhoneInput extends React.Component {
 
     return (
       <TextField
-        color={'error'}
-        error={true || failed && !isNumberValid}
+        error={failed && !isNumberValid}
         onPaste={this.onPaste}
         onBlur={this.onBlur}
         onFocus={this.focusOn}
