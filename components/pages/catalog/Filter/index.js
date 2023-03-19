@@ -7,10 +7,10 @@ class Filter extends Component {
     const Fields = filterFabric(this.props.category);
 
     if (!Fields) {
-      return <div/>;
+      return <div />;
     }
 
-    return Fields
+    return Fields;
   }
 }
 

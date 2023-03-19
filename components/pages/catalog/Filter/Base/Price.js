@@ -2,22 +2,23 @@ import React, {useState} from 'react';
 import s from '../Filter.module.scss';
 import TextField from '../../../../TextField';
 import formatPrice from '../../../../../src/utils/formatPrice';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const Price = (props) => {
   const {checked, onSave, onChange, unit} = props;
 
-  const [minPrice, _setMinPrice] = useState(formatPrice({price: checked.minPrice, unit}));
-  const [maxPrice, _setMaxPrice] = useState(formatPrice({price: checked.maxPrice, unit}));
+  const [minPrice, _setMinPrice] = useState(formatPrice({price: checked.minPrice}));
+  const [maxPrice, _setMaxPrice] = useState(formatPrice({price: checked.maxPrice}));
 
   React.useEffect(() => {
-    _setMinPrice(formatPrice({price: checked.minPrice, unit}));
+    _setMinPrice(formatPrice({price: checked.minPrice}));
   }, [checked.minPrice]);
   React.useEffect(() => {
-    _setMaxPrice(formatPrice({price: checked.maxPrice, unit}));
+    _setMaxPrice(formatPrice({price: checked.maxPrice}));
   }, [checked.maxPrice]);
 
-  const setMinPrice = (price) => _setMinPrice(formatPrice({price, unit}));
-  const setMaxPrice = (price) => _setMaxPrice(formatPrice({price, unit}));
+  const setMinPrice = (price) => _setMinPrice(formatPrice({price}));
+  const setMaxPrice = (price) => _setMaxPrice(formatPrice({price}));
 
   const onBlur = (val, type) => {
     const _val = parseInt(val.replace(/\s+/g, ''), 10);
@@ -43,6 +44,9 @@ const Price = (props) => {
         id='outlined-basic'
         variant='outlined'
         placeholder={'0'}
+        InputProps={{
+          endAdornment: <InputAdornment position='end'>{unit}</InputAdornment>
+        }}
       />
       <div className={s.rangeSeparator} />
       <TextField
@@ -51,7 +55,10 @@ const Price = (props) => {
         onChange={({target: {value}}) => setMaxPrice(value)}
         id='outlined-basic'
         variant='outlined'
-        placeholder={'4 500'}
+        placeholder={'0'}
+        InputProps={{
+          endAdornment: <InputAdornment position='end'>{unit}</InputAdornment>
+        }}
       />
     </div>
   );

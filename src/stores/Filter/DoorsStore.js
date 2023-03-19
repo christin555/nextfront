@@ -15,7 +15,8 @@ export class DoorsStore extends BaseFilterStore {
         'collectionId': 'Коллекция',
         'finishingMaterial': 'Материал отделки',
         'brandId': 'Фабрика',
-        isPopular: 'Хит продаж'
+        isPopular: 'Хит продаж',
+        'price': 'Цена',
     };
 
     @computed get brands() {

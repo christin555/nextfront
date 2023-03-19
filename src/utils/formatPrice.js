@@ -5,8 +5,13 @@ const formatPrice = ({price, unit = ''}) => {
   const clearPrice =
         typeof price === 'string' ? price.replace(/\D+/g, '') : price;
 
-  return `${new Intl.NumberFormat('ru-RU')
-    .format(clearPrice)} ${unit}`;
+  const priceString = new Intl.NumberFormat('ru-RU').format(clearPrice);
+
+  if (!unit) {
+    return priceString;
+  }
+
+  return `${priceString} ${unit}`;
 };
 
 export default formatPrice;

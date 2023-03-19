@@ -6,66 +6,66 @@ import classNames from 'classnames';
 import Categories from './Categories';
 import Products from './Products';
 import Filter from '../Filter';
-import Banner from "./Banner";
-import Blog from "./Blog";
-import Title from "../../../Title";
-import Watched from "./Watched";
+import Banner from './Banner';
+import Blog from './Blog';
+import Title from '../../../Title';
+import Watched from './Watched';
 
 @inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {
-    return {
-        hierarchy: CatalogStore.hierarchy || [],
-        fastfilter: CatalogStore.fastfilter,
-        category: CatalogStore.category,
-        selection: ActiveFilterStore.selection
-    };
+  return {
+    hierarchy: CatalogStore.hierarchy || [],
+    fastfilter: CatalogStore.fastfilter,
+    category: CatalogStore.category,
+    selection: ActiveFilterStore.selection
+  };
 }) @observer
 class Content extends React.Component {
-    constructor(props) {
-        super(props);
-        this.contentRef = React.createRef();
+  constructor(props) {
+    super(props);
+    this.contentRef = React.createRef();
+  }
+
+  get desc() {
+    const {selection} = this.props;
+
+    if (!selection?.desc) {
+      return <div />;
     }
 
-    get desc() {
-        const {selection} = this.props;
+    return <div dangerouslySetInnerHTML={{__html: selection.desc}} className={s.selectionDesc} />;
+  }
 
-        if (!selection?.desc) {
-            return <div/>
-        }
+  render() {
+    const {hierarchy, fastfilter, category} = this.props;
 
-        return <div dangerouslySetInnerHTML={{__html: selection.desc}} className={s.selectionDesc}/>
+    if (fastfilter) {
+      return (
+        <div className={s.container}>
+          {this.InformBlock}
+          <div className={classNames(s.content, s.buttomMargin)} ref={this.contentRef}>
+            <Products contentRef={this.contentRef} />
+          </div>
+          <Categories />
+        </div>
+      );
     }
 
-    render() {
-        const {hierarchy, fastfilter, category} = this.props;
-
-        if (fastfilter) {
-            return (
-                <div className={s.container}>
-                    {this.InformBlock}
-                    <div className={classNames(s.content, s.buttomMargin)} ref={this.contentRef}>
-                        <Products contentRef ={this.contentRef}/>
-                    </div>
-                    <Categories/>
-                </div>
-            );
-        }
-
-        return (
-            <div className={s.container}>
-                <Banner className={s.banner}/>
-                <Hierarchy hierarchy={hierarchy} className={s.hierarchy}/>
-                <Title title={this.props.headerTitle}/>
-                {this.desc}
-                <Categories/>
-                <div className={s.content} ref={this.contentRef}>
-                    <Filter category={category}/>
-                    <Products contentRef ={this.contentRef}/>
-                </div>
-                <Blog/>
-                <Watched/>
-            </div>
-        );
-    }
+    return (
+      <div className={s.container}>
+        <Banner className={s.banner} />
+        <Hierarchy hierarchy={hierarchy} className={s.hierarchy} />
+        <Title title={this.props.headerTitle} />
+        {this.desc}
+        <Categories />
+        <div className={s.content} ref={this.contentRef}>
+          <Filter category={category} />
+          <Products contentRef={this.contentRef} />
+        </div>
+        <Blog />
+        <Watched />
+      </div>
+    );
+  }
 }
 
 export default Content;
