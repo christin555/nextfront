@@ -14,6 +14,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormGroup from '@mui/material/FormGroup';
+import PhoneInput from '../Callme/PhoneInput';
 
 @inject(({CallmeStore}) => {
     return {
@@ -183,16 +184,11 @@ class Callme extends React.Component {
                                     value={name}
                                     variant="standard"
                                 />
-                                <TextField
-                                    onChange={setPhone}
-                                    value={phone}
-                                    // label={'Номер'}
-                                    InputProps={{inputComponent: this.textMaskCustom}}
-                                    variant="standard"
+                               <PhoneInput
+                                  variant={'standard'}
+                                  label={'Телефон'}
                                 />
-
                               {this.fields}
-
                                 <FormControl>
                                     <FormLabel id="radio-buttons-group-label">Способ связи</FormLabel>
                                     <RadioGroup
