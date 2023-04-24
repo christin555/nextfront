@@ -1,7 +1,7 @@
 @import '../../styles/variables.module';
 
 .container {
-  min-height: 100px;
+  min-height: 400px;
 }
 
 .image {
@@ -92,6 +92,10 @@
 
 
 @media only screen and (max-width: 930px) {
+
+  .container {
+    min-height: 200px !important;
+  }
 
   .image {
     img {

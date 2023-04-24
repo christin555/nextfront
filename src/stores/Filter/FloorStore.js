@@ -22,7 +22,8 @@ export class FloorStore extends BaseFilterStore {
       'resistanceClasses': 'Класс нагрузки',
       'thickness': 'Толщина',
       'width': 'Ширина',
-      'substrateThickness': 'Со встроенной подложкой'
+      'substrateThickness': 'Со встроенной подложкой',
+      'secondaryBacking': 'Тип основы'
     };
 
     constructor(RootStore) {

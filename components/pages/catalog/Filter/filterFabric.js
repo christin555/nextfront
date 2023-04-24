@@ -6,43 +6,41 @@ const filterFabric = (category) => {
   let storeName = '';
 
   let useFilter = false;
+  const addFieldsBase = ['price', 'isPopular', 'isSale'];
 
   switch (category) {
     case 'doors':
       storeName = 'DoorsStore';
-      addFields = ['isPopular', 'price'];
+      addFields = addFieldsBase;
       useFilter = true;
       break;
     case 'keramogranit':
       storeName = 'KeramogranitStore';
-      addFields = ['price', 'isPopular'];
+      addFields = addFieldsBase;
       useFilter = true;
       break;
     case 'quartzvinyl':
     case 'quartzvinyl_kleevay':
+    case 'laminate':
+    case 'probkovoe_pokrytie':
+    case 'linoleum':
       storeName = 'FloorStore';
-      addFields = ['price', 'isPopular', 'isSale'];
+      addFields = addFieldsBase;
       useFilter = true;
       break;
     case 'quartzvinyl_zamkovay':
       storeName = 'FloorStore';
-      addFields = ['price', 'isPopular', 'isSale', 'substrateThickness'];
-      useFilter = true;
-      break;
-    case 'laminate':
-    case 'probkovoe_pokrytie':
-      storeName = 'FloorStore';
-      addFields = ['price', 'isPopular'];
+      addFields = [...addFieldsBase, 'substrateThickness'];
       useFilter = true;
       break;
     case 'sport':
       storeName = 'SportStore';
-      addFields = ['isPopular', 'price'];
+      addFields = addFieldsBase;
       useFilter = true;
       break;
     case 'kley':
       storeName = 'DefaultStore';
-      addFields = ['isPopular', 'price'];
+      addFields = addFieldsBase;
       useFilter = true;
       break;
   }
