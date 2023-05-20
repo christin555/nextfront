@@ -33,7 +33,7 @@ const items = [
     textButton: 'Подробнее'
   },
   {
-    background: 'https://master-pola.com/dashboard/uploads/alpinefloor_desc_0_75x_91e78189f2.png',
+    background: 'https://master-pola.com/dashboard/uploads/alpinefloor_desc_0_99x_a79a010223.jpg',
     mobileBackground: 'https://master-pola.com/dashboard/uploads/alpine_flor_mob_0_75x_c81dc5dc8e.png'
   },
   {
