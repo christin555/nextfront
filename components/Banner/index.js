@@ -53,7 +53,7 @@ const CarouselView = ({deviceType, className, setSelection, items}) => {
                 {
                   img && (
                     <div className={s.image}>
-                      <img src={img} />
+                      <img src={img} alt={title || 'Ламинат, кварцвинил, керамогранит в Тюмени'} />
                     </div>
                   ) || null
                 }
@@ -95,7 +95,7 @@ const CarouselView = ({deviceType, className, setSelection, items}) => {
                   </div>
 
                   <div className={s.background}>
-                    <img src={isMobile && mobileBackground || background} />
+                    <img src={isMobile && mobileBackground || background} alt={title || 'Ламинат, кварцвинил, керамогранит в Тюмени'} />
                   </div>
                 </div>
               </div>
