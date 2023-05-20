@@ -21,7 +21,7 @@ const Gallery = (props) => {
         <div className="swiper-zoom-container">
         <img
             placeholder={'blur'}
-            alt={'Слайд'}
+            alt={'Напольные покрытие и двери'}
             src={src}
         />
         </div>
