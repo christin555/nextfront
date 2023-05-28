@@ -70,7 +70,7 @@ class ArticlesView extends React.Component {
                 <div className={s.content}>
                     <div className={s.sidebar}>
                         <Typography color='h4' fontWeight={400}>
-                            Это тоже стоит увидеть...
+                            Другие посты
                         </Typography>
                         <div className={s.cards}>
                             <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(0, 2)}/>
