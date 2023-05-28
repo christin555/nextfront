@@ -12,11 +12,12 @@ export class DoorsStore extends BaseFilterStore {
     }
 
     fieldsLabel = {
-        'collectionId': 'Коллекция',
-        'finishingMaterial': 'Материал отделки',
-        'brandId': 'Фабрика',
+        collectionId: 'Коллекция',
+        finishingMaterial: 'Материал отделки',
+        brandId: 'Фабрика',
         isPopular: 'Хит продаж',
-        'price': 'Цена',
+        price: 'Цена',
+        isSale: 'Со скидкой'
     };
 
     @computed get brands() {

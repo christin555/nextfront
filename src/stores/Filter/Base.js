@@ -1,9 +1,8 @@
-import {action, computed, reaction, makeObservable, observable, toJS} from 'mobx';
+import {action, computed, makeObservable, observable, toJS} from 'mobx';
 import api from '../../api';
 import {alert} from '../Notifications';
 import Router from 'next/router';
 import formatPrice from "../../utils/formatPrice";
-import {priceUnit} from "../../enums";
 
 export class BaseFilterStore {
     @observable values = {};

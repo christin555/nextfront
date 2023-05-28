@@ -9,7 +9,8 @@ export class SportStore extends BaseFilterStore {
       'collections': 'Коллекция',
       'bestseller': 'Хит продаж',
       'price': 'Цена',
-      isPopular: 'Хит продаж'
+      isPopular: 'Хит продаж',
+      'isSale': 'Со скидкой'
     };
 
     constructor(RootStore) {

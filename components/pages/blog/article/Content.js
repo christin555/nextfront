@@ -115,7 +115,7 @@ class Content extends React.Component {
                             media?.map(({src, type}, index) => {
                                 return <SwiperSlide key={index}>
                                     <div className={s.slide}>
-                                        <img src={src}/>
+                                        <img src={src} alt={title}/>
                                     </div>
                                 </SwiperSlide>
                             })

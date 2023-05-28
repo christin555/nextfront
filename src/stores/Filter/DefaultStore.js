@@ -1,31 +1,31 @@
 import {computed, makeObservable} from 'mobx';
 import {BaseFilterStore} from './Base';
-import {priceUnit} from "../../enums";
 
 export class DefaultStore extends BaseFilterStore {
     fieldsLabel = {
-        'using': 'Область применения',
-        'materialOfBase': 'Материал основы',
-        'bestseller': 'Хит продаж',
-        'price': 'Цена',
-        isPopular: 'Хит продаж',
-        'brandId': 'Бренд',
-        'collectionId': 'Коллекция',
-        'collections' : 'Коллекция',
-        'brands' : 'Бренд',
+      using: 'Область применения',
+      materialOfBase: 'Материал основы',
+      bestseller: 'Хит продаж',
+      price: 'Цена',
+      isPopular: 'Хит продаж',
+      brandId: 'Бренд',
+      collectionId: 'Коллекция',
+      collections: 'Коллекция',
+      brands: 'Бренд',
+      isSale: 'Со скидкой'
     };
 
     constructor(RootStore) {
-        super(RootStore);
-        this.unitPrice = '₽';
-        makeObservable(this);
+      super(RootStore);
+      this.unitPrice = '₽';
+      makeObservable(this);
     }
 
     @computed get collections() {
-        return this.values.collections;
+      return this.values.collections;
     }
 
     @computed get brands() {
-        return this.values.brands;
+      return this.values.brands;
     }
 }
