@@ -30,7 +30,7 @@ const FinishingMaterialBlock = (props) => {
             materials.map(({id, name, img}) => (
               <div key={id}>
                 <div className={s.materialImg}>
-                  <Image alt={name} layout='fill' src={img} />
+                  <img alt={name} src={img} />
                 </div>
                 {name && <span>{name}</span> || null}
               </div>
