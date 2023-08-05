@@ -3,9 +3,10 @@ import {FormControlLabel} from '@mui/material';
 import s from '../Filter.module.scss';
 import Checkbox from '@mui/material/Checkbox';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 const FormCheckbox = (props) => {
-  const {checked, onChange, name, id, disabled} = props;
+  const {checked, onChange, name, id, disabled, img} = props;
 
   const handleChecked = (evt) => {
     if (onChange) {
@@ -13,11 +14,18 @@ const FormCheckbox = (props) => {
     }
   };
 
-  return !disabled &&
+  return !disabled && (
     <FormControlLabel
       className={s.checkboxControl}
       key={id}
-      control={(
+      control={(img ? (
+        <div
+          onClick={() => !disabled && onChange(!checked, {name, id})}
+          className={cn(s.imgCheckbox, {[s.checked]: checked, [s.disabled]: disabled})}
+        >
+          <img src={img} alt={name} />
+        </div>
+      ) : (
         <Checkbox
           disabled={disabled}
           size={'small'}
@@ -27,11 +35,13 @@ const FormCheckbox = (props) => {
           style={{padding: '4px 9px'}}
           color={'secondary'}
         />
+      )
       )}
       label={name}
-    /> || null
+    />
+  ) || null;
 
-}
+};
 
 FormCheckbox.propTypes = {
   checked: PropTypes.bool,
