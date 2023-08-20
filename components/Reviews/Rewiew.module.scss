@@ -78,6 +78,10 @@
       height: 100%;
       object-fit: cover;
     }
+
+    img:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -113,7 +117,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   .container {
     flex-direction: column;
     @include paddingStandard;

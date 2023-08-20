@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import s from './Rewiew.module.scss';
 import StarIcon from '@mui/icons-material/Star';
 import Gallery from '../Carousel/gallery';
+import {Portal} from '@mui/base/Portal';
 
 const Stars = () => (
   <span className={s.stars}>
@@ -15,6 +16,7 @@ const Stars = () => (
 
 const ReviewsCard = (props) => {
   const {name, date, text, imgs} = props;
+  const carouselBlockRef = useRef(null);
   const [isOpenGallery, setIsOpenGallery] = useState(false);
 
   return (
@@ -29,14 +31,22 @@ const ReviewsCard = (props) => {
       <div>
         {text}
       </div>
-      <div className={s.imgsBlock}>
-        {imgs?.map(({src}) => <img key={src} src={src} onClick={() => setIsOpenGallery(true)} />)}
-        <Gallery
-          imgs={imgs}
-          isOpen={isOpenGallery}
-          setIsOpenGallery={setIsOpenGallery}
-        />
-      </div>
+      {
+        imgs ? (
+          <div className={s.imgsBlock}>
+            {imgs?.map(({src}) => <img key={src} src={src} onClick={() => setIsOpenGallery(true)} />)}
+            <Portal>
+              <div ref={carouselBlockRef}>
+                <Gallery
+                  imgs={imgs}
+                  isOpen={isOpenGallery}
+                  setIsOpenGallery={setIsOpenGallery}
+                />
+              </div>
+            </Portal>
+          </div>
+        ) : null
+      }
     </div>
   );
 };

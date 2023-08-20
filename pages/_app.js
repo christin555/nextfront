@@ -14,6 +14,10 @@ import MainLayout from '../components/mainLayout';
 import NextNProgress from 'nextjs-progressbar';
 import * as React from 'react';
 import MobileDetect from 'mobile-detect';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/zoom';
 
 const clientSideEmotionCache = createEmotionCache();
 

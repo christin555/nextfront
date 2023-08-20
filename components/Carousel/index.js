@@ -4,13 +4,9 @@ import s from './carousel.module.scss';
 import Image from 'next/image';
 import {A11y, Thumbs, EffectFade, FreeMode, Navigation, Pagination} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import Gallery from './gallery';
 import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
-import 'swiper/css/zoom';
-import Gallery from './gallery';
 
 const CarouselView = ({imgs, name}) => {
   const carouselBlockRef = useRef(null);
@@ -103,11 +99,13 @@ const CarouselView = ({imgs, name}) => {
       >
         {thumbs}
       </Swiper>
-      <Gallery
-        imgs={imgs}
-        isOpen={isOpenGallery}
-        setIsOpenGallery={setIsOpenGallery}
-      />
+      <Portal>
+        <Gallery
+          imgs={imgs}
+          isOpen={isOpenGallery}
+          setIsOpenGallery={setIsOpenGallery}
+        />
+      </Portal>
     </div>
   );
 };
