@@ -14,7 +14,7 @@ class Delivery extends React.Component {
         <div className={s.header}>
           <div className={s.info}>
             <Typography variant={'h4'} component={'h2'}>
-              1021 довольных клиентов
+              1023 довольных клиентов
             </Typography>
             <div className={s.text}>
               <Typography variant={'h5'}>

@@ -36,7 +36,7 @@ class ReviewsView extends React.Component {
         </div>
         <div>
           <div className={s.info}>
-            <Typography variant={'h6'}> 1021 довольных клиентов</Typography>
+            <Typography variant={'h6'}> 1023 довольных клиентов</Typography>
             <Typography variant={'subtitle1'}>
               Удивлять вас высоким качеством услуг и превосходить любые ожидания — наша главная задача!
               За всё время работы мы заслужили репутацию надежной компании благодаря
