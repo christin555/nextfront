@@ -7,6 +7,7 @@ import {toJS} from "mobx";
 import Meta from "../../HeadComponent";
 import DescriptionMain from "./Description";
 import Watched from "./Content/Watched";
+import ReviewsView from '../../Reviews';
 
 
 @inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {

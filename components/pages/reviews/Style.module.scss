@@ -1,0 +1,70 @@
+@import '../../../styles/variables.module';
+
+.container {
+  padding: 40px 0;
+  @include paddingStandard;
+  gap: 40px;
+  display: flex;
+
+  .text {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.links {
+  background: $gray-100-10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.header {
+  background: url(../../../public/reviews/back.jpg) no-repeat center;
+  background-size: cover;
+
+  .info {
+    @include paddingStandard;
+    flex-direction: column;
+    align-items: center;
+
+    display: flex;
+    gap: 30px;
+    padding: 40px 0;
+
+    .text {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .reviews {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .container {
+    padding-top: 20px;
+    flex-direction: column;
+    gap: 20px
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    .list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

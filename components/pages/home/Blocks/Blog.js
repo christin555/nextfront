@@ -44,7 +44,7 @@ class Blog extends Component {
                     </div>
                 </div>
                 <div className={s.popularBlock}>
-                    <Typography variant={'subtitle2'}> Популярное в блоге</Typography>
+                    <Typography variant={'subtitle2'}> Полезно для выбора </Typography>
                     <div className={s.popularNews}>
                         <Cards articles={articles}/>
                     </div>

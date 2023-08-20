@@ -54,6 +54,9 @@ const theme = createTheme({
                             color: 'black',
                             backgroundColor: 'black'
                         },
+                    },
+                    '&[class*="text"]': {
+                        fontWeight: 500
                     }
                 }
             }

@@ -69,9 +69,6 @@ class ArticlesView extends React.Component {
                 <Title title={'Блог Мастера'} pathname={'/blog'}/>
                 <div className={s.content}>
                     <div className={s.sidebar}>
-                        <Typography color='h4' fontWeight={400}>
-                            Другие посты
-                        </Typography>
                         <div className={s.cards}>
                             <Cards articles={articles.filter(({alias: _alias}) => alias !== _alias).slice(0, 2)}/>
                         </div>

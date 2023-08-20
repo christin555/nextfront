@@ -21,7 +21,8 @@ const menu = [
   {name: 'Оплата и доставка', important: false, link: '/deliveryandpayment'},
   {name: 'Услуги', important: true, link: '/services'},
   {name: 'Наши работы', important: true, link: '/works'},
-  {name: 'Контакты', important: true, link: '/contacts'}
+  {name: 'Контакты', important: true, link: '/contacts'},
+  {name: 'Отзывы', important: true, link: '/reviews'}
 ];
 
 export default function Menu() {

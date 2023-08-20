@@ -10,6 +10,7 @@ import Banner from './Banner';
 import Blog from './Blog';
 import Title from '../../../Title';
 import Watched from './Watched';
+import Reviews from '../../../Reviews';
 
 @inject(({RootStore: {CatalogStore, ActiveFilterStore}}) => {
   return {
@@ -61,6 +62,7 @@ class Content extends React.Component {
           <Filter category={category} />
           <Products contentRef={this.contentRef} />
         </div>
+        <Reviews />
         <Blog />
         <Watched />
       </div>

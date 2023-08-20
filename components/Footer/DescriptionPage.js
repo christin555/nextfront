@@ -1,22 +1,23 @@
 import React from 'react';
 import s from './DescriptionStyle.module.scss';
-import Image from 'next/image';
-import {Typography} from "@mui/material";
+import {Typography} from '@mui/material';
 
 const Description = ({text, title, media}) => (
-    <div className={s.footerAbout}>
-        <Typography variant={'subtitle2'} component={'h2'}>{title}</Typography>
-        <div className={s.text}>
-            {
-                media && <div className={s.media}>
-                    {media}
-                </div> || null
-            }
-            <div>
-                {text}
-            </div>
-        </div>
+  <div className={s.footerAbout}>
+    <div className={s.text}>
+      {
+        media && (
+          <div className={s.media}>
+            {media}
+          </div>
+        ) || null
+      }
+      <div>
+        <Typography variant={'h6'} component={'h2'} margin={'10px 0'}>{title}</Typography>
+        {text}
+      </div>
     </div>
+  </div>
 );
 
 export default Description;
