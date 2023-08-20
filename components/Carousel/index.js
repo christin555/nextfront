@@ -7,6 +7,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import Gallery from './gallery';
 import 'swiper/css/effect-fade';
 import 'swiper/css/a11y';
+import {Portal} from '@mui/base/Portal';
 
 const CarouselView = ({imgs, name}) => {
   const carouselBlockRef = useRef(null);
