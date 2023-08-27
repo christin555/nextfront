@@ -43,6 +43,11 @@ const filterFabric = (category) => {
       addFields = addFieldsBase;
       useFilter = true;
       break;
+    case 'napolnyy_plintus':
+      storeName = 'DefaultStore';
+      addFields = [...addFieldsBase, 'forPainting'];
+      useFilter = true;
+      break;
   }
 
   if (!useFilter) {

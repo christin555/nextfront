@@ -108,7 +108,8 @@ class CardView extends React.Component {
             salePercent,
             classNamesRoot,
             collection,
-            category
+            category,
+            id
         } = this.props;
 
         return (
@@ -143,8 +144,11 @@ class CardView extends React.Component {
                                 />
                             </CardMedia>
                             <CardContent className={s.content}>
-                                {this.priceRow}
                                 <div className={s.header}>
+                                    <span className={s.code}>
+                                       Арт. {id}
+                                    </span>
+                                    {this.priceRow}
                                     <span className={s.name}>
                                         {fullName}
                                     </span>

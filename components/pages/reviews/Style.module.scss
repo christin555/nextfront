@@ -49,6 +49,11 @@
       justify-content: center;
       align-items: flex-start;
     }
+    .flex{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 }
 

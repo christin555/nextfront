@@ -119,7 +119,7 @@
 
 @media only screen and (max-width: 480px) {
   .container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     @include paddingStandard;
   }
   .cards {

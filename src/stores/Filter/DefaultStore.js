@@ -12,7 +12,13 @@ export class DefaultStore extends BaseFilterStore {
       collectionId: 'Коллекция',
       collections: 'Коллекция',
       brands: 'Бренд',
-      isSale: 'Со скидкой'
+      isSale: 'Со скидкой',
+      type: 'Тип',
+      material: 'Материал',
+      width: 'Ширина (Толщина)',
+      height: 'Высота',
+      length: 'Длина',
+      forPainting: 'Под покраску'
     };
 
     constructor(RootStore) {

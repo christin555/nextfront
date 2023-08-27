@@ -42,6 +42,7 @@ class RootStore {
         case 'sport':
           return this.SportStore;
         case 'kley':
+        case 'napolnyy_plintus':
           return this.DefaultStore;
         default:
           return {};

@@ -16,7 +16,15 @@ export class BaseFilterStore {
 
     // Override in child;
     fieldsLabel = {};
-    withUnit = ['width', 'thickness', 'totalThickness', 'size']
+    withUnit = [
+      'width',
+        'thickness',
+        'totalThickness',
+        'size',
+        'widthRange',
+        'heightRange',
+      'height'
+    ];
 
     constructor(RootStore) {
         this.category = RootStore.category;
@@ -81,8 +89,6 @@ export class BaseFilterStore {
     }
 
     @action _setValues(values) {
-        //жесть ... вынести куда нибудь мм
-
         this.values = Object.entries(values).reduce((res, [key, val]) => {
             res[key] = val.sort((a,b) => a.name - b.name).map(({name, ...item}) =>{
                 const label = this.withUnit.includes(key) ? `${name} мм` : name;
@@ -104,6 +110,28 @@ export class BaseFilterStore {
     @action.bound clear() {
         this.clearPath();
         this.resetTemps();
+    }
+
+    @action initRange = (key, val, chips, checked) => {
+        const range = val.split("-")
+
+        checked[key] = {};
+
+        checked[key]['min'] = range[0];
+        checked[key]['max'] = range[1];
+
+        const min = range[0] > 0 ? `от ${range[0]} мм` : '';
+
+        const max =  range[1] > 0 ? `до ${range[1]} мм` : ''
+
+        const label = `${min} ${max}`.trim();
+
+        chips.set(key, {
+            fieldName: this.fieldsLabel[key],
+            label: label,
+            key,
+            val: key
+        })
     }
 
     @action initPrice = (val, chips, checked) => {
@@ -132,7 +160,6 @@ export class BaseFilterStore {
             val: 'price'
         })
     }
-
 
     @action disableCollectionsByBrandId = (brandId, checked) => {
         const brandIds = Object.keys(this.checked)
@@ -181,9 +208,13 @@ export class BaseFilterStore {
         const _chips = new Map();
         const _checked = {};
         Object.entries(this.currentParams).forEach(([key, value]) => {
+            console.log(key, value);
+
             if (key !== 'category') {
                 if (key === 'price') {
                     this.initPrice(value, _chips, _checked);
+                } else if (key.includes('Range')) {
+                    this.initRange(key, value, _chips, _checked);
                 } else if (Array.isArray(value)) {
                     value.forEach((val) => {
                         const _key = this.getKey(key, val);
@@ -266,13 +297,56 @@ export class BaseFilterStore {
         // implement in children
     }
 
+    @action setRange = (name, key, val) => {
+        if(!this.checked[name]){
+            this.checked[name] = {}
+        }
+        this.checked[name][key] = val
+    }
+
     @action setPrice = (price, key) => {
         this.checked[key] = price;
     }
 
-    setPricePath = async (price, key) => {
-        console.log('setPricePath', typeof this.checked['minPrice'], !this.checked['maxPrice'], !this.checked['minPrice'] && !this.checked['maxPrice']);
+    setRangePath = async (name) => {
+        if(!Number(this.checked[name]['min']) && !Number(this.checked[name]['max'])){
+            this.setRange(name, 'min', null);
+            this.setPrice(name, 'max', null);
 
+            await this.setPathRange(name, null, true);
+
+            return;
+        }
+
+        !this.checked[name]['min'] && this.setRange(name, 'min', '0');
+
+        let pathString = this.checked[name]['max'] > 0 ?
+          `${this.checked[name]['min']}-${this.checked[name]['max']}` :
+          `${this.checked[name]['min']}`;
+
+        await this.setPathRange(name, pathString.replace(/\s/g, ''), true);
+
+        const oldChip = this.chips.get(name);
+        const min = this.checked[name]['min'] > 0 ? `от ${this.checked[name]['min']} мм` : '';
+
+        const max = this.checked[name]['max'] > 0 ? `до ${this.checked[name]['max']} мм` : '';
+
+        const label = `${min} ${max}`.trim();
+
+        if (oldChip) {
+            oldChip.label = label;
+        } else {
+            this.setChips(
+              name,
+              {
+                  name: label
+              },
+              true
+            );
+        }
+    }
+
+    setPricePath = async (price, key) => {
         if(!Number(this.checked['minPrice']) && !Number(this.checked['maxPrice'])){
             this.setPrice(null, 'minPrice');
             this.setPrice(null, 'maxPrice');
@@ -388,19 +462,6 @@ export class BaseFilterStore {
         }
     };
 
-    async setPathPrice(val, checked) {
-        const urlSearch = toJS({...Router.router.query || {}});
-
-        if (checked) {
-            urlSearch['price'] = val
-        } else {
-            delete urlSearch['price']
-        }
-
-
-        await this.pushRouter(urlSearch)
-    }
-
     getKey = (key, val) => `${key}-${val}`;
 
     pushRouter = async (urlSearch) => {
@@ -417,6 +478,32 @@ export class BaseFilterStore {
         // await this.RouterStore.pushFilter(urlSearch)
 
         this.setCurrentParams(urlSearch);
+    }
+
+    async setPathPrice(val, checked) {
+        const urlSearch = toJS({...Router.router.query || {}});
+
+        if (checked) {
+            urlSearch['price'] = val
+        } else {
+            delete urlSearch['price']
+        }
+
+
+        await this.pushRouter(urlSearch)
+    }
+
+    async setPathRange(name, val, checked) {
+        const urlSearch = toJS({...Router.router.query || {}});
+
+        if (checked) {
+            urlSearch[name] = val
+        } else {
+            delete urlSearch[name]
+        }
+
+
+        await this.pushRouter(urlSearch)
     }
 
     async setPath(key, id, checked) {
