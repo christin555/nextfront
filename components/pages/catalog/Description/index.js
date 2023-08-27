@@ -411,7 +411,7 @@ class DescriptionMain extends React.Component {
                     </>
                 }
             }
-            case 'napolnyy-plintus': {
+            case 'napolnyy_plintus': {
                 return {
                     title: 'Купить напольный плинтус в Тюмени',
                     media: <Image

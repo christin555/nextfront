@@ -45,7 +45,7 @@ const items = [
   {
     name: 'Напольный плинтус',
     img: '/dashboard/uploads/233248_914519_bg_53fa4d1d8a.jpg',
-    alias: 'napolnyy-plintus'
+    alias: 'napolnyy_plintus'
   }
 ];
 

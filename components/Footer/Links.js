@@ -57,7 +57,7 @@ const Footer = () => {
     },
     {
       name: 'Напольный плинтус',
-      alias: '/catalog/napolnyy-plintus'
+      alias: '/catalog/napolnyy_plintus'
     },
     {
       name: 'Настенная пробка',
