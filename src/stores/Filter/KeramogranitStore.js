@@ -6,6 +6,7 @@ export class KeramogranitStore extends BaseFilterStore {
       'color': 'Оттенок',
       'size': 'Размер',
       'brandId': 'Бренд',
+      'brands': 'Бренд',
       'collectionId': 'Коллекция',
       'bestseller': 'Хит продаж',
       'price': 'Цена',
