@@ -56,11 +56,13 @@ class ProductView extends React.Component {
 
         fields.filter(({type}) => type === 'isChip').forEach(({title, name, icon}) => {
             const Icon = Icons[icon];
-            const val = `${title} - ${values[name]}`;
+            const value = values[name];
 
-            if (values[name]) {
+            if (value) {
+                const label = typeof value === 'boolean' ? title : `${title} - ${value}`;
+
                 rows.push(
-                    <Chip key={val} label={val} icon={Icon && <Icon className={s.iconChip}/> || null}/>
+                    <Chip key={label} label={label} icon={Icon && <Icon className={s.iconChip}/> || null}/>
                 );
             }
         });
