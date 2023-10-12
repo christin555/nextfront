@@ -25,16 +25,16 @@ class BannerView extends Component {
 //mock
 const items = [
   {
+    background: 'https://master-pola.com/dashboard/uploads/alpinefloor_desc_58fceefd12.png',
+    mobileBackground: 'https://master-pola.com/dashboard/uploads/alpine_flor_mob_0_75x_c81dc5dc8e.png'
+  },
+  {
     background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_1_d4aba3bbd5.png',
     mobileBackground: 'https://master-pola.com/dashboard/uploads/Bez_imeni_1_mob_3402fd1ca4.png',
     link: '/blog/article/laminat_za_tysuachy',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     textButton: 'Подробнее'
-  },
-  {
-    background: 'https://master-pola.com/dashboard/uploads/alpinefloor_desc_58fceefd12.png',
-    mobileBackground: 'https://master-pola.com/dashboard/uploads/alpine_flor_mob_0_75x_c81dc5dc8e.png'
   },
   {
     background: 'https://master-pola.com/dashboard/uploads/Bez_imeni_5_93ac65f165.png',
