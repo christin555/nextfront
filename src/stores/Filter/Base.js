@@ -140,7 +140,6 @@ export class BaseFilterStore {
         checked['minPrice'] = price[0];
         checked['maxPrice'] = price[1];
 
-        console.log(price[0])
         const min = price[0] > 0 ? `от ${formatPrice({
               price: price[0],
               unit: this.unitPrice
@@ -208,8 +207,6 @@ export class BaseFilterStore {
         const _chips = new Map();
         const _checked = {};
         Object.entries(this.currentParams).forEach(([key, value]) => {
-            console.log(key, value);
-
             if (key !== 'category') {
                 if (key === 'price') {
                     this.initPrice(value, _chips, _checked);

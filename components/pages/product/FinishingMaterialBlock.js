@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Product.module.scss';
 import {finishing} from '../../../src/enums';
-import Image from 'next/image';
 
 const names = {
   [finishing.MATERIAL]: 'Варианты отделки',

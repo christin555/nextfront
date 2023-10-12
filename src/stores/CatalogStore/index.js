@@ -190,8 +190,6 @@ class CatalogStore {
         const body = {searchParams: {category, filter: {...filter, fastfilter}}};
         const count = await api.post('catalog/countProducts ', body);
 
-        console.log('count', count);
-
         this.checkPageStore(count);
         this.setCount(count);
       } catch(_) {

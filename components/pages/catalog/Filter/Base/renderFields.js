@@ -47,7 +47,6 @@ class Fields extends Component {
         <Skeleton key={i} style={{marginTop: 20}} />);
     }
 
-    console.log('values')
     const filterFields = fields({
       checked, unit, setPricePath, setPrice, disabled, values, setValue,
       setRange,
