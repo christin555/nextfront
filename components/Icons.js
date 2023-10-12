@@ -72,7 +72,8 @@ import {
     Today,
     Work,
     DoneAll,
-    Apartment
+    Apartment,
+    FormatPaint
 } from '@mui/icons-material';
 
 export default {
@@ -149,5 +150,6 @@ export default {
     SupervisorAccount,
     Toc,
     Today,
-    Work
+    Work,
+    FormatPaint
 };
