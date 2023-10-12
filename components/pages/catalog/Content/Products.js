@@ -99,6 +99,8 @@ class Content extends React.Component {
     render() {
         const {products, isLastLevel, fastfilter} = this.props;
 
+        console.log('isLastLevel', isLastLevel);
+
         if (!isLastLevel && !fastfilter) {
             return <div/>;
         }

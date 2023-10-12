@@ -1,7 +1,6 @@
 import ReviewsView from '../../components/pages/reviews';
 import React from 'react';
 import Meta from '../../components/HeadComponent';
-import Title from '../../components/Title';
 
 const breadcrumbs = {
   '@context': 'http://schema.org',

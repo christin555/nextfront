@@ -4,7 +4,7 @@ import {finishing} from '../../../src/enums';
 import Image from 'next/image';
 
 const names = {
-  [finishing.MATERIAL]: 'Материал отделки',
+  [finishing.MATERIAL]: 'Варианты отделки',
   [finishing.WINDOW]: 'Варианты остекления',
   [finishing.PHOTO]: 'Варианты фотопечати'
 };

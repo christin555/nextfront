@@ -114,7 +114,6 @@ class Delivery extends React.Component {
                   href="https://2gis.ru/tyumen/firm/70000001041302673/tab/reviews"
                 >
                   <Button
-                    variant={'text'}
                     color={'secondary'}
                   >
                     {'Отзывы 2GIS'}
@@ -126,7 +125,6 @@ class Delivery extends React.Component {
                   href="https://vk.com/topic-211269206_48335014"
                 >
                   <Button
-                    variant={'text'}
                     color={'secondary'}
                   >
                     {'Отзывы VK'}
@@ -138,7 +136,6 @@ class Delivery extends React.Component {
                   href="https://yandex.ru/profile/197071784139"
                 >
                   <Button
-                    variant={'text'}
                     color={'secondary'}
                   >
                     {'Отзывы Яндекс'}

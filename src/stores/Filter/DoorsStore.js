@@ -13,7 +13,7 @@ export class DoorsStore extends BaseFilterStore {
 
     fieldsLabel = {
         collectionId: 'Коллекция',
-        finishingMaterial: 'Материал отделки',
+        finishingMaterial: 'Цвет отделки',
         brandId: 'Фабрика',
         isPopular: 'Хит продаж',
         price: 'Цена',

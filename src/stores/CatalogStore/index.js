@@ -180,7 +180,7 @@ class CatalogStore {
         return;
       }
 
-      const {category, filter, fastfilter, isLastLevel} = this;
+      const {category, filter, fastfilter} = this;
 
       if (!category && !fastfilter) {
         return;
@@ -189,6 +189,8 @@ class CatalogStore {
       try {
         const body = {searchParams: {category, filter: {...filter, fastfilter}}};
         const count = await api.post('catalog/countProducts ', body);
+
+        console.log('count', count);
 
         this.checkPageStore(count);
         this.setCount(count);
