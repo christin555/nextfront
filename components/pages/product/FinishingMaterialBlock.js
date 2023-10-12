@@ -3,7 +3,7 @@ import s from './Product.module.scss';
 import {finishing} from '../../../src/enums';
 
 const names = {
-  [finishing.MATERIAL]: 'Варианты отделки',
+  [finishing.MATERIAL]: 'Варианты покрытия',
   [finishing.WINDOW]: 'Варианты остекления',
   [finishing.PHOTO]: 'Варианты фотопечати'
 };
