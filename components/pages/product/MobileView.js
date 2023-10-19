@@ -5,92 +5,108 @@ import {Divider} from '@mui/material';
 import s from './ProductMobile.module.scss';
 import Callme from '../../Callme';
 import FinishingMaterialBlock from './FinishingMaterialBlock';
-import Box from "@mui/material/Box";
-import Labels from "../../Cards/labels";
+import Box from '@mui/material/Box';
+import Labels from '../../Cards/labels';
 import Calculation from '../../Сalculation';
 
-
 const Product = (props) => {
-    const {
-        values,
-        fields,
-        priceRow,
-        mainFields,
-        allFields,
-        chipFields,
-        chars,
-        hierarchy,
-        linkInterBlock
-    } = props;
+  const {
+    values,
+    fields,
+    priceRow,
+    mainFields,
+    allFields,
+    chipFields,
+    chars,
+    hierarchy,
+    linkInterBlock,
+    banner,
+    articles
+  } = props;
 
-    const lastCategory = hierarchy[hierarchy.length - 2];
+  const lastCategory = hierarchy[hierarchy.length - 2];
 
-    return (
-        <>
-            <div className={s.content}>
-                <Hierarchy hierarchy={[lastCategory]} className={s.hierarchy}/>
-                <div className={s.name}>
-                    {values.category} {values.name}
-                    <span className={s.collection}>
-                       {values.brand} {values.collection && `Коллекция ${values.collection}`}
-                    </span>
-                    <span className={s.id}>
-                        {values.id && `Арт. ${values.id}`}
-                    </span>
-                    <Labels isBestPrice={values.isBestPrice} className={s.isBestPrice}/>
-                </div>
-                <Labels isPopular={values.isPopular}/>
-                <Box position={'relative'} marginTop={'10px'}>
-                    <Labels salePercent={values.salePercent} className={s.sale}/>
-                    <Carousel
-                        imgs={values?.imgs || []}
-                        className={s.carousel}
-                    />
-                </Box>
-                {linkInterBlock}
-                {
-                    values.price && (
-                        <div className={s.priceBox}>{priceRow}</div>
-                    ) || null
-                }
+  return (
+    <React.Fragment>
+      <div className={s.content}>
+        <Hierarchy hierarchy={[lastCategory]} className={s.hierarchy} />
+        <div className={s.name}>
+          {values.category} {values.name}
+          <span className={s.collection}>
+            {values.brand} {values.collection && `Коллекция ${values.collection}`}
+          </span>
+          <span className={s.id}>
+            {values.id && `арт. ${values.id}`}
+          </span>
+          <Labels isBestPrice={values.isBestPrice} className={s.isBestPrice} />
+        </div>
+        <Labels isPopular={values.isPopular} />
+        <Box position={'relative'} marginTop={'10px'}>
+          <Labels salePercent={values.salePercent} className={s.sale} />
+          <Carousel
+            imgs={values?.imgs || []}
+            className={s.carousel}
+          />
+        </Box>
+        {linkInterBlock}
+        {
+          values.price && (
+            <div className={s.priceBox}>{priceRow}</div>
+          ) || null
+        }
 
-                <Divider/>
-                <div className={s.chars}>
-                    {mainFields}
-                </div>
-                <FinishingMaterialBlock fields={fields}/>
-                <div className={s.additional}>
-                    {chipFields}
-                </div>
-                <div className={s.btnBox}>
-                    <Calculation
-                        product={values}
-                        category={values.group}
-                        className={s.calculation}
-                    />
-                    <Callme
-                        product={values}
-                        className={s.call}
-                        buttonText={'Оставить заявку'}
-                    />
-                </div>
-            </div>
+        <Divider />
+        <div className={s.chars}>
+          {mainFields}
+        </div>
+        <FinishingMaterialBlock fields={fields} />
+        <div className={s.additional}>
+          {chipFields}
+        </div>
+        <div className={s.btnBox}>
+          <Calculation
+            product={values}
+            category={values.group}
+            className={s.calculation}
+          />
+          <Callme
+            product={values}
+            className={s.call}
+            buttonText={'Оставить заявку'}
+          />
+        </div>
+        {banner}
+      </div>
+      {chars}
+
+      {
+        allFields ? (
+          <React.Fragment>
             <div className={s.titleCharacteristic}>
-                О товаре
-            </div>
-            <div
-                className={s.desc}
-                dangerouslySetInnerHTML={{__html: values.description}}
-            />
-            {chars}
-            <div className={s.titleCharacteristic}>
-                Характеристики товара
+            Характеристики товара
             </div>
             <div className={s.characteristic}>
-                {allFields}
+              {allFields}
             </div>
-        </>
-    );
-}
+          </React.Fragment>
+        ) : null
+      }
+      {
+        values.description ? (
+          <React.Fragment>
+            <div className={s.titleCharacteristic}>
+              О товаре
+            </div>
+            <div
+              className={s.desc}
+              dangerouslySetInnerHTML={{__html: values.description}}
+            />
+          </React.Fragment>
+        ) : null
+      }
+      {articles}
+    </React.Fragment>
+  );
+};
 
 export default Product;

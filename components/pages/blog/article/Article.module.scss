@@ -35,7 +35,7 @@
 
 .detailsCards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 260px);
   grid-row-gap: 15px;
   grid-column-gap: 20px;
   justify-content: start;
@@ -140,8 +140,21 @@
 .divider {
   display: block;
   width: 100%;
-  background: $gray-30;
+  background: $gray-100-10;
   height: 1px;
+}
+
+.dividerBlock {
+  margin: 20px 0;
+  padding-left: 10px;
+  background: $gray-100-10;
+  font-weight: 400;
+  font-size: 16px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: $red;
 }
 
 .header {

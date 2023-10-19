@@ -51,7 +51,9 @@ class ArticlesView extends React.Component {
                                 {icon}
                             </div>
                             <div className={s.hoverBlock}>
-                                <p className={s.hide}> {content} </p>
+                                <p className={s.hide}>
+                                    {content}
+                                </p>
                                 <span>
                                    <b>{title} </b>
                                    <p> Просмотры: {watchCount} </p>

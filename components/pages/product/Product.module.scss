@@ -1,5 +1,57 @@
 @import '../../../styles/variables.module';
 
+.articles {
+  @include paddingStandard;
+  flex: 1;
+  display: grid;
+  gap: 14px;
+  height: 390px;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, 50%);
+}
+
+.worksBanner {
+  height: 100%;
+  min-height: 120px;
+  max-height: 200px;
+  margin-top: 22px;
+  border-radius: 5px;
+  color: white;
+  background: url(../../../public/service_banner.jpg) no-repeat center;
+  background-size: 100% auto;
+
+  .label {
+    font-weight: 300;
+  }
+
+  .actionText {
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.56);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 100%;
+
+    .chip {
+      cursor: pointer;
+      font-weight: 450;
+      background: white;
+      color: $gray-500;
+    }
+
+    .divider {
+      margin: 16px 0;
+      background: $gray-100-40;
+      height: 0.8px;
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
 
 .hierarchy {
   @include paddingStandard;
@@ -42,7 +94,7 @@
   }
 }
 
-.linkInterirerBlock{
+.linkInterirerBlock {
   text-transform: uppercase;
   border-top: 1px solid $gray-50-20;
   border-bottom: 1px solid $gray-50-20;
@@ -177,6 +229,7 @@
 .price {
   font-size: 24px;
   font-weight: 500;
+
   .unit {
     margin-top: 5px;
     display: flex;
@@ -223,7 +276,7 @@
   margin: 5px -5px;
 
   .key {
-    color:  $gray-100;
+    color: $gray-100;
   }
 
   &::after {
@@ -304,8 +357,7 @@
 }
 
 @media only screen and (max-width: 930px) {
-
-  .charsBlock{
+  .charsBlock {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -344,5 +396,11 @@
 
   .materials > .items {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .articles {
+    height: unset;
+    padding: 0;
+    grid-template-columns: 100%;
   }
 }

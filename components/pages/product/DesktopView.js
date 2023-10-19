@@ -1,7 +1,7 @@
 import React from 'react';
 import Hierarchy from '../../Hierarchy';
 import Carousel from '../../Carousel';
-import {Divider, Typography} from '@mui/material';
+import {Typography} from '@mui/material';
 import classNames from 'classnames';
 import s from './Product.module.scss';
 import Callme from '../../Callme';
@@ -19,7 +19,9 @@ const DesktopView = (props) => {
     chipFields,
     chars,
     hierarchy,
-    linkInterBlock
+    linkInterBlock,
+    articles,
+    banner
   } = props;
 
   return (
@@ -44,7 +46,12 @@ const DesktopView = (props) => {
             className={s.carousel}
           />
           <div className={s.product}>
-            <Typography variant={'body1'} fontWeight={'bold'} component={'h3'}> Коллекция {values.collection}</Typography>
+            <Typography
+              variant={'body1'}
+              fontWeight={'bold'}
+              component={'h3'}
+            > Коллекция {values.collection}
+            </Typography>
             <div
               className={s.desc}
               dangerouslySetInnerHTML={{__html: values.description}}
@@ -76,15 +83,17 @@ const DesktopView = (props) => {
                 buttonText={'Быстрый заказ'}
               />
             </div>
+            {banner}
           </div>
         </div>
         {chars}
         <div className={s.titleCharacteristic}>
-                    Характеристики товара
+          Характеристики товара
         </div>
         <div className={s.characteristic}>
           {allFields}
         </div>
+          {articles}
       </div>
     </React.Fragment>
   );

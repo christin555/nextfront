@@ -1,7 +1,6 @@
-import {observable, when, action, computed, makeObservable, autorun} from 'mobx';
+import {observable, action, makeObservable, autorun} from 'mobx';
 import {status as statusEnum} from '../../enums';
 import api from 'api';
-import {alert} from '../Notifications';
 
 const isServer = typeof window === 'undefined';
 
@@ -13,6 +12,7 @@ class ProductStore {
     @observable values;
     @observable fields;
     @observable alias;
+    @observable articles = [];
 
     constructor(RootStore) {
       this.hydrate(RootStore);
@@ -25,17 +25,21 @@ class ProductStore {
       }
     }
 
-    async hydrate(RootStore) {
-      const {ProductStore = {}} = RootStore.initialData.stores || {};
+    hydrate(RootStore) {
+      const {ProductStore: ProductStoreSaved = {}} = RootStore.initialData.stores || {};
 
       this.RouterStore = RootStore.RouterStore;
-      this.hierarchy = ProductStore.hierarchy;
-      this.values = ProductStore.values;
-      this.fields = ProductStore.fields;
+      this.hierarchy = ProductStoreSaved.hierarchy;
+      this.values = ProductStoreSaved.values;
+      this.fields = ProductStoreSaved.fields;
     }
 
     @action setStatus = (status) => {
       this.status = status;
+    }
+
+    @action setArticles= (articles) => {
+      this.articles = articles;
     }
 
     @action setAlias = (alias) => {
@@ -80,6 +84,8 @@ class ProductStore {
       try {
         const {values, fields} = await api.get(`products/get/${this.alias}`);
 
+        this.getArticles();
+
         this.setValues(values);
         this.setFields(fields);
 
@@ -89,6 +95,21 @@ class ProductStore {
         this.setStatus(statusEnum.ERROR);
       }
     }
+
+  getArticles = async() => {
+    this.setStatus(statusEnum.LOADING);
+    try {
+      const articles = await api.post('articles/getArticles', {
+        productId: this.values.id,
+        withMedia: true
+      });
+
+      this.setArticles(articles);
+    } catch(e) {
+      this.setArticles([]);
+      console.log(e);
+    }
+  }
 }
 
 export {ProductStore};

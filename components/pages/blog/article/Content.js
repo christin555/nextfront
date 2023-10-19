@@ -49,9 +49,9 @@ class Content extends React.Component {
             return <div/>
         }
         return <div>
-            <Typography variant={'overline'}>
+            <span className={s.dividerBlock}>
                 {'УСЛУГИ'}
-            </Typography>
+            </span>
             <div className={s.detailsCards}>
                 {this.cardsServices}
             </div>
@@ -65,9 +65,9 @@ class Content extends React.Component {
             return <div/>
         }
         return <div>
-            <Typography variant={'overline'}>
+            <span  className={s.dividerBlock}>
                 {'ТОВАРЫ'}
-            </Typography>
+            </span>
             <div className={s.detailsCards}>
                 {this.cardsProducts}
             </div>
