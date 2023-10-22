@@ -4,10 +4,10 @@
   @include paddingStandard;
   flex: 1;
   display: grid;
-  gap: 14px;
+  gap: 20px;
   height: 390px;
   margin-top: 20px;
-  grid-template-columns: repeat(auto-fit,calc(50% - 14px));
+  grid-template-columns: repeat(auto-fit,calc(50% - 20px));
 }
 
 .worksBanner {
