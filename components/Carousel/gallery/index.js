@@ -4,6 +4,7 @@ import React, {useRef} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import CloseIcon from '@mui/icons-material/Close';
 import {IconButton} from '@mui/material';
+import PlayerView from '../../VideoPlayer';
 
 const Gallery = (props) => {
   const {
@@ -16,17 +17,30 @@ const Gallery = (props) => {
   if (!isOpen) {
     return null;
   }
-  const images = imgs.map(({src}, index) => (
+  const images = imgs.map(({src, type}, index) => (
     <SwiperSlide
       key={index}
       className={s.active}
     >
       <div className='swiper-zoom-container'>
-        <img
-          placeholder={'blur'}
-          alt={'Напольные покрытие и двери'}
-          src={src}
-        />
+        {
+          type === 'video' ? (
+             <PlayerView
+                key={src}
+                muted={'false'}
+                classNameContainer={s.verticalContainerPlayer}
+                classNamePlayer={s.verticalPlayer}
+                src={`https://master-pola.com/${src}`}
+                autoplay={false}
+              />
+          ) : (
+            <img
+              placeholder={'blur'}
+              alt={'Напольные покрытие и двери'}
+              src={`https://master-pola.com/${src}`}
+            />
+          )
+        }
       </div>
     </SwiperSlide>
   ));

@@ -1,5 +1,9 @@
 @import './variables.module';
 
+.swiper-wrapper {
+  align-items: center;
+}
+
 .notification__title {
   font-weight: 400 !important;
 }

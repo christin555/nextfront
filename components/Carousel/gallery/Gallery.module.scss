@@ -3,35 +3,59 @@
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.85);
   top: 0;
   left: 0;
   z-index: 1200;
   padding: 20px;
- // display: flex;
- // flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 
-  .close{
+  & > div {
+    height: 100%;
+
+    & > div {
+      height: 100%;
+    }
+  }
+
+  .close {
     position: absolute;
     right: 20px;
-    top:  10px;
+    top: 10px;
     background: #1f1f1f;
     color: #f9f9fd;
     z-index: 3;
   }
 
-  .active{
+  .active {
     display: flex;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 
     & > * {
       position: initial !important;
     }
-    img{
-     max-height: 95vh;
 
-      &:hover {cursor: zoom-in;}
+    img {
+      max-height: 95vh;
+
+      &:hover {
+        cursor: zoom-in;
+      }
+    }
+
+    .verticalContainerPlayer {
+      height: 100% !important;
+      width: 100% !important;
+      padding: 20px;
+      position: relative;
+    }
+
+    .verticalPlayer {
+      width: inherit !important;
+      height: inherit !important;
     }
   }
 }

@@ -1,4 +1,4 @@
-import {observable, get, action, computed, makeObservable} from 'mobx';
+import {observable, action, makeObservable} from 'mobx';
 import api from 'api';
 
 class PopularStore {
@@ -12,14 +12,14 @@ class PopularStore {
       this.popularProducts = PopularStore?.popularProducts || [];
       this.deviceType = PopularStore?.deviceType;
 
-      if(!PopularStore?.popularProducts.length){
-          this.getPopularProducts()
+      if (!PopularStore?.popularProducts.length) {
+        this.getPopularProducts();
       }
     }
 
     @action merge = ({deviceType, popularProducts}) => {
-        this.popularProducts = popularProducts;
-        this.deviceType = deviceType;
+      this.popularProducts = popularProducts;
+      this.deviceType = deviceType;
     }
 
     @action setPopularProducts = (popularProducts) => {
@@ -27,16 +27,17 @@ class PopularStore {
     }
 
     @action setDevice = (deviceType) => {
-        this.deviceType = deviceType;
+      this.deviceType = deviceType;
     }
 
     async getPopularProducts() {
       try {
-        const popular = await api.post('products/getPopular')
+        const popular = await api.post('products/getPopular');
+
         this.setPopularProducts(popular);
 
       } catch(err) {
-          console.log(err)
+        console.log(err);
       }
     }
 }

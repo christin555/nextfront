@@ -1,4 +1,4 @@
-import {observable, get, action, makeObservable} from 'mobx';;
+import {observable, get, action, makeObservable} from 'mobx';
 import api from 'api';
 import {alert} from '../Notifications';
 
@@ -10,58 +10,59 @@ class HomeStore {
     @observable articles;
 
     constructor(RootStore) {
-        makeObservable(this);
+      makeObservable(this);
 
-        const {HomeStore = {}} = RootStore.initialData.stores || {};
+      const {HomeStore = {}} = RootStore.initialData.stores || {};
 
-        this.services = HomeStore.services;
-        this.works = HomeStore.works;
-        this.articles = HomeStore.articles;
+      this.services = HomeStore.services;
+      this.works = HomeStore.works;
+      this.articles = HomeStore.articles;
     }
 
     @action setServices = (services) => {
-        this.services = services;
+      this.services = services;
     }
 
     @action setArticles = (articles) => {
-        this.articles = articles;
+      this.articles = articles;
     }
 
-    @action setWorks  = (works) => {
-        this.works = works;
+    @action setWorks = (works) => {
+      this.works = works;
     }
 
-    getWorks = async () => {
-        try {
-            const works = await api.post(`works/get`, {
-                showOnMainPage: true,
-                limit: 4
-            });
-            this.setWorks(works);
-        } catch (_) {
-        }
+    getWorks = async() => {
+      try {
+        const works = await api.post(`works/get`, {
+          showOnMainPage: true,
+          limit: 4
+        });
+
+        this.setWorks(works);
+      } catch(_) {}
     }
 
-    getServices = async () => {
-        try {
-            const services = await api.post(`services/get`);
-            this.setServices(services);
-        } catch (e) {
-            console.log(e)
-        }
+    getServices = async() => {
+      try {
+        const services = await api.post(`services/get`);
+
+        this.setServices(services);
+      } catch(e) {
+        console.log(e);
+      }
     }
 
     getArticles = async() => {
-        try {
-            const articles = await api.post('articles/getArticles', {
-                limit: 5,
-                isPopular: true
-            });
+      try {
+        const articles = await api.post('articles/getArticles', {
+          limit: 5,
+          isPopular: true
+        });
 
-            this.setArticles(articles);
-        } catch(e) {
-            alert({type: 'error', title: 'Ошибка при получении статей'});
-        }
+        this.setArticles(articles);
+      } catch(e) {
+        alert({type: 'error', title: 'Ошибка при получении статей'});
+      }
     }
 }
 

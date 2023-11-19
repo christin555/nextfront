@@ -25,7 +25,7 @@ class CallmeStore {
     }
 
     @computed get type() {
-      switch (this.category.toLowerCase()) {
+      switch (this.category?.toLowerCase()) {
         case 'doors':
           return 'doors';
         case 'plintus':

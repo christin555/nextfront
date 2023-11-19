@@ -36,12 +36,12 @@ class ProductView extends React.Component {
           rows.push(
             <div className={s.row} key={name}>
               <div>
-                            <span>
-                                {title}
-                            </span>
+                  <span>
+                      {title}
+                  </span>
                 <span>
-                                {values[name]}
-                            </span>
+                    {values[name]}
+                </span>
               </div>
             </div>
           );
@@ -57,8 +57,8 @@ class ProductView extends React.Component {
   get banner() {
     const {values} = this.props;
 
-    if(values.group !== 'floor'){
-      return null
+    if (values.group !== 'floor') {
+      return null;
     }
 
     return <div className={s.worksBanner}>
