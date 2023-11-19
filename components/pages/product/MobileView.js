@@ -51,11 +51,12 @@ const Product = (props) => {
         {linkInterBlock}
         {
           values.price && (
-            <div className={s.priceBox}>{priceRow}</div>
+            <React.Fragment>
+              <div className={s.priceBox}>{priceRow}</div>
+              <Divider />
+            </React.Fragment>
           ) || null
         }
-
-        <Divider />
         <div className={s.chars}>
           {mainFields}
         </div>
