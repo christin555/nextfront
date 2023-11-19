@@ -43,13 +43,13 @@ const CarouselView = ({imgs, name}) => {
       {
         type === 'video' ? (
           <React.Fragment>
-            <video src={`https://master-pola.com/${src}`} className={s.videoBg} />
+            <video src={src} className={s.videoBg} />
             <PlayerView
               key={src}
               muted={'false'}
               classNameContainer={s.verticalContainerPlayer}
               classNamePlayer={s.verticalPlayer}
-              src={`https://master-pola.com/${src}`}
+              src={src}
               autoplay={false}
             />
           </React.Fragment>
@@ -63,9 +63,9 @@ const CarouselView = ({imgs, name}) => {
             layout='responsive'
             objectFit='contain'
             alt={name || 'Слайд'}
-            src={`https://master-pola.com/${src}`}
+            src={src}
             unoptimized={true}
-            loader={() => `https://master-pola.com/${src}`}
+            loader={() => src}
           />
         )
       }
@@ -93,9 +93,7 @@ const CarouselView = ({imgs, name}) => {
                 />
               </svg>
             </div>
-            <video
-              src={`https://master-pola.com/${src}`}
-            />
+            <video src={src} />
           </div
           >
 
@@ -109,8 +107,8 @@ const CarouselView = ({imgs, name}) => {
             height='80'
             objectFit='cover'
             alt={'Слайд'}
-            src={`https://master-pola.com/${src}`}
-            loader={() => `https://master-pola.com/${src}`}
+            src={src}
+            loader={() => src}
           />
         )
       }

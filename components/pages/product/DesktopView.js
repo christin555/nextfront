@@ -87,13 +87,13 @@ const DesktopView = (props) => {
           </div>
         </div>
         {chars}
+        {articles}
         <div className={s.titleCharacteristic}>
           Характеристики товара
         </div>
         <div className={s.characteristic}>
           {allFields}
         </div>
-          {articles}
       </div>
     </React.Fragment>
   );

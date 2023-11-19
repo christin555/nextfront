@@ -78,19 +78,6 @@ const Product = (props) => {
         {banner}
       </div>
       {chars}
-
-      {
-        allFields ? (
-          <React.Fragment>
-            <div className={s.titleCharacteristic}>
-            Характеристики товара
-            </div>
-            <div className={s.characteristic}>
-              {allFields}
-            </div>
-          </React.Fragment>
-        ) : null
-      }
       {
         values.description ? (
           <React.Fragment>
@@ -105,6 +92,18 @@ const Product = (props) => {
         ) : null
       }
       {articles}
+      {
+        allFields ? (
+          <React.Fragment>
+            <div className={s.titleCharacteristic}>
+              Характеристики товара
+            </div>
+            <div className={s.characteristic}>
+              {allFields}
+            </div>
+          </React.Fragment>
+        ) : null
+      }
     </React.Fragment>
   );
 };
