@@ -19,7 +19,8 @@
 
 @media only screen and (max-width: 480px) {
   .content {
-    margin: 5px 0 20px 0;
+    //вернуть после нг 5px сверху
+    margin: 0px 0 20px 0;
     flex-direction: column;
   }
   .header {

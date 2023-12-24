@@ -1,8 +1,22 @@
 @import '../../styles/variables.module';
 
+.cristmas{
+  background: url(../../public/cristmas.jpg) no-repeat center;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+
 .footer {
+  position: relative;
+  z-index: 4;
+
   color: $gray-40;
-  background: $home-black;
+  background: rgba(21, 1, 1, 0.8);
+  //background: $home-black;
   text-align: center;
   bottom: 0;
   justify-content: center;

@@ -10,9 +10,10 @@ import NearMeIcon from '@mui/icons-material/NearMe';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ViberIcon from '../Icons/ViberIcon';
 import MobileHeader from './MobileHeader';
-import s from '../Footer/Footer.module.scss';
 import VkIcon from '../Icons/VK';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import Garland from './Cristmas';
+import g from './lightrope.module.scss';
 
 const menu = [
   {name: 'Каталог', important: true, link: '/catalog'},
@@ -52,6 +53,7 @@ export default function Menu() {
       <header className={styles.container}>
         <div className={styles.header}>
           <MobileHeader />
+          <Garland />
           {/*<div className={styles.headerBackground}/>*/}
           <div className={styles.headerContent}>
             <div className={styles.logoBlock}>
@@ -100,6 +102,9 @@ export default function Menu() {
             </div>
             <BurgerMenu toPage={toPage} menu={menu} />
           </div>
+        </div>
+        <div className={g.text}>
+          Режим работы в праздничные дни: 31 декабря, 1 - 3 января - <b> выходные дни </b>
         </div>
       </header>
       <nav className={styles.menuContainer}>
