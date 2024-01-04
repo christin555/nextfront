@@ -10,13 +10,6 @@ $light-off-opacity: 0.4;
   height: 10px;
 }
 
-.text {
-  color: white;
-  background: $red;
-  width: 100%;
-  @include paddingStandard;
-}
-
 .lightrope {
   text-align: center;
   white-space: nowrap;
@@ -130,13 +123,5 @@ $light-off-opacity: 0.4;
   50% {
     background: rgba(248, 59, 59, $light-off-opacity);
     box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(248, 59, 59, 0.2);
-  }
-}
-
-@media only screen and (max-width: 1020px) {
-  .text {
-    font-size: 12px;
-    padding-top: 2px;
-    padding-bottom: 2px;
   }
 }
