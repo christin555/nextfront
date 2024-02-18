@@ -7,21 +7,18 @@ import Contacts from './Contacts';
 import Social from './Social';
 
 const Footer = () => (
-  <React.Fragment>
-    <div className={s.cristmas} />
-    <footer className={s.footer}>
-      <LogoBlock />
-      <div className={s.content}>
-        <Contacts />
-        <Links />
-        <Social />
-      </div>
-      <span className={s.policy}>
+  <footer className={s.footer}>
+    <LogoBlock />
+    <div className={s.content}>
+      <Contacts />
+      <Links />
+      <Social />
+    </div>
+    <span className={s.policy}>
           ©2019 - 2023, «Мастер Пола»
-      </span>
-      <Copy />
-    </footer>
-  </React.Fragment>
+    </span>
+    <Copy />
+  </footer>
 
 );
 
