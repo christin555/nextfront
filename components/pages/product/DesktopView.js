@@ -48,7 +48,7 @@ const DesktopView = (props) => {
           />
           <div className={s.product}>
             <Typography
-              variant={'body1'}
+              fontSize={'16px'}
               fontWeight={'bold'}
               component={'h3'}
             > Коллекция {values.collection}

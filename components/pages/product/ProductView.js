@@ -219,7 +219,7 @@ class ProductView extends React.Component {
   }
 
   get priceRow() {
-    const {price, salePrice, unit} = this.props.values;
+    const {price, salePrice, unit, includedPrice} = this.props.values;
     const currentPrice = salePrice || price;
 
     if (!currentPrice) {
@@ -234,13 +234,18 @@ class ProductView extends React.Component {
                         {formatPrice({price, unit})}
                     </span> || null;
 
-    return <Box
-      display={'flex'}
-      alignItems={'center'}
-    >
-      {priceBlock}
-      {oldPrice}
-    </Box>;
+    const helperText = includedPrice ? <div className={s.priceIncluded}>{includedPrice}</div> : null;
+
+    return <div>
+      <Box
+        display={'flex'}
+        alignItems={'center'}
+      >
+        {priceBlock}
+        {oldPrice}
+      </Box>
+      {helperText}
+    </div>
   }
 
   get desc() {

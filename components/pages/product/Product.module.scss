@@ -77,6 +77,11 @@
   }
 }
 
+.priceIncluded {
+  color: $gray-400;
+  font-size: 16px;
+}
+
 .charsBlock {
   margin: 20px 0 10px 0;
   display: flex;
@@ -216,7 +221,7 @@
     .desc {
       text-align: justify;
       margin-top: 10px;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 }
