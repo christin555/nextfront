@@ -15,6 +15,15 @@
   }
 }
 
+.inStock {
+  background: $blue-2;
+
+  @include label;
+
+  width: max-content;
+  position: inherit;
+}
+
 .sale {
   @include label;
 

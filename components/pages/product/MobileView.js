@@ -40,7 +40,10 @@ const Product = (props) => {
           </span>
           <Labels isBestPrice={values.isBestPrice} className={s.isBestPrice} />
         </div>
-        <Labels isPopular={values.isPopular} />
+        <Box display={'flex'} gap={'8px'}>
+          <Labels inStock={values.inStock} />
+          <Labels isPopular={values.isPopular || true} />
+        </Box>
         <Box position={'relative'} marginTop={'10px'}>
           <Labels salePercent={values.salePercent} className={s.sale} />
           <Carousel

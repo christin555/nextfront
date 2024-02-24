@@ -65,7 +65,7 @@ class ProductView extends React.Component {
       <div className={s.actionText}>
         <div className={s.label}> БОНУС</div>
         <Typography fontWeight={'450'} variant={'h6'}>
-          Скидка 15% на монтаж напольного покрытия
+          {'Скидка 15% на монтаж напольного покрытия'}
         </Typography>
         <div className={s.divider}/>
         <NextLink

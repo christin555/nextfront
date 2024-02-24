@@ -8,8 +8,9 @@ class Labels extends React.Component {
 
     render() {
         const {
+            inStock,
             isNew,
-            isBestPrice,
+            isBestPrice = true,
             className,
             salePercent,
             isPopular
@@ -18,18 +19,20 @@ class Labels extends React.Component {
 
         const blocks = [];
 
+        if(inStock){
+            blocks.push(<span className={classNames(s.inStock, className)}>{'В наличии в Тюмени'}</span>)
+        }
+
         if (salePercent) {
             blocks.push(<div className={classNames(s.sale, className)}>  {`- ${salePercent}%`}</div>)
         }
+
         if (isBestPrice) {
             blocks.push(<div  className={classNames(s.isBestPrice, className)}> Лучшая цена</div>)
         }
+
         if (isPopular) {
-            blocks.push(
-                <span className={s.popular}>
-                                     <StarIcon className={s.starIcon}/>
-                    хит продаж
-            </span>)
+            blocks.push(<div className={s.popular}><StarIcon className={s.starIcon}/>{'хит продаж'} </div>)
         }
 
         if (isNew) {

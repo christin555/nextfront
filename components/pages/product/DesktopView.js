@@ -37,6 +37,7 @@ const DesktopView = (props) => {
             <Labels salePercent={values.salePercent} className={s.sale} />
             <Labels isPopular={values.isPopular} />
             <Labels isBestPrice={values.isBestPrice} className={s.sale} />
+            <Labels inStock={values.inStock} />
           </div>
         </div>
         <div className={classNames(s.card, {[s.door]: false})}>

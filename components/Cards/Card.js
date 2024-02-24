@@ -109,6 +109,7 @@ class CardView extends React.Component {
             classNamesRoot,
             collection,
             category,
+            inStock,
             id
         } = this.props;
 
@@ -136,11 +137,11 @@ class CardView extends React.Component {
                                     height={180}
                                     width={260}
                                     alt={`${fullName} в Тюмени`}
-                                    loader={() => img || "/blur.png"}
+                                    loader={() => 'https://master-pola.com/' + img || "/blur.png"}
                                     quality={80}
                                     className={cn(s.img, {[s.isDoor]: isDoor || category === 'Двери'})}
                                     //потом поправлю
-                                    src={img || "/blur.png"}
+                                    src={'https://master-pola.com/' +img || "/blur.png"}
                                 />
                             </CardMedia>
                             <CardContent className={s.content}>
@@ -154,7 +155,10 @@ class CardView extends React.Component {
                                     </span>
                                     {this.collection}
                                     {this.colors}
-                                    <Labels isPopular={isPopular}/>
+                                    <Labels
+                                      inStock={inStock}
+                                      isPopular={isPopular}
+                                    />
                                 </div>
                             </CardContent>
                         </div>
