@@ -137,11 +137,11 @@ class CardView extends React.Component {
                                     height={180}
                                     width={260}
                                     alt={`${fullName} в Тюмени`}
-                                    loader={() => 'https://master-pola.com/' + img || "/blur.png"}
+                                    loader={() => img || "/blur.png"}
                                     quality={80}
                                     className={cn(s.img, {[s.isDoor]: isDoor || category === 'Двери'})}
                                     //потом поправлю
-                                    src={'https://master-pola.com/' +img || "/blur.png"}
+                                    src={img || "/blur.png"}
                                 />
                             </CardMedia>
                             <CardContent className={s.content}>
