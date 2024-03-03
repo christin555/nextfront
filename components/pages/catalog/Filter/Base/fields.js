@@ -42,17 +42,18 @@ const Fields = ({checked, unit, disabled, values, setValue, setPrice, setPricePa
     );
   }
 
-  return values[key]?.map(({id, name, img}) => (
-    <FormCheckbox
-      img={img}
-      checked={isChecked(checked, key, id)}
-      key={id}
-      name={name}
-      id={id}
-      disabled={isDisabled(disabled, key, id)}
-      onChange={setValue(key)}
-    />
-  ));
+  return values[key]?.slice().sort((a, b) => a.name > b.name ? 1 : -1)
+    .map(({id, name, img}) => (
+      <FormCheckbox
+        img={img}
+        checked={isChecked(checked, key, id)}
+        key={id}
+        name={name}
+        id={id}
+        disabled={isDisabled(disabled, key, id)}
+        onChange={setValue(key)}
+      />
+    ));
 };
 
 export default Fields;
