@@ -3,7 +3,7 @@ import {BaseFilterStore} from './Base';
 
 export class KeramogranitStore extends BaseFilterStore {
     fieldsLabel = {
-      'color': 'Оттенок',
+      'color': 'Цвет',
       'size': 'Размер',
       'brandId': 'Бренд',
       'brands': 'Бренд',

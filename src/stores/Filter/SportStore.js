@@ -1,6 +1,5 @@
 import {computed, makeObservable} from 'mobx';
 import {BaseFilterStore} from './Base';
-import {priceUnit} from '../../enums';
 
 export class SportStore extends BaseFilterStore {
     fieldsLabel = {
