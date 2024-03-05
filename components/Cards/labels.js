@@ -10,7 +10,7 @@ class Labels extends React.Component {
         const {
             inStock,
             isNew,
-            isBestPrice = true,
+            isBestPrice,
             className,
             salePercent,
             isPopular
